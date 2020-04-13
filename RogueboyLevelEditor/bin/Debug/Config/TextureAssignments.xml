@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<textures>
+	<texture>
+        <id>0</id>
+        <filepath>Textures/Tile_00.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>1</id>
+        <filepath>Textures/Tile_01.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>2</id>
+        <filepath>Textures/Tile_02.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>3</id>
+        <filepath>Textures/Tile_03.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>4</id>
+        <filepath>Textures/Tile_04.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>5</id>
+        <filepath>Textures/Tile_05.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>6</id>
+        <filepath>Textures/Tile_06.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>7</id>
+        <filepath>Textures/Tile_07.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>8</id>
+        <filepath>Textures/Tile_08.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>9</id>
+        <filepath>Textures/Tile_09.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>10</id>
+        <filepath>Textures/Tile_10.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>11</id>
+        <filepath>Textures/Tile_11.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>12</id>
+        <filepath>Textures/Tile_12.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>13</id>
+        <filepath>Textures/Tile_13.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>14</id>
+        <filepath>Textures/Tile_14.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>15</id>
+        <filepath>Textures/Tile_15.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>16</id>
+        <filepath>Textures/Tile_16.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>17</id>
+        <filepath>Textures/Tile_17.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>18</id>
+        <filepath>Textures/Tile_18.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>19</id>
+        <filepath>Textures/Tile_19.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>20</id>
+        <filepath>Textures/Tile_20.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>21</id>
+        <filepath>Textures/Tile_21.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>22</id>
+        <filepath>Textures/Tile_22.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>23</id>
+        <filepath>Textures/Tile_23.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>24</id>
+        <filepath>Textures/Tile_24.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>25</id>
+        <filepath>Textures/Tile_25.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>26</id>
+        <filepath>Textures/Tile_26.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>27</id>
+        <filepath>Textures/Tile_27.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>28</id>
+        <filepath>Textures/Tile_28.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>29</id>
+        <filepath>Textures/Tile_29.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>30</id>
+        <filepath>Textures/Tile_30.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>31</id>
+        <filepath>Textures/Tile_31.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>32</id>
+        <filepath>Textures/Tile_32.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>33</id>
+        <filepath>Textures/Tile_33.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>34</id>
+        <filepath>Textures/Tile_34.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>35</id>
+        <filepath>Textures/Tile_35.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>36</id>
+        <filepath>Textures/Tile_36.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>37</id>
+        <filepath>Textures/Tile_37.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>38</id>
+        <filepath>Textures/Tile_38.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>39</id>
+        <filepath>Textures/Tile_39.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>40</id>
+        <filepath>Textures/Tile_40.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>41</id>
+        <filepath>Textures/Tile_41.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>42</id>
+        <filepath>Textures/Tile_42.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>43</id>
+        <filepath>Textures/Tile_43.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>44</id>
+        <filepath>Textures/Tile_44.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>45</id>
+        <filepath>Textures/Tile_45.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>46</id>
+        <filepath>Textures/Tile_46.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>47</id>
+        <filepath>Textures/Tile_47.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>48</id>
+        <filepath>Textures/Tile_48.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>49</id>
+        <filepath>Textures/Tile_49.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>50</id>
+        <filepath>Textures/Tile_50.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>51</id>
+        <filepath>Textures/Tile_51.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>52</id>
+        <filepath>Textures/Tile_52.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>53</id>
+        <filepath>Textures/Tile_53.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>54</id>
+        <filepath>Textures/Tile_54.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>55</id>
+        <filepath>Textures/Tile_55.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>56</id>
+        <filepath>Textures/Tile_56.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>57</id>
+        <filepath>Textures/Tile_57.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>58</id>
+        <filepath>Textures/Tile_58.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>59</id>
+        <filepath>Textures/Tile_59.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>60</id>
+        <filepath>Textures/Tile_60.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>61</id>
+        <filepath>Textures/Tile_61.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>62</id>
+        <filepath>Textures/Tile_62.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>63</id>
+        <filepath>Textures/Tile_63.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>64</id>
+        <filepath>Textures/Tile_64.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>65</id>
+        <filepath>Textures/Tile_65.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>66</id>
+        <filepath>Textures/Tile_66.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>67</id>
+        <filepath>Textures/Tile_67.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>68</id>
+        <filepath>Textures/Tile_68.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>69</id>
+        <filepath>Textures/Tile_69.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>70</id>
+        <filepath>Textures/Tile_70.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>71</id>
+        <filepath>Textures/Tile_71.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+
+    <texture>
+        <id>72</id>
+        <filepath>Textures/Tile_72.png</filepath>
+        <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+    </texture>
+</textures>

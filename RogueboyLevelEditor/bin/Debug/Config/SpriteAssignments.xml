@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sprites>
+	<sprite> 
+		<name>coin</name>
+		<id>0</id>
+		<texture>0</texture>
+	</sprite>
+</sprites>

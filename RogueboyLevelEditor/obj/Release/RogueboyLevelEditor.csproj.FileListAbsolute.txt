@@ -1,0 +1,11 @@
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\bin\Release\RogueboyLevelEditor.exe.config
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\bin\Release\RogueboyLevelEditor.exe
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\bin\Release\RogueboyLevelEditor.pdb
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.csprojAssemblyReference.cache
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.MainForm.resources
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.Forms.MapEditorForm.resources
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.Forms.NewMapForm.resources
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.Properties.Resources.resources
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.csproj.GenerateResource.cache
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.exe
+C:\Users\New\Desktop\Games Testing\RogueboyLevelEditor\obj\Release\RogueboyLevelEditor.pdb
