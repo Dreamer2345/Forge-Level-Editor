@@ -44,6 +44,22 @@ namespace RogueboyLevelEditor.mapCollection
         List<Map> OpenMaps = new List<Map>();
         public Map CurrentMap = null;
 
+        public void MoveCurrentMapUp() {
+
+            int index = OpenMaps.IndexOf(CurrentMap);
+            OpenMaps.Remove(CurrentMap);
+            OpenMaps.Insert(index - 1, CurrentMap);
+
+        }
+
+        public void MoveCurrentMapDown() {
+
+            int index = OpenMaps.IndexOf(CurrentMap);
+            OpenMaps.Remove(CurrentMap);
+            OpenMaps.Insert(index + 1, CurrentMap);
+
+        }
+
         public int OpenCount
         {
             get
@@ -173,7 +189,7 @@ namespace RogueboyLevelEditor.mapCollection
                         string NameFind = Vals[0];
                         int endofName = NameFind.IndexOf('[');
                         int startofName = NameFind.IndexOf("uint8_t") + 7;
-                        string Name = NameFind.Substring(startofName, endofName - startofName);
+                        string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
                         
                         char[] chars = {',','0','1', '2', '3', '4','5', '6','7', '8', '9' };
                         string Data = Vals[1];
