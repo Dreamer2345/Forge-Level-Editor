@@ -160,23 +160,48 @@ namespace RogueboyLevelEditor.Forms
                 listView2.Items.Add(newItem);
             }
         }
-        void AddMapToOpenWindows(Map map)
+        void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
         {
-            if (map == null)
-                return;
-            ToolStripMenuItem WindowsMenuButton = (ToolStripMenuItem)menuStrip1.Items["windowsToolStripMenuItem"];
-            ToolStripMenuItem newMenuButton = new ToolStripMenuItem(map.Name);
-            newMenuButton.Click += NewMenuButton_Click;
-            newMenuButton.Tag = map;
-            WindowsMenuButton.DropDownItems.Add(newMenuButton); 
+            if (map == null) return;
+
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem(map.Name);
+            newMenuItem.Click += NewMenuButton_Click;
+            newMenuItem.Tag = map;
+            newMenuItem.Name = map.Name;
+            mapsMenu.DropDownItems.Add(newMenuItem);
+
+            if (selectMenuItem) {
+
+                // Remove other tick marks ..
+
+                for (int x = 6; x < mapsMenu.DropDownItems.Count; x++) {
+                    ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
+                    menuItem.ImageKey = null;
+                }
+
+                // Tick this menu item ..
+
+                newMenuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                enableMapMenuOptions(map.Name);
+
+            }
+
         }
         private void NewMenuButton_Click(object sender, EventArgs e)
         {  
-            ToolStripMenuItem MenuButton = (ToolStripMenuItem)sender;
-            Map Chosen = (Map)MenuButton.Tag;
-            if (mapCollection.ChangeMap(Chosen))
+            ToolStripMenuItem menu = (ToolStripMenuItem)sender;
+            Map chosenMap = (Map)menu.Tag;
+            if (mapCollection.ChangeMap(chosenMap))
             {
-                tool.MapToEdit = Chosen;
+                for (int x = 6; x < mapsMenu.DropDownItems.Count; x++) {
+                    ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
+                    menuItem.ImageKey = null;
+                }
+
+                menu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                enableMapMenuOptions(chosenMap.Name);
+
+                tool.MapToEdit = chosenMap;
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
                 pictureBox1.Invalidate();
@@ -196,16 +221,23 @@ namespace RogueboyLevelEditor.Forms
             cursor.drawOffsetX = (pictureBox1.Width / 2) - 8;
             cursor.drawOffsetY = (pictureBox1.Height / 2) - 8;
             tool = new TileBrush(-1, mapCollection.CurrentMap);
-            
-            
-            if(mapCollection.OpenCount > 0)
-                foreach(Map i in mapCollection.GetMaps())
-                    AddMapToOpenWindows(i);
+
+
+            if (mapCollection.OpenCount > 0)
+                for (int i = 0; i < mapCollection.GetMaps().Count(); i++) {
+                    Map map = mapCollection.GetMaps()[i];
+                    AddMapToOpenWindows(map, i == 0);
+                }
 
             listView1.Items.Clear();
             listView2.Items.Clear();
             AddTilesToListView();
             AddSpritesToListView();
+
+            mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
+            mapMoveDownMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowDown;
+            mapMoveDownMenu.Enabled = mapCollection.OpenCount > 1;
+
         }
         private void MapEditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -403,7 +435,7 @@ namespace RogueboyLevelEditor.Forms
             if (form.Valid)
             {
                 Map newMap = form.Output;
-                AddMapToOpenWindows(newMap);
+                AddMapToOpenWindows(newMap, true);
                 mapCollection.AddMap(newMap);
             }
 
@@ -536,5 +568,70 @@ namespace RogueboyLevelEditor.Forms
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void MapAddMenu_Click(object sender, EventArgs e) {
+
+            NewMapForm form = new NewMapForm(mapCollection.FilePath, mapCollection.GetNames());
+            form.Owner = this;
+            form.callback += Form_callback;
+            form.Show();
+            this.Enabled = false;
+
+        }
+
+        private void MapDeleteMenu_Click(object sender, EventArgs e) {
+
+            mapsMenu.DropDownItems.RemoveByKey(mapCollection.CurrentMap.Name);
+            mapCollection.RemoveMap(mapCollection.CurrentMap);
+
+            if (mapCollection.OpenCount > 0) {
+
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
+                menuItem.Checked = true;
+
+                tool.MapToEdit = (Map)menuItem.Tag;
+                UpdateCurrentSprites();
+                UpdateCurrentConnectors();
+                pictureBox1.Invalidate();
+                return;
+
+            }
+
+            Owner.Show();
+            this.Close();
+
+        }
+
+        private void mapMoveUpMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menu = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
+            int menuIndex = mapsMenu.DropDownItems.IndexOfKey(mapCollection.CurrentMap.Name);
+            mapsMenu.DropDownItems.RemoveByKey(menu.Name);
+            mapsMenu.DropDownItems.Insert(menuIndex - 1, menu);
+            mapCollection.MoveCurrentMapUp();
+
+            enableMapMenuOptions(menu.Name);
+
+        }
+
+        private void mapMoveDownMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menu = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
+            int menuIndex = mapsMenu.DropDownItems.IndexOfKey(mapCollection.CurrentMap.Name);
+            mapsMenu.DropDownItems.RemoveByKey(menu.Name);
+            mapsMenu.DropDownItems.Insert(menuIndex + 1, menu);
+            mapCollection.MoveCurrentMapDown();
+
+            enableMapMenuOptions(menu.Name);
+
+        }
+
+        private void enableMapMenuOptions(String mapName) {
+
+            mapMoveUpMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != 6);
+            mapMoveDownMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != mapsMenu.DropDownItems.Count - 1);
+
+        }
     }
+
 }

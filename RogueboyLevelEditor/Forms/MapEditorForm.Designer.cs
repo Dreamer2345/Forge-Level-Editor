@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapEditorForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,18 +52,12 @@
             this.playerStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.hideToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapAddMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapDeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.listView1 = new System.Windows.Forms.ListView();
             this.TileImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -91,9 +83,21 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mapMoveUpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapMoveDownMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -102,44 +106,28 @@
             this.toolsToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.windowsToolStripMenuItem,
+            this.mapsMenu,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(740, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(740, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.deleteMapToolStripMenuItem,
             this.closeToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.loadToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
             this.toolsToolStripMenuItem.Text = "File";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.newToolStripMenuItem.Text = "Add Map";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // deleteMapToolStripMenuItem
-            // 
-            this.deleteMapToolStripMenuItem.Name = "deleteMapToolStripMenuItem";
-            this.deleteMapToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.deleteMapToolStripMenuItem.Text = "Delete Map";
-            this.deleteMapToolStripMenuItem.Click += new System.EventHandler(this.deleteMapToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.closeToolStripMenuItem.Text = "Close File";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -147,7 +135,7 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.saveToolStripMenuItem.Text = "Save File";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -156,7 +144,7 @@
             this.loadToolStripMenuItem.Enabled = false;
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -165,14 +153,14 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mapPropertysToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // mapPropertysToolStripMenuItem
             // 
             this.mapPropertysToolStripMenuItem.Name = "mapPropertysToolStripMenuItem";
             this.mapPropertysToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(284, 30);
             this.mapPropertysToolStripMenuItem.Text = "Map Properties";
             // 
             // viewToolStripMenuItem
@@ -184,7 +172,7 @@
             this.connectionsToolStripMenuItem,
             this.playerStartToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // outOfBoundsToolStripMenuItem
@@ -193,20 +181,20 @@
             this.showToolStripMenuItem,
             this.hideToolStripMenuItem});
             this.outOfBoundsToolStripMenuItem.Name = "outOfBoundsToolStripMenuItem";
-            this.outOfBoundsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.outOfBoundsToolStripMenuItem.Size = new System.Drawing.Size(206, 30);
             this.outOfBoundsToolStripMenuItem.Text = "OutOfBounds";
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(140, 30);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // hideToolStripMenuItem
             // 
             this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
-            this.hideToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(140, 30);
             this.hideToolStripMenuItem.Text = "Hide";
             this.hideToolStripMenuItem.Click += new System.EventHandler(this.hideToolStripMenuItem_Click);
             // 
@@ -216,20 +204,20 @@
             this.showToolStripMenuItem1,
             this.hideToolStripMenuItem1});
             this.tilesToolStripMenuItem.Name = "tilesToolStripMenuItem";
-            this.tilesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.tilesToolStripMenuItem.Size = new System.Drawing.Size(206, 30);
             this.tilesToolStripMenuItem.Text = "Tiles";
             // 
             // showToolStripMenuItem1
             // 
             this.showToolStripMenuItem1.Name = "showToolStripMenuItem1";
-            this.showToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.showToolStripMenuItem1.Size = new System.Drawing.Size(140, 30);
             this.showToolStripMenuItem1.Text = "Show";
             this.showToolStripMenuItem1.Click += new System.EventHandler(this.showToolStripMenuItem1_Click);
             // 
             // hideToolStripMenuItem1
             // 
             this.hideToolStripMenuItem1.Name = "hideToolStripMenuItem1";
-            this.hideToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.hideToolStripMenuItem1.Size = new System.Drawing.Size(140, 30);
             this.hideToolStripMenuItem1.Text = "Hide";
             this.hideToolStripMenuItem1.Click += new System.EventHandler(this.hideToolStripMenuItem1_Click);
             // 
@@ -239,20 +227,20 @@
             this.showToolStripMenuItem2,
             this.hideToolStripMenuItem2});
             this.spritesToolStripMenuItem.Name = "spritesToolStripMenuItem";
-            this.spritesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.spritesToolStripMenuItem.Size = new System.Drawing.Size(206, 30);
             this.spritesToolStripMenuItem.Text = "Sprites";
             // 
             // showToolStripMenuItem2
             // 
             this.showToolStripMenuItem2.Name = "showToolStripMenuItem2";
-            this.showToolStripMenuItem2.Size = new System.Drawing.Size(103, 22);
+            this.showToolStripMenuItem2.Size = new System.Drawing.Size(140, 30);
             this.showToolStripMenuItem2.Text = "Show";
             this.showToolStripMenuItem2.Click += new System.EventHandler(this.showToolStripMenuItem2_Click);
             // 
             // hideToolStripMenuItem2
             // 
             this.hideToolStripMenuItem2.Name = "hideToolStripMenuItem2";
-            this.hideToolStripMenuItem2.Size = new System.Drawing.Size(103, 22);
+            this.hideToolStripMenuItem2.Size = new System.Drawing.Size(140, 30);
             this.hideToolStripMenuItem2.Text = "Hide";
             this.hideToolStripMenuItem2.Click += new System.EventHandler(this.hideToolStripMenuItem2_Click);
             // 
@@ -262,20 +250,20 @@
             this.showToolStripMenuItem3,
             this.hideToolStripMenuItem3});
             this.connectionsToolStripMenuItem.Name = "connectionsToolStripMenuItem";
-            this.connectionsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.connectionsToolStripMenuItem.Size = new System.Drawing.Size(206, 30);
             this.connectionsToolStripMenuItem.Text = "Connections";
             // 
             // showToolStripMenuItem3
             // 
             this.showToolStripMenuItem3.Name = "showToolStripMenuItem3";
-            this.showToolStripMenuItem3.Size = new System.Drawing.Size(103, 22);
+            this.showToolStripMenuItem3.Size = new System.Drawing.Size(140, 30);
             this.showToolStripMenuItem3.Text = "Show";
             this.showToolStripMenuItem3.Click += new System.EventHandler(this.showToolStripMenuItem3_Click);
             // 
             // hideToolStripMenuItem3
             // 
             this.hideToolStripMenuItem3.Name = "hideToolStripMenuItem3";
-            this.hideToolStripMenuItem3.Size = new System.Drawing.Size(103, 22);
+            this.hideToolStripMenuItem3.Size = new System.Drawing.Size(140, 30);
             this.hideToolStripMenuItem3.Text = "Hide";
             this.hideToolStripMenuItem3.Click += new System.EventHandler(this.hideToolStripMenuItem3_Click);
             // 
@@ -285,47 +273,63 @@
             this.showToolStripMenuItem4,
             this.hideToolStripMenuItem4});
             this.playerStartToolStripMenuItem.Name = "playerStartToolStripMenuItem";
-            this.playerStartToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.playerStartToolStripMenuItem.Size = new System.Drawing.Size(206, 30);
             this.playerStartToolStripMenuItem.Text = "PlayerStart";
             // 
             // showToolStripMenuItem4
             // 
             this.showToolStripMenuItem4.Name = "showToolStripMenuItem4";
-            this.showToolStripMenuItem4.Size = new System.Drawing.Size(103, 22);
+            this.showToolStripMenuItem4.Size = new System.Drawing.Size(140, 30);
             this.showToolStripMenuItem4.Text = "Show";
             this.showToolStripMenuItem4.Click += new System.EventHandler(this.showToolStripMenuItem4_Click);
             // 
             // hideToolStripMenuItem4
             // 
             this.hideToolStripMenuItem4.Name = "hideToolStripMenuItem4";
-            this.hideToolStripMenuItem4.Size = new System.Drawing.Size(103, 22);
+            this.hideToolStripMenuItem4.Size = new System.Drawing.Size(140, 30);
             this.hideToolStripMenuItem4.Text = "Hide";
             this.hideToolStripMenuItem4.Click += new System.EventHandler(this.hideToolStripMenuItem4_Click);
             // 
-            // windowsToolStripMenuItem
+            // mapsMenu
             // 
-            this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.windowsToolStripMenuItem.Text = "Maps";
-            this.windowsToolStripMenuItem.Click += new System.EventHandler(this.windowsToolStripMenuItem_Click);
+            this.mapsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mapAddMenu,
+            this.mapDeleteMenu,
+            this.toolStripMenuItem1,
+            this.mapMoveUpMenu,
+            this.mapMoveDownMenu,
+            this.toolStripMenuItem2});
+            this.mapsMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mapsMenu.Name = "mapsMenu";
+            this.mapsMenu.Size = new System.Drawing.Size(68, 29);
+            this.mapsMenu.Text = "Maps";
+            this.mapsMenu.Click += new System.EventHandler(this.windowsToolStripMenuItem_Click);
+            // 
+            // mapAddMenu
+            // 
+            this.mapAddMenu.Name = "mapAddMenu";
+            this.mapAddMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapAddMenu.Text = "&Add Map";
+            this.mapAddMenu.Click += new System.EventHandler(this.MapAddMenu_Click);
+            // 
+            // mapDeleteMenu
+            // 
+            this.mapDeleteMenu.Name = "mapDeleteMenu";
+            this.mapDeleteMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapDeleteMenu.Text = "&Delete Map";
+            this.mapDeleteMenu.Click += new System.EventHandler(this.MapDeleteMenu_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 114);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(334, 323);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // groupBox1
             // 
@@ -342,118 +346,6 @@
             this.groupBox1.Size = new System.Drawing.Size(604, 81);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Image = ((System.Drawing.Image)(resources.GetObject("radioButton7.Image")));
-            this.radioButton7.Location = new System.Drawing.Point(309, 24);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(42, 39);
-            this.radioButton7.TabIndex = 7;
-            this.radioButton7.Text = "Edge";
-            this.radioButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Image = ((System.Drawing.Image)(resources.GetObject("radioButton6.Image")));
-            this.radioButton6.Location = new System.Drawing.Point(237, 24);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(66, 39);
-            this.radioButton6.TabIndex = 6;
-            this.radioButton6.Text = "Rectangle";
-            this.radioButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(186, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 39);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Origin";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Image = ((System.Drawing.Image)(resources.GetObject("radioButton5.Image")));
-            this.radioButton5.Location = new System.Drawing.Point(120, 24);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(60, 39);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.Text = "Move To";
-            this.radioButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Image = ((System.Drawing.Image)(resources.GetObject("radioButton4.Image")));
-            this.radioButton4.Location = new System.Drawing.Point(530, 24);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(68, 39);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.Text = "Sprite Tool";
-            this.radioButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Image = ((System.Drawing.Image)(resources.GetObject("radioButton3.Image")));
-            this.radioButton3.Location = new System.Drawing.Point(429, 24);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(95, 39);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "Connection Tool";
-            this.radioButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Image = ((System.Drawing.Image)(resources.GetObject("radioButton2.Image")));
-            this.radioButton2.Location = new System.Drawing.Point(70, 24);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(44, 39);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Erase";
-            this.radioButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Image = ((System.Drawing.Image)(resources.GetObject("radioButton1.Image")));
-            this.radioButton1.Location = new System.Drawing.Point(6, 24);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 39);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Tile Tool";
-            this.radioButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // listView1
             // 
@@ -659,6 +551,148 @@
             // 
             this.columnHeader11.Text = "EndY";
             // 
+            // mapMoveUpMenu
+            // 
+            this.mapMoveUpMenu.Name = "mapMoveUpMenu";
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveUpMenu.Text = "Move &Up";
+            this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
+            // 
+            // mapMoveDownMenu
+            // 
+            this.mapMoveDownMenu.Name = "mapMoveDownMenu";
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveDownMenu.Text = "Move &Down";
+            this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Image = ((System.Drawing.Image)(resources.GetObject("radioButton7.Image")));
+            this.radioButton7.Location = new System.Drawing.Point(309, 24);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(57, 46);
+            this.radioButton7.TabIndex = 7;
+            this.radioButton7.Text = "Edge";
+            this.radioButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Image = ((System.Drawing.Image)(resources.GetObject("radioButton6.Image")));
+            this.radioButton6.Location = new System.Drawing.Point(237, 24);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(92, 46);
+            this.radioButton6.TabIndex = 6;
+            this.radioButton6.Text = "Rectangle";
+            this.radioButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(186, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 39);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Origin";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Image = ((System.Drawing.Image)(resources.GetObject("radioButton5.Image")));
+            this.radioButton5.Location = new System.Drawing.Point(120, 24);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(79, 46);
+            this.radioButton5.TabIndex = 4;
+            this.radioButton5.Text = "Move To";
+            this.radioButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Image = ((System.Drawing.Image)(resources.GetObject("radioButton4.Image")));
+            this.radioButton4.Location = new System.Drawing.Point(530, 24);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(95, 46);
+            this.radioButton4.TabIndex = 3;
+            this.radioButton4.Text = "Sprite Tool";
+            this.radioButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Image = ((System.Drawing.Image)(resources.GetObject("radioButton3.Image")));
+            this.radioButton3.Location = new System.Drawing.Point(429, 24);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(134, 46);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.Text = "Connection Tool";
+            this.radioButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Image = ((System.Drawing.Image)(resources.GetObject("radioButton2.Image")));
+            this.radioButton2.Location = new System.Drawing.Point(70, 24);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(61, 46);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Erase";
+            this.radioButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Image = ((System.Drawing.Image)(resources.GetObject("radioButton1.Image")));
+            this.radioButton1.Location = new System.Drawing.Point(6, 24);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(77, 46);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Tile Tool";
+            this.radioButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 114);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(334, 323);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -682,9 +716,9 @@
             this.Load += new System.EventHandler(this.MapEditorForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -716,13 +750,12 @@
         private System.Windows.Forms.ColumnHeader Texture;
         private System.Windows.Forms.ColumnHeader SpriteID;
         private System.Windows.Forms.ColumnHeader SpriteName;
-        private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapsMenu;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outOfBoundsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.ColumnHeader IsExit;
         private System.Windows.Forms.ColumnHeader IsSender;
@@ -753,6 +786,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ToolStripMenuItem deleteMapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapAddMenu;
+        private System.Windows.Forms.ToolStripMenuItem mapDeleteMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mapMoveUpMenu;
+        private System.Windows.Forms.ToolStripMenuItem mapMoveDownMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }
