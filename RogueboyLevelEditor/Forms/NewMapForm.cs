@@ -10,12 +10,17 @@ using System.IO;
 using System.Windows.Forms;
 using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
+using System.Text.RegularExpressions;
 
 namespace RogueboyLevelEditor.Forms
 {
     public delegate void Callback(NewMapForm form);
     public partial class NewMapForm : Form
     {
+        // Strictly speaking the range of valid characters is greater than this,
+        // but restricting to just alphanumerics is probably wise for sensible map names.
+        private static Regex identifierRegex = new Regex("^[_a-zA-Z][_a-zA-Z0-9]*$");
+
         public event Callback callback;
         public Map Output { get; private set; }
         string[] Taken;
@@ -46,6 +51,12 @@ namespace RogueboyLevelEditor.Forms
                     errorProvider1.SetError(textBox1, "Two Maps cannot have the same name");
                     return;
                 }
+
+            if(!identifierRegex.IsMatch(textBox1.Text))
+            {
+                this.errorProvider1.SetError(this.textBox1, "Map name is not a valid identifier");
+                return;
+            }
 
             //if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
             //{
