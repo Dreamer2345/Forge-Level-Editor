@@ -47,17 +47,17 @@ namespace RogueboyLevelEditor.Forms
                     return;
                 }
 
-            if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
-            {
-                folderBrowserDialog1.SelectedPath = Directory.GetCurrentDirectory() + "\\Maps";
-                DialogResult result = folderBrowserDialog1.ShowDialog();
+            //if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
+            //{
+            //    folderBrowserDialog1.SelectedPath = Directory.GetCurrentDirectory() + "\\Maps";
+            //    DialogResult result = folderBrowserDialog1.ShowDialog();
 
-                if (result == DialogResult.Cancel)
-                {
-                    return;
-                }
-                Filepath = folderBrowserDialog1.SelectedPath;
-            } 
+            //    if (result == DialogResult.Cancel)
+            //    {
+            //        return;
+            //    }
+            //    Filepath = folderBrowserDialog1.SelectedPath;
+            //} 
             Output = new Map(new BaseMapComponent(-1),textBox1.Text, Filepath, (int)numericUpDown1.Value,(int)numericUpDown2.Value,(int)numericUpDown3.Value);
             Valid = true;
             callback?.Invoke(this);
