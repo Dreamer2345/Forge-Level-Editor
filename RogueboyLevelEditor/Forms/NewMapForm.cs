@@ -46,12 +46,11 @@ namespace RogueboyLevelEditor.Forms
                 return;
             }
 
-            if (Taken != null)
-                if(Taken.Contains(textBox1.Text))
-                {
-                    errorProvider1.SetError(textBox1, "Two Maps cannot have the same name");
-                    return;
-                }
+            if ((this.Taken != null) && (this.Taken.Contains(this.textBox1.Text)))
+            {
+                this.errorProvider1.SetError(textBox1, "Two maps cannot have the same name");
+                return;
+            }
 
             if(!identifierRegex.IsMatch(textBox1.Text))
             {
