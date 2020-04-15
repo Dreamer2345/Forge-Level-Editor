@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapEditorForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileLoadMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSaveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSaveAsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.FileExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapPropertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,9 +98,17 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -118,36 +129,49 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.fileLoadMenu,
+            this.fileSaveMenu,
+            this.fileSaveAsMenu,
+            this.toolStripMenuItem3,
+            this.FileExitMenu});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
             this.toolsToolStripMenuItem.Text = "File";
             // 
-            // closeToolStripMenuItem
+            // fileLoadMenu
             // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.closeToolStripMenuItem.Text = "Close File";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.fileLoadMenu.Name = "fileLoadMenu";
+            this.fileLoadMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.fileLoadMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileLoadMenu.Text = "Load";
+            this.fileLoadMenu.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
-            // saveToolStripMenuItem
+            // fileSaveMenu
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.saveToolStripMenuItem.Text = "Save File";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.fileSaveMenu.Name = "fileSaveMenu";
+            this.fileSaveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.fileSaveMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileSaveMenu.Text = "Save File";
+            this.fileSaveMenu.Click += new System.EventHandler(this.fileSaveMenu_Click);
             // 
-            // loadToolStripMenuItem
+            // fileSaveAsMenu
             // 
-            this.loadToolStripMenuItem.Enabled = false;
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            this.fileSaveAsMenu.Name = "fileSaveAsMenu";
+            this.fileSaveAsMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileSaveAsMenu.Text = "Save File As ...";
+            this.fileSaveAsMenu.Click += new System.EventHandler(this.fileSaveAsMenu_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(249, 6);
+            // 
+            // FileExitMenu
+            // 
+            this.FileExitMenu.Name = "FileExitMenu";
+            this.FileExitMenu.Size = new System.Drawing.Size(252, 30);
+            this.FileExitMenu.Text = "E&xit";
+            this.FileExitMenu.Click += new System.EventHandler(this.fileExistMenu_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -303,7 +327,6 @@
             this.mapsMenu.Name = "mapsMenu";
             this.mapsMenu.Size = new System.Drawing.Size(68, 29);
             this.mapsMenu.Text = "Maps";
-            this.mapsMenu.Click += new System.EventHandler(this.windowsToolStripMenuItem_Click);
             // 
             // mapAddMenu
             // 
@@ -348,7 +371,6 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
             this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -693,10 +715,52 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentMapLabel,
+            this.toolStripStatusLabel1,
+            this.currentFileLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 447);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(740, 30);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // currentMapLabel
+            // 
+            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentMapLabel.Name = "currentMapLabel";
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 25);
+            // 
+            // currentFileLabel
+            // 
+            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentFileLabel.Name = "currentFileLabel";
+            this.currentFileLabel.Size = new System.Drawing.Size(112, 25);
+            this.currentFileLabel.Text = "< New File >";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 25);
+            this.toolStripStatusLabel1.Text = " in ";
+            // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(740, 450);
+            this.ClientSize = new System.Drawing.Size(740, 477);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.listView4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -719,6 +783,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,8 +795,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileSaveMenu;
+        private System.Windows.Forms.ToolStripMenuItem fileLoadMenu;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mapPropertysToolStripMenuItem;
@@ -755,7 +822,7 @@
         private System.Windows.Forms.ToolStripMenuItem outOfBoundsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FileExitMenu;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.ColumnHeader IsExit;
         private System.Windows.Forms.ColumnHeader IsSender;
@@ -792,5 +859,13 @@
         private System.Windows.Forms.ToolStripMenuItem mapMoveUpMenu;
         private System.Windows.Forms.ToolStripMenuItem mapMoveDownMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolStripMenuItem fileSaveAsMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripStatusLabel currentMapLabel;
+        private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
