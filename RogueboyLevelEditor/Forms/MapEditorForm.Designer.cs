@@ -56,6 +56,9 @@
             this.mapAddMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mapDeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mapMoveUpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapMoveDownMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -83,9 +86,6 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mapMoveUpMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapMoveDownMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
@@ -102,6 +102,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(12, 12);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem,
             this.editToolStripMenuItem,
@@ -299,7 +300,6 @@
             this.mapMoveUpMenu,
             this.mapMoveDownMenu,
             this.toolStripMenuItem2});
-            this.mapsMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mapsMenu.Name = "mapsMenu";
             this.mapsMenu.Size = new System.Drawing.Size(68, 29);
             this.mapsMenu.Text = "Maps";
@@ -323,6 +323,25 @@
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
+            // 
+            // mapMoveUpMenu
+            // 
+            this.mapMoveUpMenu.Name = "mapMoveUpMenu";
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveUpMenu.Text = "Move &Up";
+            this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
+            // 
+            // mapMoveDownMenu
+            // 
+            this.mapMoveDownMenu.Name = "mapMoveDownMenu";
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveDownMenu.Text = "Move &Down";
+            this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
             // 
             // helpToolStripMenuItem
             // 
@@ -550,25 +569,6 @@
             // columnHeader11
             // 
             this.columnHeader11.Text = "EndY";
-            // 
-            // mapMoveUpMenu
-            // 
-            this.mapMoveUpMenu.Name = "mapMoveUpMenu";
-            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
-            this.mapMoveUpMenu.Text = "Move &Up";
-            this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
-            // 
-            // mapMoveDownMenu
-            // 
-            this.mapMoveDownMenu.Name = "mapMoveDownMenu";
-            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
-            this.mapMoveDownMenu.Text = "Move &Down";
-            this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
             // 
             // radioButton7
             // 

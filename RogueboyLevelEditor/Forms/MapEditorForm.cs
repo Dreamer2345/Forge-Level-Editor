@@ -234,6 +234,7 @@ namespace RogueboyLevelEditor.Forms
             AddTilesToListView();
             AddSpritesToListView();
 
+            mapsMenu.DropDownItems[mapCollection.CurrentMap.Name].Image = RogueboyLevelEditor.Properties.Resources.Tick;
             mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
             mapMoveDownMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowDown;
             mapMoveDownMenu.Enabled = mapCollection.OpenCount > 1;
