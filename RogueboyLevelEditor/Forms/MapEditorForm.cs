@@ -408,8 +408,6 @@ namespace RogueboyLevelEditor.Forms
             //errorProvider1.Clear();
             openFileDialog.FileName = "Map";
             openFileDialog.InitialDirectory = "/Maps";
-            openFileDialog.DefaultExt = ".h";
-            openFileDialog.Filter = "C++ Header|*.h";
 
             DialogResult diag = openFileDialog.ShowDialog();
 
