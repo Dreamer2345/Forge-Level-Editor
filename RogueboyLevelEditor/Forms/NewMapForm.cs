@@ -70,6 +70,9 @@ namespace RogueboyLevelEditor.Forms
         private void NewMapForm_Load(object sender, EventArgs e)
         {
             this.FormClosing += NewMapForm_FormClosing;
+
+            this.CancelButton = cancelButton;
+            this.AcceptButton = button1;
         }
 
         private void NewMapForm_FormClosing(object sender, FormClosingEventArgs e)
