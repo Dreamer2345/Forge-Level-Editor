@@ -40,12 +40,13 @@ namespace RogueboyLevelEditor.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (string.IsNullOrWhiteSpace(this.textBox1.Text))
             {
-                errorProvider1.SetError(textBox1, "Value Cannot Be left Empty");
+                this.errorProvider1.SetError(this.textBox1, "Map name cannot be empty");
                 return;
             }
-            if(Taken != null)
+
+            if (Taken != null)
                 if(Taken.Contains(textBox1.Text))
                 {
                     errorProvider1.SetError(textBox1, "Two Maps cannot have the same name");
