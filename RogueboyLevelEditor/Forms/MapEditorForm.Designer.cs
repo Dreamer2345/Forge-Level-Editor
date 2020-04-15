@@ -724,7 +724,9 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.DefaultExt = "h";
+            this.openFileDialog.FileName = "Map.h";
+            this.openFileDialog.Filter = "C++ Header|*.h";
             // 
             // statusStrip1
             // 
