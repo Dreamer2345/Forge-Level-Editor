@@ -36,8 +36,8 @@ namespace RogueboyLevelEditor.Forms
             else {
                 this.Text = "Edit an Existing Map";
                 this.textBox1.Text = Output.Name;
-                this.mapWidthUpDown.Value = Output.Width();
-                this.mapHeightUpDown.Value = Output.Height();
+                this.mapWidthUpDown.Value = Output.Width;
+                this.mapHeightUpDown.Value = Output.Height;
                 this.mapTimerUpDown.Value = Output.Timer;
                 this.createButton.Text = "Update";
             }
@@ -62,7 +62,7 @@ namespace RogueboyLevelEditor.Forms
             foreach (Map map in this.mapCollection.GetMaps()) {
 
                 if ((map.Name == textBox1.Text && Output == null) || (map.Name == textBox1.Text && map!= Output)) {
-                    errorProvider1.SetError(textBox1, "Two Maps cannot have the same name");
+                    errorProvider1.SetError(textBox1, "Two Maps cannot have the same name.");
                     return;
                 }
 
@@ -85,8 +85,8 @@ namespace RogueboyLevelEditor.Forms
             }
             else {
                 Output.Name = textBox1.Text;
-                Output.Width((int)mapWidthUpDown.Value);
-                Output.Height((int)mapHeightUpDown.Value);
+                Output.Width = (int)mapWidthUpDown.Value;
+                Output.Height = (int)mapHeightUpDown.Value;
                 Output.Timer = (int)mapTimerUpDown.Value;
             }
             Valid = true;

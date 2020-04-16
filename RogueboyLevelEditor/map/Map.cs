@@ -39,16 +39,37 @@ namespace RogueboyLevelEditor.map
             return newArray;
         }
 
-        public void Height(int height) {
+        public int Height {
+            get { return this.height; }
+            set {
+                this.height = value;
+                MapComponents = ResizeArray<BaseMapComponent>(MapComponents, MapComponents.GetLength(0), value);
 
-            this.height = height;
-            MapComponents = ResizeArray<BaseMapComponent>(MapComponents, MapComponents.GetLength(0), height);
+                for (int y = 0; y < MapComponents.GetLength(1); y++) {
 
-            for (int y = 0; y < MapComponents.GetLength(1); y++) {
+                    for (int x = 0; x < MapComponents.GetLength(0); x++) {
 
-                for (int x = 0; x < MapComponents.GetLength(0); x++) {
+                        if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
 
-                    if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
+                    }
+
+                }
+            }
+        }
+        
+        public int Width {
+            get { return this.width; }
+            set {
+                this.width = value;
+                MapComponents = ResizeArray<BaseMapComponent>(MapComponents, value, MapComponents.GetLength(1));
+
+                for (int y = 0; y < MapComponents.GetLength(1); y++) {
+
+                    for (int x = 0; x < MapComponents.GetLength(0); x++) {
+
+                        if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
+
+                    }
 
                 }
 
@@ -56,30 +77,6 @@ namespace RogueboyLevelEditor.map
 
         }
 
-        public int Height() {
-            return this.height;
-        }
-
-        public void Width(int width) {
-
-            this.width = width;
-            MapComponents = ResizeArray<BaseMapComponent>(MapComponents, width, MapComponents.GetLength(1));
-
-            for (int y = 0; y < MapComponents.GetLength(1); y++) {
-
-                for (int x = 0; x < MapComponents.GetLength(0); x++) {
-
-                    if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
-
-                }
-
-            }
-
-        }
-
-        public int Width() {
-            return this.width;
-        }
 
         public static Map ParseMapArray(byte[] Array, string name, string FilePath)
         {
