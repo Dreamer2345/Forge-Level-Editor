@@ -10,12 +10,17 @@ using System.IO;
 using System.Windows.Forms;
 using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
+using System.Text.RegularExpressions;
 
 namespace RogueboyLevelEditor.Forms
 {
     public delegate void Callback(NewMapForm form);
     public partial class NewMapForm : Form
     {
+        // Strictly speaking the range of valid characters is greater than this,
+        // but restricting to just alphanumerics is probably wise for sensible map names.
+        private static Regex identifierRegex = new Regex("^[_a-zA-Z][_a-zA-Z0-9]*$");
+
         public event Callback callback;
         public Map Output { get; private set; }
         string[] Taken;
@@ -35,29 +40,24 @@ namespace RogueboyLevelEditor.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (string.IsNullOrWhiteSpace(this.textBox1.Text))
             {
-                errorProvider1.SetError(textBox1, "Value Cannot Be left Empty");
+                this.errorProvider1.SetError(this.textBox1, "Map name cannot be empty");
                 return;
             }
-            if(Taken != null)
-                if(Taken.Contains(textBox1.Text))
-                {
-                    errorProvider1.SetError(textBox1, "Two Maps cannot have the same name");
-                    return;
-                }
 
-            //if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
-            //{
-            //    folderBrowserDialog1.SelectedPath = Directory.GetCurrentDirectory() + "\\Maps";
-            //    DialogResult result = folderBrowserDialog1.ShowDialog();
+            if ((this.Taken != null) && (this.Taken.Contains(this.textBox1.Text)))
+            {
+                this.errorProvider1.SetError(textBox1, "Two maps cannot have the same name");
+                return;
+            }
 
-            //    if (result == DialogResult.Cancel)
-            //    {
-            //        return;
-            //    }
-            //    Filepath = folderBrowserDialog1.SelectedPath;
-            //} 
+            if(!identifierRegex.IsMatch(textBox1.Text))
+            {
+                this.errorProvider1.SetError(this.textBox1, "Map name is not a valid identifier");
+                return;
+            }
+
             Output = new Map(new BaseMapComponent(-1),textBox1.Text, Filepath, (int)numericUpDown1.Value,(int)numericUpDown2.Value,(int)numericUpDown3.Value);
             Valid = true;
             callback?.Invoke(this);
