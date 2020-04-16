@@ -408,8 +408,6 @@ namespace RogueboyLevelEditor.Forms
             //errorProvider1.Clear();
             openFileDialog.FileName = "Map";
             openFileDialog.InitialDirectory = "/Maps";
-            openFileDialog.DefaultExt = ".h";
-            openFileDialog.Filter = "C++ Header|*.h";
 
             DialogResult diag = openFileDialog.ShowDialog();
 
@@ -600,9 +598,8 @@ namespace RogueboyLevelEditor.Forms
             if (string.IsNullOrEmpty(mapCollection.FileName))
             {
                 saveFileDialog1.InitialDirectory = mapCollection.FilePath;
-                saveFileDialog1.Filter = "C++ Header|*.h";
-                saveFileDialog1.DefaultExt = ".h";
                 saveFileDialog1.FileName = "Map.h";
+
                 DialogResult result = saveFileDialog1.ShowDialog();
                 if(result == DialogResult.OK)
                 {
@@ -743,8 +740,6 @@ namespace RogueboyLevelEditor.Forms
         private void fileSaveAsMenu_Click(object sender, EventArgs e) {
 
             saveFileDialog1.InitialDirectory = mapCollection.FilePath;
-            saveFileDialog1.Filter = "C++ Header|*.h";
-            saveFileDialog1.DefaultExt = ".h";
             saveFileDialog1.FileName = "Map.h";
 
             DialogResult result = saveFileDialog1.ShowDialog();
