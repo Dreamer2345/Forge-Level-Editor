@@ -20,7 +20,7 @@ namespace RogueboyLevelEditor.map
         public string Name;
         public bool ShowOutOfBounds = false;
         public bool ShowPlayerStart = false;
-        int Timer, Width, Height;
+        public int Timer, Width, Height;
         point.Point PlayerStart = new point.Point(0, 0);
         public point.Point DrawPos = new point.Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);

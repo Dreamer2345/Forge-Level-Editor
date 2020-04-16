@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
+using RogueboyLevelEditor.mapCollection;
 
 namespace RogueboyLevelEditor.Forms
 {
@@ -18,14 +19,29 @@ namespace RogueboyLevelEditor.Forms
     {
         public event Callback callback;
         public Map Output { get; private set; }
-        string[] Taken;
+        MapCollection mapCollection;
         public bool Valid = false;
         string Filepath;
-        public NewMapForm(string Filepath = "", string[] TakenNames = null)
+
+        public NewMapForm(MapCollection mapCollection, Map mapToEdit = null, string Filepath = "")
         {
-            Taken = TakenNames;
+            Output = mapToEdit;
             this.Filepath = Filepath;
+            this.mapCollection = mapCollection;
             InitializeComponent();
+
+            if (mapToEdit == null) {
+                this.Text = "Add a new Map";
+            }
+            else {
+                this.Text = "Edit an Existing Map";
+                this.textBox1.Text = Output.Name;
+                this.mapWidthUpDown.Value = Output.Width;
+                this.mapHeightUpDown.Value = Output.Height;
+                this.mapTimerUpDown.Value = Output.Timer;
+                this.createButton.Text = "Update";
+            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -33,19 +49,24 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
             {
                 errorProvider1.SetError(textBox1, "Value Cannot Be left Empty");
                 return;
             }
-            if(Taken != null)
-                if(Taken.Contains(textBox1.Text))
-                {
+
+            // Check to see if map name is taken (ignore if we are editing the matched record) ..
+
+            foreach (Map map in this.mapCollection.GetMaps()) {
+
+                if ((map.Name == textBox1.Text && Output == null) || (map.Name == textBox1.Text && map!= Output)) {
                     errorProvider1.SetError(textBox1, "Two Maps cannot have the same name");
                     return;
                 }
+
+            }
 
             //if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
             //{
@@ -58,7 +79,16 @@ namespace RogueboyLevelEditor.Forms
             //    }
             //    Filepath = folderBrowserDialog1.SelectedPath;
             //} 
-            Output = new Map(new BaseMapComponent(-1),textBox1.Text, Filepath, (int)numericUpDown1.Value,(int)numericUpDown2.Value,(int)numericUpDown3.Value);
+
+            if (Output == null) {
+                Output = new Map(new BaseMapComponent(-1), textBox1.Text, Filepath, (int)mapWidthUpDown.Value, (int)mapHeightUpDown.Value, (int)mapTimerUpDown.Value);
+            }
+            else {
+                Output.Name = textBox1.Text;
+                Output.Width = (int)mapWidthUpDown.Value;
+                Output.Height = (int)mapHeightUpDown.Value;
+                Output.Timer = (int)mapTimerUpDown.Value;
+            }
             Valid = true;
             callback?.Invoke(this);
         }
@@ -70,9 +100,6 @@ namespace RogueboyLevelEditor.Forms
         private void NewMapForm_Load(object sender, EventArgs e)
         {
             this.FormClosing += NewMapForm_FormClosing;
-
-            this.CancelButton = cancelButton;
-            this.AcceptButton = button1;
         }
 
         private void NewMapForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -90,7 +117,7 @@ namespace RogueboyLevelEditor.Forms
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             Valid = false;
             callback?.Invoke(this);

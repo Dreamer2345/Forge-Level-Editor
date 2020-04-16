@@ -488,7 +488,7 @@ namespace RogueboyLevelEditor.Forms
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            NewMapForm form = new NewMapForm(mapCollection.FilePath, mapCollection.GetNames());
+            NewMapForm form = new NewMapForm(mapCollection, null, mapCollection.FilePath);
             form.Owner = this;
             form.callback += Form_callback;
             form.Show();
@@ -500,22 +500,34 @@ namespace RogueboyLevelEditor.Forms
             if (form.Valid)
             {
                 Map newMap = form.Output;
-                AddMapToOpenWindows(newMap, true);
-                mapCollection.AddMap(newMap);
 
+                // Was this an existing map or a new one?
 
-                //// Remove other tick marks from menu items ..
+                if (mapCollection.GetMaps().Contains(newMap)) {
 
-                //for (int x = 6; x < mapsMenu.DropDownItems.Count; x++) {
-                //    ToolStripMenuItem otherMenuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
-                //    otherMenuItem.ImageKey = null;
-                //}
+                    // Existing? Locate existing ticked map and change the name ..
 
+                    for (int x = 6; x < mapsMenu.DropDownItems.Count; x++) {
 
-                //// Tick the new map and reload ..
+                        ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
+                        if (menuItem.Image != null) {
+                            menuItem.Name = newMap.Name;
+                            menuItem.Text = newMap.Name;
+                            break;
 
-                //ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[newMap.Name];
-                //menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                        }
+
+                    }
+
+                }
+                else {
+
+                    // New?  Add the entry to the collection and menu ..
+
+                    AddMapToOpenWindows(newMap, true);
+                    mapCollection.AddMap(newMap);
+
+                }
 
                 tickMapMenuItem(newMap.Name);
                 enableMapMenuOptions(newMap.Name);
@@ -651,9 +663,9 @@ namespace RogueboyLevelEditor.Forms
             }
         }
 
-        private void MapAddMenu_Click(object sender, EventArgs e) {
+        private void mapAddMenu_Click(object sender, EventArgs e) {
 
-            NewMapForm form = new NewMapForm(mapCollection.FilePath, mapCollection.GetNames());
+            NewMapForm form = new NewMapForm(mapCollection, null, mapCollection.FilePath);
             form.Owner = this;
             form.callback += Form_callback;
             form.Show();
@@ -661,7 +673,7 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void MapDeleteMenu_Click(object sender, EventArgs e) {
+        private void mapDeleteMenu_Click(object sender, EventArgs e) {
 
             if (mapCollection.OpenCount == 1) {
                 MessageBox.Show("You cannot delete the last map.", "Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -755,6 +767,16 @@ namespace RogueboyLevelEditor.Forms
                 mapCollection.SaveMaps();
                 currentFileLabel.Text = saveFileDialog1.FileName;
             }
+
+        }
+
+        private void mapPropertysToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            NewMapForm form = new NewMapForm(mapCollection, mapCollection.CurrentMap, mapCollection.FilePath);
+            form.Owner = this;
+            form.callback += Form_callback;
+            form.Show();
+            this.Enabled = false;
 
         }
     }
