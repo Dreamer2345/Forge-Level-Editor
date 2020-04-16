@@ -40,6 +40,7 @@ namespace RogueboyLevelEditor.map
         }
 
         public void Height(int height) {
+
             this.height = height;
             MapComponents = ResizeArray<BaseMapComponent>(MapComponents, MapComponents.GetLength(0), height);
 
@@ -47,7 +48,7 @@ namespace RogueboyLevelEditor.map
 
                 for (int x = 0; x < MapComponents.GetLength(0); x++) {
 
-                    if (MapComponents[x, y].tileID == null) MapComponents[x, y].tileID = -1;
+                    if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
 
                 }
 
@@ -60,8 +61,20 @@ namespace RogueboyLevelEditor.map
         }
 
         public void Width(int width) {
+
             this.width = width;
             MapComponents = ResizeArray<BaseMapComponent>(MapComponents, width, MapComponents.GetLength(1));
+
+            for (int y = 0; y < MapComponents.GetLength(1); y++) {
+
+                for (int x = 0; x < MapComponents.GetLength(0); x++) {
+
+                    if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
+
+                }
+
+            }
+
         }
 
         public int Width() {
