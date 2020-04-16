@@ -174,6 +174,7 @@ namespace RogueboyLevelEditor.Forms
         void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
         {
             if (map == null) return;
+            map.CentreMap();
 
             ToolStripMenuItem newMenuItem = new ToolStripMenuItem(map.Name);
             newMenuItem.Click += NewMenuButton_Click;
@@ -328,7 +329,7 @@ namespace RogueboyLevelEditor.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mapCollection.CurrentMap.DrawPos = new map.point.Point(0, 0);
+            mapCollection.CurrentMap.CentreMap();
             pictureBox1.Invalidate();
         }
 
@@ -524,6 +525,7 @@ namespace RogueboyLevelEditor.Forms
 
                     AddMapToOpenWindows(newMap, true);
                     mapCollection.AddMap(newMap);
+                    newMap.CentreMap();
 
                 }
 
@@ -751,7 +753,7 @@ namespace RogueboyLevelEditor.Forms
         private void fileSaveAsMenu_Click(object sender, EventArgs e) {
 
             saveFileDialog1.InitialDirectory = mapCollection.FilePath;
-            saveFileDialog1.FileName = "Map.h";
+            saveFileDialog1.FileName = (string.IsNullOrWhiteSpace(mapCollection.FileName) ? "Map.h" : mapCollection.FileName);
 
             DialogResult result = saveFileDialog1.ShowDialog();
 
@@ -773,6 +775,7 @@ namespace RogueboyLevelEditor.Forms
             this.Enabled = false;
 
         }
+
     }
 
 }

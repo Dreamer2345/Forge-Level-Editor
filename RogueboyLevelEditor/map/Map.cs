@@ -329,5 +329,13 @@ namespace RogueboyLevelEditor.map
         {
 
         }
+
+        public void CentreMap() {
+
+            RogueboyLevelEditor.map.point.Point centre = new RogueboyLevelEditor.map.point.Point(this.width / 2, this.height / 2);
+            this.DrawPos = centre;
+
+
+        }
     }
 }
