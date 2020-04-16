@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
+using RogueboyLevelEditor.mapCollection;
 using System.Text.RegularExpressions;
 
 namespace RogueboyLevelEditor.Forms
@@ -23,14 +24,29 @@ namespace RogueboyLevelEditor.Forms
 
         public event Callback callback;
         public Map Output { get; private set; }
-        string[] Taken;
+        MapCollection mapCollection;
         public bool Valid = false;
         string Filepath;
-        public NewMapForm(string Filepath = "", string[] TakenNames = null)
+
+        public NewMapForm(MapCollection mapCollection, Map mapToEdit = null, string Filepath = "")
         {
-            Taken = TakenNames;
+            Output = mapToEdit;
             this.Filepath = Filepath;
+            this.mapCollection = mapCollection;
             InitializeComponent();
+
+            if (mapToEdit == null) {
+                this.Text = "Add a new Map";
+            }
+            else {
+                this.Text = "Edit an Existing Map";
+                this.textBox1.Text = Output.Name;
+                this.mapWidthUpDown.Value = Output.Width;
+                this.mapHeightUpDown.Value = Output.Height;
+                this.mapTimerUpDown.Value = Output.Timer;
+                this.createButton.Text = "Update";
+            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -38,7 +54,7 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(this.textBox1.Text))
             {
@@ -46,10 +62,15 @@ namespace RogueboyLevelEditor.Forms
                 return;
             }
 
-            if ((this.Taken != null) && (this.Taken.Contains(this.textBox1.Text)))
-            {
-                this.errorProvider1.SetError(textBox1, "Two maps cannot have the same name");
-                return;
+            // Check to see if map name is taken (ignore if we are editing the matched record) ..
+
+            foreach (Map map in this.mapCollection.GetMaps()) {
+
+                if ((map.Name == textBox1.Text && Output == null) || (map.Name == textBox1.Text && map != Output)) {
+                    errorProvider1.SetError(textBox1, "Two Maps cannot have the same name.");
+                    return;
+
+                }
             }
 
             if(!identifierRegex.IsMatch(textBox1.Text))
@@ -58,7 +79,27 @@ namespace RogueboyLevelEditor.Forms
                 return;
             }
 
-            Output = new Map(new BaseMapComponent(-1),textBox1.Text, Filepath, (int)numericUpDown1.Value,(int)numericUpDown2.Value,(int)numericUpDown3.Value);
+            //if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
+            //{
+            //    folderBrowserDialog1.SelectedPath = Directory.GetCurrentDirectory() + "\\Maps";
+            //    DialogResult result = folderBrowserDialog1.ShowDialog();
+
+            //    if (result == DialogResult.Cancel)
+            //    {
+            //        return;
+            //    }
+            //    Filepath = folderBrowserDialog1.SelectedPath;
+            //} 
+
+            if (Output == null) {
+                Output = new Map(new BaseMapComponent(-1), textBox1.Text, Filepath, (int)mapWidthUpDown.Value, (int)mapHeightUpDown.Value, (int)mapTimerUpDown.Value);
+            }
+            else {
+                Output.Name = textBox1.Text;
+                Output.Width = (int)mapWidthUpDown.Value;
+                Output.Height = (int)mapHeightUpDown.Value;
+                Output.Timer = (int)mapTimerUpDown.Value;
+            }
             Valid = true;
             callback?.Invoke(this);
         }
@@ -87,7 +128,7 @@ namespace RogueboyLevelEditor.Forms
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             Valid = false;
             callback?.Invoke(this);
