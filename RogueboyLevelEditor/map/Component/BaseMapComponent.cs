@@ -12,7 +12,7 @@ namespace RogueboyLevelEditor.map.Component
 
     public class BaseMapComponent : DrawComponent
     {
-        public int tileID;
+        public int tileID = -1;
 
         public BaseMapComponent(int ID)
         {

@@ -66,12 +66,12 @@ namespace RogueboyLevelEditor
 
         private void button2_Click(object sender, EventArgs e)
         {
-            errorProvider1.Clear();
-            NewMapForm form = new NewMapForm();
-            form.Owner = this;
-            form.callback += Form_callback;
-            form.Show();
-            this.Hide();
+            //errorProvider1.Clear();
+            //NewMapForm form = new NewMapForm();
+            //form.Owner = this;
+            //form.callback += Form_callback;
+            //form.Show();
+            //this.Hide();
         }
 
         private void Form_callback(NewMapForm form)
