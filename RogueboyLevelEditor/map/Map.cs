@@ -20,13 +20,54 @@ namespace RogueboyLevelEditor.map
         public string Name;
         public bool ShowOutOfBounds = false;
         public bool ShowPlayerStart = false;
-        public int Timer, Width, Height;
+        public int Timer;
+        int width, height;
         point.Point PlayerStart = new point.Point(0, 0);
         public point.Point DrawPos = new point.Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
         public List<EnviromentAffectComponent> Connectors;
+
+        T[,] ResizeArray<T>(T[,] original, int rows, int cols) {
+            var newArray = new T[rows, cols];
+            int minRows = Math.Min(rows, original.GetLength(0));
+            int minCols = Math.Min(cols, original.GetLength(1));
+            for (int i = 0; i < minRows; i++)
+                for (int j = 0; j < minCols; j++)
+                    newArray[i, j] = original[i, j];
+            return newArray;
+        }
+
+        public void Height(int height) {
+            this.height = height;
+            MapComponents = ResizeArray<BaseMapComponent>(MapComponents, MapComponents.GetLength(0), height);
+
+            for (int y = 0; y < MapComponents.GetLength(1); y++) {
+
+                for (int x = 0; x < MapComponents.GetLength(0); x++) {
+
+                    if (MapComponents[x, y].tileID == null) MapComponents[x, y].tileID = -1;
+
+                }
+
+            }
+
+        }
+
+        public int Height() {
+            return this.height;
+        }
+
+        public void Width(int width) {
+            this.width = width;
+            MapComponents = ResizeArray<BaseMapComponent>(MapComponents, width, MapComponents.GetLength(1));
+        }
+
+        public int Width() {
+            return this.width;
+        }
+
         public static Map ParseMapArray(byte[] Array, string name, string FilePath)
         {
             if (Array.Length < 5)
@@ -83,16 +124,16 @@ namespace RogueboyLevelEditor.map
         public string GetMap()
         {
             string Head = "const uint8_t " + Name + "[] = {\n";
-            Head += Width + ", /*Width*/\n";
-            Head += Height + ", /*Height*/\n";
+            Head += this.width + ", /*Width*/\n";
+            Head += this.height + ", /*Height*/\n";
             Head += PlayerStart.X + ", /*PlayerStart X*/\n";
             Head += PlayerStart.Y + ", /*PlayerStart Y*/\n";
             Head += Timer + ", /*Timer*/\n";
             Head += Math.Max(OutOfBoundsTile.tileID, 0) + ", /*Out of bounds Tile ID*/\n";
-            for (int j = 0; j < Height; j++)
+            for (int j = 0; j < this.height; j++)
             {
                 string Accumalator = "";
-                for (int i = 0; i < Width; i++)
+                for (int i = 0; i < this.width; i++)
                 {
                     Accumalator += Math.Max(MapComponents[i, j].tileID, 0) + ",";
                 }
@@ -146,14 +187,14 @@ namespace RogueboyLevelEditor.map
 
         public bool CheckInRange(int x, int y)
         {
-            return ((x >= 0) && (y >= 0)) && ((x < Width) && (y < Height));
+            return ((x >= 0) && (y >= 0)) && ((x < this.width) && (y < this.height));
         }
 
         void ResetComponents()
         {
-            for (int i = 0; i < Width; i++)
+            for (int i = 0; i < this.width; i++)
             {
-                for (int j = 0; j < Height; j++)
+                for (int j = 0; j < this.height; j++)
                 {
                     MapComponents[i, j] = new BaseMapComponent(-1);
                 }
@@ -168,8 +209,8 @@ namespace RogueboyLevelEditor.map
             this.Name = Name;
             this.Filepath = Filepath;
             Timer = timer;
-            Width = xSize;
-            Height = ySize;
+            this.width = xSize;
+            this.height = ySize;
             MapComponents = new BaseMapComponent[xSize, ySize];
             Sprites = new List<SpriteComponent>();
             Connectors = new List<EnviromentAffectComponent>();
