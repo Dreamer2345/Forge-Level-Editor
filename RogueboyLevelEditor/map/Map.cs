@@ -28,6 +28,10 @@ namespace RogueboyLevelEditor.map
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
         public List<EnviromentAffectComponent> Connectors;
+        public point.Point Centre
+        {
+            get => new point.Point(this.Width / 2, this.Height / 2);
+        }
 
         T[,] ResizeArray<T>(T[,] original, int rows, int cols) {
             var newArray = new T[rows, cols];
@@ -330,12 +334,6 @@ namespace RogueboyLevelEditor.map
 
         }
 
-        public void CentreMap() {
-
-            RogueboyLevelEditor.map.point.Point centre = new RogueboyLevelEditor.map.point.Point(this.width / 2, this.height / 2);
-            this.DrawPos = centre;
-
-
-        }
+        public void CentreMap() => this.DrawPos = this.Centre;
     }
 }
