@@ -170,66 +170,56 @@ namespace RogueboyLevelEditor.mapCollection
             return names.ToArray();
         }
 
-        public static List<Map> LoadMaps(string FilePath)
+        public static IEnumerable<Map> LoadMaps(string FilePath)
         {
-            List<Map> OutMaps = new List<Map>();
-            try
+            string[] Lines = File.ReadAllLines(FilePath);
+            string Accum = "";
+            for (int i = 0; i < Lines.Length; i++)
             {
-                string[] Lines = File.ReadAllLines(FilePath);
-                string Accum = "";
-                for (int i = 0; i < Lines.Length; i++)
-                {
-                    Accum += Lines[i] + " ";
-                }
-                Accum.Trim('\n');
+                Accum += Lines[i] + " ";
+            }
+            Accum.Trim('\n');
 
-                Match reg = Regex.Match(Accum, @"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
-                while (reg.Success)
+            Match reg = Regex.Match(Accum, @"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
+            while (reg.Success)
+            {
+                string val = reg.Value;
+                string[] Vals = val.Split('{', '}');
+                if (Vals.Length == 3)
                 {
-                    string val = reg.Value;
-                    string[] Vals = val.Split('{', '}');
-                    if (Vals.Length == 3)
-                    {
-                        string NameFind = Vals[0];
-                        int endofName = NameFind.IndexOf('[');
-                        int startofName = NameFind.IndexOf("uint8_t") + 7;
-                        string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
+                    string NameFind = Vals[0];
+                    int endofName = NameFind.IndexOf('[');
+                    int startofName = NameFind.IndexOf("uint8_t") + 7;
+                    string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
                         
-                        char[] chars = {',','0','1', '2', '3', '4','5', '6','7', '8', '9' };
-                        string Data = Vals[1];
-                        string DataClean = "";
-                        for (int i = 0; i < Data.Length; i++)
-                            if (chars.Contains(Data[i]))
-                            {
-                                DataClean += Data[i];
-                            }
-                        Data = DataClean;
-
-                        string[] SplitData = Data.Split(',');
-                        byte[] DataArray = new byte[SplitData.Length];
-                        for (int i = 0; i < SplitData.Length; i++)
+                    char[] chars = {',','0','1', '2', '3', '4','5', '6','7', '8', '9' };
+                    string Data = Vals[1];
+                    string DataClean = "";
+                    for (int i = 0; i < Data.Length; i++)
+                        if (chars.Contains(Data[i]))
                         {
-                            if (byte.TryParse(SplitData[i], out DataArray[i]))
-                            {
-                                
-                            }
+                            DataClean += Data[i];
                         }
-                        Map newmap = Map.ParseMapArray(DataArray, Name, FilePath);
-                        if(newmap != null)
-                            OutMaps.Add(newmap);
+                    Data = DataClean;
+
+                    string[] SplitData = Data.Split(',');
+                    byte[] DataArray = new byte[SplitData.Length];
+                    for (int i = 0; i < SplitData.Length; i++)
+                    {
+                        if (byte.TryParse(SplitData[i], out DataArray[i]))
+                        {
+                                
+                        }
                     }
 
-                    reg = reg.NextMatch();
+                    Map newmap = Map.ParseMapArray(DataArray, Name, FilePath);
+
+                    if (newmap != null)
+                        yield return newmap;
                 }
 
-
+                reg = reg.NextMatch();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return OutMaps;
         }
 
         public void SaveMaps()
