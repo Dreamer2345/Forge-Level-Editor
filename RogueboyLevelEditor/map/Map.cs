@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using Point = System.Drawing.Point;
 
 namespace RogueboyLevelEditor.map
@@ -135,37 +136,72 @@ namespace RogueboyLevelEditor.map
             return newMap;
         }
 
-        public string GetMap()
+        public void WriteMap(TextWriter writer)
         {
-            string Head = "const uint8_t " + Name + "[] = {\n";
-            Head += this.width + ", /*Width*/\n";
-            Head += this.height + ", /*Height*/\n";
-            Head += PlayerStart.X + ", /*PlayerStart X*/\n";
-            Head += PlayerStart.Y + ", /*PlayerStart Y*/\n";
-            Head += Timer + ", /*Timer*/\n";
-            Head += Math.Max(OutOfBoundsTile.tileID, 0) + ", /*Out of bounds Tile ID*/\n";
+            writer.WriteLine("constexpr const uint8_t {0}[] = ", this.Name);
+            writer.WriteLine("{");
+
+            writer.WriteLine("\t{0}, /*Width*/", this.Width);
+
+            writer.WriteLine("\t{0}, /*Height*/", this.Height);
+
+            writer.WriteLine("\t{0}, /*Player Start X*/", this.PlayerStart.X);
+
+            writer.WriteLine("\t{0}, /*Player Start Y*/", this.PlayerStart.Y);
+
+            writer.WriteLine("\t{0}, /*Timer*/", this.Timer);
+
+            writer.WriteLine("\t{0}, /*Out of Bounds Tile ID*/", this.OutOfBoundsTile.tileID);
+
             for (int j = 0; j < this.height; j++)
             {
-                string Accumalator = "";
+                writer.Write('\t');
                 for (int i = 0; i < this.width; i++)
                 {
-                    Accumalator += Math.Max(MapComponents[i, j].tileID, 0) + ",";
+                    writer.Write(Math.Max(MapComponents[i, j].tileID, 0));
+                    writer.Write((i < (this.width - 1)) ? ", " : ",");
                 }
-                Accumalator += "\n";
-                Head += Accumalator;
+                writer.WriteLine();
             }
-            Head += Sprites.Count + ",\n";
-            foreach (SpriteComponent i in Sprites)
+
+            writer.Write('\t');
+            writer.Write(this.Sprites.Count);
+            writer.WriteLine(", ");
+
+            foreach (var sprite in this.Sprites)
             {
-                Head += $"{i.Type},{i.SpritePosition.X},{i.SpritePosition.Y},\n";
+                writer.Write('\t');
+                writer.Write(sprite.Type);
+                writer.Write(", ");
+
+                writer.Write(sprite.SpritePosition.X);
+                writer.Write(", ");
+
+                writer.Write(sprite.SpritePosition.Y);
+                writer.WriteLine(",");
             }
-            Head += Connectors.Count + ",\n";
-            foreach (EnviromentAffectComponent i in Connectors)
+
+            writer.Write('\t');
+            writer.Write(this.Connectors.Count);
+            writer.WriteLine(",");
+
+            foreach (var connector in this.Connectors)
             {
-                Head += $"{i.Start.X},{i.Start.Y},{i.End.X},{i.End.Y},\n";
+                writer.Write('\t');
+                writer.Write(connector.Start.X);
+                writer.Write(", ");
+
+                writer.Write(connector.Start.Y);
+                writer.Write(", ");
+
+                writer.Write(connector.End.X);
+                writer.Write(", ");
+
+                writer.Write(connector.End.Y);
+                writer.WriteLine(",");
             }
-            Head += "};\n";
-            return Head;
+
+            writer.WriteLine("};");
         }
 
         public int drawOffsetX { get => DrawOffsetX; set => DrawOffsetX = value; }

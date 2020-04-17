@@ -222,10 +222,7 @@ namespace RogueboyLevelEditor.mapCollection
 
                     foreach (var map in this.OpenMaps)
                     {
-                        writer.Write(map.Name);
-                        writer.Write(',');
-                        writer.Write(map.GetMap());
-                        writer.WriteLine();
+                        map.WriteMap(writer);
                         writer.WriteLine();
                     }
 
