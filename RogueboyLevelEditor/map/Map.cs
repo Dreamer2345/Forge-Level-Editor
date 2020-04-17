@@ -28,6 +28,10 @@ namespace RogueboyLevelEditor.map
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
         public List<EnviromentAffectComponent> Connectors;
+        public point.Point Centre
+        {
+            get => new point.Point(this.Width / 2, this.Height / 2);
+        }
 
         T[,] ResizeArray<T>(T[,] original, int rows, int cols) {
             var newArray = new T[rows, cols];
@@ -225,6 +229,7 @@ namespace RogueboyLevelEditor.map
             Sprites = new List<SpriteComponent>();
             Connectors = new List<EnviromentAffectComponent>();
             ResetComponents();
+            this.CentreMap();
         }
 
         public void SetTile(point.Point pos, int ID)
@@ -329,5 +334,7 @@ namespace RogueboyLevelEditor.map
         {
 
         }
+
+        public void CentreMap() => this.DrawPos = this.Centre;
     }
 }

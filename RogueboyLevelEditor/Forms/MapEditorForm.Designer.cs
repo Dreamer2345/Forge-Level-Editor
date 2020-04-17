@@ -142,7 +142,7 @@
             // 
             this.fileLoadMenu.Name = "fileLoadMenu";
             this.fileLoadMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.fileLoadMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileLoadMenu.Size = new System.Drawing.Size(225, 30);
             this.fileLoadMenu.Text = "Load";
             this.fileLoadMenu.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -150,26 +150,26 @@
             // 
             this.fileSaveMenu.Name = "fileSaveMenu";
             this.fileSaveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.fileSaveMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileSaveMenu.Size = new System.Drawing.Size(225, 30);
             this.fileSaveMenu.Text = "Save File";
             this.fileSaveMenu.Click += new System.EventHandler(this.fileSaveMenu_Click);
             // 
             // fileSaveAsMenu
             // 
             this.fileSaveAsMenu.Name = "fileSaveAsMenu";
-            this.fileSaveAsMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileSaveAsMenu.Size = new System.Drawing.Size(225, 30);
             this.fileSaveAsMenu.Text = "Save File As ...";
             this.fileSaveAsMenu.Click += new System.EventHandler(this.fileSaveAsMenu_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(249, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(222, 6);
             // 
             // FileExitMenu
             // 
             this.FileExitMenu.Name = "FileExitMenu";
-            this.FileExitMenu.Size = new System.Drawing.Size(252, 30);
+            this.FileExitMenu.Size = new System.Drawing.Size(225, 30);
             this.FileExitMenu.Text = "E&xit";
             this.FileExitMenu.Click += new System.EventHandler(this.fileExistMenu_Click);
             // 
@@ -332,40 +332,40 @@
             // mapAddMenu
             // 
             this.mapAddMenu.Name = "mapAddMenu";
-            this.mapAddMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapAddMenu.Size = new System.Drawing.Size(252, 30);
             this.mapAddMenu.Text = "&Add Map";
             this.mapAddMenu.Click += new System.EventHandler(this.mapAddMenu_Click);
             // 
             // mapDeleteMenu
             // 
             this.mapDeleteMenu.Name = "mapDeleteMenu";
-            this.mapDeleteMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapDeleteMenu.Size = new System.Drawing.Size(252, 30);
             this.mapDeleteMenu.Text = "&Delete Map";
             this.mapDeleteMenu.Click += new System.EventHandler(this.mapDeleteMenu_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(249, 6);
             // 
             // mapMoveUpMenu
             // 
             this.mapMoveUpMenu.Name = "mapMoveUpMenu";
-            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(252, 30);
             this.mapMoveUpMenu.Text = "Move &Up";
             this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
             // 
             // mapMoveDownMenu
             // 
             this.mapMoveDownMenu.Name = "mapMoveDownMenu";
-            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(252, 30);
             this.mapMoveDownMenu.Text = "Move &Down";
             this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(249, 6);
             // 
             // helpMenu
             // 
@@ -394,7 +394,7 @@
             this.radioButton7.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton7.AutoSize = true;
             this.radioButton7.Image = ((System.Drawing.Image)(resources.GetObject("radioButton7.Image")));
-            this.radioButton7.Location = new System.Drawing.Point(309, 24);
+            this.radioButton7.Location = new System.Drawing.Point(344, 24);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(57, 46);
             this.radioButton7.TabIndex = 7;
@@ -408,7 +408,7 @@
             this.radioButton6.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton6.AutoSize = true;
             this.radioButton6.Image = ((System.Drawing.Image)(resources.GetObject("radioButton6.Image")));
-            this.radioButton6.Location = new System.Drawing.Point(237, 24);
+            this.radioButton6.Location = new System.Drawing.Point(272, 24);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(92, 46);
             this.radioButton6.TabIndex = 6;
@@ -422,9 +422,9 @@
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(186, 24);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 39);
+            this.button1.Size = new System.Drawing.Size(80, 39);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Origin";
+            this.button1.Text = "Centre Map";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -654,7 +654,6 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.CheckFileExists = true;
             this.saveFileDialog1.DefaultExt = "h";
             this.saveFileDialog1.FileName = "Map.h";
             this.saveFileDialog1.Filter = "C++ Header|*.h";
