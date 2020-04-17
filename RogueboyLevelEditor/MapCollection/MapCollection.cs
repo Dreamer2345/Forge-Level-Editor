@@ -211,18 +211,36 @@ namespace RogueboyLevelEditor.mapCollection
         {
             try
             {
-                string MapNamesString = "constexpr const uint8_t* maps[" + OpenMaps.Count + "] = {";
-                string Save = "#pragma once\n\n\n";
-                foreach(Map i in OpenMaps)
+                var savePath = Path.Combine(FilePath, FileName);
+
+                using (var writer = new StreamWriter(savePath))
                 {
-                    MapNamesString += i.Name + ",";
-                    Save += i.GetMap();
-                    Save += "/*==============================*/\n\n\n";
+                    writer.WriteLine("#pragma once");
+                    writer.WriteLine();
+                    writer.WriteLine("#include <stdint.h>");
+                    writer.WriteLine();
+
+                    foreach (var map in this.OpenMaps)
+                    {
+                        writer.Write(map.Name);
+                        writer.Write(',');
+                        writer.Write(map.GetMap());
+                        writer.WriteLine();
+                        writer.WriteLine();
+                    }
+
+                    writer.WriteLine("constexpr const uint8_t numberOfMaps = {0};", OpenMaps.Count);
+                    writer.WriteLine();
+
+                    writer.Write("constexpr const uint8_t* maps[numberOfMaps] = ");
+                    writer.Write("{ ");
+                    foreach (var map in this.OpenMaps)
+                    {
+                        writer.Write(map.Name);
+                        writer.Write(',');
+                    }
+                    writer.WriteLine(" };");
                 }
-                MapNamesString += "};\n";
-                Save += "constexpr const uint8_t numberOfMaps =" + OpenMaps.Count + ";\n";
-                Save += MapNamesString;
-                File.WriteAllText(FilePath+"\\"+FileName, Save);
             }
             catch(Exception e)
             {
