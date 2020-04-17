@@ -146,14 +146,20 @@ namespace RogueboyLevelEditor.mapCollection
 
         public void Draw(Graphics graphics)
         {
+            if (this.CurrentMap == null)
+                return;
+
             if(DrawBackground)
-                CurrentMap?.DrawBackground(graphics);
+                CurrentMap.DrawBackground(graphics);
+
             if (DrawSprites)
-                CurrentMap?.DrawSprites(graphics);
+                CurrentMap.DrawSprites(graphics);
+
             if (DrawConnections)
-                CurrentMap?.DrawConnections(graphics);
+                CurrentMap.DrawConnections(graphics);
+
             if (DrawPlayer)
-                CurrentMap?.DrawPlayer(graphics);
+                CurrentMap.DrawPlayer(graphics);
         }
 
         public string[] GetNames()
