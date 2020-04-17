@@ -87,13 +87,11 @@ namespace RogueboyLevelEditor.mapCollection
             OpenMaps.Add(map);
         }
 
-        public void AddMaps(List<Map> maps)
+        public void AddMaps(IEnumerable<Map> maps)
         {
-            foreach(Map i in maps)
-            {
-                if(i != null)
-                    AddMap(i);
-            }
+            foreach(Map map in maps)
+                if(map != null)
+                    this.AddMap(map);
         }
 
 
