@@ -229,6 +229,7 @@ namespace RogueboyLevelEditor.map
             Sprites = new List<SpriteComponent>();
             Connectors = new List<EnviromentAffectComponent>();
             ResetComponents();
+            this.CentreMap();
         }
 
         public void SetTile(point.Point pos, int ID)
