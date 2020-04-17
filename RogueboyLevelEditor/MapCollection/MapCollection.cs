@@ -170,21 +170,16 @@ namespace RogueboyLevelEditor.mapCollection
             return names.ToArray();
         }
 
+        private static readonly Regex mapLoadRegex = new Regex(@"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
+        private static readonly HashSet<char> mapLoadCharacters = new HashSet<char>() { ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        
         public static IEnumerable<Map> LoadMaps(string FilePath)
         {
-            string[] Lines = File.ReadAllLines(FilePath);
-            string Accum = "";
-            for (int i = 0; i < Lines.Length; i++)
-            {
-                Accum += Lines[i] + " ";
-            }
-            Accum.Trim('\n');
+            var fileData = string.Join(" ", File.ReadLines(FilePath));
 
-            Match reg = Regex.Match(Accum, @"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
-            while (reg.Success)
+            for (Match reg = mapLoadRegex.Match(fileData);  reg.Success; reg = reg.NextMatch())
             {
-                string val = reg.Value;
-                string[] Vals = val.Split('{', '}');
+                string[] Vals = reg.Value.Split('{', '}');
                 if (Vals.Length == 3)
                 {
                     string NameFind = Vals[0];
@@ -192,15 +187,7 @@ namespace RogueboyLevelEditor.mapCollection
                     int startofName = NameFind.IndexOf("uint8_t") + 7;
                     string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
                         
-                    char[] chars = {',','0','1', '2', '3', '4','5', '6','7', '8', '9' };
-                    string Data = Vals[1];
-                    string DataClean = "";
-                    for (int i = 0; i < Data.Length; i++)
-                        if (chars.Contains(Data[i]))
-                        {
-                            DataClean += Data[i];
-                        }
-                    Data = DataClean;
+                    string Data = string.Join("", Vals[1].Where(mapLoadCharacters.Contains));
 
                     string[] SplitData = Data.Split(',');
                     byte[] DataArray = new byte[SplitData.Length];
@@ -217,8 +204,6 @@ namespace RogueboyLevelEditor.mapCollection
                     if (newmap != null)
                         yield return newmap;
                 }
-
-                reg = reg.NextMatch();
             }
         }
 
