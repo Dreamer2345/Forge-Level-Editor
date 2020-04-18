@@ -28,7 +28,7 @@ namespace RogueboyLevelEditor.map
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
         public List<EnviromentAffectComponent> Connectors;
-        public point.Point xCentre
+        public point.Point Centre
         {
             get => new point.Point(this.Width / 2, this.Height / 2);
         }
@@ -335,6 +335,6 @@ namespace RogueboyLevelEditor.map
 
         }
 
-        public void CentreMap() => this.DrawPos = this.xCentre;
+        public void CentreMap() => this.DrawPos = this.Centre;
     }
 }
