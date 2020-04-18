@@ -245,6 +245,12 @@ namespace RogueboyLevelEditor.Forms
             AddTilesToListView();
             AddSpritesToListView();
 
+            viewOutOfBoundsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+            viewTileMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+            viewSpritesMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+            viewConnectionsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick; 
+            viewPlayerStartMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+
         }
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -470,16 +476,7 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void showToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            mapCollection.CurrentMap.ShowOutOfBounds = true;
-            pictureBox1.Invalidate();
-        }
-        private void hideToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            mapCollection.CurrentMap.ShowOutOfBounds = false;
-            pictureBox1.Invalidate();
-        }
+
         private void fileExistMenu_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -545,55 +542,7 @@ namespace RogueboyLevelEditor.Forms
             this.Enabled = true;
             this.Focus();
         }
-
-        private void showToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawBackground = true;
-            pictureBox1.Invalidate();
-        }
-
-        private void hideToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawBackground = false;
-            pictureBox1.Invalidate();
-        }
-
-        private void showToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawSprites = true;
-            pictureBox1.Invalidate();
-        }
-
-        private void hideToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawSprites = false;
-            pictureBox1.Invalidate();
-        }
-
-        private void showToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawConnections = true;
-            pictureBox1.Invalidate();
-        }
-
-        private void hideToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawConnections = false;
-            pictureBox1.Invalidate();
-        }
-
-        private void showToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawPlayer = true;
-            pictureBox1.Invalidate();
-        }
-
-        private void hideToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            mapCollection.drawPlayer = false;
-            pictureBox1.Invalidate();
-        }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             if (listView3.SelectedItems.Count > 0)
@@ -773,6 +722,111 @@ namespace RogueboyLevelEditor.Forms
             form.callback += Form_callback;
             form.Show();
             this.Enabled = false;
+
+        }
+
+        private void viewTileMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+
+            if (menuItem.Image == null) {
+
+                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                mapCollection.drawBackground = true;
+                pictureBox1.Invalidate();
+
+            }
+            else {
+
+                menuItem.Image = null;
+                mapCollection.drawBackground = false;
+                pictureBox1.Invalidate();
+
+            }
+
+        }
+
+        private void viewSpritesMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+
+            if (menuItem.Image == null) {
+
+                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                mapCollection.drawSprites = true;
+                pictureBox1.Invalidate();
+
+            }
+            else {
+
+                menuItem.Image = null;
+                mapCollection.drawSprites = false;
+                pictureBox1.Invalidate();
+
+            }
+
+        }
+
+        private void viewConnectionsMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+
+            if (menuItem.Image == null) {
+
+                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                mapCollection.drawConnections = true;
+                pictureBox1.Invalidate();
+
+            }
+            else {
+
+                menuItem.Image = null;
+                mapCollection.drawConnections = false;
+                pictureBox1.Invalidate();
+
+            }
+
+        }
+
+        private void viewPlayerStartMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+
+            if (menuItem.Image == null) {
+
+                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                mapCollection.drawPlayer = true;
+                pictureBox1.Invalidate();
+
+            }
+            else {
+
+                menuItem.Image = null;
+                mapCollection.drawPlayer = false;
+                pictureBox1.Invalidate();
+
+            }
+
+        }
+
+        private void viewOutOfBoundsMenu_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+
+            if (menuItem.Image == null) {
+
+                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                mapCollection.CurrentMap.ShowOutOfBounds = true;
+                pictureBox1.Invalidate();
+
+            }
+            else {
+
+                menuItem.Image = null;
+                mapCollection.CurrentMap.ShowOutOfBounds = false;
+                pictureBox1.Invalidate();
+
+            }
 
         }
 
