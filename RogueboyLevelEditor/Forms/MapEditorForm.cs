@@ -91,7 +91,7 @@ namespace RogueboyLevelEditor.Forms
         }
         void UpdateCurrentSprites()
         {
-            listView3.Items.Clear();
+            spritesPlacedListView.Items.Clear();
             SpriteManager sm = new SpriteManager();
             foreach (SpriteComponent i in mapCollection.CurrentMap.Sprites)
             {
@@ -100,13 +100,14 @@ namespace RogueboyLevelEditor.Forms
                 newItem.SubItems.Add(i.Type.ToString());
                 newItem.SubItems.Add(i.SpritePosition.X.ToString());
                 newItem.SubItems.Add(i.SpritePosition.Y.ToString());
+                newItem.SubItems.Add(i.Health.ToString());
                 newItem.ImageKey = sprite.TextureID;
-                listView3.Items.Add(newItem);
+                spritesPlacedListView.Items.Add(newItem);
             }
         }
         void UpdateCurrentConnectors()
         {
-            listView4.Items.Clear();
+            ConnectionListView.Items.Clear();
             foreach (EnviromentAffectComponent i in mapCollection.CurrentMap.Connectors)
             {
                 EnviromentAffectComponent env = i;
@@ -115,7 +116,7 @@ namespace RogueboyLevelEditor.Forms
                 newItem.SubItems.Add(env.Start.Y.ToString());
                 newItem.SubItems.Add(env.End.X.ToString());
                 newItem.SubItems.Add(env.End.Y.ToString());
-                listView4.Items.Add(newItem);
+                ConnectionListView.Items.Add(newItem);
             }
         }
         void AddTilesToListView()
@@ -132,7 +133,7 @@ namespace RogueboyLevelEditor.Forms
                 imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
             }
 
-            listView1.SmallImageList = imageList;
+            tilesListView.SmallImageList = imageList;
 
             foreach (Tuple<int, Tile> i in Tiles)
             {
@@ -143,7 +144,7 @@ namespace RogueboyLevelEditor.Forms
                 newItem.SubItems.Add(i.Item2.IsSender.ToString());
                 newItem.SubItems.Add(i.Item2.IsReciver.ToString());
                 newItem.ImageKey = i.Item2.TextureID;
-                listView1.Items.Add(newItem);
+                tilesListView.Items.Add(newItem);
             }
         }
         void AddSpritesToListView()
@@ -160,15 +161,16 @@ namespace RogueboyLevelEditor.Forms
                 imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
             }
 
-            listView2.SmallImageList = imageList;
-            listView3.SmallImageList = imageList;
+            spritesListView.SmallImageList = imageList;
+            spritesPlacedListView.SmallImageList = imageList;
             foreach (Tuple<int, Sprite> i in Tiles)
             {
                 ListViewItem newItem = new ListViewItem();
                 newItem.SubItems.Add(i.Item1.ToString());
                 newItem.SubItems.Add(i.Item2.Name);
+                newItem.SubItems.Add(i.Item2.Health.ToString());
                 newItem.ImageKey = i.Item2.TextureID;
-                listView2.Items.Add(newItem);
+                spritesListView.Items.Add(newItem);
             }
         }
         void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
@@ -240,8 +242,8 @@ namespace RogueboyLevelEditor.Forms
 
             }
 
-            listView1.Items.Clear();
-            listView2.Items.Clear();
+            tilesListView.Items.Clear();
+            spritesListView.Items.Clear();
             AddTilesToListView();
             AddSpritesToListView();
 
@@ -305,14 +307,14 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton1.Checked)
             {
                 int TileId = -1;
-                if (listView1.SelectedItems.Count > 0)
-                    TileId = int.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                if (tilesListView.SelectedItems.Count > 0)
+                    TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
                 tool = new TileBrush(TileId, mapCollection.CurrentMap);
-                listView1.Visible = true;
+                tilesListView.Visible = true;
             }
             else
             {
-                listView1.Visible = false;
+                tilesListView.Visible = false;
             }
         }
 
@@ -333,7 +335,7 @@ namespace RogueboyLevelEditor.Forms
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void centreMap_Click(object sender, EventArgs e)
         {
             mapCollection.CurrentMap.CentreMap();
             pictureBox1.Invalidate();
@@ -344,14 +346,14 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton6.Checked)
             {
                 int TileId = -1;
-                if (listView1.SelectedItems.Count > 0)
-                    TileId = int.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+                if (tilesListView.SelectedItems.Count > 0)
+                    TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
                 tool = new TileRectangle(this,TileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
-                listView1.Visible = true;
+                tilesListView.Visible = true;
             }
             else
             {
-                listView1.Visible = false;
+                tilesListView.Visible = false;
             }
             
         }
@@ -363,12 +365,12 @@ namespace RogueboyLevelEditor.Forms
             {
                 tool = new SurroundTool(mapCollection.CurrentMap,this);
                 mapCollection.CurrentMap.ShowOutOfBounds = true;
-                listView1.Visible = true;
+                tilesListView.Visible = true;
             }
             else
             {
                 mapCollection.CurrentMap.ShowOutOfBounds = false;
-                listView1.Visible = false;
+                tilesListView.Visible = false;
             }
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -376,12 +378,12 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton3.Checked)
             {
                 tool = new ConnectorTool(mapCollection.CurrentMap,this);
-                listView4.Visible = true;
+                ConnectionListView.Visible = true;
                 button3.Visible = true;
             }
             else
             {
-                listView4.Visible = false;
+                ConnectionListView.Visible = false;
                 button3.Visible = false;
             }
         }
@@ -391,14 +393,14 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton4.Checked)
             {
                 tool = new SpriteTool(mapCollection.CurrentMap,this);
-                listView2.Visible = true;
-                listView3.Visible = true;
+                spritesListView.Visible = true;
+                spritesPlacedListView.Visible = true;
                 button2.Visible = true;
             }
             else
             {
-                listView2.Visible = false;
-                listView3.Visible = false;
+                spritesListView.Visible = false;
+                spritesPlacedListView.Visible = false;
                 button2.Visible = false;
             }
         }
@@ -407,8 +409,8 @@ namespace RogueboyLevelEditor.Forms
         //Tile Tool Selection Pool Changed index
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listView1.SelectedItems.Count > 0)
-                tool.SetBrush(int.Parse(listView1.SelectedItems[0].SubItems[1].Text));
+            if(tilesListView.SelectedItems.Count > 0)
+                tool.SetBrush(int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text));
         }
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -545,13 +547,13 @@ namespace RogueboyLevelEditor.Forms
         
         private void button2_Click(object sender, EventArgs e)
         {
-            if (listView3.SelectedItems.Count > 0)
+            if (spritesPlacedListView.SelectedItems.Count > 0)
             {
-                int ID = int.Parse(listView3.SelectedItems[0].SubItems[1].Text);
-                int X = int.Parse(listView3.SelectedItems[0].SubItems[2].Text);
-                int Y = int.Parse(listView3.SelectedItems[0].SubItems[3].Text);
+                int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
+                int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[2].Text);
+                int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
                 mapCollection?.CurrentMap.RemoveSprite(new Point(X, Y), ID);
-                listView3.Items.Remove(listView3.SelectedItems[0]);
+                spritesPlacedListView.Items.Remove(spritesPlacedListView.SelectedItems[0]);
                 pictureBox1.Invalidate();
             }
         }
@@ -579,15 +581,15 @@ namespace RogueboyLevelEditor.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (listView4.SelectedItems.Count > 0)
+            if (ConnectionListView.SelectedItems.Count > 0)
             {
-                int X = int.Parse(listView4.SelectedItems[0].SubItems[1].Text);
-                int Y = int.Parse(listView4.SelectedItems[0].SubItems[2].Text);
-                int X1 = int.Parse(listView4.SelectedItems[0].SubItems[3].Text);
-                int Y1 = int.Parse(listView4.SelectedItems[0].SubItems[4].Text);
+                int X = int.Parse(ConnectionListView.SelectedItems[0].SubItems[1].Text);
+                int Y = int.Parse(ConnectionListView.SelectedItems[0].SubItems[2].Text);
+                int X1 = int.Parse(ConnectionListView.SelectedItems[0].SubItems[3].Text);
+                int Y1 = int.Parse(ConnectionListView.SelectedItems[0].SubItems[4].Text);
 
                 mapCollection?.CurrentMap.RemoveConnection(new Point(X, Y), new Point(X1, Y1));
-                listView4.Items.Remove(listView4.SelectedItems[0]);
+                ConnectionListView.Items.Remove(ConnectionListView.SelectedItems[0]);
                 pictureBox1.Invalidate();
             }
         }
@@ -602,11 +604,11 @@ namespace RogueboyLevelEditor.Forms
             this.Close();
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void spritesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView2.SelectedItems.Count > 0)
+            if (spritesListView.SelectedItems.Count > 0)
             {
-                tool.SetBrush(int.Parse(listView2.SelectedItems[0].SubItems[1].Text));
+                tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
             }
         }
 

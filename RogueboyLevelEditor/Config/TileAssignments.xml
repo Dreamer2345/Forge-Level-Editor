@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tiles>
+	<tile> 
+		<name>Closed Chest</name>
+		<id>0</id>
+		<texture>2</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	
+	<tile> 
+		<name>Yeet</name>
+		<id>1</id>
+		<texture>1</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	
+	<tile> 
+		<name>Beep</name>
+		<id>25</id>
+		<texture>10</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	
+	
+</tiles>

@@ -44,7 +44,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Load";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.centreMap_Click);
             // 
             // button2
             // 

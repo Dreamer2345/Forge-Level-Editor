@@ -113,13 +113,14 @@ namespace RogueboyLevelEditor.map
             }
 
             Pointer += width * height;
-            byte SpriteCount = Array[Pointer++];
-            for (int i = 0; i < SpriteCount; i++)
+            byte spriteCount = Array[Pointer++];
+            for (int i = 0; i < spriteCount; i++)
             {
-                byte SpriteID = Array[Pointer++];
-                byte SpriteX = Array[Pointer++];
-                byte SpriteY = Array[Pointer++];
-                newMap.AddSprite(SpriteX, SpriteY, SpriteID);
+                byte id = Array[Pointer++];
+                byte x = Array[Pointer++];
+                byte y = Array[Pointer++];
+                byte health = Array[Pointer++];
+                newMap.AddSprite(x, y, id, health);
             }
 
             byte ConnectionCount = Array[Pointer++];
@@ -157,7 +158,7 @@ namespace RogueboyLevelEditor.map
             Head += Sprites.Count + ",\n";
             foreach (SpriteComponent i in Sprites)
             {
-                Head += $"{i.Type},{i.SpritePosition.X},{i.SpritePosition.Y},\n";
+                Head += $"{i.Type},{i.SpritePosition.X},{i.SpritePosition.Y},{i.Health},\n";
             }
             Head += Connectors.Count + ",\n";
             foreach (EnviromentAffectComponent i in Connectors)
@@ -249,11 +250,11 @@ namespace RogueboyLevelEditor.map
             return new BaseMapComponent(-1);
         }
 
-        public void AddSprite(int TileX, int TileY, int Type)
+        public void AddSprite(int tileX, int tileY, int type, int health)
         {
-            if (CheckInRange(TileX, TileY))
+            if (CheckInRange(tileX, tileY))
             {
-                Sprites.Add(new SpriteComponent(new Point(TileX, TileY), Type));
+                Sprites.Add(new SpriteComponent(new Point(tileX, tileY), type, health));
             }
         }
 

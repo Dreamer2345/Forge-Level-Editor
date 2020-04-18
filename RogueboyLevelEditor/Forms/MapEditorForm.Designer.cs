@@ -40,6 +40,7 @@
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mapPropertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewOutOfBoundsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewTileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewSpritesMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewConnectionsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,32 +56,34 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.centreMap = new System.Windows.Forms.Button();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.tilesListView = new System.Windows.Forms.ListView();
             this.TileImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IsExit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IsSender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.spritesListView = new System.Windows.Forms.ListView();
             this.Texture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView3 = new System.Windows.Forms.ListView();
+            this.SpriteHealth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView = new System.Windows.Forms.ListView();
             this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlaced_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button2 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.button3 = new System.Windows.Forms.Button();
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.ConnectionListView = new System.Windows.Forms.ListView();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -93,7 +96,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.viewOutOfBoundsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -191,6 +193,13 @@
             this.viewMenu.Size = new System.Drawing.Size(61, 29);
             this.viewMenu.Text = "&View";
             // 
+            // viewOutOfBoundsMenu
+            // 
+            this.viewOutOfBoundsMenu.Name = "viewOutOfBoundsMenu";
+            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewOutOfBoundsMenu.Text = "&Out Of Bounds";
+            this.viewOutOfBoundsMenu.Click += new System.EventHandler(this.viewOutOfBoundsMenu_Click);
+            // 
             // viewTileMenu
             // 
             this.viewTileMenu.Name = "viewTileMenu";
@@ -280,7 +289,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton7);
             this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.centreMap);
             this.groupBox1.Controls.Add(this.radioButton5);
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton3);
@@ -320,17 +329,17 @@
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
-            // button1
+            // centreMap
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(186, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 39);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Centre Map";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.centreMap.Image = ((System.Drawing.Image)(resources.GetObject("centreMap.Image")));
+            this.centreMap.Location = new System.Drawing.Point(186, 24);
+            this.centreMap.Name = "centreMap";
+            this.centreMap.Size = new System.Drawing.Size(80, 39);
+            this.centreMap.TabIndex = 5;
+            this.centreMap.Text = "Centre Map";
+            this.centreMap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.centreMap.UseVisualStyleBackColor = true;
+            this.centreMap.Click += new System.EventHandler(this.centreMap_Click);
             // 
             // radioButton5
             // 
@@ -404,28 +413,28 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // listView1
+            // tilesListView
             // 
-            this.listView1.AutoArrange = false;
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.tilesListView.AutoArrange = false;
+            this.tilesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tilesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TileImage,
             this.TileID,
             this.TileName,
             this.IsExit,
             this.IsSender,
             this.IsReciver});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(352, 114);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(376, 323);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.tilesListView.FullRowSelect = true;
+            this.tilesListView.GridLines = true;
+            this.tilesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.tilesListView.HideSelection = false;
+            this.tilesListView.Location = new System.Drawing.Point(352, 114);
+            this.tilesListView.Name = "tilesListView";
+            this.tilesListView.Size = new System.Drawing.Size(376, 323);
+            this.tilesListView.TabIndex = 3;
+            this.tilesListView.UseCompatibleStateImageBehavior = false;
+            this.tilesListView.View = System.Windows.Forms.View.Details;
+            this.tilesListView.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // TileImage
             // 
@@ -462,26 +471,27 @@
             this.IsReciver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.IsReciver.Width = 65;
             // 
-            // listView2
+            // spritesListView
             // 
-            this.listView2.AutoArrange = false;
-            this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.spritesListView.AutoArrange = false;
+            this.spritesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spritesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Texture,
             this.SpriteID,
-            this.SpriteName});
-            this.listView2.FullRowSelect = true;
-            this.listView2.GridLines = true;
-            this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(592, 114);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(136, 316);
-            this.listView2.TabIndex = 4;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            this.listView2.Visible = false;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            this.SpriteName,
+            this.SpriteHealth});
+            this.spritesListView.FullRowSelect = true;
+            this.spritesListView.GridLines = true;
+            this.spritesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.spritesListView.HideSelection = false;
+            this.spritesListView.Location = new System.Drawing.Point(423, 114);
+            this.spritesListView.Name = "spritesListView";
+            this.spritesListView.Size = new System.Drawing.Size(305, 131);
+            this.spritesListView.TabIndex = 4;
+            this.spritesListView.UseCompatibleStateImageBehavior = false;
+            this.spritesListView.View = System.Windows.Forms.View.Details;
+            this.spritesListView.Visible = false;
+            this.spritesListView.SelectedIndexChanged += new System.EventHandler(this.spritesListView_SelectedIndexChanged);
             // 
             // Texture
             // 
@@ -500,26 +510,32 @@
             this.SpriteName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SpriteName.Width = 79;
             // 
-            // listView3
+            // SpriteHealth
             // 
-            this.listView3.AutoArrange = false;
-            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SpriteHealth.Text = "Health";
+            this.SpriteHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // spritesPlacedListView
+            // 
+            this.spritesPlacedListView.AutoArrange = false;
+            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SpritePicture,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6});
-            this.listView3.FullRowSelect = true;
-            this.listView3.GridLines = true;
-            this.listView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(423, 114);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(163, 316);
-            this.listView3.TabIndex = 5;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            this.listView3.Visible = false;
+            this.columnHeader6,
+            this.spritesPlaced_HealthColumn});
+            this.spritesPlacedListView.FullRowSelect = true;
+            this.spritesPlacedListView.GridLines = true;
+            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.spritesPlacedListView.HideSelection = false;
+            this.spritesPlacedListView.Location = new System.Drawing.Point(423, 251);
+            this.spritesPlacedListView.Name = "spritesPlacedListView";
+            this.spritesPlacedListView.Size = new System.Drawing.Size(305, 186);
+            this.spritesPlacedListView.TabIndex = 5;
+            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
+            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
+            this.spritesPlacedListView.Visible = false;
             // 
             // SpritePicture
             // 
@@ -543,6 +559,10 @@
             this.columnHeader6.Text = "Y";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 38;
+            // 
+            // spritesPlaced_HealthColumn
+            // 
+            this.spritesPlaced_HealthColumn.Text = "Health";
             // 
             // button2
             // 
@@ -572,27 +592,27 @@
             this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // listView4
+            // ConnectionListView
             // 
-            this.listView4.AutoArrange = false;
-            this.listView4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ConnectionListView.AutoArrange = false;
+            this.ConnectionListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConnectionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader12,
             this.columnHeader8,
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11});
-            this.listView4.FullRowSelect = true;
-            this.listView4.GridLines = true;
-            this.listView4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(423, 114);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(305, 316);
-            this.listView4.TabIndex = 8;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.Details;
-            this.listView4.Visible = false;
+            this.ConnectionListView.FullRowSelect = true;
+            this.ConnectionListView.GridLines = true;
+            this.ConnectionListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ConnectionListView.HideSelection = false;
+            this.ConnectionListView.Location = new System.Drawing.Point(423, 114);
+            this.ConnectionListView.Name = "ConnectionListView";
+            this.ConnectionListView.Size = new System.Drawing.Size(305, 323);
+            this.ConnectionListView.TabIndex = 8;
+            this.ConnectionListView.UseCompatibleStateImageBehavior = false;
+            this.ConnectionListView.View = System.Windows.Forms.View.Details;
+            this.ConnectionListView.Visible = false;
             // 
             // columnHeader12
             // 
@@ -668,24 +688,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // viewOutOfBoundsMenu
-            // 
-            this.viewOutOfBoundsMenu.Name = "viewOutOfBoundsMenu";
-            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(252, 30);
-            this.viewOutOfBoundsMenu.Text = "&Out Of Bounds";
-            this.viewOutOfBoundsMenu.Click += new System.EventHandler(this.viewOutOfBoundsMenu_Click);
-            // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(740, 477);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.listView4);
+            this.Controls.Add(this.ConnectionListView);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.listView3);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.spritesPlacedListView);
+            this.Controls.Add(this.spritesListView);
+            this.Controls.Add(this.tilesListView);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
@@ -725,14 +738,14 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView tilesListView;
         private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button centreMap;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.ColumnHeader TileID;
         private System.Windows.Forms.ColumnHeader TileName;
         private System.Windows.Forms.ColumnHeader TileImage;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView spritesListView;
         private System.Windows.Forms.ColumnHeader Texture;
         private System.Windows.Forms.ColumnHeader SpriteID;
         private System.Windows.Forms.ColumnHeader SpriteName;
@@ -751,11 +764,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        public System.Windows.Forms.ListView listView3;
+        public System.Windows.Forms.ListView spritesPlacedListView;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button3;
-        public System.Windows.Forms.ListView listView4;
+        public System.Windows.Forms.ListView ConnectionListView;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
@@ -776,5 +789,7 @@
         private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripMenuItem viewOutOfBoundsMenu;
+        private System.Windows.Forms.ColumnHeader spritesPlaced_HealthColumn;
+        private System.Windows.Forms.ColumnHeader SpriteHealth;
     }
 }
