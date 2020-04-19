@@ -23,7 +23,7 @@ namespace RogueboyLevelEditor.map
         public bool ShowPlayerStart = false;
         public int Timer;
         int width, height;
-        point.Point PlayerStart = new point.Point(0, 0);
+        public point.Point PlayerStart = new point.Point(0, 0);
         public point.Point DrawPos = new point.Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);
         public BaseMapComponent[,] MapComponents;
@@ -114,13 +114,14 @@ namespace RogueboyLevelEditor.map
             }
 
             Pointer += width * height;
-            byte SpriteCount = Array[Pointer++];
-            for (int i = 0; i < SpriteCount; i++)
+            byte spriteCount = Array[Pointer++];
+            for (int i = 0; i < spriteCount; i++)
             {
-                byte SpriteID = Array[Pointer++];
-                byte SpriteX = Array[Pointer++];
-                byte SpriteY = Array[Pointer++];
-                newMap.AddSprite(SpriteX, SpriteY, SpriteID);
+                byte id = Array[Pointer++];
+                byte x = Array[Pointer++];
+                byte y = Array[Pointer++];
+                byte health = Array[Pointer++];
+                newMap.AddSprite(x, y, id, health);
             }
 
             byte ConnectionCount = Array[Pointer++];
@@ -285,11 +286,11 @@ namespace RogueboyLevelEditor.map
             return new BaseMapComponent(-1);
         }
 
-        public void AddSprite(int TileX, int TileY, int Type)
+        public void AddSprite(int tileX, int tileY, int type, int health)
         {
-            if (CheckInRange(TileX, TileY))
+            if (CheckInRange(tileX, tileY))
             {
-                Sprites.Add(new SpriteComponent(new Point(TileX, TileY), Type));
+                Sprites.Add(new SpriteComponent(new Point(tileX, tileY), type, health));
             }
         }
 
@@ -368,6 +369,8 @@ namespace RogueboyLevelEditor.map
 
         public void DrawPlayer(Graphics graphics)
         {
+            Pen pen = new Pen(Color.Blue);
+            graphics.DrawRectangle(pen, ToScreenSpaceX(PlayerStart.X) - 1, ToScreenSpaceY(PlayerStart.Y) - 1, 17, 17);
 
         }
 

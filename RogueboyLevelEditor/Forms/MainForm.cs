@@ -25,7 +25,7 @@ namespace RogueboyLevelEditor
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void centreMap_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
             openFileDialog1.FileName = "Map";

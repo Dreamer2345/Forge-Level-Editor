@@ -15,8 +15,9 @@ namespace RogueboyLevelEditor.map.Tools
         public Point Position = new Point(0, 0);
 
 
-        
+
         public virtual void SetBrush(int ID) { }
+        public virtual void SetBrush(int ID, int brushAttribute) { }
 
         public abstract bool Update();
         public abstract void Draw(Graphics graphics);

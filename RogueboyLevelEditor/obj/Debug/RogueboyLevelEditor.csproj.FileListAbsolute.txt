@@ -21,3 +21,6 @@ C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\obj\
 C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\obj\Debug\RogueboyLevelEditor.csproj.CoreCompileInputs.cache
 C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\obj\Debug\RogueboyLevelEditor.exe
 C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\obj\Debug\RogueboyLevelEditor.pdb
+C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\bin\Debug\Config\SpriteAssignments.xml
+C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\bin\Debug\Config\TextureAssignments.xml
+C:\Femto-v0.1.2\projects\RogueBoy-Level-Editor-Devbuild\RogueboyLevelEditor\bin\Debug\Config\TileAssignments.xml

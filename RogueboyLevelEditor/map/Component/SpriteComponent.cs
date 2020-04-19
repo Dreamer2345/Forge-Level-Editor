@@ -14,11 +14,13 @@ namespace RogueboyLevelEditor.map.Component
     {
         public int Type;
         public Point SpritePosition;
+        public int Health;
 
-        public SpriteComponent(Point pos, int Type)
+        public SpriteComponent(Point pos, int type, int health)
         {
-            this.Type = Type;
+            this.Type = type;
             this.SpritePosition = pos;
+            this.Health = health;
         }
 
         public override void Draw(Graphics graphics, Point Pos)

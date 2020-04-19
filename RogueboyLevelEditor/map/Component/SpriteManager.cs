@@ -13,11 +13,13 @@ namespace RogueboyLevelEditor.map.Component
     {
         public string Name { get; private set; }
         public string TextureID { get; private set; }
+        public int Health { get; private set; }
 
-        public Sprite(string Name, string TextureID)
+        public Sprite(string name, string textureID, int health)
         {
-            this.Name = Name;
-            this.TextureID = TextureID;
+            this.Name = name;
+            this.TextureID = textureID;
+            this.Health = health;
         }
     }
 
@@ -34,12 +36,13 @@ namespace RogueboyLevelEditor.map.Component
                 List<XElement> Nodes = (from element in xmlDoc.Descendants("sprites").Elements() where element.Name == "sprite" select element).ToList();
                 foreach (XElement x in Nodes)
                 {
-                    List<XElement> Daughters = x.Descendants().ToList();
-                    int ID = int.Parse(Daughters.Find(o => o.Name == "id").Value);
-                    string Name = Daughters.Find(o => o.Name == "name").Value;
-                    string TextureID = Daughters.Find(o => o.Name == "texture").Value;
+                    List<XElement> daughters = x.Descendants().ToList();
+                    int id = int.Parse(daughters.Find(o => o.Name == "id").Value);
+                    string name = daughters.Find(o => o.Name == "name").Value;
+                    string textureId = daughters.Find(o => o.Name == "texture").Value;
+                    int health = int.Parse(daughters.Find(o => o.Name == "health").Value);
 
-                    AddSprite(ID, new Sprite(Name, TextureID));
+                    AddSprite(id, new Sprite(name, textureId, health));
                 }
             }
             catch (Exception e)
@@ -85,7 +88,7 @@ namespace RogueboyLevelEditor.map.Component
             {
                 return Sprites[ID];
             }
-            return new Sprite("Null", "Null");
+            return new Sprite("Null", "Null", 0);
         }
     }
 }
