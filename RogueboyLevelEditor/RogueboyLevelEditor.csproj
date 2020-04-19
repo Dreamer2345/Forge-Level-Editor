@@ -74,6 +74,7 @@
     <Compile Include="map\Component\SpriteComponent.cs" />
     <Compile Include="map\Component\SpriteManager.cs" />
     <Compile Include="map\Tools\ConnectorTool.cs" />
+    <Compile Include="map\Tools\PlayerPositionTool.cs" />
     <Compile Include="map\Tools\SpriteTool.cs" />
     <Compile Include="map\Tools\SurroundTool.cs" />
     <Compile Include="map\Tools\TileCursor.cs" />
@@ -92,6 +93,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapEditorForm.resx">
       <DependentUpon>MapEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewMapForm.resx">
       <DependentUpon>NewMapForm.cs</DependentUpon>
@@ -121,6 +123,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Config\SpriteAssignments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TextureAssignments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TileAssignments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
     <None Include="icons\Tick2.png" />
     <None Include="icons\ArrowUp.png" />
