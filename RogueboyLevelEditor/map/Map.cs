@@ -22,7 +22,7 @@ namespace RogueboyLevelEditor.map
         public bool ShowPlayerStart = false;
         public int Timer;
         int width, height;
-        point.Point PlayerStart = new point.Point(0, 0);
+        public point.Point PlayerStart = new point.Point(0, 0);
         public point.Point DrawPos = new point.Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);
         public BaseMapComponent[,] MapComponents;
@@ -333,6 +333,8 @@ namespace RogueboyLevelEditor.map
 
         public void DrawPlayer(Graphics graphics)
         {
+            Pen pen = new Pen(Color.Blue);
+            graphics.DrawRectangle(pen, ToScreenSpaceX(PlayerStart.X) - 1, ToScreenSpaceY(PlayerStart.Y) - 1, 17, 17);
 
         }
 

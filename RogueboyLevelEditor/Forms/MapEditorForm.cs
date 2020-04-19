@@ -832,6 +832,11 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
+        private void playerStartButton_CheckedChanged(object sender, EventArgs e) {
+            if (playerStartButton.Checked) {
+                tool = new PlayerPositionTool(mapCollection.CurrentMap);
+            }
+        }
     }
 
 }

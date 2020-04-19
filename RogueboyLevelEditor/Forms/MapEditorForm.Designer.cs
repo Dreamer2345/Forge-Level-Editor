@@ -54,6 +54,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.playerStartButton = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.centreMap = new System.Windows.Forms.Button();
@@ -196,35 +197,35 @@
             // viewOutOfBoundsMenu
             // 
             this.viewOutOfBoundsMenu.Name = "viewOutOfBoundsMenu";
-            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(216, 30);
             this.viewOutOfBoundsMenu.Text = "&Out Of Bounds";
             this.viewOutOfBoundsMenu.Click += new System.EventHandler(this.viewOutOfBoundsMenu_Click);
             // 
             // viewTileMenu
             // 
             this.viewTileMenu.Name = "viewTileMenu";
-            this.viewTileMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewTileMenu.Size = new System.Drawing.Size(216, 30);
             this.viewTileMenu.Text = "&Tiles";
             this.viewTileMenu.Click += new System.EventHandler(this.viewTileMenu_Click);
             // 
             // viewSpritesMenu
             // 
             this.viewSpritesMenu.Name = "viewSpritesMenu";
-            this.viewSpritesMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewSpritesMenu.Size = new System.Drawing.Size(216, 30);
             this.viewSpritesMenu.Text = "&Sprites";
             this.viewSpritesMenu.Click += new System.EventHandler(this.viewSpritesMenu_Click);
             // 
             // viewConnectionsMenu
             // 
             this.viewConnectionsMenu.Name = "viewConnectionsMenu";
-            this.viewConnectionsMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewConnectionsMenu.Size = new System.Drawing.Size(216, 30);
             this.viewConnectionsMenu.Text = "&Connections";
             this.viewConnectionsMenu.Click += new System.EventHandler(this.viewConnectionsMenu_Click);
             // 
             // viewPlayerStartMenu
             // 
             this.viewPlayerStartMenu.Name = "viewPlayerStartMenu";
-            this.viewPlayerStartMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewPlayerStartMenu.Size = new System.Drawing.Size(216, 30);
             this.viewPlayerStartMenu.Text = "&Player Start";
             this.viewPlayerStartMenu.Click += new System.EventHandler(this.viewPlayerStartMenu_Click);
             // 
@@ -287,6 +288,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.playerStartButton);
             this.groupBox1.Controls.Add(this.radioButton7);
             this.groupBox1.Controls.Add(this.radioButton6);
             this.groupBox1.Controls.Add(this.centreMap);
@@ -297,9 +299,23 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(604, 81);
+            this.groupBox1.Size = new System.Drawing.Size(772, 81);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // playerStartButton
+            // 
+            this.playerStartButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.playerStartButton.AutoSize = true;
+            this.playerStartButton.Image = ((System.Drawing.Image)(resources.GetObject("playerStartButton.Image")));
+            this.playerStartButton.Location = new System.Drawing.Point(602, 24);
+            this.playerStartButton.Name = "playerStartButton";
+            this.playerStartButton.Size = new System.Drawing.Size(101, 46);
+            this.playerStartButton.TabIndex = 8;
+            this.playerStartButton.Text = "Player Start";
+            this.playerStartButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.playerStartButton.UseVisualStyleBackColor = true;
+            this.playerStartButton.CheckedChanged += new System.EventHandler(this.playerStartButton_CheckedChanged);
             // 
             // radioButton7
             // 
@@ -791,5 +807,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewOutOfBoundsMenu;
         private System.Windows.Forms.ColumnHeader spritesPlaced_HealthColumn;
         private System.Windows.Forms.ColumnHeader SpriteHealth;
+        private System.Windows.Forms.RadioButton playerStartButton;
     }
 }
