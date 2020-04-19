@@ -87,13 +87,11 @@ namespace RogueboyLevelEditor.mapCollection
             OpenMaps.Add(map);
         }
 
-        public void AddMaps(List<Map> maps)
+        public void AddMaps(IEnumerable<Map> maps)
         {
-            foreach(Map i in maps)
-            {
-                if(i != null)
-                    AddMap(i);
-            }
+            foreach(Map map in maps)
+                if(map != null)
+                    this.AddMap(map);
         }
 
 
@@ -146,14 +144,20 @@ namespace RogueboyLevelEditor.mapCollection
 
         public void Draw(Graphics graphics)
         {
+            if (this.CurrentMap == null)
+                return;
+
             if(DrawBackground)
-                CurrentMap?.DrawBackground(graphics);
+                CurrentMap.DrawBackground(graphics);
+
             if (DrawSprites)
-                CurrentMap?.DrawSprites(graphics);
+                CurrentMap.DrawSprites(graphics);
+
             if (DrawConnections)
-                CurrentMap?.DrawConnections(graphics);
+                CurrentMap.DrawConnections(graphics);
+
             if (DrawPlayer)
-                CurrentMap?.DrawPlayer(graphics);
+                CurrentMap.DrawPlayer(graphics);
         }
 
         public string[] GetNames()
@@ -166,84 +170,74 @@ namespace RogueboyLevelEditor.mapCollection
             return names.ToArray();
         }
 
-        public static List<Map> LoadMaps(string FilePath)
+        private static readonly Regex mapLoadRegex = new Regex(@"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
+        private static readonly HashSet<char> mapLoadCharacters = new HashSet<char>() { ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        
+        public static IEnumerable<Map> LoadMaps(string FilePath)
         {
-            List<Map> OutMaps = new List<Map>();
-            try
+            var fileData = string.Join(" ", File.ReadLines(FilePath));
+
+            for (Match reg = mapLoadRegex.Match(fileData);  reg.Success; reg = reg.NextMatch())
             {
-                string[] Lines = File.ReadAllLines(FilePath);
-                string Accum = "";
-                for (int i = 0; i < Lines.Length; i++)
+                string[] Vals = reg.Value.Split('{', '}');
+                if (Vals.Length == 3)
                 {
-                    Accum += Lines[i] + " ";
-                }
-                Accum.Trim('\n');
-
-                Match reg = Regex.Match(Accum, @"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
-                while (reg.Success)
-                {
-                    string val = reg.Value;
-                    string[] Vals = val.Split('{', '}');
-                    if (Vals.Length == 3)
-                    {
-                        string NameFind = Vals[0];
-                        int endofName = NameFind.IndexOf('[');
-                        int startofName = NameFind.IndexOf("uint8_t") + 7;
-                        string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
+                    string NameFind = Vals[0];
+                    int endofName = NameFind.IndexOf('[');
+                    int startofName = NameFind.IndexOf("uint8_t") + 7;
+                    string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
                         
-                        char[] chars = {',','0','1', '2', '3', '4','5', '6','7', '8', '9' };
-                        string Data = Vals[1];
-                        string DataClean = "";
-                        for (int i = 0; i < Data.Length; i++)
-                            if (chars.Contains(Data[i]))
-                            {
-                                DataClean += Data[i];
-                            }
-                        Data = DataClean;
+                    string Data = string.Join("", Vals[1].Where(mapLoadCharacters.Contains));
 
-                        string[] SplitData = Data.Split(',');
-                        byte[] DataArray = new byte[SplitData.Length];
-                        for (int i = 0; i < SplitData.Length; i++)
+                    string[] SplitData = Data.Split(',');
+                    byte[] DataArray = new byte[SplitData.Length];
+                    for (int i = 0; i < SplitData.Length; i++)
+                    {
+                        if (byte.TryParse(SplitData[i], out DataArray[i]))
                         {
-                            if (byte.TryParse(SplitData[i], out DataArray[i]))
-                            {
                                 
-                            }
                         }
-                        Map newmap = Map.ParseMapArray(DataArray, Name, FilePath);
-                        if(newmap != null)
-                            OutMaps.Add(newmap);
                     }
 
-                    reg = reg.NextMatch();
+                    Map newmap = Map.ParseMapArray(DataArray, Name, FilePath);
+
+                    if (newmap != null)
+                        yield return newmap;
                 }
-
-
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return OutMaps;
         }
 
         public void SaveMaps()
         {
             try
             {
-                string MapNamesString = "constexpr const uint8_t* maps[" + OpenMaps.Count + "] = {";
-                string Save = "#pragma once\n\n\n";
-                foreach(Map i in OpenMaps)
+                var savePath = Path.Combine(FilePath, FileName);
+
+                using (var writer = new StreamWriter(savePath))
                 {
-                    MapNamesString += i.Name + ",";
-                    Save += i.GetMap();
-                    Save += "/*==============================*/\n\n\n";
+                    writer.WriteLine("#pragma once");
+                    writer.WriteLine();
+                    writer.WriteLine("#include <stdint.h>");
+                    writer.WriteLine();
+
+                    foreach (var map in this.OpenMaps)
+                    {
+                        map.WriteMap(writer);
+                        writer.WriteLine();
+                    }
+
+                    writer.WriteLine("constexpr const uint8_t numberOfMaps = {0};", OpenMaps.Count);
+                    writer.WriteLine();
+
+                    writer.Write("constexpr const uint8_t* maps[numberOfMaps] = ");
+                    writer.Write("{ ");
+                    foreach (var map in this.OpenMaps)
+                    {
+                        writer.Write(map.Name);
+                        writer.Write(',');
+                    }
+                    writer.WriteLine(" };");
                 }
-                MapNamesString += "};\n";
-                Save += "constexpr const uint8_t numberOfMaps =" + OpenMaps.Count + ";\n";
-                Save += MapNamesString;
-                File.WriteAllText(FilePath+"\\"+FileName, Save);
             }
             catch(Exception e)
             {
