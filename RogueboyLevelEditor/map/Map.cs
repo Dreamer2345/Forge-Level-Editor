@@ -105,6 +105,8 @@ namespace RogueboyLevelEditor.map
             BaseMapComponent outOfBoundsTile = new BaseMapComponent(Array[++Pointer]);
             Pointer++;
             Map newMap = new Map(outOfBoundsTile, name, FilePath, width, height, Timer, 0, 0);
+            newMap.PlayerStart = playerStart;
+
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
@@ -179,6 +181,9 @@ namespace RogueboyLevelEditor.map
                 writer.Write(", ");
 
                 writer.Write(sprite.SpritePosition.Y);
+                writer.Write(", ");
+
+                writer.Write(sprite.Health);
                 writer.WriteLine(",");
             }
 

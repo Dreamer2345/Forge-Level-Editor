@@ -135,7 +135,7 @@
             // 
             this.fileLoadMenu.Name = "fileLoadMenu";
             this.fileLoadMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.fileLoadMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileLoadMenu.Size = new System.Drawing.Size(252, 30);
             this.fileLoadMenu.Text = "Load";
             this.fileLoadMenu.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -143,26 +143,26 @@
             // 
             this.fileSaveMenu.Name = "fileSaveMenu";
             this.fileSaveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.fileSaveMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileSaveMenu.Size = new System.Drawing.Size(252, 30);
             this.fileSaveMenu.Text = "Save File";
             this.fileSaveMenu.Click += new System.EventHandler(this.fileSaveMenu_Click);
             // 
             // fileSaveAsMenu
             // 
             this.fileSaveAsMenu.Name = "fileSaveAsMenu";
-            this.fileSaveAsMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileSaveAsMenu.Size = new System.Drawing.Size(252, 30);
             this.fileSaveAsMenu.Text = "Save File As ...";
             this.fileSaveAsMenu.Click += new System.EventHandler(this.fileSaveAsMenu_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(222, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(249, 6);
             // 
             // FileExitMenu
             // 
             this.FileExitMenu.Name = "FileExitMenu";
-            this.FileExitMenu.Size = new System.Drawing.Size(225, 30);
+            this.FileExitMenu.Size = new System.Drawing.Size(252, 30);
             this.FileExitMenu.Text = "E&xit";
             this.FileExitMenu.Click += new System.EventHandler(this.fileExistMenu_Click);
             // 
@@ -594,7 +594,7 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "h";
-            this.saveFileDialog1.FileName = "Map.h";
+            this.saveFileDialog1.FileName = "Maps.h";
             this.saveFileDialog1.Filter = "C++ Header|*.h";
             // 
             // button3
@@ -664,7 +664,7 @@
             // openFileDialog
             // 
             this.openFileDialog.DefaultExt = "h";
-            this.openFileDialog.FileName = "Map.h";
+            this.openFileDialog.FileName = "Maps.h";
             this.openFileDialog.Filter = "C++ Header|*.h";
             // 
             // statusStrip1

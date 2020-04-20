@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <tiles>
 	<tile> 
-		<name>Closed Chest</name>
+		<name>Empty</name>
 		<id>0</id>
-		<texture>2</texture>
+		<texture>0</texture>
 		<exit>false</exit>
 		<gate>
 			<active>0</active>
@@ -13,9 +13,831 @@
 			<value>false</value>
 		</switch>
 	</tile>
-	
 	<tile> 
-		<name>Yeet</name>
+		<name>Empty Fill</name>
+		<id>38</id>
+		<texture>38</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Level Exit</name>
+		<id>3</id>
+		<texture>3</texture>
+		<exit>true</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Level Entry</name>
+		<id>9</id>
+		<texture>9</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Stairs</name>
+		<id>17</id>
+		<texture>17</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Barrel</name>
+		<id>4</id>
+		<texture>4</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Open Chest</name>
+		<id>5</id>
+		<texture>5</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+
+	<tile> 
+		<name>Closed Chest</name>
+		<id>8</id>
+		<texture>8</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Switch On</name>
+		<id>10</id>
+		<texture>10</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>true</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Switch Off</name>
+		<id>11</id>
+		<texture>11</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>true</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Switch Broken</name>
+		<id>19</id>
+		<texture>19</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>true</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Press Plate</name>
+		<id>14</id>
+		<texture>14</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Explosive Barrel</name>
+		<id>16</id>
+		<texture>16</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>true</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Rubble</name>
+		<id>18</id>
+		<texture>18</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Top</name>
+		<id>22</id>
+		<texture>22</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Right</name>
+		<id>21</id>
+		<texture>21</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Bottom</name>
+		<id>24</id>
+		<texture>24</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Left</name>
+		<id>23</id>
+		<texture>23</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Top / Bottom</name>
+		<id>44</id>
+		<texture>44</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Left / Right</name>
+		<id>43</id>
+		<texture>43</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>	
+		<tile> 
+		<name>Straight Torch Top</name>
+		<id>67</id>
+		<texture>67</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Torch Right</name>
+		<id>66</id>
+		<texture>66</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Torch Bottom</name>
+		<id>68</id>
+		<texture>68</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Straight Torch Left</name>
+		<id>65</id>
+		<texture>65</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Diagonal Top Left</name>
+		<id>25</id>
+		<texture>25</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Diagonal Top Right</name>
+		<id>26</id>
+		<texture>26</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Diagonal Bottom Left</name>
+		<id>27</id>
+		<texture>27</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Diagonal Bottom Right</name>
+		<id>28</id>
+		<texture>28</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Top / Right / Left</name>
+		<id>45</id>
+		<texture>45</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Right / Bottom / Left</name>
+		<id>46</id>
+		<texture>46</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Top / Bottom / Left</name>
+		<id>47</id>
+		<texture>47</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Top / Right / Bottom</name>
+		<id>48</id>
+		<texture>48</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>	
+	<tile> 
+		<name>Full Square</name>
+		<id>33</id>
+		<texture>33</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Top Left</name>
+		<id>37</id>
+		<texture>37</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Top Right</name>
+		<id>36</id>
+		<texture>36</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Bottom Left</name>
+		<id>34</id>
+		<texture>34</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Corner Bottom Right</name>
+		<id>35</id>
+		<texture>35</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door Top</name>
+		<id>41</id>
+		<texture>41</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door Right</name>
+		<id>40</id>
+		<texture>40</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door Bottom</name>
+		<id>42</id>
+		<texture>42</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door Left</name>
+		<id>39</id>
+		<texture>39</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door (Open) Top</name>
+		<id>55</id>
+		<texture>55</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door (Open) Right</name>
+		<id>54</id>
+		<texture>54</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door (Open) Bottom</name>
+		<id>56</id>
+		<texture>56</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Locked Door (Open) Left</name>
+		<id>53</id>
+		<texture>53</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door Top</name>
+		<id>59</id>
+		<texture>59</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door Right</name>
+		<id>58</id>
+		<texture>58</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door Bottom</name>
+		<id>60</id>
+		<texture>60</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door Left</name>
+		<id>57</id>
+		<texture>57</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door (Open) Top</name>
+		<id>63</id>
+		<texture>63</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door (Open) Right</name>
+		<id>62</id>
+		<texture>62</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door (Open) Bottom</name>
+		<id>64</id>
+		<texture>64</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door (Open) Left</name>
+		<id>61</id>
+		<texture>61</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+
+
+  <tile>
+    <name>Work Hole</name>
+    <id>73</id>
+    <texture>73</texture>
+    <exit>false</exit>
+    <gate>
+      <active>1</active>
+      <value>true</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Shop Top 1</name>
+    <id>77</id>
+    <texture>77</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Shop Top 2</name>
+    <id>78</id>
+    <texture>78</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Shop Top 3</name>
+    <id>79</id>
+    <texture>79</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Shop Bottom 1</name>
+    <id>80</id>
+    <texture>80</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Shop Bottom 2</name>
+    <id>81</id>
+    <texture>81</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Shop Bottom 3</name>
+    <id>82</id>
+    <texture>82</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Spider Web Top Left</name>
+    <id>83</id>
+    <texture>83</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Spider Web Top Right</name>
+    <id>84</id>
+    <texture>84</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Spider Web Bottom Left</name>
+    <id>85</id>
+    <texture>85</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile>
+    <name>Spider Web Bottom Right</name>
+    <id>86</id>
+    <texture>86</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+
+  <tile> 
+		<name>Blank Wall (Do not use)</name>
 		<id>1</id>
 		<texture>1</texture>
 		<exit>false</exit>
@@ -27,11 +849,49 @@
 			<value>false</value>
 		</switch>
 	</tile>
-	
 	<tile> 
-		<name>Beep</name>
-		<id>25</id>
-		<texture>10</texture>
+		<name>Locked Door (Do not use)</name>
+		<id>2</id>
+		<texture>2</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Open Door (Do not use)</name>
+		<id>6</id>
+		<texture>6</texture>
+		<exit>false</exit>
+		<gate>
+			<active>1</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Full Block Wall (Do not use)</name>
+		<id>7</id>
+		<texture>7</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>	
+	<tile> 
+		<name>Torch Wall (Do not use)</name>
+		<id>12</id>
+		<texture>12</texture>
 		<exit>false</exit>
 		<gate>
 			<active>0</active>
@@ -41,6 +901,44 @@
 			<value>false</value>
 		</switch>
 	</tile>
-	
-	
+	<tile> 
+		<name>Window Wall (Do not use)</name>
+		<id>13</id>
+		<texture>13</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Spear Door (Do not use)</name>
+		<id>15</id>
+		<texture>15</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>true</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+	<tile> 
+		<name>Grass (Do not use)</name>
+		<id>20</id>
+		<texture>20</texture>
+		<exit>false</exit>
+		<gate>
+			<active>0</active>
+			<value>false</value>
+		</gate>
+		<switch>
+			<value>false</value>
+		</switch>
+	</tile>
+
 </tiles>
