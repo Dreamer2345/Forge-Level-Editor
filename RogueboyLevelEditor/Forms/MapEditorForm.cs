@@ -19,6 +19,7 @@ namespace RogueboyLevelEditor.Forms
 {
     public partial class MapEditorForm : Form
     {
+        const String keepOpen = "KeepOpen";
         MapCollection mapCollection;
         TileCursor cursor;
         Tool tool;
@@ -61,6 +62,23 @@ namespace RogueboyLevelEditor.Forms
             AddTiles();
             AddSprites();
             InitializeComponent();
+
+            mapsMenu.DropDown.ItemClicked += (obj, args) =>
+            {
+                if (args.ClickedItem.Tag == keepOpen)
+                    mapsMenu.DropDown.AutoClose = false;
+                else
+                    mapsMenu.DropDown.AutoClose = true;
+            };
+            mapsMenu.DropDownItems.OfType<ToolStripMenuItem>()
+                .Where(x => x.Tag == keepOpen)
+                .ToList().ForEach(x => {
+                    x.CheckedChanged += (obj, args) => {
+                        mapsMenu.DropDown.AutoClose = true;
+                    };
+                });
+            mapsMenu.DropDown.MouseLeave += new System.EventHandler(this.mapsMenu_DropDown_MouseLeave);
+
         }
         public MapEditorForm(Map EditingMap)
         {
@@ -846,6 +864,12 @@ namespace RogueboyLevelEditor.Forms
                 tool = new PlayerPositionTool(mapCollection.CurrentMap);
             }
         }
+
+        private void mapsMenu_DropDown_MouseLeave(object sender, EventArgs e) {
+            mapsMenu.DropDown.Close();
+
+        }
+
     }
 
 }
