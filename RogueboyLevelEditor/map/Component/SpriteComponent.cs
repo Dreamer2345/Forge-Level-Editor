@@ -28,7 +28,8 @@ namespace RogueboyLevelEditor.map.Component
             TextureManager Texture = new TextureManager();
             SpriteManager sm = new SpriteManager();
             Bitmap bitmap = Texture.GetTexture(sm.GetSprite(Type).TextureID);
-            graphics.DrawImage(bitmap, Pos.X + 4, Pos.Y+4, 8, 8);
+            bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
+            graphics.DrawImage(bitmap, Pos.X, Pos.Y, 16, 16);
         }
     }
 }

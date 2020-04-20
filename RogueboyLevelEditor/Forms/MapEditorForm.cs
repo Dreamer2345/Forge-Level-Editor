@@ -19,6 +19,7 @@ namespace RogueboyLevelEditor.Forms
 {
     public partial class MapEditorForm : Form
     {
+        const String keepOpen = "KeepOpen";
         MapCollection mapCollection;
         TileCursor cursor;
         Tool tool;
@@ -61,6 +62,23 @@ namespace RogueboyLevelEditor.Forms
             AddTiles();
             AddSprites();
             InitializeComponent();
+
+            mapsMenu.DropDown.ItemClicked += (obj, args) =>
+            {
+                if (args.ClickedItem.Tag == keepOpen)
+                    mapsMenu.DropDown.AutoClose = false;
+                else
+                    mapsMenu.DropDown.AutoClose = true;
+            };
+            mapsMenu.DropDownItems.OfType<ToolStripMenuItem>()
+                .Where(x => x.Tag == keepOpen)
+                .ToList().ForEach(x => {
+                    x.CheckedChanged += (obj, args) => {
+                        mapsMenu.DropDown.AutoClose = true;
+                    };
+                });
+            mapsMenu.DropDown.MouseLeave += new System.EventHandler(this.mapsMenu_DropDown_MouseLeave);
+
         }
         public MapEditorForm(Map EditingMap)
         {
@@ -396,6 +414,11 @@ namespace RogueboyLevelEditor.Forms
                 spritesListView.Visible = true;
                 spritesPlacedListView.Visible = true;
                 button2.Visible = true;
+
+                if (spritesListView.SelectedItems.Count > 0) {
+                    tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
+                }
+
             }
             else
             {
@@ -415,7 +438,7 @@ namespace RogueboyLevelEditor.Forms
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //errorProvider1.Clear();
-            openFileDialog.FileName = "Map";
+            openFileDialog.FileName = "Maps.h";
             openFileDialog.InitialDirectory = "/Maps";
 
             DialogResult diag = openFileDialog.ShowDialog();
@@ -471,6 +494,10 @@ namespace RogueboyLevelEditor.Forms
 
                     tickMapMenuItem(mapCollection.CurrentMap.Name);
                     enableMapMenuOptions(mapCollection.CurrentMap.Name);
+
+                    UpdateCurrentSprites();
+                    pictureBox1.Invalidate();
+                    pictureBox1.Refresh();
 
                 }
 
@@ -563,7 +590,7 @@ namespace RogueboyLevelEditor.Forms
             if (string.IsNullOrEmpty(mapCollection.FileName))
             {
                 saveFileDialog1.InitialDirectory = mapCollection.FilePath;
-                saveFileDialog1.FileName = "Map.h";
+                saveFileDialog1.FileName = "Maps.h";
                 DialogResult result = saveFileDialog1.ShowDialog();
                 if(result == DialogResult.OK)
                 {
@@ -704,7 +731,7 @@ namespace RogueboyLevelEditor.Forms
         private void fileSaveAsMenu_Click(object sender, EventArgs e) {
 
             saveFileDialog1.InitialDirectory = mapCollection.FilePath;
-            saveFileDialog1.FileName = (string.IsNullOrWhiteSpace(mapCollection.FileName) ? "Map.h" : mapCollection.FileName);
+            saveFileDialog1.FileName = (string.IsNullOrWhiteSpace(mapCollection.FileName) ? "Maps.h" : mapCollection.FileName);
 
             DialogResult result = saveFileDialog1.ShowDialog();
 
@@ -837,6 +864,12 @@ namespace RogueboyLevelEditor.Forms
                 tool = new PlayerPositionTool(mapCollection.CurrentMap);
             }
         }
+
+        private void mapsMenu_DropDown_MouseLeave(object sender, EventArgs e) {
+            mapsMenu.DropDown.Close();
+
+        }
+
     }
 
 }
