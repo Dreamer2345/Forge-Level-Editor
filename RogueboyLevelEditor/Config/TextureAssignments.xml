@@ -493,6 +493,11 @@
     <filepath>Textures/Tile_86.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
+  <texture>
+    <id>87</id>
+    <filepath>Textures/Tile_87.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
 
   <texture>
         <id>coin</id>

@@ -92,20 +92,34 @@
 		</switch>
 	</tile>
 
-	<tile> 
-		<name>Closed Chest</name>
-		<id>8</id>
-		<texture>8</texture>
-		<exit>false</exit>
-		<gate>
-			<active>0</active>
-			<value>false</value>
-		</gate>
-		<switch>
-			<value>false</value>
-		</switch>
-	</tile>
-	<tile> 
+  <tile>
+    <name>Closed Chest (Key)</name>
+    <id>8</id>
+    <texture>8</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+
+  <tile>
+    <name>Closed Chest (Random)</name>
+    <id>87</id>
+    <texture>87</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile> 
 		<name>Switch On</name>
 		<id>10</id>
 		<texture>10</texture>
