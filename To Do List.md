@@ -11,6 +11,7 @@ Health is a `uint8_t`.
 * [X] Allow users to specify a starting position.
 * [ ] Add a new icon for the Player Position tool and when rendered on the map.
 * [ ] Allow the user to be able to zoom into the grid (it is really hard to see on some resolutions).
+** This will mean having to redo rendering entirely
 
 ## Tools
 * [ ] Add drag-based move tool (see #12)
