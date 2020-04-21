@@ -8,8 +8,9 @@ Currently, even a smal 15x15 map requires the user to reposition it to see the e
 * [ ] Allow users to edit the 'health' settings on sprites.  
 Obviously this only applies to 'enemy' sprites but there is no harm in letting them change others (other than it will be useless).  
 Health is a `uint8_t`.
-* [ ] Allow users to specify a starting position.
+* [X] Allow users to specify a starting position.
 * [ ] Add a new icon for the Player Position tool and when rendered on the map.
+* [ ] Allow theuser to be able to zoom into the grid (it is really hard to see on some reolutions).
 
 ## Tools
 * [ ] Add drag-based move tool (see #12)
