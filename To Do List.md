@@ -1,6 +1,6 @@
 ## To Do
 
-If theres any issues/Addons you want please add them to this handy todo list
+If there are any issues/Addons you want please add them to this handy todo list
 
 ## Miscellaneous
 * [X] Position the map in the centre of the screen by default.  
@@ -10,7 +10,7 @@ Obviously this only applies to 'enemy' sprites but there is no harm in letting t
 Health is a `uint8_t`.
 * [X] Allow users to specify a starting position.
 * [ ] Add a new icon for the Player Position tool and when rendered on the map.
-* [ ] Allow theuser to be able to zoom into the grid (it is really hard to see on some reolutions).
+* [ ] Allow the user to be able to zoom into the grid (it is really hard to see on some reolutions).
 
 ## Tools
 * [ ] Add drag-based move tool (see #12)
