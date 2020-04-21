@@ -1,9 +1,18 @@
+## To Do
+
 If theres any issues/Addons you want please add them to this handy todo list
----
-* [X] Position the map in the centre of the screen by default.  Currently, even a smal 15x15 map requires the user to reposition it to see the entire map.
-* [ ] Allow users to edit the 'health' settings on sprites.  Obviously this only applies to 'enemy' sprites but there is no harm in letting them change others (other than it will be useless).  Health is a `uint8_t`.
-* [ ] Need to allow users to specify a starting position.
+
+## Miscellaneous
+* [X] Position the map in the centre of the screen by default.  
+Currently, even a smal 15x15 map requires the user to reposition it to see the entire map.
+* [ ] Allow users to edit the 'health' settings on sprites.  
+Obviously this only applies to 'enemy' sprites but there is no harm in letting them change others (other than it will be useless).  
+Health is a `uint8_t`.
+* [ ] Allow users to specify a starting position.
 * [ ] Add a new icon for the Player Position tool and when rendered on the map.
----
 
-
+## Tools
+* [ ] Add drag-based move tool (see #12)
+* [ ] Add eye-dropper tool (see #16)
+* [ ] Add outline rectangle draw tool (see #16)
+* [ ] Add copy-paste tool (see #16)
