@@ -65,11 +65,13 @@ namespace RogueboyLevelEditor.Forms
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
             {
-                if (args.ClickedItem.Tag is string)
-                    mapsMenu.DropDown.AutoClose = ((string)args.ClickedItem.Tag != keepOpen);
+                if (args.ClickedItem.Tag is string tag)
+                    mapsMenu.DropDown.AutoClose = (tag != keepOpen);
+                else
+                    mapsMenu.DropDown.AutoClose = true;
             };
 
-            foreach(var toolStrip in mapsMenu.DropDownItems.OfType<ToolStripMenuItem>().Where(x => (x.Tag is string) && (string)x.Tag == keepOpen))
+            foreach(var toolStrip in mapsMenu.DropDownItems.OfType<ToolStripMenuItem>().Where(x => (x.Tag is string tag) && (tag == keepOpen)))
                 toolStrip.CheckedChanged +=
                     (obj, args) => mapsMenu.DropDown.AutoClose = true;
 
