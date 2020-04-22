@@ -517,7 +517,7 @@
             this.spritesListView.GridLines = true;
             this.spritesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesListView.HideSelection = false;
-            this.spritesListView.Location = new System.Drawing.Point(423, 132);
+            this.spritesListView.Location = new System.Drawing.Point(423, 114);
             this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
             this.spritesListView.Size = new System.Drawing.Size(305, 131);
@@ -642,7 +642,7 @@
             this.connectionListView.GridLines = true;
             this.connectionListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.connectionListView.HideSelection = false;
-            this.connectionListView.Location = new System.Drawing.Point(441, 142);
+            this.connectionListView.Location = new System.Drawing.Point(423, 114);
             this.connectionListView.MultiSelect = false;
             this.connectionListView.Name = "connectionListView";
             this.connectionListView.Size = new System.Drawing.Size(305, 323);
@@ -787,13 +787,13 @@
             this.tilesContextMenu_Remove,
             this.toolStripMenuItem5});
             this.tilesContextMenu.Name = "tilesContextMenu";
-            this.tilesContextMenu.Size = new System.Drawing.Size(181, 76);
+            this.tilesContextMenu.Size = new System.Drawing.Size(132, 54);
             // 
             // tilesContextMenu_FindInList
             // 
             this.tilesContextMenu_FindInList.Enabled = false;
             this.tilesContextMenu_FindInList.Name = "tilesContextMenu_FindInList";
-            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(180, 22);
+            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(131, 22);
             this.tilesContextMenu_FindInList.Text = "&Find In List";
             this.tilesContextMenu_FindInList.Click += new System.EventHandler(this.tilesContextMenu_FindInList_Click);
             // 
@@ -801,14 +801,14 @@
             // 
             this.tilesContextMenu_Remove.Enabled = false;
             this.tilesContextMenu_Remove.Name = "tilesContextMenu_Remove";
-            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(180, 22);
+            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(131, 22);
             this.tilesContextMenu_Remove.Text = "&Remove";
             this.tilesContextMenu_Remove.Click += new System.EventHandler(this.tilesContextMenu_Remove_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 6);
             // 
             // MapEditorForm
             // 

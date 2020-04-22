@@ -28,6 +28,8 @@ namespace RogueboyLevelEditor.map.Component
             Bitmap bitmap = Texture.GetTexture(Tiles.GetTile(tileID).TextureID);
             
             if ((bitmap.Width != 16) || (bitmap.Height != 16))
+
+                Console.WriteLine("TileID: " + tileID + ", " + bitmap.Width + ":" + bitmap.Height);
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
             graphics.DrawImage(bitmap, Pos.X, Pos.Y, 16, 16);
             
