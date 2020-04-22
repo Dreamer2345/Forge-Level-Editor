@@ -17,6 +17,7 @@ namespace RogueboyLevelEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new MapEditorForm());
         }
     }

@@ -16,6 +16,7 @@ namespace RogueboyLevelEditor.map.Component
         public Point Start;
         public Point End;
         public bool IsValid;
+        public bool Highlight;
 
         public EnviromentAffectComponent(Point start, Point end, Map parent)
         {
@@ -40,7 +41,6 @@ namespace RogueboyLevelEditor.map.Component
         public override void Draw(Graphics graphics, Point Pos)
         {
 
-
             UpdateValid();
 
             Pen pen = new Pen(Color.LawnGreen);
@@ -49,10 +49,20 @@ namespace RogueboyLevelEditor.map.Component
             graphics.DrawRectangle(pen, ScreenStart.X - 1, ScreenStart.Y - 1, 17, 17);
             pen.Color = Color.Red;
             graphics.DrawRectangle(pen, ScreenEnd.X - 1, ScreenEnd.Y - 1, 17, 17);
-            pen.Color = Color.Blue;
+
+            if (this.Highlight) {
+                pen = new Pen(Color.Red);
+                this.Highlight = false;
+            }
+            else {
+                pen = new Pen(Color.Blue);
+            }
+
             pen.Width = 2;
             graphics.DrawLine(pen, ScreenStart.X + 8, ScreenStart.Y + 8, ScreenEnd.X + 8, ScreenEnd.Y + 8);
 
         }
+        
     }
+
 }
