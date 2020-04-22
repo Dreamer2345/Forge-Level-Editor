@@ -34,12 +34,12 @@
 		<name>Floater</name>
 		<id>5</id>
 		<texture>floater</texture>
-		<health>0</health>	
+		<health>30</health>	
 	</sprite>
 	<sprite> 
-		<name>Skull</name>
+		<name>Eye</name>
 		<id>6</id>
-		<texture>skull</texture>
+		<texture>eye</texture>
 		<health>40</health>	
 	</sprite>
 	<sprite> 
@@ -97,10 +97,10 @@
     <health>0</health>
   </sprite>
   <sprite>
-    <name>New Enemy</name>
+    <name>Skeleton</name>
     <id>16</id>
-    <texture>newenemy</texture>
-    <health>0</health>
+    <texture>skeleton</texture>
+    <health>40</health>
   </sprite>
   <sprite>
     <name>Spike LHS</name>

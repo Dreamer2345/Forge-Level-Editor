@@ -557,9 +557,9 @@ namespace RogueboyLevelEditor.Forms
 
                     // Remove any existing menu items ..
 
-                    for (int i = 6; i < mapsMenu.DropDownItems.Count; i++) {
+                    while (mapsMenu.DropDownItems.Count > 6) {
 
-                        mapsMenu.DropDownItems.RemoveAt(i);
+                        mapsMenu.DropDownItems.RemoveAt(6);
 
                     }
 
