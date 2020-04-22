@@ -123,7 +123,7 @@ namespace RogueboyLevelEditor.Forms
         }
         void UpdateCurrentConnectors()
         {
-            ConnectionListView.Items.Clear();
+            connectionListView.Items.Clear();
             foreach (EnviromentAffectComponent i in mapCollection.CurrentMap.Connectors)
             {
                 EnviromentAffectComponent env = i;
@@ -132,7 +132,7 @@ namespace RogueboyLevelEditor.Forms
                 newItem.SubItems.Add(env.Start.Y.ToString());
                 newItem.SubItems.Add(env.End.X.ToString());
                 newItem.SubItems.Add(env.End.Y.ToString());
-                ConnectionListView.Items.Add(newItem);
+                connectionListView.Items.Add(newItem);
             }
         }
         void AddTilesToListView()
@@ -279,14 +279,102 @@ namespace RogueboyLevelEditor.Forms
                     pictureBox1.Invalidate();
             }
         }
+
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (tool != null)
+            if (tool != null && e.Button == MouseButtons.Left)
             {
                 tool.MouseDown = true;
                 if (tool.Update())
                     pictureBox1.Invalidate();
+
+
+                // Add the selected item to the context menu ..
+
+                if (tool is TileBrush) {
+
+                    String tileName = tilesListView.SelectedItems[0].SubItems[2].Text;
+
+                    for (int i = 3; i < tilesContextMenu.Items.Count; i++) {
+
+                        ToolStripMenuItem menuItem = (ToolStripMenuItem)tilesContextMenu.Items[i];
+
+                        if (menuItem.Text == tileName) {
+
+                            tilesContextMenu.Items.Remove(menuItem);
+                            break;
+
+                        }
+
+                    }
+
+
+                    ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
+                    newMenuItem.Text = tileName;
+                    newMenuItem.Image = tilesListView.SmallImageList.Images[tilesListView.SelectedItems[0].ImageKey];
+                    newMenuItem.Tag = tilesListView.SelectedItems[0].Index;
+                    newMenuItem.Click += new System.EventHandler(tilesContextMenu_Item_Click);
+                    tilesContextMenu.Items.Insert(3, newMenuItem);
+
+                    if (tilesContextMenu.Items.Count > 11) { tilesContextMenu.Items.RemoveAt(10); }
+
+                }
+
+                if (tool is SpriteTool) {
+
+                    String spriteName = spritesListView.SelectedItems[0].SubItems[2].Text;
+
+                    for (int i = 3; i < spriteContextMenu.Items.Count; i++) {
+
+                        ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteContextMenu.Items[i];
+
+                        if (menuItem.Text == spriteName) {
+
+                            spriteContextMenu.Items.Remove(menuItem);
+                            break;
+
+                        }
+
+                    }
+
+
+                    ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
+                    newMenuItem.Text = spriteName;
+                    newMenuItem.Image = spritesListView.SmallImageList.Images[spritesListView.SelectedItems[0].ImageKey];
+                    newMenuItem.Tag = spritesListView.SelectedItems[0].Index;
+                    newMenuItem.Click += new System.EventHandler(spritesContextMenu_Item_Click);
+                    spriteContextMenu.Items.Insert(3, newMenuItem);
+
+                    if (spriteContextMenu.Items.Count > 11) { spriteContextMenu.Items.RemoveAt(10); }
+
+                }
+
             }
+
+            if (tool is TileBrush && e.Button == MouseButtons.Right) {
+
+                cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
+                tilesContextMenu_EnableOptions();
+                tilesContextMenu.Show(Cursor.Position);
+
+            }
+
+            if (tool is SpriteTool && e.Button == MouseButtons.Right) {
+
+                cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
+                spriteContextMenu_EnableOptions();
+                spriteContextMenu.Show(Cursor.Position);
+
+            }
+
+            if (tool is ConnectorTool && e.Button == MouseButtons.Right) {
+
+                cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
+                connectionContextMenu_EnableOptions();
+                connectionContextMenu.Show(Cursor.Position);
+
+            }
+
         }
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -394,13 +482,13 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton3.Checked)
             {
                 tool = new ConnectorTool(mapCollection.CurrentMap,this);
-                ConnectionListView.Visible = true;
-                button3.Visible = true;
+                connectionListView.Visible = true;
+                removeConnection.Visible = true;
             }
             else
             {
-                ConnectionListView.Visible = false;
-                button3.Visible = false;
+                connectionListView.Visible = false;
+                removeConnection.Visible = false;
             }
         }
 
@@ -411,7 +499,7 @@ namespace RogueboyLevelEditor.Forms
                 tool = new SpriteTool(mapCollection.CurrentMap,this);
                 spritesListView.Visible = true;
                 spritesPlacedListView.Visible = true;
-                button2.Visible = true;
+                removeSprite.Visible = true;
 
                 if (spritesListView.SelectedItems.Count > 0) {
                     tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
@@ -422,7 +510,7 @@ namespace RogueboyLevelEditor.Forms
             {
                 spritesListView.Visible = false;
                 spritesPlacedListView.Visible = false;
-                button2.Visible = false;
+                removeSprite.Visible = false;
             }
         }
         //EndTools
@@ -570,7 +658,7 @@ namespace RogueboyLevelEditor.Forms
             this.Focus();
         }
         
-        private void button2_Click(object sender, EventArgs e)
+        private void removeSprite_Click(object sender, EventArgs e)
         {
             if (spritesPlacedListView.SelectedItems.Count > 0)
             {
@@ -604,17 +692,17 @@ namespace RogueboyLevelEditor.Forms
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void removeConnection_Click(object sender, EventArgs e)
         {
-            if (ConnectionListView.SelectedItems.Count > 0)
+            if (connectionListView.SelectedItems.Count > 0)
             {
-                int X = int.Parse(ConnectionListView.SelectedItems[0].SubItems[1].Text);
-                int Y = int.Parse(ConnectionListView.SelectedItems[0].SubItems[2].Text);
-                int X1 = int.Parse(ConnectionListView.SelectedItems[0].SubItems[3].Text);
-                int Y1 = int.Parse(ConnectionListView.SelectedItems[0].SubItems[4].Text);
+                int X = int.Parse(connectionListView.SelectedItems[0].SubItems[1].Text);
+                int Y = int.Parse(connectionListView.SelectedItems[0].SubItems[2].Text);
+                int X1 = int.Parse(connectionListView.SelectedItems[0].SubItems[3].Text);
+                int Y1 = int.Parse(connectionListView.SelectedItems[0].SubItems[4].Text);
 
                 mapCollection?.CurrentMap.RemoveConnection(new Point(X, Y), new Point(X1, Y1));
-                ConnectionListView.Items.Remove(ConnectionListView.SelectedItems[0]);
+                connectionListView.Items.Remove(connectionListView.SelectedItems[0]);
                 pictureBox1.Invalidate();
             }
         }
@@ -631,10 +719,10 @@ namespace RogueboyLevelEditor.Forms
 
         private void spritesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (spritesListView.SelectedItems.Count > 0)
-            {
+            if (spritesListView.SelectedItems.Count > 0) {
                 tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
             }
+
         }
 
         private void mapAddMenu_Click(object sender, EventArgs e) {
@@ -865,6 +953,275 @@ namespace RogueboyLevelEditor.Forms
 
         private void mapsMenu_DropDown_MouseLeave(object sender, EventArgs e) {
             mapsMenu.DropDown.Close();
+
+        }
+
+        private void spritesPlacedListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+
+            ListViewItem selectedItem = e.Item;
+
+            Point point = new Point();
+            point.X = Int32.Parse(selectedItem.SubItems[2].Text);
+            point.Y = Int32.Parse(selectedItem.SubItems[3].Text);
+            cursor.position = point;
+            pictureBox1.Invalidate();
+
+        }
+
+        private void connectionListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+
+            ListViewItem selectedItem = e.Item;
+
+            foreach (EnviromentAffectComponent connection in mapCollection.CurrentMap.Connectors) {
+
+                if (connection.Start.X == Int32.Parse(selectedItem.SubItems[1].Text) &&
+                    connection.Start.Y == Int32.Parse(selectedItem.SubItems[2].Text) &&
+                    connection.End.X == Int32.Parse(selectedItem.SubItems[3].Text) &&
+                    connection.End.Y == Int32.Parse(selectedItem.SubItems[4].Text)) {
+
+                    connection.Highlight = true;
+                    pictureBox1.Invalidate();
+
+                }
+                else {
+
+                    connection.Highlight = false;
+
+                }
+
+            }
+
+        }
+
+        private void spriteContextMenu_EnableOptions() {
+
+            bool isSprite = false;
+
+            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites) {
+
+                if (sprite.SpritePosition == cursor.position) {
+                    isSprite = true;
+                    break;
+                }
+
+            }
+
+            spriteContextMenu_FindInList.Enabled = isSprite;
+            spriteContextMenu_Remove.Enabled = isSprite;
+
+        }
+
+        private void spriteContextMenu_FindInList_Click(object sender, EventArgs e) {
+
+            SpriteComponent foundSprite = null;
+
+            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites) {
+
+                if (sprite.SpritePosition == cursor.position) {
+                    foundSprite = sprite;
+                    break;
+                }
+
+            }
+
+            foreach (ListViewItem item in spritesPlacedListView.Items) {
+
+                if (foundSprite.SpritePosition.X == Int32.Parse(item.SubItems[2].Text) &&
+                    foundSprite.SpritePosition.Y == Int32.Parse(item.SubItems[3].Text)) {
+
+                    item.Selected = true;
+                    item.EnsureVisible();
+                    spritesPlacedListView.Focus();
+                    break;
+
+                }
+
+            }
+
+        }
+
+        private void spriteContextMenu_Remove_Click(object sender, EventArgs e) {
+
+            SpriteComponent foundSprite = null;
+
+            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites) {
+
+                if (sprite.SpritePosition == cursor.position) {
+                    foundSprite = sprite;
+                    mapCollection.CurrentMap.Sprites.Remove(sprite);
+                    pictureBox1.Invalidate();
+                    break;
+                }
+
+            }
+
+            foreach (ListViewItem item in spritesPlacedListView.Items) {
+
+                if (foundSprite.SpritePosition.X == Int32.Parse(item.SubItems[2].Text) &&
+                    foundSprite.SpritePosition.Y == Int32.Parse(item.SubItems[3].Text)) {
+
+                    spritesPlacedListView.Items.Remove(item);
+                    spritesPlacedListView.Focus();
+                    break;
+
+                }
+
+            }
+
+        }
+
+        private void spritesContextMenu_Item_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            spritesListView.Items[(int)item.Tag].Selected = true;
+            spritesListView.Items[(int)item.Tag].EnsureVisible();
+
+        }
+
+
+        private void connectionContextMenu_EnableOptions() {
+
+            bool isConnection = false;
+
+            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors) {
+
+                if (connector.Start == cursor.position || connector.End == cursor.position) {
+                    isConnection = true;
+                    break;
+                }
+
+            }
+
+            connectionContextMenu_FindInList.Enabled = isConnection;
+            connectionContextMenu_Remove.Enabled = isConnection;
+
+        }
+
+        private void connectionContextMenu_FindInList_Click(object sender, EventArgs e) {
+
+            EnviromentAffectComponent foundConnector = null;
+
+            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors) {
+
+                if ((connector.Start == cursor.position) || (connector.End == cursor.position)) {
+                    foundConnector = connector;
+                    break;
+                }
+
+            }
+
+            foreach (ListViewItem item in connectionListView.Items) {
+
+                if (
+                    (foundConnector.Start.X == Int32.Parse(item.SubItems[1].Text) &&
+                     foundConnector.Start.Y == Int32.Parse(item.SubItems[2].Text) &&
+                     foundConnector.End.X == Int32.Parse(item.SubItems[3].Text) &&
+                     foundConnector.End.Y == Int32.Parse(item.SubItems[4].Text)) ||
+
+                     (foundConnector.End.X == Int32.Parse(item.SubItems[1].Text) &&
+                     foundConnector.End.Y == Int32.Parse(item.SubItems[2].Text) &&
+                     foundConnector.Start.X == Int32.Parse(item.SubItems[3].Text) &&
+                     foundConnector.Start.Y == Int32.Parse(item.SubItems[4].Text))
+                   ) { 
+
+                    item.Selected = true;
+                    item.EnsureVisible();
+                    connectionListView.Focus();
+                    break;
+
+                }
+
+            }
+
+        }
+
+
+        private void connectionContextMenu_Remove_Click(object sender, EventArgs e) {
+
+            EnviromentAffectComponent foundConnector = null;
+
+            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors) {
+
+                if ((connector.Start == cursor.position) || (connector.End == cursor.position)) {
+                    foundConnector = connector;
+                    mapCollection.CurrentMap.Connectors.Remove(connector);
+                    break;
+                }
+
+            }
+
+            foreach (ListViewItem item in connectionListView.Items) {
+
+                if (
+                    (foundConnector.Start.X == Int32.Parse(item.SubItems[1].Text) &&
+                     foundConnector.Start.Y == Int32.Parse(item.SubItems[2].Text) &&
+                     foundConnector.End.X == Int32.Parse(item.SubItems[3].Text) &&
+                     foundConnector.End.Y == Int32.Parse(item.SubItems[4].Text)) ||
+
+                     (foundConnector.End.X == Int32.Parse(item.SubItems[1].Text) &&
+                     foundConnector.End.Y == Int32.Parse(item.SubItems[2].Text) &&
+                     foundConnector.Start.X == Int32.Parse(item.SubItems[3].Text) &&
+                     foundConnector.Start.Y == Int32.Parse(item.SubItems[4].Text))
+                   ) {
+
+                    connectionListView.Items.Remove(item);
+                    connectionListView.Focus();
+                    break;
+
+                }
+
+            }
+
+        }
+
+        private void tilesContextMenu_EnableOptions() {
+
+            bool isTile = false;
+
+            map.point.Point mapPoint = new map.point.Point(cursor.position.X, cursor.position.Y);
+            BaseMapComponent tile = mapCollection.CurrentMap.GetTile(mapPoint);
+
+            if (tile.tileID != -1) {
+                isTile = true;
+            }
+
+            tilesContextMenu_FindInList.Enabled = isTile;
+            tilesContextMenu_Remove.Enabled = isTile;
+
+        }
+
+        private void tilesContextMenu_Item_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            tilesListView.Items[(int)item.Tag].Selected = true;
+            tilesListView.Items[(int)item.Tag].EnsureVisible();
+
+        }
+
+        private void tilesContextMenu_FindInList_Click(object sender, EventArgs e) {
+
+            map.point.Point mapPoint = new map.point.Point(cursor.position.X, cursor.position.Y);
+            BaseMapComponent foundTile = mapCollection.CurrentMap.GetTile(mapPoint);
+
+            foreach (ListViewItem item in tilesListView.Items) {
+
+                if (foundTile.tileID == Int32.Parse(item.SubItems[1].Text)) { 
+
+                    item.Selected = true;
+                    item.EnsureVisible();
+                    tilesListView.Focus();
+                    break;
+
+                }
+
+            }
+
+        }
+
+        private void tilesContextMenu_Remove_Click(object sender, EventArgs e) {
+
+            map.point.Point mapPoint = new map.point.Point(cursor.position.X, cursor.position.Y);
+            mapCollection.CurrentMap.SetTile(mapPoint, 0);
 
         }
 

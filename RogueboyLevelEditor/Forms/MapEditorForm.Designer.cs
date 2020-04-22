@@ -81,10 +81,10 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesPlaced_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
+            this.removeSprite = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
-            this.ConnectionListView = new System.Windows.Forms.ListView();
+            this.removeConnection = new System.Windows.Forms.Button();
+            this.connectionListView = new System.Windows.Forms.ListView();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -97,11 +97,25 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.spriteContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.spriteContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
+            this.spriteContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.connectionContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.connectionContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectionContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.tilesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tilesContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tilesContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.spriteContextMenu.SuspendLayout();
+            this.connectionContextMenu.SuspendLayout();
+            this.tilesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -115,7 +129,7 @@
             this.helpMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(740, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(740, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -128,14 +142,14 @@
             this.toolStripMenuItem3,
             this.FileExitMenu});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(50, 29);
+            this.fileMenu.Size = new System.Drawing.Size(37, 20);
             this.fileMenu.Text = "&File";
             // 
             // fileLoadMenu
             // 
             this.fileLoadMenu.Name = "fileLoadMenu";
             this.fileLoadMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.fileLoadMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileLoadMenu.Size = new System.Drawing.Size(159, 22);
             this.fileLoadMenu.Text = "Load";
             this.fileLoadMenu.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -143,26 +157,26 @@
             // 
             this.fileSaveMenu.Name = "fileSaveMenu";
             this.fileSaveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.fileSaveMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileSaveMenu.Size = new System.Drawing.Size(159, 22);
             this.fileSaveMenu.Text = "Save File";
             this.fileSaveMenu.Click += new System.EventHandler(this.fileSaveMenu_Click);
             // 
             // fileSaveAsMenu
             // 
             this.fileSaveAsMenu.Name = "fileSaveAsMenu";
-            this.fileSaveAsMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileSaveAsMenu.Size = new System.Drawing.Size(159, 22);
             this.fileSaveAsMenu.Text = "Save File As ...";
             this.fileSaveAsMenu.Click += new System.EventHandler(this.fileSaveAsMenu_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(222, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(156, 6);
             // 
             // FileExitMenu
             // 
             this.FileExitMenu.Name = "FileExitMenu";
-            this.FileExitMenu.Size = new System.Drawing.Size(225, 30);
+            this.FileExitMenu.Size = new System.Drawing.Size(159, 22);
             this.FileExitMenu.Text = "E&xit";
             this.FileExitMenu.Click += new System.EventHandler(this.fileExistMenu_Click);
             // 
@@ -171,14 +185,14 @@
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mapPropertysToolStripMenuItem});
             this.editMenu.Name = "editMenu";
-            this.editMenu.Size = new System.Drawing.Size(54, 29);
+            this.editMenu.Size = new System.Drawing.Size(39, 20);
             this.editMenu.Text = "&Edit";
             // 
             // mapPropertysToolStripMenuItem
             // 
             this.mapPropertysToolStripMenuItem.Name = "mapPropertysToolStripMenuItem";
             this.mapPropertysToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.mapPropertysToolStripMenuItem.Text = "Map Properties";
             this.mapPropertysToolStripMenuItem.Click += new System.EventHandler(this.mapPropertysToolStripMenuItem_Click);
             // 
@@ -191,41 +205,41 @@
             this.viewConnectionsMenu,
             this.viewPlayerStartMenu});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(61, 29);
+            this.viewMenu.Size = new System.Drawing.Size(44, 20);
             this.viewMenu.Text = "&View";
             // 
             // viewOutOfBoundsMenu
             // 
             this.viewOutOfBoundsMenu.Name = "viewOutOfBoundsMenu";
-            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(153, 22);
             this.viewOutOfBoundsMenu.Text = "&Out Of Bounds";
             this.viewOutOfBoundsMenu.Click += new System.EventHandler(this.viewOutOfBoundsMenu_Click);
             // 
             // viewTileMenu
             // 
             this.viewTileMenu.Name = "viewTileMenu";
-            this.viewTileMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewTileMenu.Size = new System.Drawing.Size(153, 22);
             this.viewTileMenu.Text = "&Tiles";
             this.viewTileMenu.Click += new System.EventHandler(this.viewTileMenu_Click);
             // 
             // viewSpritesMenu
             // 
             this.viewSpritesMenu.Name = "viewSpritesMenu";
-            this.viewSpritesMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewSpritesMenu.Size = new System.Drawing.Size(153, 22);
             this.viewSpritesMenu.Text = "&Sprites";
             this.viewSpritesMenu.Click += new System.EventHandler(this.viewSpritesMenu_Click);
             // 
             // viewConnectionsMenu
             // 
             this.viewConnectionsMenu.Name = "viewConnectionsMenu";
-            this.viewConnectionsMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewConnectionsMenu.Size = new System.Drawing.Size(153, 22);
             this.viewConnectionsMenu.Text = "&Connections";
             this.viewConnectionsMenu.Click += new System.EventHandler(this.viewConnectionsMenu_Click);
             // 
             // viewPlayerStartMenu
             // 
             this.viewPlayerStartMenu.Name = "viewPlayerStartMenu";
-            this.viewPlayerStartMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewPlayerStartMenu.Size = new System.Drawing.Size(153, 22);
             this.viewPlayerStartMenu.Text = "&Player Start";
             this.viewPlayerStartMenu.Click += new System.EventHandler(this.viewPlayerStartMenu_Click);
             // 
@@ -239,32 +253,32 @@
             this.mapMoveDownMenu,
             this.toolStripMenuItem2});
             this.mapsMenu.Name = "mapsMenu";
-            this.mapsMenu.Size = new System.Drawing.Size(68, 29);
+            this.mapsMenu.Size = new System.Drawing.Size(48, 20);
             this.mapsMenu.Text = "&Maps";
             // 
             // mapAddMenu
             // 
             this.mapAddMenu.Name = "mapAddMenu";
-            this.mapAddMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapAddMenu.Size = new System.Drawing.Size(138, 22);
             this.mapAddMenu.Text = "&Add Map";
             this.mapAddMenu.Click += new System.EventHandler(this.mapAddMenu_Click);
             // 
             // mapDeleteMenu
             // 
             this.mapDeleteMenu.Name = "mapDeleteMenu";
-            this.mapDeleteMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapDeleteMenu.Size = new System.Drawing.Size(138, 22);
             this.mapDeleteMenu.Text = "&Delete Map";
             this.mapDeleteMenu.Click += new System.EventHandler(this.mapDeleteMenu_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(249, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
             // 
             // mapMoveUpMenu
             // 
             this.mapMoveUpMenu.Name = "mapMoveUpMenu";
-            this.mapMoveUpMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(138, 22);
             this.mapMoveUpMenu.Tag = "KeepOpen";
             this.mapMoveUpMenu.Text = "Move &Up";
             this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
@@ -272,7 +286,7 @@
             // mapMoveDownMenu
             // 
             this.mapMoveDownMenu.Name = "mapMoveDownMenu";
-            this.mapMoveDownMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(138, 22);
             this.mapMoveDownMenu.Tag = "KeepOpen";
             this.mapMoveDownMenu.Text = "Move &Down";
             this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
@@ -280,12 +294,12 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(249, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(135, 6);
             // 
             // helpMenu
             // 
             this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(61, 29);
+            this.helpMenu.Size = new System.Drawing.Size(44, 20);
             this.helpMenu.Text = "&Help";
             // 
             // groupBox1
@@ -312,7 +326,7 @@
             this.playerStartButton.Image = ((System.Drawing.Image)(resources.GetObject("playerStartButton.Image")));
             this.playerStartButton.Location = new System.Drawing.Point(602, 24);
             this.playerStartButton.Name = "playerStartButton";
-            this.playerStartButton.Size = new System.Drawing.Size(101, 46);
+            this.playerStartButton.Size = new System.Drawing.Size(71, 39);
             this.playerStartButton.TabIndex = 8;
             this.playerStartButton.Text = "Player Start";
             this.playerStartButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -326,7 +340,7 @@
             this.radioButton7.Image = ((System.Drawing.Image)(resources.GetObject("radioButton7.Image")));
             this.radioButton7.Location = new System.Drawing.Point(344, 24);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(57, 46);
+            this.radioButton7.Size = new System.Drawing.Size(42, 39);
             this.radioButton7.TabIndex = 7;
             this.radioButton7.Text = "Edge";
             this.radioButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -340,7 +354,7 @@
             this.radioButton6.Image = ((System.Drawing.Image)(resources.GetObject("radioButton6.Image")));
             this.radioButton6.Location = new System.Drawing.Point(272, 24);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(92, 46);
+            this.radioButton6.Size = new System.Drawing.Size(66, 39);
             this.radioButton6.TabIndex = 6;
             this.radioButton6.Text = "Rectangle";
             this.radioButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -366,7 +380,7 @@
             this.radioButton5.Image = ((System.Drawing.Image)(resources.GetObject("radioButton5.Image")));
             this.radioButton5.Location = new System.Drawing.Point(120, 24);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(79, 46);
+            this.radioButton5.Size = new System.Drawing.Size(60, 39);
             this.radioButton5.TabIndex = 4;
             this.radioButton5.Text = "Move To";
             this.radioButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -380,7 +394,7 @@
             this.radioButton4.Image = ((System.Drawing.Image)(resources.GetObject("radioButton4.Image")));
             this.radioButton4.Location = new System.Drawing.Point(530, 24);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(95, 46);
+            this.radioButton4.Size = new System.Drawing.Size(68, 39);
             this.radioButton4.TabIndex = 3;
             this.radioButton4.Text = "Sprite Tool";
             this.radioButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -394,7 +408,7 @@
             this.radioButton3.Image = ((System.Drawing.Image)(resources.GetObject("radioButton3.Image")));
             this.radioButton3.Location = new System.Drawing.Point(429, 24);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(134, 46);
+            this.radioButton3.Size = new System.Drawing.Size(95, 39);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "Connection Tool";
             this.radioButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -408,7 +422,7 @@
             this.radioButton2.Image = ((System.Drawing.Image)(resources.GetObject("radioButton2.Image")));
             this.radioButton2.Location = new System.Drawing.Point(70, 24);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 46);
+            this.radioButton2.Size = new System.Drawing.Size(44, 39);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.Text = "Erase";
             this.radioButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -423,7 +437,7 @@
             this.radioButton1.Image = ((System.Drawing.Image)(resources.GetObject("radioButton1.Image")));
             this.radioButton1.Location = new System.Drawing.Point(6, 24);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 46);
+            this.radioButton1.Size = new System.Drawing.Size(58, 39);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Tile Tool";
@@ -447,6 +461,7 @@
             this.tilesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.tilesListView.HideSelection = false;
             this.tilesListView.Location = new System.Drawing.Point(352, 114);
+            this.tilesListView.MultiSelect = false;
             this.tilesListView.Name = "tilesListView";
             this.tilesListView.Size = new System.Drawing.Size(376, 323);
             this.tilesListView.TabIndex = 3;
@@ -503,6 +518,7 @@
             this.spritesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesListView.HideSelection = false;
             this.spritesListView.Location = new System.Drawing.Point(423, 114);
+            this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
             this.spritesListView.Size = new System.Drawing.Size(305, 131);
             this.spritesListView.TabIndex = 4;
@@ -548,12 +564,14 @@
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
             this.spritesPlacedListView.Location = new System.Drawing.Point(423, 251);
+            this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
             this.spritesPlacedListView.Size = new System.Drawing.Size(305, 186);
             this.spritesPlacedListView.TabIndex = 5;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
             this.spritesPlacedListView.Visible = false;
+            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
             // 
             // SpritePicture
             // 
@@ -582,16 +600,16 @@
             // 
             this.spritesPlaced_HealthColumn.Text = "Health";
             // 
-            // button2
+            // removeSprite
             // 
-            this.button2.Location = new System.Drawing.Point(352, 114);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 42);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Remove Sprite";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.removeSprite.Location = new System.Drawing.Point(352, 114);
+            this.removeSprite.Name = "removeSprite";
+            this.removeSprite.Size = new System.Drawing.Size(65, 42);
+            this.removeSprite.TabIndex = 6;
+            this.removeSprite.Text = "Remove Sprite";
+            this.removeSprite.UseVisualStyleBackColor = true;
+            this.removeSprite.Visible = false;
+            this.removeSprite.Click += new System.EventHandler(this.removeSprite_Click);
             // 
             // saveFileDialog1
             // 
@@ -599,38 +617,40 @@
             this.saveFileDialog1.FileName = "Maps.h";
             this.saveFileDialog1.Filter = "C++ Header|*.h";
             // 
-            // button3
+            // removeConnection
             // 
-            this.button3.Location = new System.Drawing.Point(352, 114);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 42);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Remove Connector";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.removeConnection.Location = new System.Drawing.Point(352, 114);
+            this.removeConnection.Name = "removeConnection";
+            this.removeConnection.Size = new System.Drawing.Size(65, 42);
+            this.removeConnection.TabIndex = 7;
+            this.removeConnection.Text = "Remove Connector";
+            this.removeConnection.UseVisualStyleBackColor = true;
+            this.removeConnection.Visible = false;
+            this.removeConnection.Click += new System.EventHandler(this.removeConnection_Click);
             // 
-            // ConnectionListView
+            // connectionListView
             // 
-            this.ConnectionListView.AutoArrange = false;
-            this.ConnectionListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConnectionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.connectionListView.AutoArrange = false;
+            this.connectionListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.connectionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader12,
             this.columnHeader8,
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11});
-            this.ConnectionListView.FullRowSelect = true;
-            this.ConnectionListView.GridLines = true;
-            this.ConnectionListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.ConnectionListView.HideSelection = false;
-            this.ConnectionListView.Location = new System.Drawing.Point(423, 114);
-            this.ConnectionListView.Name = "ConnectionListView";
-            this.ConnectionListView.Size = new System.Drawing.Size(305, 323);
-            this.ConnectionListView.TabIndex = 8;
-            this.ConnectionListView.UseCompatibleStateImageBehavior = false;
-            this.ConnectionListView.View = System.Windows.Forms.View.Details;
-            this.ConnectionListView.Visible = false;
+            this.connectionListView.FullRowSelect = true;
+            this.connectionListView.GridLines = true;
+            this.connectionListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.connectionListView.HideSelection = false;
+            this.connectionListView.Location = new System.Drawing.Point(423, 114);
+            this.connectionListView.MultiSelect = false;
+            this.connectionListView.Name = "connectionListView";
+            this.connectionListView.Size = new System.Drawing.Size(305, 323);
+            this.connectionListView.TabIndex = 8;
+            this.connectionListView.UseCompatibleStateImageBehavior = false;
+            this.connectionListView.View = System.Windows.Forms.View.Details;
+            this.connectionListView.Visible = false;
+            this.connectionListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.connectionListView_ItemSelectionChanged);
             // 
             // columnHeader12
             // 
@@ -676,9 +696,9 @@
             this.currentMapLabel,
             this.toolStripStatusLabel1,
             this.currentFileLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 447);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 455);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(740, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(740, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -686,34 +706,118 @@
             // 
             this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.currentMapLabel.Name = "currentMapLabel";
-            this.currentMapLabel.Size = new System.Drawing.Size(0, 25);
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 25);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(23, 17);
             this.toolStripStatusLabel1.Text = " in ";
             // 
             // currentFileLabel
             // 
             this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(112, 25);
+            this.currentFileLabel.Size = new System.Drawing.Size(74, 17);
             this.currentFileLabel.Text = "< New File >";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // spriteContextMenu
+            // 
+            this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spriteContextMenu_FindInList,
+            this.spriteContextMenu_Remove,
+            this.toolStripMenuItem4});
+            this.spriteContextMenu.Name = "spriteContextMenu";
+            this.spriteContextMenu.Size = new System.Drawing.Size(132, 54);
+            // 
+            // spriteContextMenu_FindInList
+            // 
+            this.spriteContextMenu_FindInList.Enabled = false;
+            this.spriteContextMenu_FindInList.Name = "spriteContextMenu_FindInList";
+            this.spriteContextMenu_FindInList.Size = new System.Drawing.Size(131, 22);
+            this.spriteContextMenu_FindInList.Text = "&Find In List";
+            this.spriteContextMenu_FindInList.Click += new System.EventHandler(this.spriteContextMenu_FindInList_Click);
+            // 
+            // spriteContextMenu_Remove
+            // 
+            this.spriteContextMenu_Remove.Enabled = false;
+            this.spriteContextMenu_Remove.Name = "spriteContextMenu_Remove";
+            this.spriteContextMenu_Remove.Size = new System.Drawing.Size(131, 22);
+            this.spriteContextMenu_Remove.Text = "&Remove";
+            this.spriteContextMenu_Remove.Click += new System.EventHandler(this.spriteContextMenu_Remove_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(128, 6);
+            // 
+            // connectionContextMenu
+            // 
+            this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectionContextMenu_FindInList,
+            this.connectionContextMenu_Remove});
+            this.connectionContextMenu.Name = "connectionContextMenu";
+            this.connectionContextMenu.Size = new System.Drawing.Size(132, 48);
+            // 
+            // connectionContextMenu_FindInList
+            // 
+            this.connectionContextMenu_FindInList.Enabled = false;
+            this.connectionContextMenu_FindInList.Name = "connectionContextMenu_FindInList";
+            this.connectionContextMenu_FindInList.Size = new System.Drawing.Size(131, 22);
+            this.connectionContextMenu_FindInList.Text = "&Find In List";
+            this.connectionContextMenu_FindInList.Click += new System.EventHandler(this.connectionContextMenu_FindInList_Click);
+            // 
+            // connectionContextMenu_Remove
+            // 
+            this.connectionContextMenu_Remove.Enabled = false;
+            this.connectionContextMenu_Remove.Name = "connectionContextMenu_Remove";
+            this.connectionContextMenu_Remove.Size = new System.Drawing.Size(131, 22);
+            this.connectionContextMenu_Remove.Text = "&Remove";
+            this.connectionContextMenu_Remove.Click += new System.EventHandler(this.connectionContextMenu_Remove_Click);
+            // 
+            // tilesContextMenu
+            // 
+            this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tilesContextMenu_FindInList,
+            this.tilesContextMenu_Remove,
+            this.toolStripMenuItem5});
+            this.tilesContextMenu.Name = "tilesContextMenu";
+            this.tilesContextMenu.Size = new System.Drawing.Size(132, 54);
+            // 
+            // tilesContextMenu_FindInList
+            // 
+            this.tilesContextMenu_FindInList.Enabled = false;
+            this.tilesContextMenu_FindInList.Name = "tilesContextMenu_FindInList";
+            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(131, 22);
+            this.tilesContextMenu_FindInList.Text = "&Find In List";
+            this.tilesContextMenu_FindInList.Click += new System.EventHandler(this.tilesContextMenu_FindInList_Click);
+            // 
+            // tilesContextMenu_Remove
+            // 
+            this.tilesContextMenu_Remove.Enabled = false;
+            this.tilesContextMenu_Remove.Name = "tilesContextMenu_Remove";
+            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(131, 22);
+            this.tilesContextMenu_Remove.Text = "&Remove";
+            this.tilesContextMenu_Remove.Click += new System.EventHandler(this.tilesContextMenu_Remove_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(128, 6);
+            // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(740, 477);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.ConnectionListView);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.connectionListView);
+            this.Controls.Add(this.removeConnection);
+            this.Controls.Add(this.removeSprite);
             this.Controls.Add(this.spritesPlacedListView);
             this.Controls.Add(this.spritesListView);
             this.Controls.Add(this.tilesListView);
@@ -736,6 +840,9 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.spriteContextMenu.ResumeLayout(false);
+            this.connectionContextMenu.ResumeLayout(false);
+            this.tilesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -783,10 +890,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         public System.Windows.Forms.ListView spritesPlacedListView;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button removeSprite;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button button3;
-        public System.Windows.Forms.ListView ConnectionListView;
+        private System.Windows.Forms.Button removeConnection;
+        public System.Windows.Forms.ListView connectionListView;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
@@ -810,5 +917,16 @@
         private System.Windows.Forms.ColumnHeader spritesPlaced_HealthColumn;
         private System.Windows.Forms.ColumnHeader SpriteHealth;
         private System.Windows.Forms.RadioButton playerStartButton;
+        private System.Windows.Forms.ContextMenuStrip spriteContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem spriteContextMenu_FindInList;
+        private System.Windows.Forms.ToolStripMenuItem spriteContextMenu_Remove;
+        private System.Windows.Forms.ContextMenuStrip connectionContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem connectionContextMenu_FindInList;
+        private System.Windows.Forms.ToolStripMenuItem connectionContextMenu_Remove;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ContextMenuStrip tilesContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_FindInList;
+        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_Remove;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
     }
 }

@@ -61,7 +61,7 @@ namespace RogueboyLevelEditor.map.Tools
                 newItem.SubItems.Add(env.Start.Y.ToString());
                 newItem.SubItems.Add(env.End.X.ToString());
                 newItem.SubItems.Add(env.End.Y.ToString());
-                ParentForm.ConnectionListView.Items.Add(newItem);
+                ParentForm.connectionListView.Items.Add(newItem);
 
                 
                 First = false;
