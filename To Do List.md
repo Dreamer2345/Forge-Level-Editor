@@ -13,6 +13,10 @@ Health is a `uint8_t`.
 * [ ] Allow the user to be able to zoom into the grid (it is really hard to see on some resolutions).
 ** This will mean having to redo rendering entirely
 
+## Bugs
+* [ ] Edge tool rendering is broken (see #18)
+* [ ] 'Centre Map' and 'Player Start' icons have gone missing (see #19)
+
 ## Tools
 * [ ] Add drag-based move tool (see #12)
 * [ ] Add eye-dropper tool (see #16)
