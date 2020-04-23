@@ -20,35 +20,31 @@ namespace RogueboyLevelEditor.Forms
     public partial class MapEditorForm : Form
     {
         const String keepOpen = "KeepOpen";
+        const int spacing = 6;
+
         MapCollection mapCollection;
         TileCursor cursor;
         Tool tool;
 
-        void AddTextures()
-        {
+        void AddTextures() {
             TextureManager textureManager = new TextureManager();
             ExceptionReport exception = textureManager.Load(Directory.GetCurrentDirectory() + "/Config/TextureAssignments.xml");
-            if (exception.Failed)
-            {
+            if (exception.Failed) {
                 MessageBox.Show(exception.exception.ToString(), "Error loading Textures", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        void AddTiles()
-        {
+        void AddTiles() {
             TileManager tileManager = new TileManager();
             ExceptionReport exception = tileManager.Load(Directory.GetCurrentDirectory() + "/Config/TileAssignments.xml");
-            if (exception.Failed)
-            {
+            if (exception.Failed) {
                 MessageBox.Show(exception.exception.ToString(), "Error loading Tiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
-        void AddSprites()
-        {
+        void AddSprites() {
             SpriteManager spriteManager = new SpriteManager();
             ExceptionReport exception = spriteManager.Load(Directory.GetCurrentDirectory() + "/Config/SpriteAssignments.xml");
-            if (exception.Failed)
-            {
+            if (exception.Failed) {
                 MessageBox.Show(exception.exception.ToString(), "Error loading Sprites", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -63,69 +59,71 @@ namespace RogueboyLevelEditor.Forms
             AddSprites();
             InitializeComponent();
 
-            mapsMenu.DropDown.ItemClicked += (obj, args) =>
-            {
+            mapsMenu.DropDown.ItemClicked += (obj, args) => {
                 if (args.ClickedItem.Tag is string tag)
                     mapsMenu.DropDown.AutoClose = (tag != keepOpen);
                 else
                     mapsMenu.DropDown.AutoClose = true;
             };
 
-            foreach(var toolStrip in mapsMenu.DropDownItems.OfType<ToolStripMenuItem>().Where(x => (x.Tag is string tag) && (tag == keepOpen)))
+            foreach (var toolStrip in mapsMenu.DropDownItems.OfType<ToolStripMenuItem>().Where(x => (x.Tag is string tag) && (tag == keepOpen)))
                 toolStrip.CheckedChanged +=
                     (obj, args) => mapsMenu.DropDown.AutoClose = true;
 
             mapsMenu.DropDown.MouseLeave += new System.EventHandler(this.mapsMenu_DropDown_MouseLeave);
 
+            //tilesFlowPanel.Dock = DockStyle.Fill;
+            //tilesListView.Dock = DockStyle.Fill;
+            spritesFlowPanel.Dock = DockStyle.Fill;
+            spritesFlowPanelVert.Dock = DockStyle.Fill;
+            connectionFlowPanel.Dock = DockStyle.Fill;
+
         }
-        public MapEditorForm(Map EditingMap)
-        {
-            mapCollection = new MapCollection();
-            mapCollection.FilePath = EditingMap.Filepath;
-            mapCollection.AddMap(EditingMap);
-            currentFileLabel.Text = EditingMap.Filepath;
-            cursor = new TileCursor();
-            AddTextures();
-            AddTiles();
-            AddSprites();
-            InitializeComponent();
-        }
-        public MapEditorForm(MapCollection EditingMaps)
-        {
-            mapCollection = EditingMaps;
-            cursor = new TileCursor();
-            AddTextures();
-            AddTiles();
-            AddSprites();
-            InitializeComponent();
-            
-            if(mapCollection.CurrentMap != null)
-            {
-                UpdateCurrentSprites();
-                UpdateCurrentConnectors();
-            }
-        }
-        void UpdateCurrentSprites()
-        {
+        //public MapEditorForm(Map EditingMap)
+        //{
+        //    mapCollection = new MapCollection();
+        //    mapCollection.FilePath = EditingMap.Filepath;
+        //    mapCollection.AddMap(EditingMap);
+        //    currentFileLabel.Text = EditingMap.Filepath;
+        //    cursor = new TileCursor();
+        //    AddTextures();
+        //    AddTiles();
+        //    AddSprites();
+        //    InitializeComponent();
+        //}
+        //public MapEditorForm(MapCollection EditingMaps)
+        //{
+        //    mapCollection = EditingMaps;
+        //    cursor = new TileCursor();
+        //    AddTextures();
+        //    AddTiles();
+        //    AddSprites();
+        //    InitializeComponent();
+
+        //    if(mapCollection.CurrentMap != null)
+        //    {
+        //        UpdateCurrentSprites();
+        //        UpdateCurrentConnectors();
+        //    }
+        //}
+        void UpdateCurrentSprites() {
             spritesPlacedListView.Items.Clear();
             SpriteManager sm = new SpriteManager();
-            foreach (SpriteComponent i in mapCollection.CurrentMap.Sprites)
-            {
+            foreach (SpriteComponent i in mapCollection.CurrentMap.Sprites) {
                 Sprite sprite = sm.GetSprite(i.Type);
                 ListViewItem newItem = new ListViewItem();
                 newItem.SubItems.Add(i.Type.ToString());
                 newItem.SubItems.Add(i.SpritePosition.X.ToString());
                 newItem.SubItems.Add(i.SpritePosition.Y.ToString());
                 newItem.SubItems.Add(i.Health.ToString());
+                newItem.SubItems.Add(sprite.Name);
                 newItem.ImageKey = sprite.TextureID;
                 spritesPlacedListView.Items.Add(newItem);
             }
         }
-        void UpdateCurrentConnectors()
-        {
+        void UpdateCurrentConnectors() {
             connectionListView.Items.Clear();
-            foreach (EnviromentAffectComponent i in mapCollection.CurrentMap.Connectors)
-            {
+            foreach (EnviromentAffectComponent i in mapCollection.CurrentMap.Connectors) {
                 EnviromentAffectComponent env = i;
                 ListViewItem newItem = new ListViewItem(env.IsValid.ToString());
                 newItem.SubItems.Add(env.Start.X.ToString());
@@ -135,8 +133,7 @@ namespace RogueboyLevelEditor.Forms
                 connectionListView.Items.Add(newItem);
             }
         }
-        void AddTilesToListView()
-        {
+        void AddTilesToListView() {
             TextureManager textureManager = new TextureManager();
             TileManager tileManager = new TileManager();
             List<Tuple<int, Tile>> Tiles = tileManager.GetAllTiles();
@@ -144,15 +141,13 @@ namespace RogueboyLevelEditor.Forms
             imageList.ImageSize = new Size(16, 16);
             imageList.TransparentColor = Color.FromArgb(255, 119, 168);
 
-            foreach (Tuple<int, Tile> i in Tiles)
-            {
+            foreach (Tuple<int, Tile> i in Tiles) {
                 imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
             }
 
             tilesListView.SmallImageList = imageList;
 
-            foreach (Tuple<int, Tile> i in Tiles)
-            {
+            foreach (Tuple<int, Tile> i in Tiles) {
                 ListViewItem newItem = new ListViewItem();
                 newItem.SubItems.Add(i.Item1.ToString());
                 newItem.SubItems.Add(i.Item2.Name);
@@ -163,8 +158,7 @@ namespace RogueboyLevelEditor.Forms
                 tilesListView.Items.Add(newItem);
             }
         }
-        void AddSpritesToListView()
-        {
+        void AddSpritesToListView() {
             TextureManager textureManager = new TextureManager();
             SpriteManager SpriteManager = new SpriteManager();
             List<Tuple<int, Sprite>> Tiles = SpriteManager.GetAllSprites();
@@ -172,15 +166,13 @@ namespace RogueboyLevelEditor.Forms
             imageList.ImageSize = new Size(16, 16);
             imageList.TransparentColor = Color.FromArgb(255, 119, 168);
 
-            foreach (Tuple<int, Sprite> i in Tiles)
-            {
+            foreach (Tuple<int, Sprite> i in Tiles) {
                 imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
             }
 
             spritesListView.SmallImageList = imageList;
             spritesPlacedListView.SmallImageList = imageList;
-            foreach (Tuple<int, Sprite> i in Tiles)
-            {
+            foreach (Tuple<int, Sprite> i in Tiles) {
                 ListViewItem newItem = new ListViewItem();
                 newItem.SubItems.Add(i.Item1.ToString());
                 newItem.SubItems.Add(i.Item2.Name);
@@ -189,8 +181,7 @@ namespace RogueboyLevelEditor.Forms
                 spritesListView.Items.Add(newItem);
             }
         }
-        void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
-        {
+        void AddMapToOpenWindows(Map map, Boolean selectMenuItem) {
             if (map == null) return;
             map.CentreMap();
 
@@ -208,8 +199,7 @@ namespace RogueboyLevelEditor.Forms
             }
 
         }
-        private void NewMenuButton_Click(object sender, EventArgs e)
-        {  
+        private void NewMenuButton_Click(object sender, EventArgs e) {
             ToolStripMenuItem menu = (ToolStripMenuItem)sender;
             Map chosenMap = (Map)menu.Tag;
 
@@ -226,8 +216,7 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void MapEditorForm_Load(object sender, EventArgs e)
-        {
+        private void MapEditorForm_Load(object sender, EventArgs e) {
             //this.FormClosing += MapEditorForm_FormClosing;
             pictureBox1.Paint += PictureBox1_Paint;
             pictureBox1.MouseMove += PictureBox1_MouseMove;
@@ -266,24 +255,20 @@ namespace RogueboyLevelEditor.Forms
             viewOutOfBoundsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
             viewTileMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
             viewSpritesMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-            viewConnectionsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick; 
+            viewConnectionsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
             viewPlayerStartMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
 
         }
-        private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (tool != null)
-            {
+        private void PictureBox1_MouseUp(object sender, MouseEventArgs e) {
+            if (tool != null) {
                 tool.MouseDown = false;
                 if (tool.Update())
                     pictureBox1.Invalidate();
             }
         }
 
-        private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (tool != null && e.Button == MouseButtons.Left)
-            {
+        private void PictureBox1_MouseDown(object sender, MouseEventArgs e) {
+            if (tool != null && e.Button == MouseButtons.Left) {
                 tool.MouseDown = true;
                 if (tool.Update())
                     pictureBox1.Invalidate();
@@ -291,11 +276,11 @@ namespace RogueboyLevelEditor.Forms
 
                 // Add the selected item to the context menu ..
 
-                if (tool is TileBrush) {
+                if (tool is TileBrush && tilesListView.SelectedItems.Count > 0) {
 
                     String tileName = tilesListView.SelectedItems[0].SubItems[2].Text;
 
-                    for (int i = 3; i < tilesContextMenu.Items.Count; i++) {
+                    for (int i = 6; i < tilesContextMenu.Items.Count; i++) {
 
                         ToolStripMenuItem menuItem = (ToolStripMenuItem)tilesContextMenu.Items[i];
 
@@ -314,13 +299,13 @@ namespace RogueboyLevelEditor.Forms
                     newMenuItem.Image = tilesListView.SmallImageList.Images[tilesListView.SelectedItems[0].ImageKey];
                     newMenuItem.Tag = tilesListView.SelectedItems[0].Index;
                     newMenuItem.Click += new System.EventHandler(tilesContextMenu_Item_Click);
-                    tilesContextMenu.Items.Insert(3, newMenuItem);
+                    tilesContextMenu.Items.Insert(6, newMenuItem);
 
                     if (tilesContextMenu.Items.Count > 11) { tilesContextMenu.Items.RemoveAt(10); }
 
                 }
 
-                if (tool is SpriteTool) {
+                if (tool is SpriteTool && spritesListView.SelectedItems.Count > 0) {
 
                     String spriteName = spritesListView.SelectedItems[0].SubItems[2].Text;
 
@@ -346,7 +331,7 @@ namespace RogueboyLevelEditor.Forms
                     spriteContextMenu.Items.Insert(3, newMenuItem);
 
                     if (spriteContextMenu.Items.Count > 11) { spriteContextMenu.Items.RemoveAt(10); }
-
+                    
                 }
 
             }
@@ -356,6 +341,13 @@ namespace RogueboyLevelEditor.Forms
                 cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
                 tilesContextMenu_EnableOptions();
                 tilesContextMenu.Show(Cursor.Position);
+
+                tilesContextMenu_Column.Enabled = true;
+                tilesContextMenu_ColumnInsert.Enabled = (mapCollection.CurrentMap.Width < 40);
+                tilesContextMenu_ColumnDelete.Enabled = (mapCollection.CurrentMap.Width > 1);
+                tilesContextMenu_Row.Enabled = true;
+                tilesContextMenu_RowInsert.Enabled = (mapCollection.CurrentMap.Height < 40);
+                tilesContextMenu_RowDelete.Enabled = (mapCollection.CurrentMap.Height > 1);
 
             }
 
@@ -376,127 +368,110 @@ namespace RogueboyLevelEditor.Forms
             }
 
         }
-        private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
+        private void PictureBox1_MouseMove(object sender, MouseEventArgs e) {
             cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
-            if (tool != null)
-            {
+            if (tool != null) {
                 tool.Position = cursor.position;
-                if(tool.Update())
+                if (tool.Update())
                     pictureBox1.Invalidate();
             }
 
-            if (cursor.PositionChanged)
-            {
+            if (cursor.PositionChanged) {
                 pictureBox1.Invalidate();
             }
         }
-        private void PictureBox1_Paint(object sender, PaintEventArgs e)
-        {
+        private void PictureBox1_Paint(object sender, PaintEventArgs e) {
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
             mapCollection.Draw(g);
-            cursor.Draw(g,mapCollection.CurrentMap);
+            cursor.Draw(g, mapCollection.CurrentMap);
             tool?.Draw(g);
             ControlPaint.DrawBorder(g, pictureBox1.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        }     
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+        }
+        private void pictureBox1_Click(object sender, EventArgs e) {
             pictureBox1.Invalidate();
         }
 
         //Tools
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton1.Checked)
-            {
+        private void tileToolRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (tileToolRadioButton.Checked) {
                 int TileId = -1;
                 if (tilesListView.SelectedItems.Count > 0)
                     TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
                 tool = new TileBrush(TileId, mapCollection.CurrentMap);
+                tilesFlowPanel.Visible = true;
                 tilesListView.Visible = true;
             }
-            else
-            {
+            else {
+                tilesFlowPanel.Visible = false;
                 tilesListView.Visible = false;
             }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton2.Checked)
-            {
+        private void eraseRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (eraseRadioButton.Checked) {
                 tool = new TileBrush(-1, mapCollection.CurrentMap);
             }
         }
 
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton5.Checked)
-            {
+        private void moveToRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (moveToRadioButton.Checked) {
                 tool = new MoveTool(mapCollection.CurrentMap);
             }
-            
+
         }
 
-        private void centreMap_Click(object sender, EventArgs e)
-        {
+        private void centreMap_Click(object sender, EventArgs e) {
             mapCollection.CurrentMap.CentreMap();
             pictureBox1.Invalidate();
         }
 
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton6.Checked)
-            {
+        private void rectangleRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (rectangleRadioButton.Checked) {
                 int TileId = -1;
                 if (tilesListView.SelectedItems.Count > 0)
                     TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-                tool = new TileRectangle(this,TileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
+                tool = new TileRectangle(this, TileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
+                tilesFlowPanel.Visible = true;
                 tilesListView.Visible = true;
             }
-            else
-            {
+            else {
+                tilesFlowPanel.Visible = false;
                 tilesListView.Visible = false;
             }
-            
+
         }
 
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
-        {
+        private void edgeRadioButton_CheckedChanged(object sender, EventArgs e) {
             pictureBox1.Invalidate();
-            if (radioButton7.Checked)
-            {
-                tool = new SurroundTool(mapCollection.CurrentMap,this);
+            if (edgeRadioButton.Checked) {
+                tool = new SurroundTool(mapCollection.CurrentMap, this);
                 mapCollection.CurrentMap.ShowOutOfBounds = true;
                 tilesListView.Visible = true;
             }
-            else
-            {
+            else {
                 mapCollection.CurrentMap.ShowOutOfBounds = false;
                 tilesListView.Visible = false;
             }
         }
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton3.Checked)
-            {
-                tool = new ConnectorTool(mapCollection.CurrentMap,this);
+        private void connectionToolRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (connectionToolRadioButton.Checked) {
+                tool = new ConnectorTool(mapCollection.CurrentMap, this);
+                connectionFlowPanel.Visible = true;
                 connectionListView.Visible = true;
                 removeConnection.Visible = true;
             }
-            else
-            {
+            else {
+                connectionFlowPanel.Visible = false;
                 connectionListView.Visible = false;
                 removeConnection.Visible = false;
             }
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton4.Checked)
-            {
-                tool = new SpriteTool(mapCollection.CurrentMap,this);
+        private void spriteToolRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (spriteToolRadioButton.Checked) {
+                tool = new SpriteTool(mapCollection.CurrentMap, this);
+                spritesFlowPanel.Visible = true;
                 spritesListView.Visible = true;
                 spritesPlacedListView.Visible = true;
                 removeSprite.Visible = true;
@@ -506,8 +481,8 @@ namespace RogueboyLevelEditor.Forms
                 }
 
             }
-            else
-            {
+            else {
+                spritesFlowPanel.Visible = false;
                 spritesListView.Visible = false;
                 spritesPlacedListView.Visible = false;
                 removeSprite.Visible = false;
@@ -516,13 +491,11 @@ namespace RogueboyLevelEditor.Forms
         //EndTools
 
         //Tile Tool Selection Pool Changed index
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(tilesListView.SelectedItems.Count > 0)
+        private void tilesListView_SelectedIndexChanged(object sender, EventArgs e) {
+            if (tilesListView.SelectedItems.Count > 0)
                 tool.SetBrush(int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text));
         }
-        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e) {
             //errorProvider1.Clear();
             openFileDialog.FileName = "Maps.h";
             openFileDialog.InitialDirectory = "/Maps";
@@ -592,13 +565,11 @@ namespace RogueboyLevelEditor.Forms
         }
 
 
-        private void fileExistMenu_Click(object sender, EventArgs e)
-        {
+        private void fileExistMenu_Click(object sender, EventArgs e) {
             this.Close();
         }
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        private void newToolStripMenuItem_Click(object sender, EventArgs e) {
+
             NewMapForm form = new NewMapForm(mapCollection, null, mapCollection.FilePath);
             form.Owner = this;
             form.callback += Form_callback;
@@ -606,10 +577,8 @@ namespace RogueboyLevelEditor.Forms
             this.Enabled = false;
         }
 
-        private void Form_callback(NewMapForm form)
-        {
-            if (form.Valid)
-            {
+        private void Form_callback(NewMapForm form) {
+            if (form.Valid) {
                 Map newMap = form.Output;
 
                 // Was this an existing map or a new one?
@@ -650,18 +619,16 @@ namespace RogueboyLevelEditor.Forms
                 UpdateCurrentConnectors();
                 pictureBox1.Invalidate();
                 pictureBox1.Refresh();
-                
+
             }
 
             form.CloseForm();
             this.Enabled = true;
             this.Focus();
         }
-        
-        private void removeSprite_Click(object sender, EventArgs e)
-        {
-            if (spritesPlacedListView.SelectedItems.Count > 0)
-            {
+
+        private void removeSprite_Click(object sender, EventArgs e) {
+            if (spritesPlacedListView.SelectedItems.Count > 0) {
                 int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
                 int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[2].Text);
                 int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
@@ -671,31 +638,25 @@ namespace RogueboyLevelEditor.Forms
             }
         }
 
-        private void fileSaveMenu_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(mapCollection.FileName))
-            {
+        private void fileSaveMenu_Click(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(mapCollection.FileName)) {
                 saveFileDialog1.InitialDirectory = mapCollection.FilePath;
                 saveFileDialog1.FileName = "Maps.h";
                 DialogResult result = saveFileDialog1.ShowDialog();
-                if(result == DialogResult.OK)
-                {
+                if (result == DialogResult.OK) {
                     mapCollection.FileName = System.IO.Path.GetFileName(saveFileDialog1.FileName);
                     mapCollection.FilePath = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
                     currentFileLabel.Text = saveFileDialog1.FileName;
                     mapCollection.SaveMaps();
                 }
             }
-            else
-            {
+            else {
                 mapCollection.SaveMaps();
             }
         }
 
-        private void removeConnection_Click(object sender, EventArgs e)
-        {
-            if (connectionListView.SelectedItems.Count > 0)
-            {
+        private void removeConnection_Click(object sender, EventArgs e) {
+            if (connectionListView.SelectedItems.Count > 0) {
                 int X = int.Parse(connectionListView.SelectedItems[0].SubItems[1].Text);
                 int Y = int.Parse(connectionListView.SelectedItems[0].SubItems[2].Text);
                 int X1 = int.Parse(connectionListView.SelectedItems[0].SubItems[3].Text);
@@ -707,8 +668,7 @@ namespace RogueboyLevelEditor.Forms
             }
         }
 
-        private void deleteMapToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void deleteMapToolStripMenuItem_Click(object sender, EventArgs e) {
             mapCollection.RemoveMap(mapCollection.CurrentMap);
             if (mapCollection.OpenCount > 0)
                 return;
@@ -717,8 +677,7 @@ namespace RogueboyLevelEditor.Forms
             this.Close();
         }
 
-        private void spritesListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void spritesListView_SelectedIndexChanged(object sender, EventArgs e) {
             if (spritesListView.SelectedItems.Count > 0) {
                 tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
             }
@@ -945,8 +904,8 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void playerStartButton_CheckedChanged(object sender, EventArgs e) {
-            if (playerStartButton.Checked) {
+        private void playerStartRadioButton_CheckedChanged(object sender, EventArgs e) {
+            if (playerStartRadioButton.Checked) {
                 tool = new PlayerPositionTool(mapCollection.CurrentMap);
             }
         }
@@ -1122,7 +1081,7 @@ namespace RogueboyLevelEditor.Forms
                      foundConnector.End.Y == Int32.Parse(item.SubItems[2].Text) &&
                      foundConnector.Start.X == Int32.Parse(item.SubItems[3].Text) &&
                      foundConnector.Start.Y == Int32.Parse(item.SubItems[4].Text))
-                   ) { 
+                   ) {
 
                     item.Selected = true;
                     item.EnsureVisible();
@@ -1205,7 +1164,7 @@ namespace RogueboyLevelEditor.Forms
 
             foreach (ListViewItem item in tilesListView.Items) {
 
-                if (foundTile.tileID == Int32.Parse(item.SubItems[1].Text)) { 
+                if (foundTile.tileID == Int32.Parse(item.SubItems[1].Text)) {
 
                     item.Selected = true;
                     item.EnsureVisible();
@@ -1225,6 +1184,205 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
+        private void overallTableLayout_SizeChanged(object sender, EventArgs e) {
+
+            TableLayoutPanelCellPosition pos = overallTableLayout.GetCellPosition(modeFlowPanel);
+            int width = overallTableLayout.GetColumnWidths()[pos.Column];
+            int height = overallTableLayout.GetRowHeights()[pos.Row];
+
+            modeFlowPanel.Height = height;
+            tilesFlowPanel.Height = height;
+            tilesFlowPanel.Width = width;
+            connectionFlowPanel.Height = height;
+            connectionFlowPanel.Width = width;
+            spritesFlowPanel.Height = height;
+            spritesFlowPanel.Width = width;
+
+            tilesListView.Height = height - spacing;
+            tilesListView.Width = width - spacing;
+            connectionListView.Height = height - spacing;
+            connectionListView.Width = width - removeConnection.Width - (spacing * 2);
+
+            spritesFlowPanelVert.Height = height - spacing;
+            spritesFlowPanelVert.Width = width - removeConnection.Width - (spacing * 3);
+
+            spritesListView.Height = (height / 2) - spacing;
+            spritesListView.Width = width - removeConnection.Width - (spacing * 2);
+            spritesPlacedListView.Height = (height / 2) - spacing;
+            spritesPlacedListView.Width = width - removeConnection.Width - (spacing * 2);
+
+            mapCollection.drawOffsetX = (pictureBox1.Width / 2) - 8;
+            mapCollection.drawOffsetY = (pictureBox1.Height / 2) - 8;
+            pictureBox1.Invalidate();
+
+        }
+
+        private void tilesContextMenu_ColumnInsert_Click(object sender, EventArgs e) {
+
+            mapCollection.CurrentMap.Width = mapCollection.CurrentMap.Width + 1;
+            tiles_ColumnInsert();
+
+
+        }
+
+        private void tilesContextMenu_ColumnMove_Click(object sender, EventArgs e) {
+
+            tiles_ColumnInsert();
+
+        }
+
+        private void tiles_ColumnInsert() {
+
+            int xPos = cursor.position.X;
+
+            for (int x = mapCollection.CurrentMap.Width - 1; x >= xPos; x--) {
+
+                for (int y = 0; y < mapCollection.CurrentMap.Height; y++) {
+
+                    RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, y);
+
+                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
+                    point.X = point.X + 1;
+
+                    mapCollection.CurrentMap.SetTile(point, id);
+
+                }
+
+            }
+
+            for (int y = 0; y < mapCollection.CurrentMap.Height; y++) {
+
+                RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(xPos, y);
+                mapCollection.CurrentMap.SetTile(point, -1);
+
+            }
+
+        }
+
+        private void tilesContextMenu_ColumnDelete_Click(object sender, EventArgs e) {
+
+            tiles_ColumnDelete();
+            mapCollection.CurrentMap.Width = mapCollection.CurrentMap.Width - 1;
+
+        }
+
+        private void tilesContextMenu_ColumnMoveLeft_Click(object sender, EventArgs e) {
+
+            tiles_ColumnDelete();
+
+            for (int y = 0; y < mapCollection.CurrentMap.Height; y++) {
+
+                RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(mapCollection.CurrentMap.Width - 1, y);
+                mapCollection.CurrentMap.SetTile(point, -1);
+
+            }
+
+        }
+
+        private void tiles_ColumnDelete() {
+
+            int xPos = cursor.position.X;
+
+            for (int x = xPos + 1; x < mapCollection.CurrentMap.Width; x++) {
+
+                for (int y = 0; y < mapCollection.CurrentMap.Height; y++) {
+
+                    RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, y);
+
+                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
+                    point.X = point.X - 1;
+
+                    mapCollection.CurrentMap.SetTile(point, id);
+
+                }
+
+            }
+        }
+
+
+        private void tilesContextMenu_RowInsert_Click(object sender, EventArgs e) {
+
+            mapCollection.CurrentMap.Height = mapCollection.CurrentMap.Height + 1;
+            tiles_RowInsert();
+
+
+        }
+
+        private void tilesContextMenu_RowMoveDown_Click(object sender, EventArgs e) {
+
+            tiles_RowInsert();
+
+        }
+
+        private void tiles_RowInsert() {
+
+            int yPos = cursor.position.Y;
+
+            for (int y = mapCollection.CurrentMap.Height - 1; y >= yPos; y--) {
+
+                for (int x = 0; x < mapCollection.CurrentMap.Width; x++) {
+
+                    RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, y);
+
+                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
+                    point.Y = point.Y + 1;
+
+                    mapCollection.CurrentMap.SetTile(point, id);
+
+                }
+
+            }
+
+            for (int x = 0; x < mapCollection.CurrentMap.Width; x++) {
+
+                RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, yPos);
+                mapCollection.CurrentMap.SetTile(point, -1);
+
+            }
+
+        }
+
+        private void tilesContextMenu_RowDelete_Click(object sender, EventArgs e) {
+
+            tiles_RowDelete();
+            mapCollection.CurrentMap.Height = mapCollection.CurrentMap.Height - 1;
+
+        }
+
+        private void tilesContextMenu_RowMoveUp_Click(object sender, EventArgs e) {
+
+            tiles_RowDelete();
+
+            for (int x = 0; x < mapCollection.CurrentMap.Width; x++) {
+
+                RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, mapCollection.CurrentMap.Height - 1);
+                mapCollection.CurrentMap.SetTile(point, -1);
+
+            }
+
+        }
+
+        private void tiles_RowDelete() {
+
+            int yPos = cursor.position.Y;
+
+            for (int y = yPos + 1; y < mapCollection.CurrentMap.Height; y++) {
+
+                for (int x = 0; x < mapCollection.CurrentMap.Width; x++) {
+
+                    RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, y);
+
+                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
+                    point.Y = point.Y - 1;
+
+                    mapCollection.CurrentMap.SetTile(point, id);
+
+                }
+
+            }
+
+        }
+        
     }
 
 }

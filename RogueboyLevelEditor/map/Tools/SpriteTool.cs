@@ -55,6 +55,7 @@ namespace RogueboyLevelEditor.map.Tools
                 newItem.SubItems.Add(Position.X.ToString());
                 newItem.SubItems.Add(Position.Y.ToString());
                 newItem.SubItems.Add(health.ToString());
+                newItem.SubItems.Add(sprite.Name);
                 newItem.ImageKey = sprite.TextureID;
                 ParentForm.spritesPlacedListView.Items.Add(newItem);
                 //ParentForm.listBox1.Items.Add(currentSprite + ":"+Position.X+":"+Position.Y+":" + sm.GetSprite(currentSprite).Name);
