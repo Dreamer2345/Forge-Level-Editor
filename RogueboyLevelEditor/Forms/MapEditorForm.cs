@@ -331,30 +331,34 @@ namespace RogueboyLevelEditor.Forms
 
                 if (tool is SpriteTool) {
 
-                    String spriteName = spritesListView.SelectedItems[0].SubItems[2].Text;
+                    if (spritesListView.SelectedItems.Count > 0) {
 
-                    for (int i = 3; i < spriteContextMenu.Items.Count; i++) {
+                        String spriteName = spritesListView.SelectedItems[0].SubItems[2].Text;
 
-                        ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteContextMenu.Items[i];
+                        for (int i = 3; i < spriteContextMenu.Items.Count; i++) {
 
-                        if (menuItem.Text == spriteName) {
+                            ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteContextMenu.Items[i];
 
-                            spriteContextMenu.Items.Remove(menuItem);
-                            break;
+                            if (menuItem.Text == spriteName) {
+
+                                spriteContextMenu.Items.Remove(menuItem);
+                                break;
+
+                            }
 
                         }
+                                               
+
+                        ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
+                        newMenuItem.Text = spriteName;
+                        newMenuItem.Image = spritesListView.SmallImageList.Images[spritesListView.SelectedItems[0].ImageKey];
+                        newMenuItem.Tag = spritesListView.SelectedItems[0].Index;
+                        newMenuItem.Click += new System.EventHandler(spritesContextMenu_Item_Click);
+                        spriteContextMenu.Items.Insert(3, newMenuItem);
+
+                        if (spriteContextMenu.Items.Count > 11) { spriteContextMenu.Items.RemoveAt(10); }
 
                     }
-
-
-                    ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
-                    newMenuItem.Text = spriteName;
-                    newMenuItem.Image = spritesListView.SmallImageList.Images[spritesListView.SelectedItems[0].ImageKey];
-                    newMenuItem.Tag = spritesListView.SelectedItems[0].Index;
-                    newMenuItem.Click += new System.EventHandler(spritesContextMenu_Item_Click);
-                    spriteContextMenu.Items.Insert(3, newMenuItem);
-
-                    if (spriteContextMenu.Items.Count > 11) { spriteContextMenu.Items.RemoveAt(10); }
 
                 }
 
