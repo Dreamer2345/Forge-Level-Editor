@@ -639,5 +639,10 @@
     <filepath>Textures/Sprites/Snake.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
+  <texture>
+    <id>necromancer</id>
+    <filepath>Textures/Sprites/Necromancer.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
 
 </textures>

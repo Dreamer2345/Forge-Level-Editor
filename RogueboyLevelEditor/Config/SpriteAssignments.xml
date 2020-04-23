@@ -132,5 +132,10 @@
     <texture>snake</texture>
     <health>20</health>
   </sprite>
-
+  <sprite>
+    <name>Necromancer</name>
+    <id>22</id>
+    <texture>necromancer</texture>
+    <health>60</health>
+  </sprite>
 </sprites>

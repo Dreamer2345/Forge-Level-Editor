@@ -172,6 +172,9 @@
     <Content Include="Textures\Sprites\MauveSpell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Sprites\Necromancer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\Sprites\RedSpell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
