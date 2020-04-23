@@ -133,7 +133,7 @@
     <value>97</value>
   </metadata>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1497, 17</value>
+    <value>1655, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -244,14 +244,17 @@
   <metadata name="tilesContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1134, 17</value>
   </metadata>
-  <data name="playerStartButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1655, 17</value>
+  </metadata>
+  <data name="playerStartRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
         JQAAFiUBSVIk8AAAABxJREFUOE9jOJso/Z8SPGrAqAEgPGrAMDBA+j8AYY5IHye5kV0AAAAASUVORK5C
         YII=
 </value>
   </data>
-  <data name="radioButton7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="edgeRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAIRJREFUOE+l
         j0EOgCAQA3kTB1/t67x6QAspWcpuJGIyEZd2kPQ+JeK+joq3Z0jlzHkAM5aJZphzBVommgsF3syjCzZp
@@ -259,7 +262,7 @@
         3l4jlQcvW9hgkNCz7QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="radioButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="rectangleRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBJREFUOE9j
         AIL/FGIIQSYYNWDUABAYNYCaBpCJGf4DABehO8VTj6MFAAAAAElFTkSuQmCC
@@ -273,14 +276,14 @@
         Mqc54skcKmrgrlT8cFkiEsINpPhgnKKERnoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="radioButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="moveToRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAE1JREFUOE+l
         jNEKACAIA/3/ny6IBmWabR3sweHNCtqMBGRpxMsIjSwCaiB6zAaO7vZY9jjUhCWTwXYsUD078EQ28Iw8
         ANGH4ksGhWzWAYXVU63KOKgZAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="radioButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="spriteToolRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHxJREFUOE+l
         jAsKgDAMQ3cmz+0dtWEOkzabioEH/by2RY6f1OG+bRbnBjpwh0z2g7txBw6+Cb4dD+RBXnDPOFceoEay
@@ -288,7 +291,7 @@
         aI9hMNQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="radioButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="connectionToolRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAKhJREFUOE+N
         UcENxCAMY6PrHjdJGaKvSrdVV+PkCCODnLaWLJLgmADFoHUCWZyi7bW28/iFGCvytQ6hAzffckIUv/un
@@ -297,7 +300,7 @@
         gg==
 </value>
   </data>
-  <data name="radioButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="eraseRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAG1JREFUOE/F
         jMEJgDAQBNOnPdiQNfi2HiuJLmseS0aIKDgwr5u98iX1oR31jmXdQrWeJFfO/P+g8fqBUOtJ0g6jdtRp
@@ -305,7 +308,7 @@
         YII=
 </value>
   </data>
-  <data name="radioButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tileToolRadioButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAH5JREFUOE/V
         jMsJgDAQBVOVhXgQbEAwRXgSbMO2bMOrh5UXjcjL1705EJYNO2MyyD1VyLE3CKgiTvYP+/VdxyNpIoHE

@@ -67,22 +67,13 @@
             this.tilesContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
             this.tilesContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.overallTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tilesListView = new System.Windows.Forms.ListView();
-            this.TileImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IsExit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IsSender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.modeFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.connectionFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.removeConnection = new System.Windows.Forms.Button();
             this.connectionListView = new System.Windows.Forms.ListView();
@@ -93,7 +84,7 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.removeSprite = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.spritesFlowPanelVert = new System.Windows.Forms.TableLayoutPanel();
             this.spritesListView = new System.Windows.Forms.ListView();
             this.Texture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -105,30 +96,38 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesPlaced_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlaced_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tilesFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.tilesListView = new System.Windows.Forms.ListView();
+            this.TileImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsExit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsSender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.playerStartButton = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.playerStartRadioButton = new System.Windows.Forms.RadioButton();
+            this.edgeRadioButton = new System.Windows.Forms.RadioButton();
+            this.rectangleRadioButton = new System.Windows.Forms.RadioButton();
             this.centreMap = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.moveToRadioButton = new System.Windows.Forms.RadioButton();
+            this.spriteToolRadioButton = new System.Windows.Forms.RadioButton();
+            this.connectionToolRadioButton = new System.Windows.Forms.RadioButton();
+            this.eraseRadioButton = new System.Windows.Forms.RadioButton();
+            this.tileToolRadioButton = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.spriteContextMenu.SuspendLayout();
             this.connectionContextMenu.SuspendLayout();
             this.tilesContextMenu.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.overallTableLayout.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
+            this.modeFlowPanel.SuspendLayout();
             this.connectionFlowPanel.SuspendLayout();
             this.spritesFlowPanel.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
+            this.spritesFlowPanelVert.SuspendLayout();
+            this.tilesFlowPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,9 +140,9 @@
             this.viewMenu,
             this.mapsMenu,
             this.helpMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2083, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1073, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -419,166 +418,94 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(166, 6);
             // 
-            // tableLayoutPanel1
+            // overallTableLayout
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2083, 892);
-            this.tableLayoutPanel1.TabIndex = 10;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.overallTableLayout.AutoSize = true;
+            this.overallTableLayout.ColumnCount = 2;
+            this.overallTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.overallTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.overallTableLayout.Controls.Add(this.statusStrip1, 0, 2);
+            this.overallTableLayout.Controls.Add(this.pictureBox1, 0, 1);
+            this.overallTableLayout.Controls.Add(this.modeFlowPanel, 1, 1);
+            this.overallTableLayout.Controls.Add(this.groupBox1, 0, 0);
+            this.overallTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overallTableLayout.Location = new System.Drawing.Point(4, 37);
+            this.overallTableLayout.Name = "overallTableLayout";
+            this.overallTableLayout.RowCount = 3;
+            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.overallTableLayout.Size = new System.Drawing.Size(1073, 656);
+            this.overallTableLayout.TabIndex = 10;
+            this.overallTableLayout.SizeChanged += new System.EventHandler(this.overallTableLayout_SizeChanged);
             // 
             // statusStrip1
             // 
+            this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.currentMapLabel,
             this.toolStripStatusLabel1,
             this.currentFileLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 862);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 633);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(2083, 30);
-            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Size = new System.Drawing.Size(1073, 23);
+            this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // currentMapLabel
             // 
             this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.currentMapLabel.Name = "currentMapLabel";
-            this.currentMapLabel.Size = new System.Drawing.Size(0, 25);
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 18);
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 25);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 18);
             this.toolStripStatusLabel1.Text = " in ";
             // 
             // currentFileLabel
             // 
             this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(112, 25);
+            this.currentFileLabel.Size = new System.Drawing.Size(112, 18);
             this.currentFileLabel.Text = "< New File >";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 97);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1735, 602);
-            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 73);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(334, 596);
-            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.Size = new System.Drawing.Size(667, 557);
+            this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // flowLayoutPanel1
+            // modeFlowPanel
             // 
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(343, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1307, 596);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.tilesListView);
-            this.flowLayoutPanel3.Controls.Add(this.connectionFlowPanel);
-            this.flowLayoutPanel3.Controls.Add(this.spritesFlowPanel);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(504, 443);
-            this.flowLayoutPanel3.TabIndex = 18;
-            // 
-            // tilesListView
-            // 
-            this.tilesListView.AutoArrange = false;
-            this.tilesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tilesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.TileImage,
-            this.TileID,
-            this.TileName,
-            this.IsExit,
-            this.IsSender,
-            this.IsReciver});
-            this.tilesListView.FullRowSelect = true;
-            this.tilesListView.GridLines = true;
-            this.tilesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.tilesListView.HideSelection = false;
-            this.tilesListView.Location = new System.Drawing.Point(3, 3);
-            this.tilesListView.MultiSelect = false;
-            this.tilesListView.Name = "tilesListView";
-            this.tilesListView.Size = new System.Drawing.Size(337, 239);
-            this.tilesListView.TabIndex = 16;
-            this.tilesListView.UseCompatibleStateImageBehavior = false;
-            this.tilesListView.View = System.Windows.Forms.View.Details;
-            // 
-            // TileImage
-            // 
-            this.TileImage.Text = "Tile";
-            this.TileImage.Width = 68;
-            // 
-            // TileID
-            // 
-            this.TileID.Text = "ID";
-            this.TileID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TileID.Width = 38;
-            // 
-            // TileName
-            // 
-            this.TileName.Text = "Name";
-            this.TileName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TileName.Width = 108;
-            // 
-            // IsExit
-            // 
-            this.IsExit.Text = "IsExit";
-            this.IsExit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.IsExit.Width = 39;
-            // 
-            // IsSender
-            // 
-            this.IsSender.Text = "IsSender";
-            this.IsSender.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.IsSender.Width = 55;
-            // 
-            // IsReciver
-            // 
-            this.IsReciver.Text = "IsReciver";
-            this.IsReciver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.IsReciver.Width = 65;
+            this.modeFlowPanel.AutoSize = true;
+            this.modeFlowPanel.Controls.Add(this.connectionFlowPanel);
+            this.modeFlowPanel.Controls.Add(this.spritesFlowPanel);
+            this.modeFlowPanel.Controls.Add(this.tilesFlowPanel);
+            this.modeFlowPanel.Location = new System.Drawing.Point(673, 70);
+            this.modeFlowPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.modeFlowPanel.Name = "modeFlowPanel";
+            this.modeFlowPanel.Size = new System.Drawing.Size(399, 464);
+            this.modeFlowPanel.TabIndex = 12;
             // 
             // connectionFlowPanel
             // 
+            this.connectionFlowPanel.AutoSize = true;
             this.connectionFlowPanel.Controls.Add(this.removeConnection);
             this.connectionFlowPanel.Controls.Add(this.connectionListView);
-            this.connectionFlowPanel.Location = new System.Drawing.Point(0, 245);
+            this.connectionFlowPanel.Location = new System.Drawing.Point(0, 0);
             this.connectionFlowPanel.Margin = new System.Windows.Forms.Padding(0);
             this.connectionFlowPanel.Name = "connectionFlowPanel";
-            this.connectionFlowPanel.Size = new System.Drawing.Size(458, 100);
-            this.connectionFlowPanel.TabIndex = 17;
+            this.connectionFlowPanel.Size = new System.Drawing.Size(326, 117);
+            this.connectionFlowPanel.TabIndex = 20;
             this.connectionFlowPanel.Visible = false;
             // 
             // removeConnection
@@ -590,6 +517,7 @@
             this.removeConnection.Text = "Remove Connector";
             this.removeConnection.UseVisualStyleBackColor = true;
             this.removeConnection.Visible = false;
+            this.removeConnection.Click += new System.EventHandler(this.removeConnection_Click);
             // 
             // connectionListView
             // 
@@ -613,6 +541,7 @@
             this.connectionListView.UseCompatibleStateImageBehavior = false;
             this.connectionListView.View = System.Windows.Forms.View.Details;
             this.connectionListView.Visible = false;
+            this.connectionListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.connectionListView_ItemSelectionChanged);
             // 
             // columnHeader12
             // 
@@ -636,13 +565,14 @@
             // 
             // spritesFlowPanel
             // 
+            this.spritesFlowPanel.AutoSize = true;
             this.spritesFlowPanel.Controls.Add(this.removeSprite);
-            this.spritesFlowPanel.Controls.Add(this.tableLayoutPanel4);
-            this.spritesFlowPanel.Location = new System.Drawing.Point(0, 345);
+            this.spritesFlowPanel.Controls.Add(this.spritesFlowPanelVert);
+            this.spritesFlowPanel.Location = new System.Drawing.Point(0, 117);
             this.spritesFlowPanel.Margin = new System.Windows.Forms.Padding(0);
             this.spritesFlowPanel.Name = "spritesFlowPanel";
-            this.spritesFlowPanel.Size = new System.Drawing.Size(363, 100);
-            this.spritesFlowPanel.TabIndex = 18;
+            this.spritesFlowPanel.Size = new System.Drawing.Size(351, 82);
+            this.spritesFlowPanel.TabIndex = 21;
             // 
             // removeSprite
             // 
@@ -653,21 +583,23 @@
             this.removeSprite.Text = "Remove Sprite";
             this.removeSprite.UseVisualStyleBackColor = true;
             this.removeSprite.Visible = false;
+            this.removeSprite.Click += new System.EventHandler(this.removeSprite_Click);
             // 
-            // tableLayoutPanel4
+            // spritesFlowPanelVert
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.spritesListView, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.spritesPlacedListView, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(71, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(280, 81);
-            this.tableLayoutPanel4.TabIndex = 21;
+            this.spritesFlowPanelVert.AutoSize = true;
+            this.spritesFlowPanelVert.ColumnCount = 1;
+            this.spritesFlowPanelVert.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.spritesFlowPanelVert.Controls.Add(this.spritesListView, 0, 0);
+            this.spritesFlowPanelVert.Controls.Add(this.spritesPlacedListView, 0, 1);
+            this.spritesFlowPanelVert.Location = new System.Drawing.Point(71, 0);
+            this.spritesFlowPanelVert.Margin = new System.Windows.Forms.Padding(0);
+            this.spritesFlowPanelVert.Name = "spritesFlowPanelVert";
+            this.spritesFlowPanelVert.RowCount = 2;
+            this.spritesFlowPanelVert.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.spritesFlowPanelVert.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.spritesFlowPanelVert.Size = new System.Drawing.Size(280, 82);
+            this.spritesFlowPanelVert.TabIndex = 21;
             // 
             // spritesListView
             // 
@@ -683,7 +615,7 @@
             this.spritesListView.GridLines = true;
             this.spritesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesListView.HideSelection = false;
-            this.spritesListView.Location = new System.Drawing.Point(3, 43);
+            this.spritesListView.Location = new System.Drawing.Point(3, 3);
             this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
             this.spritesListView.Size = new System.Drawing.Size(274, 35);
@@ -691,6 +623,7 @@
             this.spritesListView.UseCompatibleStateImageBehavior = false;
             this.spritesListView.View = System.Windows.Forms.View.Details;
             this.spritesListView.Visible = false;
+            this.spritesListView.SelectedIndexChanged += new System.EventHandler(this.spritesListView_SelectedIndexChanged);
             // 
             // Texture
             // 
@@ -706,8 +639,7 @@
             // SpriteName
             // 
             this.SpriteName.Text = "Name";
-            this.SpriteName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpriteName.Width = 79;
+            this.SpriteName.Width = 170;
             // 
             // SpriteHealth
             // 
@@ -723,111 +655,191 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.spritesPlaced_HealthColumn});
+            this.spritesPlaced_HealthColumn,
+            this.spritesPlaced_Name});
             this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spritesPlacedListView.FullRowSelect = true;
             this.spritesPlacedListView.GridLines = true;
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(3, 3);
+            this.spritesPlacedListView.Location = new System.Drawing.Point(3, 44);
             this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(274, 34);
+            this.spritesPlacedListView.Size = new System.Drawing.Size(274, 35);
             this.spritesPlacedListView.TabIndex = 20;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
             this.spritesPlacedListView.Visible = false;
+            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
+            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesListView_SelectedIndexChanged);
             // 
             // SpritePicture
             // 
             this.SpritePicture.Text = "";
-            this.SpritePicture.Width = 29;
+            this.SpritePicture.Width = 30;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "ID";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 47;
+            this.columnHeader4.Width = 40;
             // 
             // columnHeader5
             // 
+            this.columnHeader5.DisplayIndex = 3;
             this.columnHeader5.Text = "X";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader5.Width = 36;
             // 
             // columnHeader6
             // 
+            this.columnHeader6.DisplayIndex = 4;
             this.columnHeader6.Text = "Y";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 38;
             // 
             // spritesPlaced_HealthColumn
             // 
+            this.spritesPlaced_HealthColumn.DisplayIndex = 5;
             this.spritesPlaced_HealthColumn.Text = "Health";
+            // 
+            // spritesPlaced_Name
+            // 
+            this.spritesPlaced_Name.DisplayIndex = 2;
+            this.spritesPlaced_Name.Text = "Name";
+            this.spritesPlaced_Name.Width = 96;
+            // 
+            // tilesFlowPanel
+            // 
+            this.tilesFlowPanel.Controls.Add(this.tilesListView);
+            this.tilesFlowPanel.Location = new System.Drawing.Point(3, 202);
+            this.tilesFlowPanel.Name = "tilesFlowPanel";
+            this.tilesFlowPanel.Size = new System.Drawing.Size(393, 259);
+            this.tilesFlowPanel.TabIndex = 22;
+            // 
+            // tilesListView
+            // 
+            this.tilesListView.AutoArrange = false;
+            this.tilesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tilesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.TileImage,
+            this.TileID,
+            this.TileName,
+            this.IsExit,
+            this.IsSender,
+            this.IsReciver});
+            this.tilesListView.FullRowSelect = true;
+            this.tilesListView.GridLines = true;
+            this.tilesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.tilesListView.HideSelection = false;
+            this.tilesListView.Location = new System.Drawing.Point(0, 0);
+            this.tilesListView.Margin = new System.Windows.Forms.Padding(0);
+            this.tilesListView.MultiSelect = false;
+            this.tilesListView.Name = "tilesListView";
+            this.tilesListView.Size = new System.Drawing.Size(337, 239);
+            this.tilesListView.TabIndex = 20;
+            this.tilesListView.UseCompatibleStateImageBehavior = false;
+            this.tilesListView.View = System.Windows.Forms.View.Details;
+            this.tilesListView.SelectedIndexChanged += new System.EventHandler(this.tilesListView_SelectedIndexChanged);
+            // 
+            // TileImage
+            // 
+            this.TileImage.Text = "";
+            this.TileImage.Width = 24;
+            // 
+            // TileID
+            // 
+            this.TileID.Text = "ID";
+            this.TileID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TileID.Width = 38;
+            // 
+            // TileName
+            // 
+            this.TileName.Text = "Name";
+            this.TileName.Width = 152;
+            // 
+            // IsExit
+            // 
+            this.IsExit.Text = "IsExit";
+            this.IsExit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.IsExit.Width = 39;
+            // 
+            // IsSender
+            // 
+            this.IsSender.Text = "IsSender";
+            this.IsSender.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.IsSender.Width = 55;
+            // 
+            // IsReciver
+            // 
+            this.IsReciver.Text = "IsReceiver";
+            this.IsReciver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.IsReciver.Width = 65;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.playerStartButton);
-            this.groupBox1.Controls.Add(this.radioButton7);
-            this.groupBox1.Controls.Add(this.radioButton6);
+            this.overallTableLayout.SetColumnSpan(this.groupBox1, 2);
+            this.groupBox1.Controls.Add(this.playerStartRadioButton);
+            this.groupBox1.Controls.Add(this.edgeRadioButton);
+            this.groupBox1.Controls.Add(this.rectangleRadioButton);
             this.groupBox1.Controls.Add(this.centreMap);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.moveToRadioButton);
+            this.groupBox1.Controls.Add(this.spriteToolRadioButton);
+            this.groupBox1.Controls.Add(this.connectionToolRadioButton);
+            this.groupBox1.Controls.Add(this.eraseRadioButton);
+            this.groupBox1.Controls.Add(this.tileToolRadioButton);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(772, 81);
+            this.groupBox1.Size = new System.Drawing.Size(772, 64);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
-            // playerStartButton
+            // playerStartRadioButton
             // 
-            this.playerStartButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.playerStartButton.AutoSize = true;
-            this.playerStartButton.Image = ((System.Drawing.Image)(resources.GetObject("playerStartButton.Image")));
-            this.playerStartButton.Location = new System.Drawing.Point(602, 24);
-            this.playerStartButton.Name = "playerStartButton";
-            this.playerStartButton.Size = new System.Drawing.Size(101, 46);
-            this.playerStartButton.TabIndex = 8;
-            this.playerStartButton.Text = "Player Start";
-            this.playerStartButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.playerStartButton.UseVisualStyleBackColor = true;
-            this.playerStartButton.CheckedChanged += new System.EventHandler(this.playerStartButton_CheckedChanged);
+            this.playerStartRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.playerStartRadioButton.AutoSize = true;
+            this.playerStartRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("playerStartRadioButton.Image")));
+            this.playerStartRadioButton.Location = new System.Drawing.Point(602, 14);
+            this.playerStartRadioButton.Name = "playerStartRadioButton";
+            this.playerStartRadioButton.Size = new System.Drawing.Size(101, 46);
+            this.playerStartRadioButton.TabIndex = 8;
+            this.playerStartRadioButton.Text = "Player Start";
+            this.playerStartRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.playerStartRadioButton.UseVisualStyleBackColor = true;
+            this.playerStartRadioButton.CheckedChanged += new System.EventHandler(this.playerStartRadioButton_CheckedChanged);
             // 
-            // radioButton7
+            // edgeRadioButton
             // 
-            this.radioButton7.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Image = ((System.Drawing.Image)(resources.GetObject("radioButton7.Image")));
-            this.radioButton7.Location = new System.Drawing.Point(344, 24);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(57, 46);
-            this.radioButton7.TabIndex = 7;
-            this.radioButton7.Text = "Edge";
-            this.radioButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            this.edgeRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.edgeRadioButton.AutoSize = true;
+            this.edgeRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("edgeRadioButton.Image")));
+            this.edgeRadioButton.Location = new System.Drawing.Point(344, 14);
+            this.edgeRadioButton.Name = "edgeRadioButton";
+            this.edgeRadioButton.Size = new System.Drawing.Size(57, 46);
+            this.edgeRadioButton.TabIndex = 7;
+            this.edgeRadioButton.Text = "Edge";
+            this.edgeRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.edgeRadioButton.UseVisualStyleBackColor = true;
+            this.edgeRadioButton.CheckedChanged += new System.EventHandler(this.edgeRadioButton_CheckedChanged);
             // 
-            // radioButton6
+            // rectangleRadioButton
             // 
-            this.radioButton6.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Image = ((System.Drawing.Image)(resources.GetObject("radioButton6.Image")));
-            this.radioButton6.Location = new System.Drawing.Point(272, 24);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(92, 46);
-            this.radioButton6.TabIndex = 6;
-            this.radioButton6.Text = "Rectangle";
-            this.radioButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.rectangleRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rectangleRadioButton.AutoSize = true;
+            this.rectangleRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("rectangleRadioButton.Image")));
+            this.rectangleRadioButton.Location = new System.Drawing.Point(272, 14);
+            this.rectangleRadioButton.Name = "rectangleRadioButton";
+            this.rectangleRadioButton.Size = new System.Drawing.Size(92, 46);
+            this.rectangleRadioButton.TabIndex = 6;
+            this.rectangleRadioButton.Text = "Rectangle";
+            this.rectangleRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.rectangleRadioButton.UseVisualStyleBackColor = true;
+            this.rectangleRadioButton.CheckedChanged += new System.EventHandler(this.rectangleRadioButton_CheckedChanged);
             // 
             // centreMap
             // 
             this.centreMap.Image = ((System.Drawing.Image)(resources.GetObject("centreMap.Image")));
-            this.centreMap.Location = new System.Drawing.Point(186, 24);
+            this.centreMap.Location = new System.Drawing.Point(186, 14);
             this.centreMap.Name = "centreMap";
             this.centreMap.Size = new System.Drawing.Size(80, 39);
             this.centreMap.TabIndex = 5;
@@ -836,91 +848,91 @@
             this.centreMap.UseVisualStyleBackColor = true;
             this.centreMap.Click += new System.EventHandler(this.centreMap_Click);
             // 
-            // radioButton5
+            // moveToRadioButton
             // 
-            this.radioButton5.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Image = ((System.Drawing.Image)(resources.GetObject("radioButton5.Image")));
-            this.radioButton5.Location = new System.Drawing.Point(120, 24);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(79, 46);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.Text = "Move To";
-            this.radioButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.moveToRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.moveToRadioButton.AutoSize = true;
+            this.moveToRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("moveToRadioButton.Image")));
+            this.moveToRadioButton.Location = new System.Drawing.Point(120, 14);
+            this.moveToRadioButton.Name = "moveToRadioButton";
+            this.moveToRadioButton.Size = new System.Drawing.Size(79, 46);
+            this.moveToRadioButton.TabIndex = 4;
+            this.moveToRadioButton.Text = "Move To";
+            this.moveToRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.moveToRadioButton.UseVisualStyleBackColor = true;
+            this.moveToRadioButton.CheckedChanged += new System.EventHandler(this.moveToRadioButton_CheckedChanged);
             // 
-            // radioButton4
+            // spriteToolRadioButton
             // 
-            this.radioButton4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Image = ((System.Drawing.Image)(resources.GetObject("radioButton4.Image")));
-            this.radioButton4.Location = new System.Drawing.Point(530, 24);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(95, 46);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.Text = "Sprite Tool";
-            this.radioButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.spriteToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.spriteToolRadioButton.AutoSize = true;
+            this.spriteToolRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("spriteToolRadioButton.Image")));
+            this.spriteToolRadioButton.Location = new System.Drawing.Point(530, 14);
+            this.spriteToolRadioButton.Name = "spriteToolRadioButton";
+            this.spriteToolRadioButton.Size = new System.Drawing.Size(95, 46);
+            this.spriteToolRadioButton.TabIndex = 3;
+            this.spriteToolRadioButton.Text = "Sprite Tool";
+            this.spriteToolRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.spriteToolRadioButton.UseVisualStyleBackColor = true;
+            this.spriteToolRadioButton.CheckedChanged += new System.EventHandler(this.spriteToolRadioButton_CheckedChanged);
             // 
-            // radioButton3
+            // connectionToolRadioButton
             // 
-            this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Image = ((System.Drawing.Image)(resources.GetObject("radioButton3.Image")));
-            this.radioButton3.Location = new System.Drawing.Point(429, 24);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(134, 46);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "Connection Tool";
-            this.radioButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.connectionToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.connectionToolRadioButton.AutoSize = true;
+            this.connectionToolRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("connectionToolRadioButton.Image")));
+            this.connectionToolRadioButton.Location = new System.Drawing.Point(429, 14);
+            this.connectionToolRadioButton.Name = "connectionToolRadioButton";
+            this.connectionToolRadioButton.Size = new System.Drawing.Size(134, 46);
+            this.connectionToolRadioButton.TabIndex = 2;
+            this.connectionToolRadioButton.Text = "Connection Tool";
+            this.connectionToolRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.connectionToolRadioButton.UseVisualStyleBackColor = true;
+            this.connectionToolRadioButton.CheckedChanged += new System.EventHandler(this.connectionToolRadioButton_CheckedChanged);
             // 
-            // radioButton2
+            // eraseRadioButton
             // 
-            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Image = ((System.Drawing.Image)(resources.GetObject("radioButton2.Image")));
-            this.radioButton2.Location = new System.Drawing.Point(70, 24);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 46);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Erase";
-            this.radioButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.eraseRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.eraseRadioButton.AutoSize = true;
+            this.eraseRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("eraseRadioButton.Image")));
+            this.eraseRadioButton.Location = new System.Drawing.Point(70, 14);
+            this.eraseRadioButton.Name = "eraseRadioButton";
+            this.eraseRadioButton.Size = new System.Drawing.Size(61, 46);
+            this.eraseRadioButton.TabIndex = 1;
+            this.eraseRadioButton.Text = "Erase";
+            this.eraseRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.eraseRadioButton.UseVisualStyleBackColor = true;
+            this.eraseRadioButton.CheckedChanged += new System.EventHandler(this.eraseRadioButton_CheckedChanged);
             // 
-            // radioButton1
+            // tileToolRadioButton
             // 
-            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Image = ((System.Drawing.Image)(resources.GetObject("radioButton1.Image")));
-            this.radioButton1.Location = new System.Drawing.Point(6, 24);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 46);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Tile Tool";
-            this.radioButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.tileToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.tileToolRadioButton.AutoSize = true;
+            this.tileToolRadioButton.Checked = true;
+            this.tileToolRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("tileToolRadioButton.Image")));
+            this.tileToolRadioButton.Location = new System.Drawing.Point(6, 14);
+            this.tileToolRadioButton.Name = "tileToolRadioButton";
+            this.tileToolRadioButton.Size = new System.Drawing.Size(77, 46);
+            this.tileToolRadioButton.TabIndex = 0;
+            this.tileToolRadioButton.TabStop = true;
+            this.tileToolRadioButton.Text = "Tile Tool";
+            this.tileToolRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tileToolRadioButton.UseVisualStyleBackColor = true;
+            this.tileToolRadioButton.CheckedChanged += new System.EventHandler(this.tileToolRadioButton_CheckedChanged);
             // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(2083, 925);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1081, 697);
+            this.Controls.Add(this.overallTableLayout);
             this.Controls.Add(this.menuStrip1);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "MapEditorForm";
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Rogue Level Editor";
+            this.Text = "Dark Ritual Level Editor";
             this.Load += new System.EventHandler(this.MapEditorForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -928,17 +940,18 @@
             this.spriteContextMenu.ResumeLayout(false);
             this.connectionContextMenu.ResumeLayout(false);
             this.tilesContextMenu.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.overallTableLayout.ResumeLayout(false);
+            this.overallTableLayout.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
+            this.modeFlowPanel.ResumeLayout(false);
+            this.modeFlowPanel.PerformLayout();
             this.connectionFlowPanel.ResumeLayout(false);
             this.spritesFlowPanel.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
+            this.spritesFlowPanel.PerformLayout();
+            this.spritesFlowPanelVert.ResumeLayout(false);
+            this.tilesFlowPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -985,28 +998,23 @@
         private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_FindInList;
         private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_Remove;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        public System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel overallTableLayout;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton playerStartButton;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton playerStartRadioButton;
+        private System.Windows.Forms.RadioButton edgeRadioButton;
+        private System.Windows.Forms.RadioButton rectangleRadioButton;
         private System.Windows.Forms.Button centreMap;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.ListView tilesListView;
-        private System.Windows.Forms.ColumnHeader TileImage;
-        private System.Windows.Forms.ColumnHeader TileID;
-        private System.Windows.Forms.ColumnHeader TileName;
-        private System.Windows.Forms.ColumnHeader IsExit;
-        private System.Windows.Forms.ColumnHeader IsSender;
-        private System.Windows.Forms.ColumnHeader IsReciver;
+        private System.Windows.Forms.RadioButton moveToRadioButton;
+        private System.Windows.Forms.RadioButton spriteToolRadioButton;
+        private System.Windows.Forms.RadioButton connectionToolRadioButton;
+        private System.Windows.Forms.RadioButton eraseRadioButton;
+        private System.Windows.Forms.RadioButton tileToolRadioButton;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.FlowLayoutPanel modeFlowPanel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel currentMapLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
         private System.Windows.Forms.FlowLayoutPanel connectionFlowPanel;
         private System.Windows.Forms.Button removeConnection;
         public System.Windows.Forms.ListView connectionListView;
@@ -1017,7 +1025,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.FlowLayoutPanel spritesFlowPanel;
         private System.Windows.Forms.Button removeSprite;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel spritesFlowPanelVert;
         private System.Windows.Forms.ListView spritesListView;
         private System.Windows.Forms.ColumnHeader Texture;
         private System.Windows.Forms.ColumnHeader SpriteID;
@@ -1029,9 +1037,14 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader spritesPlaced_HealthColumn;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel currentMapLabel;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
+        private System.Windows.Forms.FlowLayoutPanel tilesFlowPanel;
+        private System.Windows.Forms.ListView tilesListView;
+        private System.Windows.Forms.ColumnHeader TileImage;
+        private System.Windows.Forms.ColumnHeader TileID;
+        private System.Windows.Forms.ColumnHeader TileName;
+        private System.Windows.Forms.ColumnHeader IsExit;
+        private System.Windows.Forms.ColumnHeader IsSender;
+        private System.Windows.Forms.ColumnHeader IsReciver;
+        private System.Windows.Forms.ColumnHeader spritesPlaced_Name;
     }
 }
