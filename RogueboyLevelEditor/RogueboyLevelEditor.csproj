@@ -124,6 +124,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
+    <None Include="icons\Icon1.png" />
+    <None Include="icons\Icon2.png" />
+    <None Include="icons\Icon3.png" />
+    <None Include="icons\Icon4.png" />
+    <None Include="icons\Icon5.png" />
+    <None Include="icons\Icon6.png" />
+    <None Include="icons\Icon7.png" />
+    <None Include="icons\Icon9.png" />
+    <None Include="icons\Icon10.png" />
     <Content Include="Textures\Sprites\Bat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

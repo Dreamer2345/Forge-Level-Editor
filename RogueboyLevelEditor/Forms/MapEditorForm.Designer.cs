@@ -344,12 +344,13 @@
             // 
             // spriteContextMenu
             // 
+            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteContextMenu_FindInList,
             this.spriteContextMenu_Remove,
             this.toolStripMenuItem4});
             this.spriteContextMenu.Name = "spriteContextMenu";
-            this.spriteContextMenu.Size = new System.Drawing.Size(241, 103);
+            this.spriteContextMenu.Size = new System.Drawing.Size(170, 70);
             // 
             // spriteContextMenu_FindInList
             // 
@@ -374,6 +375,7 @@
             // 
             // connectionContextMenu
             // 
+            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionContextMenu_FindInList,
             this.connectionContextMenu_Remove});
@@ -398,6 +400,7 @@
             // 
             // tilesContextMenu
             // 
+            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesContextMenu_FindInList,
             this.tilesContextMenu_Remove,
@@ -412,7 +415,7 @@
             // 
             this.tilesContextMenu_FindInList.Enabled = false;
             this.tilesContextMenu_FindInList.Name = "tilesContextMenu_FindInList";
-            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(240, 30);
+            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(169, 30);
             this.tilesContextMenu_FindInList.Text = "&Find In List";
             this.tilesContextMenu_FindInList.Click += new System.EventHandler(this.tilesContextMenu_FindInList_Click);
             // 
@@ -420,14 +423,14 @@
             // 
             this.tilesContextMenu_Remove.Enabled = false;
             this.tilesContextMenu_Remove.Name = "tilesContextMenu_Remove";
-            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(240, 30);
+            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(169, 30);
             this.tilesContextMenu_Remove.Text = "&Remove";
             this.tilesContextMenu_Remove.Click += new System.EventHandler(this.tilesContextMenu_Remove_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(237, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(166, 6);
             // 
             // tilesContextMenu_Column
             // 
@@ -438,7 +441,7 @@
             this.tilesContextMenu_ColumnMoveLeft});
             this.tilesContextMenu_Column.Enabled = false;
             this.tilesContextMenu_Column.Name = "tilesContextMenu_Column";
-            this.tilesContextMenu_Column.Size = new System.Drawing.Size(240, 30);
+            this.tilesContextMenu_Column.Size = new System.Drawing.Size(169, 30);
             this.tilesContextMenu_Column.Text = "&Column";
             // 
             // tilesContextMenu_ColumnInsert
@@ -478,7 +481,7 @@
             this.tilesContextMenu_ColumnMoveUp});
             this.tilesContextMenu_Row.Enabled = false;
             this.tilesContextMenu_Row.Name = "tilesContextMenu_Row";
-            this.tilesContextMenu_Row.Size = new System.Drawing.Size(240, 30);
+            this.tilesContextMenu_Row.Size = new System.Drawing.Size(169, 30);
             this.tilesContextMenu_Row.Text = "&Row";
             // 
             // tilesContextMenu_RowInsert
@@ -512,7 +515,7 @@
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(237, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(166, 6);
             // 
             // overallTableLayout
             // 
@@ -894,7 +897,7 @@
             // 
             this.playerStartRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.playerStartRadioButton.AutoSize = true;
-            this.playerStartRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("playerStartRadioButton.Image")));
+            this.playerStartRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon10;
             this.playerStartRadioButton.Location = new System.Drawing.Point(602, 14);
             this.playerStartRadioButton.Name = "playerStartRadioButton";
             this.playerStartRadioButton.Size = new System.Drawing.Size(101, 46);
@@ -908,7 +911,7 @@
             // 
             this.edgeRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.edgeRadioButton.AutoSize = true;
-            this.edgeRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("edgeRadioButton.Image")));
+            this.edgeRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon1;
             this.edgeRadioButton.Location = new System.Drawing.Point(344, 14);
             this.edgeRadioButton.Name = "edgeRadioButton";
             this.edgeRadioButton.Size = new System.Drawing.Size(57, 46);
@@ -922,7 +925,7 @@
             // 
             this.rectangleRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.rectangleRadioButton.AutoSize = true;
-            this.rectangleRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("rectangleRadioButton.Image")));
+            this.rectangleRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon7;
             this.rectangleRadioButton.Location = new System.Drawing.Point(272, 14);
             this.rectangleRadioButton.Name = "rectangleRadioButton";
             this.rectangleRadioButton.Size = new System.Drawing.Size(92, 46);
@@ -934,7 +937,7 @@
             // 
             // centreMap
             // 
-            this.centreMap.Image = ((System.Drawing.Image)(resources.GetObject("centreMap.Image")));
+            this.centreMap.Image = global::RogueboyLevelEditor.Properties.Resources.Icon6;
             this.centreMap.Location = new System.Drawing.Point(186, 14);
             this.centreMap.Name = "centreMap";
             this.centreMap.Size = new System.Drawing.Size(80, 39);
@@ -948,7 +951,7 @@
             // 
             this.moveToRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.moveToRadioButton.AutoSize = true;
-            this.moveToRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("moveToRadioButton.Image")));
+            this.moveToRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon5;
             this.moveToRadioButton.Location = new System.Drawing.Point(120, 14);
             this.moveToRadioButton.Name = "moveToRadioButton";
             this.moveToRadioButton.Size = new System.Drawing.Size(79, 46);
@@ -962,7 +965,7 @@
             // 
             this.spriteToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.spriteToolRadioButton.AutoSize = true;
-            this.spriteToolRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("spriteToolRadioButton.Image")));
+            this.spriteToolRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon9;
             this.spriteToolRadioButton.Location = new System.Drawing.Point(530, 14);
             this.spriteToolRadioButton.Name = "spriteToolRadioButton";
             this.spriteToolRadioButton.Size = new System.Drawing.Size(95, 46);
@@ -976,7 +979,7 @@
             // 
             this.connectionToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.connectionToolRadioButton.AutoSize = true;
-            this.connectionToolRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("connectionToolRadioButton.Image")));
+            this.connectionToolRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon2;
             this.connectionToolRadioButton.Location = new System.Drawing.Point(429, 14);
             this.connectionToolRadioButton.Name = "connectionToolRadioButton";
             this.connectionToolRadioButton.Size = new System.Drawing.Size(134, 46);
@@ -990,7 +993,7 @@
             // 
             this.eraseRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.eraseRadioButton.AutoSize = true;
-            this.eraseRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("eraseRadioButton.Image")));
+            this.eraseRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon4;
             this.eraseRadioButton.Location = new System.Drawing.Point(70, 14);
             this.eraseRadioButton.Name = "eraseRadioButton";
             this.eraseRadioButton.Size = new System.Drawing.Size(61, 46);
@@ -1005,7 +1008,7 @@
             this.tileToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.tileToolRadioButton.AutoSize = true;
             this.tileToolRadioButton.Checked = true;
-            this.tileToolRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("tileToolRadioButton.Image")));
+            this.tileToolRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon3;
             this.tileToolRadioButton.Location = new System.Drawing.Point(6, 14);
             this.tileToolRadioButton.Name = "tileToolRadioButton";
             this.tileToolRadioButton.Size = new System.Drawing.Size(77, 46);
