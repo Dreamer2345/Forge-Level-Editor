@@ -482,11 +482,13 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton3.Checked)
             {
                 tool = new ConnectorTool(mapCollection.CurrentMap,this);
+                connectionFlowPanel.Visible = true;
                 connectionListView.Visible = true;
                 removeConnection.Visible = true;
             }
             else
             {
+                connectionFlowPanel.Visible = false;
                 connectionListView.Visible = false;
                 removeConnection.Visible = false;
             }
@@ -497,6 +499,7 @@ namespace RogueboyLevelEditor.Forms
             if (radioButton4.Checked)
             {
                 tool = new SpriteTool(mapCollection.CurrentMap,this);
+                spritesFlowPanel.Visible = true;
                 spritesListView.Visible = true;
                 spritesPlacedListView.Visible = true;
                 removeSprite.Visible = true;
@@ -508,6 +511,7 @@ namespace RogueboyLevelEditor.Forms
             }
             else
             {
+                spritesFlowPanel.Visible = false;
                 spritesListView.Visible = false;
                 spritesPlacedListView.Visible = false;
                 removeSprite.Visible = false;
@@ -1225,6 +1229,9 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
+        }
     }
 
 }

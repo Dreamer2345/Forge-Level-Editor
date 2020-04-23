@@ -120,84 +120,11 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="playerStartButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
-        JQAAFiUBSVIk8AAAABxJREFUOE9jOJso/Z8SPGrAqAEgPGrAMDBA+j8AYY5IHye5kV0AAAAASUVORK5C
-        YII=
-</value>
-  </data>
-  <data name="radioButton7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAIRJREFUOE+l
-        j0EOgCAQA3kTB1/t67x6QAspWcpuJGIyEZd2kPQ+JeK+joq3Z0jlzHkAM5aJZphzBVommgsF3syjCzZp
-        p3m/qGi2C6I7KlYAqoAffwRgEFTjAtKZr4AZ1x6m3AQcMrAiwHsQWL4EpAs2mU/jHRXNhgKgZcxCQQTL
-        3l4jlQcvW9hgkNCz7QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="radioButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBJREFUOE9j
-        AIL/FGIIQSYYNWDUABAYNYCaBpCJGf4DABehO8VTj6MFAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="centreMap.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJFJREFUOE+V
-        jtEJgDAMRDtAVxGxo/ghuIxfgss4jQtVLiVYY9LUgwfS3rsajGSDruR9O1RwVyp2qLgus4o30pTBFSOB
-        blGedMtnSp8/+SVP40Bn9Yg5wKKUgTtQy6CWgTuAF1nGt7x3B/AiRPnrzGtAKwCct+54ADGLGlLmdI1Y
-        Mqc54skcKmrgrlT8cFkiEsINpPhgnKKERnoAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="radioButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAE1JREFUOE+l
-        jNEKACAIA/3/ny6IBmWabR3sweHNCtqMBGRpxMsIjSwCaiB6zAaO7vZY9jjUhCWTwXYsUD078EQ28Iw8
-        ANGH4ksGhWzWAYXVU63KOKgZAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="radioButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHxJREFUOE+l
-        jAsKgDAMQ3cmz+0dtWEOkzabioEH/by2RY6f1OG+bRbnBjpwh0z2g7txBw6+Cb4dD+RBXnDPOFceoEay
-        ONuhDspApNXu6qv8luUDnq+c8mAmA+fiAVIWJMiMnUBSBFePHgcuIjrgdHUeewiw68pzhpxJae0EjABz
-        aI9hMNQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="radioButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAKhJREFUOE+N
-        UcENxCAMY6PrHjdJGaKvSrdVV+PkCCODnLaWLJLgmADFoHUCWZyi7bW28/iFGCvytQ6hAzffckIUv/un
-        1WuLlVxzkHo0AmM015AZ8GphwIRibcoM1veIxDU4M+rRCIwJKFSiiWQOrU4wvQFFjJWsQ6tvAAwDPUlJ
-        Exp0Bh4ncAb2F1SkdAbpLzg+XYHQjTe0iNF4JawcVesQ3kFFWdxRyh8Po1ShN+Id0AAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
-  <data name="radioButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAG1JREFUOE/F
-        jMEJgDAQBNOnPdiQNfi2HiuJLmseS0aIKDgwr5u98iX1oR31jmXdQrWeJFfO/P+g8fqBUOtJ0g6jdtRp
-        3odU60mCManWkwRjUq0nCcakWk8SjEm1niQYk2o9STAm1XqStMOoJ6Ucg6iyWOGMX3IAAAAASUVORK5C
-        YII=
-</value>
-  </data>
-  <data name="radioButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAH5JREFUOE/V
-        jMsJgDAQBVOVhXgQbEAwRXgSbMO2bMOrh5UXjcjL1705EJYNO2MyyD1VyLE3CKgiTvYP+/VdxyNpIoHE
-        u7tKkJR4xzEj87RkJd4hMT+LYG7roI9AzgVANILp5VIABJG3PFpbDAAXwWS579qqAIjKXwLAH9MzcgLD
-        qkHpRGrIJQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>320, 17</value>
-  </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>504, 17</value>
   </metadata>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>662, 17</value>
@@ -205,6 +132,10 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>97</value>
   </metadata>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1497, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAAACAAoFgAAFgAAACgAAABAAAAAgAAAAAEACAAAAAAAABAAAAAAAAAAAAAAAAEAAAAB
@@ -313,4 +244,73 @@
   <metadata name="tilesContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1134, 17</value>
   </metadata>
+  <data name="playerStartButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
+        JQAAFiUBSVIk8AAAABxJREFUOE9jOJso/Z8SPGrAqAEgPGrAMDBA+j8AYY5IHye5kV0AAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="radioButton7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAIRJREFUOE+l
+        j0EOgCAQA3kTB1/t67x6QAspWcpuJGIyEZd2kPQ+JeK+joq3Z0jlzHkAM5aJZphzBVommgsF3syjCzZp
+        p3m/qGi2C6I7KlYAqoAffwRgEFTjAtKZr4AZ1x6m3AQcMrAiwHsQWL4EpAs2mU/jHRXNhgKgZcxCQQTL
+        3l4jlQcvW9hgkNCz7QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="radioButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBJREFUOE9j
+        AIL/FGIIQSYYNWDUABAYNYCaBpCJGf4DABehO8VTj6MFAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="centreMap.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJFJREFUOE+V
+        jtEJgDAMRDtAVxGxo/ghuIxfgss4jQtVLiVYY9LUgwfS3rsajGSDruR9O1RwVyp2qLgus4o30pTBFSOB
+        blGedMtnSp8/+SVP40Bn9Yg5wKKUgTtQy6CWgTuAF1nGt7x3B/AiRPnrzGtAKwCct+54ADGLGlLmdI1Y
+        Mqc54skcKmrgrlT8cFkiEsINpPhgnKKERnoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="radioButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAE1JREFUOE+l
+        jNEKACAIA/3/ny6IBmWabR3sweHNCtqMBGRpxMsIjSwCaiB6zAaO7vZY9jjUhCWTwXYsUD078EQ28Iw8
+        ANGH4ksGhWzWAYXVU63KOKgZAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="radioButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHxJREFUOE+l
+        jAsKgDAMQ3cmz+0dtWEOkzabioEH/by2RY6f1OG+bRbnBjpwh0z2g7txBw6+Cb4dD+RBXnDPOFceoEay
+        ONuhDspApNXu6qv8luUDnq+c8mAmA+fiAVIWJMiMnUBSBFePHgcuIjrgdHUeewiw68pzhpxJae0EjABz
+        aI9hMNQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="radioButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAKhJREFUOE+N
+        UcENxCAMY6PrHjdJGaKvSrdVV+PkCCODnLaWLJLgmADFoHUCWZyi7bW28/iFGCvytQ6hAzffckIUv/un
+        1WuLlVxzkHo0AmM015AZ8GphwIRibcoM1veIxDU4M+rRCIwJKFSiiWQOrU4wvQFFjJWsQ6tvAAwDPUlJ
+        Exp0Bh4ncAb2F1SkdAbpLzg+XYHQjTe0iNF4JawcVesQ3kFFWdxRyh8Po1ShN+Id0AAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="radioButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAG1JREFUOE/F
+        jMEJgDAQBNOnPdiQNfi2HiuJLmseS0aIKDgwr5u98iX1oR31jmXdQrWeJFfO/P+g8fqBUOtJ0g6jdtRp
+        3odU60mCManWkwRjUq0nCcakWk8SjEm1niQYk2o9STAm1XqStMOoJ6Ucg6iyWOGMX3IAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="radioButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAH5JREFUOE/V
+        jMsJgDAQBVOVhXgQbEAwRXgSbMO2bMOrh5UXjcjL1705EJYNO2MyyD1VyLE3CKgiTvYP+/VdxyNpIoHE
+        u7tKkJR4xzEj87RkJd4hMT+LYG7roI9AzgVANILp5VIABJG3PFpbDAAXwWS579qqAIjKXwLAH9MzcgLD
+        qkHpRGrIJQAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
