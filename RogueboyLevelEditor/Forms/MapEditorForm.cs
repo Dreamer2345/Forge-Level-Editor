@@ -1291,12 +1291,6 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void tabPages_Resize(object sender, EventArgs e) {
-            tilesListView.Height = tabTileTool.Height - 12;
-            tilesListView.Width = tabTileTool.Width - 6;
-
-        }
-
         private void showTileTools() {
 
             if (tileToolRadioButton.Checked) {

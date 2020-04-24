@@ -745,7 +745,6 @@
             this.tabPages.Size = new System.Drawing.Size(409, 385);
             this.tabPages.TabIndex = 15;
             this.tabPages.SelectedIndexChanged += new System.EventHandler(this.tabPages_SelectedIndexChanged);
-            this.tabPages.Resize += new System.EventHandler(this.tabPages_Resize);
             // 
             // tabTileTool
             // 
