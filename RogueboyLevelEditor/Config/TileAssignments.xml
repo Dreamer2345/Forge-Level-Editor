@@ -119,6 +119,19 @@
       <value>false</value>
     </switch>
   </tile>
+  <tile>
+    <name>Closed Chest (Altar Piece)</name>
+    <id>96</id>
+    <texture>96</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
   <tile> 
 		<name>Switch On</name>
 		<id>10</id>
