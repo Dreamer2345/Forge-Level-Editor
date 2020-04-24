@@ -134,7 +134,7 @@
   </sprite>
   <sprite>
     <name>Necromancer</name>
-    <id>22</id>
+    <id>23</id>
     <texture>necromancer</texture>
     <health>60</health>
   </sprite>
