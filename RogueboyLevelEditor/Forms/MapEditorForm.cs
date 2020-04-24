@@ -72,40 +72,8 @@ namespace RogueboyLevelEditor.Forms
 
             mapsMenu.DropDown.MouseLeave += new System.EventHandler(this.mapsMenu_DropDown_MouseLeave);
 
-            //tilesFlowPanel.Dock = DockStyle.Fill;
-            //tilesListView.Dock = DockStyle.Fill;
-            spritesFlowPanel.Dock = DockStyle.Fill;
-            spritesFlowPanelVert.Dock = DockStyle.Fill;
-            connectionFlowPanel.Dock = DockStyle.Fill;
-
         }
-        //public MapEditorForm(Map EditingMap)
-        //{
-        //    mapCollection = new MapCollection();
-        //    mapCollection.FilePath = EditingMap.Filepath;
-        //    mapCollection.AddMap(EditingMap);
-        //    currentFileLabel.Text = EditingMap.Filepath;
-        //    cursor = new TileCursor();
-        //    AddTextures();
-        //    AddTiles();
-        //    AddSprites();
-        //    InitializeComponent();
-        //}
-        //public MapEditorForm(MapCollection EditingMaps)
-        //{
-        //    mapCollection = EditingMaps;
-        //    cursor = new TileCursor();
-        //    AddTextures();
-        //    AddTiles();
-        //    AddSprites();
-        //    InitializeComponent();
 
-        //    if(mapCollection.CurrentMap != null)
-        //    {
-        //        UpdateCurrentSprites();
-        //        UpdateCurrentConnectors();
-        //    }
-        //}
         void UpdateCurrentSprites() {
             spritesPlacedListView.Items.Clear();
             SpriteManager sm = new SpriteManager();
@@ -217,7 +185,7 @@ namespace RogueboyLevelEditor.Forms
         }
 
         private void MapEditorForm_Load(object sender, EventArgs e) {
-            //this.FormClosing += MapEditorForm_FormClosing;
+
             pictureBox1.Paint += PictureBox1_Paint;
             pictureBox1.MouseMove += PictureBox1_MouseMove;
             pictureBox1.MouseDown += PictureBox1_MouseDown;
@@ -268,7 +236,9 @@ namespace RogueboyLevelEditor.Forms
         }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e) {
+
             if (tool != null && e.Button == MouseButtons.Left) {
+
                 tool.MouseDown = true;
                 if (tool.Update())
                     pictureBox1.Invalidate();
@@ -394,18 +364,7 @@ namespace RogueboyLevelEditor.Forms
 
         //Tools
         private void tileToolRadioButton_CheckedChanged(object sender, EventArgs e) {
-            if (tileToolRadioButton.Checked) {
-                int TileId = -1;
-                if (tilesListView.SelectedItems.Count > 0)
-                    TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-                tool = new TileBrush(TileId, mapCollection.CurrentMap);
-                tilesFlowPanel.Visible = true;
-                tilesListView.Visible = true;
-            }
-            else {
-                tilesFlowPanel.Visible = false;
-                tilesListView.Visible = false;
-            }
+            showTileTools();
         }
 
         private void eraseRadioButton_CheckedChanged(object sender, EventArgs e) {
@@ -427,16 +386,15 @@ namespace RogueboyLevelEditor.Forms
         }
 
         private void rectangleRadioButton_CheckedChanged(object sender, EventArgs e) {
+
             if (rectangleRadioButton.Checked) {
                 int TileId = -1;
                 if (tilesListView.SelectedItems.Count > 0)
                     TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
                 tool = new TileRectangle(this, TileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
-                tilesFlowPanel.Visible = true;
                 tilesListView.Visible = true;
             }
             else {
-                tilesFlowPanel.Visible = false;
                 tilesListView.Visible = false;
             }
 
@@ -455,38 +413,11 @@ namespace RogueboyLevelEditor.Forms
             }
         }
         private void connectionToolRadioButton_CheckedChanged(object sender, EventArgs e) {
-            if (connectionToolRadioButton.Checked) {
-                tool = new ConnectorTool(mapCollection.CurrentMap, this);
-                connectionFlowPanel.Visible = true;
-                connectionListView.Visible = true;
-                removeConnection.Visible = true;
-            }
-            else {
-                connectionFlowPanel.Visible = false;
-                connectionListView.Visible = false;
-                removeConnection.Visible = false;
-            }
+            showConnectionTool();
         }
 
         private void spriteToolRadioButton_CheckedChanged(object sender, EventArgs e) {
-            if (spriteToolRadioButton.Checked) {
-                tool = new SpriteTool(mapCollection.CurrentMap, this);
-                spritesFlowPanel.Visible = true;
-                spritesListView.Visible = true;
-                spritesPlacedListView.Visible = true;
-                removeSprite.Visible = true;
-
-                if (spritesListView.SelectedItems.Count > 0) {
-                    tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
-                }
-
-            }
-            else {
-                spritesFlowPanel.Visible = false;
-                spritesListView.Visible = false;
-                spritesPlacedListView.Visible = false;
-                removeSprite.Visible = false;
-            }
+            showSpritesTool();
         }
         //EndTools
 
@@ -495,8 +426,9 @@ namespace RogueboyLevelEditor.Forms
             if (tilesListView.SelectedItems.Count > 0)
                 tool.SetBrush(int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text));
         }
+
         private void loadToolStripMenuItem_Click(object sender, EventArgs e) {
-            //errorProvider1.Clear();
+
             openFileDialog.FileName = "Maps.h";
             openFileDialog.InitialDirectory = "/Maps";
 
@@ -907,6 +839,7 @@ namespace RogueboyLevelEditor.Forms
         private void playerStartRadioButton_CheckedChanged(object sender, EventArgs e) {
             if (playerStartRadioButton.Checked) {
                 tool = new PlayerPositionTool(mapCollection.CurrentMap);
+                tabPages.SelectTab(3);
             }
         }
 
@@ -1186,31 +1119,6 @@ namespace RogueboyLevelEditor.Forms
 
         private void overallTableLayout_SizeChanged(object sender, EventArgs e) {
 
-            TableLayoutPanelCellPosition pos = overallTableLayout.GetCellPosition(modeFlowPanel);
-            int width = overallTableLayout.GetColumnWidths()[pos.Column];
-            int height = overallTableLayout.GetRowHeights()[pos.Row];
-
-            modeFlowPanel.Height = height;
-            tilesFlowPanel.Height = height;
-            tilesFlowPanel.Width = width;
-            connectionFlowPanel.Height = height;
-            connectionFlowPanel.Width = width;
-            spritesFlowPanel.Height = height;
-            spritesFlowPanel.Width = width;
-
-            tilesListView.Height = height - spacing;
-            tilesListView.Width = width - spacing;
-            connectionListView.Height = height - spacing;
-            connectionListView.Width = width - removeConnection.Width - (spacing * 2);
-
-            spritesFlowPanelVert.Height = height - spacing;
-            spritesFlowPanelVert.Width = width - removeConnection.Width - (spacing * 3);
-
-            spritesListView.Height = (height / 2) - spacing;
-            spritesListView.Width = width - removeConnection.Width - (spacing * 2);
-            spritesPlacedListView.Height = (height / 2) - spacing;
-            spritesPlacedListView.Width = width - removeConnection.Width - (spacing * 2);
-
             mapCollection.drawOffsetX = (pictureBox1.Width / 2) - 8;
             mapCollection.drawOffsetY = (pictureBox1.Height / 2) - 8;
             pictureBox1.Invalidate();
@@ -1382,7 +1290,95 @@ namespace RogueboyLevelEditor.Forms
             }
 
         }
-        
+
+        private void tabPages_Resize(object sender, EventArgs e) {
+            tilesListView.Height = tabTileTool.Height - 12;
+            tilesListView.Width = tabTileTool.Width - 6;
+
+        }
+
+        private void showTileTools() {
+
+            if (tileToolRadioButton.Checked) {
+                int TileId = -1;
+                if (tilesListView.SelectedItems.Count > 0)
+                    TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
+                tool = new TileBrush(TileId, mapCollection.CurrentMap);
+                tabPages.SelectTab(0);
+
+                tilesListView.Visible = true;
+            }
+            else {
+                tilesListView.Visible = false;
+            }
+
+        }
+
+        private void showSpritesTool() {
+
+            if (spriteToolRadioButton.Checked) {
+
+                tool = new SpriteTool(mapCollection.CurrentMap, this);
+                tabPages.SelectTab(1);
+                spritesListView.Visible = true;
+                spritesPlacedListView.Visible = true;
+                removeSprite.Visible = true;
+
+                if (spritesListView.SelectedItems.Count > 0) {
+                    tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
+                }
+
+            }
+            else {
+                spritesListView.Visible = false;
+                spritesPlacedListView.Visible = false;
+                removeSprite.Visible = false;
+            }
+
+        }
+
+        private void showConnectionTool() {
+
+            if (connectionToolRadioButton.Checked) {
+                tool = new ConnectorTool(mapCollection.CurrentMap, this);
+                tabPages.SelectTab(2);
+                connectionListView.Visible = true;
+                removeConnection.Visible = true;
+            }
+            else {
+                connectionListView.Visible = false;
+                removeConnection.Visible = false;
+            }
+
+        }
+
+        private void tabPages_SelectedIndexChanged(object sender, EventArgs e) {
+
+            switch (tabPages.SelectedIndex) {
+
+                case 0:
+                    tileToolRadioButton.Checked = true;
+                    showTileTools();
+                    break;
+
+                case 1:
+                    spriteToolRadioButton.Checked = true;
+                    showSpritesTool();
+                    break;
+
+                case 2:
+                    connectionToolRadioButton.Checked = true;
+                    showConnectionTool();
+                    break;
+
+                case 3:
+                    tool = new PlayerPositionTool(mapCollection.CurrentMap);
+                    break;
+
+            }
+
+        }
+
     }
 
 }
