@@ -145,6 +145,7 @@
     <None Include="icons\New\save.png" />
     <None Include="icons\New\save-as.png" />
     <None Include="icons\New\sprites.png" />
+    <None Include="icons\New\eyedropper.png" />
     <Content Include="Textures\Sprites\Bat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -71,6 +71,7 @@
             this.tilesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tilesContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
             this.tilesContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.useTileTypeContextMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.tilesContextMenu_Column = new System.Windows.Forms.ToolStripMenuItem();
             this.tilesContextMenu_ColumnInsert = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,20 +127,20 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tileToolMenu = new System.Windows.Forms.ToolStripButton();
             this.eraseMenu = new System.Windows.Forms.ToolStripButton();
             this.rectangleMenu = new System.Windows.Forms.ToolStripButton();
             this.moveToMenu = new System.Windows.Forms.ToolStripButton();
             this.centreMenu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.spriteToolMenu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
-            this.ddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.xxx = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.spriteContextMenu.SuspendLayout();
@@ -390,13 +391,12 @@
             // 
             // spriteContextMenu
             // 
-            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteContextMenu_FindInList,
             this.spriteContextMenu_Remove,
             this.toolStripMenuItem4});
             this.spriteContextMenu.Name = "spriteContextMenu";
-            this.spriteContextMenu.Size = new System.Drawing.Size(170, 70);
+            this.spriteContextMenu.Size = new System.Drawing.Size(241, 103);
             // 
             // spriteContextMenu_FindInList
             // 
@@ -421,7 +421,6 @@
             // 
             // connectionContextMenu
             // 
-            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionContextMenu_FindInList,
             this.connectionContextMenu_Remove});
@@ -446,22 +445,22 @@
             // 
             // tilesContextMenu
             // 
-            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesContextMenu_FindInList,
             this.tilesContextMenu_Remove,
+            this.useTileTypeContextMenu,
             this.toolStripMenuItem5,
             this.tilesContextMenu_Column,
             this.tilesContextMenu_Row,
             this.toolStripMenuItem6});
             this.tilesContextMenu.Name = "tilesContextMenu";
-            this.tilesContextMenu.Size = new System.Drawing.Size(170, 136);
+            this.tilesContextMenu.Size = new System.Drawing.Size(187, 166);
             // 
             // tilesContextMenu_FindInList
             // 
             this.tilesContextMenu_FindInList.Enabled = false;
             this.tilesContextMenu_FindInList.Name = "tilesContextMenu_FindInList";
-            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(169, 30);
+            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(194, 30);
             this.tilesContextMenu_FindInList.Text = "&Find In List";
             this.tilesContextMenu_FindInList.Click += new System.EventHandler(this.tilesContextMenu_FindInList_Click);
             // 
@@ -469,14 +468,22 @@
             // 
             this.tilesContextMenu_Remove.Enabled = false;
             this.tilesContextMenu_Remove.Name = "tilesContextMenu_Remove";
-            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(169, 30);
+            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(194, 30);
             this.tilesContextMenu_Remove.Text = "&Remove";
             this.tilesContextMenu_Remove.Click += new System.EventHandler(this.tilesContextMenu_Remove_Click);
+            // 
+            // useTileTypeContextMenu
+            // 
+            this.useTileTypeContextMenu.Image = global::RogueboyLevelEditor.Properties.Resources.eyedropper;
+            this.useTileTypeContextMenu.Name = "useTileTypeContextMenu";
+            this.useTileTypeContextMenu.Size = new System.Drawing.Size(194, 30);
+            this.useTileTypeContextMenu.Text = "&Use Tile Type";
+            this.useTileTypeContextMenu.Click += new System.EventHandler(this.useTileTypeContextMenu_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(166, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(191, 6);
             // 
             // tilesContextMenu_Column
             // 
@@ -487,7 +494,7 @@
             this.tilesContextMenu_ColumnMoveLeft});
             this.tilesContextMenu_Column.Enabled = false;
             this.tilesContextMenu_Column.Name = "tilesContextMenu_Column";
-            this.tilesContextMenu_Column.Size = new System.Drawing.Size(169, 30);
+            this.tilesContextMenu_Column.Size = new System.Drawing.Size(194, 30);
             this.tilesContextMenu_Column.Text = "&Column";
             // 
             // tilesContextMenu_ColumnInsert
@@ -527,7 +534,7 @@
             this.tilesContextMenu_ColumnMoveUp});
             this.tilesContextMenu_Row.Enabled = false;
             this.tilesContextMenu_Row.Name = "tilesContextMenu_Row";
-            this.tilesContextMenu_Row.Size = new System.Drawing.Size(169, 30);
+            this.tilesContextMenu_Row.Size = new System.Drawing.Size(194, 30);
             this.tilesContextMenu_Row.Text = "&Row";
             // 
             // tilesContextMenu_RowInsert
@@ -561,7 +568,7 @@
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(166, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(191, 6);
             // 
             // overallTableLayout
             // 
@@ -984,6 +991,62 @@
             this.toolStatusLabel.Spring = true;
             this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+            // 
+            // ddToolStripMenuItem
+            // 
+            this.ddToolStripMenuItem.Name = "ddToolStripMenuItem";
+            this.ddToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
+            this.ddToolStripMenuItem.Text = "dd";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileMenu,
+            this.editMenu,
+            this.mapsMenu,
+            this.helpMenu});
+            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1141, 33);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tileToolMenu,
+            this.eraseMenu,
+            this.rectangleMenu,
+            this.moveToMenu,
+            this.centreMenu,
+            this.toolStripSeparator1,
+            this.spriteToolMenu,
+            this.toolStripSeparator2,
+            this.connectionToolMenu,
+            this.toolStripSeparator3,
+            this.playerStartMenu});
+            this.toolStrip1.Location = new System.Drawing.Point(4, 37);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1141, 32);
+            this.toolStrip1.TabIndex = 12;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // tileToolMenu
             // 
             this.tileToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.tiles;
@@ -1029,11 +1092,6 @@
             this.centreMenu.Text = "Centre";
             this.centreMenu.Click += new System.EventHandler(this.centreMenu_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
-            // 
             // spriteToolMenu
             // 
             this.spriteToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.sprites;
@@ -1042,11 +1100,6 @@
             this.spriteToolMenu.Size = new System.Drawing.Size(94, 29);
             this.spriteToolMenu.Text = "&Sprites";
             this.spriteToolMenu.Click += new System.EventHandler(this.spriteToolMenu_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
             // connectionToolMenu
             // 
@@ -1057,11 +1110,6 @@
             this.connectionToolMenu.Text = "&Connections";
             this.connectionToolMenu.Click += new System.EventHandler(this.connectionToolMenu_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
             // playerStartMenu
             // 
             this.playerStartMenu.Image = global::RogueboyLevelEditor.Properties.Resources.playerStart;
@@ -1070,47 +1118,6 @@
             this.playerStartMenu.Size = new System.Drawing.Size(128, 29);
             this.playerStartMenu.Text = "&Player Start";
             this.playerStartMenu.Click += new System.EventHandler(this.playerStartMenu_Click);
-            // 
-            // ddToolStripMenuItem
-            // 
-            this.ddToolStripMenuItem.Name = "ddToolStripMenuItem";
-            this.ddToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
-            this.ddToolStripMenuItem.Text = "dd";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenu,
-            this.editMenu,
-            this.mapsMenu,
-            this.helpMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1141, 33);
-            this.menuStrip1.TabIndex = 11;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tileToolMenu,
-            this.eraseMenu,
-            this.rectangleMenu,
-            this.moveToMenu,
-            this.centreMenu,
-            this.toolStripSeparator1,
-            this.spriteToolMenu,
-            this.toolStripSeparator2,
-            this.connectionToolMenu,
-            this.toolStripSeparator3,
-            this.playerStartMenu});
-            this.toolStrip1.Location = new System.Drawing.Point(4, 37);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1141, 32);
-            this.toolStrip1.TabIndex = 12;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // xxx
             // 
@@ -1271,5 +1278,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton xxx;
+        private System.Windows.Forms.ToolStripMenuItem useTileTypeContextMenu;
     }
 }

@@ -251,30 +251,9 @@ namespace RogueboyLevelEditor.Forms
 
                 if (tool is TileBrush && tilesListView.SelectedItems.Count > 0) {
 
+                    int tileId = Int32.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
                     String tileName = tilesListView.SelectedItems[0].SubItems[2].Text;
-
-                    for (int i = 6; i < tilesContextMenu.Items.Count; i++) {
-
-                        ToolStripMenuItem menuItem = (ToolStripMenuItem)tilesContextMenu.Items[i];
-
-                        if (menuItem.Text == tileName) {
-
-                            tilesContextMenu.Items.Remove(menuItem);
-                            break;
-
-                        }
-
-                    }
-
-
-                    ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
-                    newMenuItem.Text = tileName;
-                    newMenuItem.Image = tilesListView.SmallImageList.Images[tilesListView.SelectedItems[0].ImageKey];
-                    newMenuItem.Tag = tilesListView.SelectedItems[0].Index;
-                    newMenuItem.Click += new System.EventHandler(tilesContextMenu_Item_Click);
-                    tilesContextMenu.Items.Insert(6, newMenuItem);
-
-                    if (tilesContextMenu.Items.Count > 11) { tilesContextMenu.Items.RemoveAt(10); }
+                    addTileToMenu(tileId, tileName);
 
                 }
 
@@ -1397,6 +1376,45 @@ namespace RogueboyLevelEditor.Forms
             mapCollection.CurrentMap.CentreMap();
             pictureBox1.Invalidate();
         }
+
+        private void useTileTypeContextMenu_Click(object sender, EventArgs e) {
+
+            RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(cursor.position.X, cursor.position.Y);
+            int tileId = mapCollection.CurrentMap.GetTile(point).tileID;
+            String tileName = tileManager.GetTile(mapCollection.CurrentMap.GetTile(point).tileID).Name;
+
+            tool.SetBrush(tileId);
+            addTileToMenu(tileId, tileName);
+
+        }
+
+        private void addTileToMenu(int id, String tileName) {
+
+            for (int i = 7; i < tilesContextMenu.Items.Count; i++) {
+
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)tilesContextMenu.Items[i];
+
+                if (menuItem.Text == tileName) {
+
+                    tilesContextMenu.Items.Remove(menuItem);
+                    break;
+
+                }
+
+            }
+
+            Tile tile = tileManager.GetTile(id);
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
+            newMenuItem.Text = tileName;
+            newMenuItem.Image = tilesListView.SmallImageList.Images[tile.TextureID];
+            newMenuItem.Tag = id;
+            newMenuItem.Click += new System.EventHandler(tilesContextMenu_Item_Click);
+            tilesContextMenu.Items.Insert(7, newMenuItem);
+
+            if (tilesContextMenu.Items.Count > 12) { tilesContextMenu.Items.RemoveAt(11); }
+
+        }
+
     }
 
 }
