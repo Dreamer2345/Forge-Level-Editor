@@ -1,4 +1,4 @@
-﻿using RogueboyLevelEditor.map.Component;
+using RogueboyLevelEditor.map.Component;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

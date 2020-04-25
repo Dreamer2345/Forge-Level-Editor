@@ -1,4 +1,4 @@
-﻿using RogueboyLevelEditor.map.point;
+using RogueboyLevelEditor.map.point;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
