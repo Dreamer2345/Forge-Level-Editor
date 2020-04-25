@@ -1,0 +1,10 @@
+# Set the default behaviour to 'auto'
+* text=auto
+
+# Explicitly require certain files to have LF line endings
+*.cs text eol=lf
+*.xml text eol=lf
+
+# Explicitly declare binary files
+*.png binary
+*.ico binary
