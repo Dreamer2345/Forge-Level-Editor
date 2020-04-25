@@ -460,6 +460,9 @@
     <Content Include="Textures\Tile_87.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Tile_88.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\Tile_90.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

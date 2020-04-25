@@ -499,6 +499,11 @@
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
   <texture>
+    <id>88</id>
+    <filepath>Textures/Tile_88.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
+  <texture>
     <id>90</id>
     <filepath>Textures/Tile_90.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
