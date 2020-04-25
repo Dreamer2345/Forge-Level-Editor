@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapEditorForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.fileLoadMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSaveMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +38,12 @@
             this.FileExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mapPropertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.eraseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rectangleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+            this.moveToMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.centreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewOutOfBoundsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewTileMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,20 +85,7 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.overallTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.playerStartRadioButton = new System.Windows.Forms.RadioButton();
-            this.edgeRadioButton = new System.Windows.Forms.RadioButton();
-            this.rectangleRadioButton = new System.Windows.Forms.RadioButton();
-            this.centreMap = new System.Windows.Forms.Button();
-            this.moveToRadioButton = new System.Windows.Forms.RadioButton();
-            this.spriteToolRadioButton = new System.Windows.Forms.RadioButton();
-            this.connectionToolRadioButton = new System.Windows.Forms.RadioButton();
-            this.eraseRadioButton = new System.Windows.Forms.RadioButton();
-            this.tileToolRadioButton = new System.Windows.Forms.RadioButton();
             this.tabPages = new System.Windows.Forms.TabControl();
             this.tabTileTool = new System.Windows.Forms.TabPage();
             this.tilesListView = new System.Windows.Forms.ListView();
@@ -129,15 +121,32 @@
             this.removeConnection = new System.Windows.Forms.Button();
             this.tabPlayerStart = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
+            this.tabImageList = new System.Windows.Forms.ImageList(this.components);
+            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tileToolMenu = new System.Windows.Forms.ToolStripButton();
+            this.eraseMenu = new System.Windows.Forms.ToolStripButton();
+            this.rectangleMenu = new System.Windows.Forms.ToolStripButton();
+            this.moveToMenu = new System.Windows.Forms.ToolStripButton();
+            this.centreMenu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.spriteToolMenu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
+            this.ddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.xxx = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.spriteContextMenu.SuspendLayout();
             this.connectionContextMenu.SuspendLayout();
             this.tilesContextMenu.SuspendLayout();
             this.overallTableLayout.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.tabPages.SuspendLayout();
             this.tabTileTool.SuspendLayout();
             this.tabSpriteTool.SuspendLayout();
@@ -145,22 +154,9 @@
             this.tabConnectionTool.SuspendLayout();
             this.connectionToolTableLayout.SuspendLayout();
             this.tabPlayerStart.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(12, 12);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenu,
-            this.editMenu,
-            this.viewMenu,
-            this.mapsMenu,
-            this.helpMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(808, 33);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // fileMenu
             // 
@@ -178,7 +174,7 @@
             // 
             this.fileLoadMenu.Name = "fileLoadMenu";
             this.fileLoadMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.fileLoadMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileLoadMenu.Size = new System.Drawing.Size(225, 30);
             this.fileLoadMenu.Text = "Load";
             this.fileLoadMenu.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -186,33 +182,39 @@
             // 
             this.fileSaveMenu.Name = "fileSaveMenu";
             this.fileSaveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.fileSaveMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileSaveMenu.Size = new System.Drawing.Size(225, 30);
             this.fileSaveMenu.Text = "Save File";
             this.fileSaveMenu.Click += new System.EventHandler(this.fileSaveMenu_Click);
             // 
             // fileSaveAsMenu
             // 
             this.fileSaveAsMenu.Name = "fileSaveAsMenu";
-            this.fileSaveAsMenu.Size = new System.Drawing.Size(252, 30);
+            this.fileSaveAsMenu.Size = new System.Drawing.Size(225, 30);
             this.fileSaveAsMenu.Text = "Save File As ...";
             this.fileSaveAsMenu.Click += new System.EventHandler(this.fileSaveAsMenu_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(249, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(222, 6);
             // 
             // FileExitMenu
             // 
             this.FileExitMenu.Name = "FileExitMenu";
-            this.FileExitMenu.Size = new System.Drawing.Size(252, 30);
+            this.FileExitMenu.Size = new System.Drawing.Size(225, 30);
             this.FileExitMenu.Text = "E&xit";
             this.FileExitMenu.Click += new System.EventHandler(this.fileExistMenu_Click);
             // 
             // editMenu
             // 
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mapPropertysToolStripMenuItem});
+            this.mapPropertysToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.eraseMenuItem,
+            this.rectangleMenuItem,
+            this.toolStripMenuItem8,
+            this.moveToMenuItem,
+            this.centreMenuItem});
             this.editMenu.Name = "editMenu";
             this.editMenu.Size = new System.Drawing.Size(54, 29);
             this.editMenu.Text = "&Edit";
@@ -222,8 +224,46 @@
             this.mapPropertysToolStripMenuItem.Name = "mapPropertysToolStripMenuItem";
             this.mapPropertysToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
             this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(284, 30);
-            this.mapPropertysToolStripMenuItem.Text = "Map Properties";
+            this.mapPropertysToolStripMenuItem.Text = "Map &Properties";
             this.mapPropertysToolStripMenuItem.Click += new System.EventHandler(this.mapPropertysToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(281, 6);
+            // 
+            // eraseMenuItem
+            // 
+            this.eraseMenuItem.Name = "eraseMenuItem";
+            this.eraseMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.eraseMenuItem.Text = "&Erase";
+            this.eraseMenuItem.Click += new System.EventHandler(this.eraseMenuItem_Click);
+            // 
+            // rectangleMenuItem
+            // 
+            this.rectangleMenuItem.Name = "rectangleMenuItem";
+            this.rectangleMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.rectangleMenuItem.Text = "&Rectangle";
+            this.rectangleMenuItem.Click += new System.EventHandler(this.rectangleMenuItem_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(281, 6);
+            // 
+            // moveToMenuItem
+            // 
+            this.moveToMenuItem.Name = "moveToMenuItem";
+            this.moveToMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.moveToMenuItem.Text = "&Move To";
+            this.moveToMenuItem.Click += new System.EventHandler(this.moveToMenuItem_Click);
+            // 
+            // centreMenuItem
+            // 
+            this.centreMenuItem.Name = "centreMenuItem";
+            this.centreMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.centreMenuItem.Text = "&Centre";
+            this.centreMenuItem.Click += new System.EventHandler(this.centreMenuItem_Click);
             // 
             // viewMenu
             // 
@@ -240,7 +280,7 @@
             // viewOutOfBoundsMenu
             // 
             this.viewOutOfBoundsMenu.Name = "viewOutOfBoundsMenu";
-            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(216, 30);
             this.viewOutOfBoundsMenu.Text = "&Out Of Bounds";
             this.viewOutOfBoundsMenu.Visible = false;
             this.viewOutOfBoundsMenu.Click += new System.EventHandler(this.viewOutOfBoundsMenu_Click);
@@ -248,28 +288,28 @@
             // viewTileMenu
             // 
             this.viewTileMenu.Name = "viewTileMenu";
-            this.viewTileMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewTileMenu.Size = new System.Drawing.Size(216, 30);
             this.viewTileMenu.Text = "&Tiles";
             this.viewTileMenu.Click += new System.EventHandler(this.viewTileMenu_Click);
             // 
             // viewSpritesMenu
             // 
             this.viewSpritesMenu.Name = "viewSpritesMenu";
-            this.viewSpritesMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewSpritesMenu.Size = new System.Drawing.Size(216, 30);
             this.viewSpritesMenu.Text = "&Sprites";
             this.viewSpritesMenu.Click += new System.EventHandler(this.viewSpritesMenu_Click);
             // 
             // viewConnectionsMenu
             // 
             this.viewConnectionsMenu.Name = "viewConnectionsMenu";
-            this.viewConnectionsMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewConnectionsMenu.Size = new System.Drawing.Size(216, 30);
             this.viewConnectionsMenu.Text = "&Connections";
             this.viewConnectionsMenu.Click += new System.EventHandler(this.viewConnectionsMenu_Click);
             // 
             // viewPlayerStartMenu
             // 
             this.viewPlayerStartMenu.Name = "viewPlayerStartMenu";
-            this.viewPlayerStartMenu.Size = new System.Drawing.Size(252, 30);
+            this.viewPlayerStartMenu.Size = new System.Drawing.Size(216, 30);
             this.viewPlayerStartMenu.Text = "&Player Start";
             this.viewPlayerStartMenu.Click += new System.EventHandler(this.viewPlayerStartMenu_Click);
             // 
@@ -289,26 +329,26 @@
             // mapAddMenu
             // 
             this.mapAddMenu.Name = "mapAddMenu";
-            this.mapAddMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapAddMenu.Size = new System.Drawing.Size(193, 30);
             this.mapAddMenu.Text = "&Add Map";
             this.mapAddMenu.Click += new System.EventHandler(this.mapAddMenu_Click);
             // 
             // mapDeleteMenu
             // 
             this.mapDeleteMenu.Name = "mapDeleteMenu";
-            this.mapDeleteMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapDeleteMenu.Size = new System.Drawing.Size(193, 30);
             this.mapDeleteMenu.Text = "&Delete Map";
             this.mapDeleteMenu.Click += new System.EventHandler(this.mapDeleteMenu_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(249, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
             // 
             // mapMoveUpMenu
             // 
             this.mapMoveUpMenu.Name = "mapMoveUpMenu";
-            this.mapMoveUpMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
             this.mapMoveUpMenu.Tag = "KeepOpen";
             this.mapMoveUpMenu.Text = "Move &Up";
             this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
@@ -316,7 +356,7 @@
             // mapMoveDownMenu
             // 
             this.mapMoveDownMenu.Name = "mapMoveDownMenu";
-            this.mapMoveDownMenu.Size = new System.Drawing.Size(252, 30);
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
             this.mapMoveDownMenu.Tag = "KeepOpen";
             this.mapMoveDownMenu.Text = "Move &Down";
             this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
@@ -324,7 +364,7 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(249, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
             // 
             // helpMenu
             // 
@@ -350,6 +390,7 @@
             // 
             // spriteContextMenu
             // 
+            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteContextMenu_FindInList,
             this.spriteContextMenu_Remove,
@@ -380,6 +421,7 @@
             // 
             // connectionContextMenu
             // 
+            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionContextMenu_FindInList,
             this.connectionContextMenu_Remove});
@@ -404,6 +446,7 @@
             // 
             // tilesContextMenu
             // 
+            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesContextMenu_FindInList,
             this.tilesContextMenu_Remove,
@@ -528,16 +571,15 @@
             this.overallTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
             this.overallTableLayout.Controls.Add(this.statusStrip1, 0, 2);
             this.overallTableLayout.Controls.Add(this.pictureBox1, 0, 1);
-            this.overallTableLayout.Controls.Add(this.groupBox1, 0, 0);
             this.overallTableLayout.Controls.Add(this.tabPages, 1, 1);
             this.overallTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overallTableLayout.Location = new System.Drawing.Point(4, 37);
+            this.overallTableLayout.Location = new System.Drawing.Point(4, 4);
             this.overallTableLayout.Name = "overallTableLayout";
             this.overallTableLayout.RowCount = 3;
-            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.overallTableLayout.Size = new System.Drawing.Size(808, 483);
+            this.overallTableLayout.Size = new System.Drawing.Size(1141, 786);
             this.overallTableLayout.TabIndex = 10;
             this.overallTableLayout.SizeChanged += new System.EventHandler(this.overallTableLayout_SizeChanged);
             // 
@@ -545,191 +587,22 @@
             // 
             this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentMapLabel,
-            this.toolStripStatusLabel1,
-            this.currentFileLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 460);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 764);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(808, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(1141, 22);
             this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // currentMapLabel
-            // 
-            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentMapLabel.Name = "currentMapLabel";
-            this.currentMapLabel.Size = new System.Drawing.Size(0, 18);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 18);
-            this.toolStripStatusLabel1.Text = " in ";
-            // 
-            // currentFileLabel
-            // 
-            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(112, 18);
-            this.currentFileLabel.Text = "< New File >";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 73);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 55);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(390, 384);
+            this.pictureBox1.Size = new System.Drawing.Size(723, 705);
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.overallTableLayout.SetColumnSpan(this.groupBox1, 2);
-            this.groupBox1.Controls.Add(this.playerStartRadioButton);
-            this.groupBox1.Controls.Add(this.edgeRadioButton);
-            this.groupBox1.Controls.Add(this.rectangleRadioButton);
-            this.groupBox1.Controls.Add(this.centreMap);
-            this.groupBox1.Controls.Add(this.moveToRadioButton);
-            this.groupBox1.Controls.Add(this.spriteToolRadioButton);
-            this.groupBox1.Controls.Add(this.connectionToolRadioButton);
-            this.groupBox1.Controls.Add(this.eraseRadioButton);
-            this.groupBox1.Controls.Add(this.tileToolRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(726, 64);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            // 
-            // playerStartRadioButton
-            // 
-            this.playerStartRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.playerStartRadioButton.AutoSize = true;
-            this.playerStartRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon10;
-            this.playerStartRadioButton.Location = new System.Drawing.Point(606, 14);
-            this.playerStartRadioButton.Name = "playerStartRadioButton";
-            this.playerStartRadioButton.Size = new System.Drawing.Size(101, 46);
-            this.playerStartRadioButton.TabIndex = 8;
-            this.playerStartRadioButton.Text = "Player Start";
-            this.playerStartRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.playerStartRadioButton.UseVisualStyleBackColor = true;
-            this.playerStartRadioButton.CheckedChanged += new System.EventHandler(this.playerStartRadioButton_CheckedChanged);
-            // 
-            // edgeRadioButton
-            // 
-            this.edgeRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.edgeRadioButton.AutoSize = true;
-            this.edgeRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon1;
-            this.edgeRadioButton.Location = new System.Drawing.Point(344, 14);
-            this.edgeRadioButton.Name = "edgeRadioButton";
-            this.edgeRadioButton.Size = new System.Drawing.Size(57, 46);
-            this.edgeRadioButton.TabIndex = 7;
-            this.edgeRadioButton.Text = "Edge";
-            this.edgeRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.edgeRadioButton.UseVisualStyleBackColor = true;
-            this.edgeRadioButton.Visible = false;
-            this.edgeRadioButton.CheckedChanged += new System.EventHandler(this.edgeRadioButton_CheckedChanged);
-            // 
-            // rectangleRadioButton
-            // 
-            this.rectangleRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rectangleRadioButton.AutoSize = true;
-            this.rectangleRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon7;
-            this.rectangleRadioButton.Location = new System.Drawing.Point(272, 14);
-            this.rectangleRadioButton.Name = "rectangleRadioButton";
-            this.rectangleRadioButton.Size = new System.Drawing.Size(92, 46);
-            this.rectangleRadioButton.TabIndex = 6;
-            this.rectangleRadioButton.Text = "Rectangle";
-            this.rectangleRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.rectangleRadioButton.UseVisualStyleBackColor = true;
-            this.rectangleRadioButton.CheckedChanged += new System.EventHandler(this.rectangleRadioButton_CheckedChanged);
-            // 
-            // centreMap
-            // 
-            this.centreMap.Image = global::RogueboyLevelEditor.Properties.Resources.Icon6;
-            this.centreMap.Location = new System.Drawing.Point(186, 14);
-            this.centreMap.Name = "centreMap";
-            this.centreMap.Size = new System.Drawing.Size(80, 39);
-            this.centreMap.TabIndex = 5;
-            this.centreMap.Text = "Centre Map";
-            this.centreMap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.centreMap.UseVisualStyleBackColor = true;
-            this.centreMap.Click += new System.EventHandler(this.centreMap_Click);
-            // 
-            // moveToRadioButton
-            // 
-            this.moveToRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.moveToRadioButton.AutoSize = true;
-            this.moveToRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon5;
-            this.moveToRadioButton.Location = new System.Drawing.Point(120, 14);
-            this.moveToRadioButton.Name = "moveToRadioButton";
-            this.moveToRadioButton.Size = new System.Drawing.Size(79, 46);
-            this.moveToRadioButton.TabIndex = 4;
-            this.moveToRadioButton.Text = "Move To";
-            this.moveToRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.moveToRadioButton.UseVisualStyleBackColor = true;
-            this.moveToRadioButton.CheckedChanged += new System.EventHandler(this.moveToRadioButton_CheckedChanged);
-            // 
-            // spriteToolRadioButton
-            // 
-            this.spriteToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.spriteToolRadioButton.AutoSize = true;
-            this.spriteToolRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon9;
-            this.spriteToolRadioButton.Location = new System.Drawing.Point(431, 14);
-            this.spriteToolRadioButton.Name = "spriteToolRadioButton";
-            this.spriteToolRadioButton.Size = new System.Drawing.Size(95, 46);
-            this.spriteToolRadioButton.TabIndex = 3;
-            this.spriteToolRadioButton.Text = "Sprite Tool";
-            this.spriteToolRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.spriteToolRadioButton.UseVisualStyleBackColor = true;
-            this.spriteToolRadioButton.CheckedChanged += new System.EventHandler(this.spriteToolRadioButton_CheckedChanged);
-            // 
-            // connectionToolRadioButton
-            // 
-            this.connectionToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.connectionToolRadioButton.AutoSize = true;
-            this.connectionToolRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon2;
-            this.connectionToolRadioButton.Location = new System.Drawing.Point(505, 14);
-            this.connectionToolRadioButton.Name = "connectionToolRadioButton";
-            this.connectionToolRadioButton.Size = new System.Drawing.Size(134, 46);
-            this.connectionToolRadioButton.TabIndex = 2;
-            this.connectionToolRadioButton.Text = "Connection Tool";
-            this.connectionToolRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.connectionToolRadioButton.UseVisualStyleBackColor = true;
-            this.connectionToolRadioButton.CheckedChanged += new System.EventHandler(this.connectionToolRadioButton_CheckedChanged);
-            // 
-            // eraseRadioButton
-            // 
-            this.eraseRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.eraseRadioButton.AutoSize = true;
-            this.eraseRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon4;
-            this.eraseRadioButton.Location = new System.Drawing.Point(70, 14);
-            this.eraseRadioButton.Name = "eraseRadioButton";
-            this.eraseRadioButton.Size = new System.Drawing.Size(61, 46);
-            this.eraseRadioButton.TabIndex = 1;
-            this.eraseRadioButton.Text = "Erase";
-            this.eraseRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.eraseRadioButton.UseVisualStyleBackColor = true;
-            this.eraseRadioButton.CheckedChanged += new System.EventHandler(this.eraseRadioButton_CheckedChanged);
-            // 
-            // tileToolRadioButton
-            // 
-            this.tileToolRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.tileToolRadioButton.AutoSize = true;
-            this.tileToolRadioButton.Checked = true;
-            this.tileToolRadioButton.Image = global::RogueboyLevelEditor.Properties.Resources.Icon3;
-            this.tileToolRadioButton.Location = new System.Drawing.Point(6, 14);
-            this.tileToolRadioButton.Name = "tileToolRadioButton";
-            this.tileToolRadioButton.Size = new System.Drawing.Size(77, 46);
-            this.tileToolRadioButton.TabIndex = 0;
-            this.tileToolRadioButton.TabStop = true;
-            this.tileToolRadioButton.Text = "Tile Tool";
-            this.tileToolRadioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tileToolRadioButton.UseVisualStyleBackColor = true;
-            this.tileToolRadioButton.CheckedChanged += new System.EventHandler(this.tileToolRadioButton_CheckedChanged);
             // 
             // tabPages
             // 
@@ -738,23 +611,25 @@
             this.tabPages.Controls.Add(this.tabConnectionTool);
             this.tabPages.Controls.Add(this.tabPlayerStart);
             this.tabPages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPages.Location = new System.Drawing.Point(399, 73);
+            this.tabPages.ImageList = this.tabImageList;
+            this.tabPages.Location = new System.Drawing.Point(732, 55);
             this.tabPages.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
             this.tabPages.Name = "tabPages";
             this.tabPages.SelectedIndex = 0;
-            this.tabPages.Size = new System.Drawing.Size(409, 385);
+            this.tabPages.Size = new System.Drawing.Size(409, 706);
             this.tabPages.TabIndex = 15;
             this.tabPages.SelectedIndexChanged += new System.EventHandler(this.tabPages_SelectedIndexChanged);
             // 
             // tabTileTool
             // 
             this.tabTileTool.Controls.Add(this.tilesListView);
-            this.tabTileTool.Location = new System.Drawing.Point(4, 29);
+            this.tabTileTool.ImageIndex = 4;
+            this.tabTileTool.Location = new System.Drawing.Point(4, 31);
             this.tabTileTool.Name = "tabTileTool";
             this.tabTileTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTileTool.Size = new System.Drawing.Size(401, 352);
+            this.tabTileTool.Size = new System.Drawing.Size(401, 671);
             this.tabTileTool.TabIndex = 0;
-            this.tabTileTool.Text = "Tile Tool";
+            this.tabTileTool.Text = "Tiles  ";
             this.tabTileTool.UseVisualStyleBackColor = true;
             // 
             // tilesListView
@@ -777,7 +652,7 @@
             this.tilesListView.Margin = new System.Windows.Forms.Padding(0);
             this.tilesListView.MultiSelect = false;
             this.tilesListView.Name = "tilesListView";
-            this.tilesListView.Size = new System.Drawing.Size(395, 346);
+            this.tilesListView.Size = new System.Drawing.Size(395, 665);
             this.tilesListView.TabIndex = 21;
             this.tilesListView.UseCompatibleStateImageBehavior = false;
             this.tilesListView.View = System.Windows.Forms.View.Details;
@@ -820,12 +695,13 @@
             // tabSpriteTool
             // 
             this.tabSpriteTool.Controls.Add(this.spriteToolTableLayout);
-            this.tabSpriteTool.Location = new System.Drawing.Point(4, 29);
+            this.tabSpriteTool.ImageIndex = 5;
+            this.tabSpriteTool.Location = new System.Drawing.Point(4, 31);
             this.tabSpriteTool.Name = "tabSpriteTool";
             this.tabSpriteTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSpriteTool.Size = new System.Drawing.Size(401, 352);
+            this.tabSpriteTool.Size = new System.Drawing.Size(401, 671);
             this.tabSpriteTool.TabIndex = 1;
-            this.tabSpriteTool.Text = "Sprite Tool";
+            this.tabSpriteTool.Text = "Sprites  ";
             this.tabSpriteTool.UseVisualStyleBackColor = true;
             // 
             // spriteToolTableLayout
@@ -842,7 +718,7 @@
             this.spriteToolTableLayout.RowCount = 2;
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 346);
+            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 665);
             this.spriteToolTableLayout.TabIndex = 25;
             // 
             // spritesPlacedListView
@@ -861,10 +737,10 @@
             this.spritesPlacedListView.GridLines = true;
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 176);
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 335);
             this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 167);
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 327);
             this.spritesPlacedListView.TabIndex = 27;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
@@ -924,7 +800,7 @@
             this.spritesListView.Location = new System.Drawing.Point(66, 3);
             this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
-            this.spritesListView.Size = new System.Drawing.Size(326, 167);
+            this.spritesListView.Size = new System.Drawing.Size(326, 326);
             this.spritesListView.TabIndex = 25;
             this.spritesListView.UseCompatibleStateImageBehavior = false;
             this.spritesListView.View = System.Windows.Forms.View.Details;
@@ -966,12 +842,13 @@
             // tabConnectionTool
             // 
             this.tabConnectionTool.Controls.Add(this.connectionToolTableLayout);
-            this.tabConnectionTool.Location = new System.Drawing.Point(4, 29);
+            this.tabConnectionTool.ImageIndex = 6;
+            this.tabConnectionTool.Location = new System.Drawing.Point(4, 31);
             this.tabConnectionTool.Name = "tabConnectionTool";
             this.tabConnectionTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConnectionTool.Size = new System.Drawing.Size(401, 352);
+            this.tabConnectionTool.Size = new System.Drawing.Size(401, 671);
             this.tabConnectionTool.TabIndex = 2;
-            this.tabConnectionTool.Text = "Connection Tool";
+            this.tabConnectionTool.Text = "Connections  ";
             this.tabConnectionTool.UseVisualStyleBackColor = true;
             // 
             // connectionToolTableLayout
@@ -986,7 +863,7 @@
             this.connectionToolTableLayout.Name = "connectionToolTableLayout";
             this.connectionToolTableLayout.RowCount = 1;
             this.connectionToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 346);
+            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 665);
             this.connectionToolTableLayout.TabIndex = 24;
             // 
             // connectionListView
@@ -1007,7 +884,7 @@
             this.connectionListView.Location = new System.Drawing.Point(69, 3);
             this.connectionListView.MultiSelect = false;
             this.connectionListView.Name = "connectionListView";
-            this.connectionListView.Size = new System.Drawing.Size(323, 340);
+            this.connectionListView.Size = new System.Drawing.Size(323, 659);
             this.connectionListView.TabIndex = 24;
             this.connectionListView.UseCompatibleStateImageBehavior = false;
             this.connectionListView.View = System.Windows.Forms.View.Details;
@@ -1048,12 +925,13 @@
             // tabPlayerStart
             // 
             this.tabPlayerStart.Controls.Add(this.label1);
-            this.tabPlayerStart.Location = new System.Drawing.Point(4, 29);
+            this.tabPlayerStart.ImageIndex = 7;
+            this.tabPlayerStart.Location = new System.Drawing.Point(4, 31);
             this.tabPlayerStart.Name = "tabPlayerStart";
             this.tabPlayerStart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlayerStart.Size = new System.Drawing.Size(401, 352);
+            this.tabPlayerStart.Size = new System.Drawing.Size(401, 671);
             this.tabPlayerStart.TabIndex = 3;
-            this.tabPlayerStart.Text = "Player Start";
+            this.tabPlayerStart.Text = "Player Start  ";
             this.tabPlayerStart.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -1065,34 +943,206 @@
             this.label1.Text = "Select a starting position for the player on this level.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // tabImageList
+            // 
+            this.tabImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabImageList.ImageStream")));
+            this.tabImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.tabImageList.Images.SetKeyName(0, "Icon3.png");
+            this.tabImageList.Images.SetKeyName(1, "Icon9.png");
+            this.tabImageList.Images.SetKeyName(2, "Icon2.png");
+            this.tabImageList.Images.SetKeyName(3, "Icon10.png");
+            this.tabImageList.Images.SetKeyName(4, "edit.png");
+            this.tabImageList.Images.SetKeyName(5, "swiss-army-knife.png");
+            this.tabImageList.Images.SetKeyName(6, "itinerary.png");
+            this.tabImageList.Images.SetKeyName(7, "region-code.png");
+            // 
+            // currentMapLabel
+            // 
+            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentMapLabel.Name = "currentMapLabel";
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 18);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 18);
+            this.toolStripStatusLabel1.Text = " in ";
+            // 
+            // currentFileLabel
+            // 
+            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentFileLabel.Name = "currentFileLabel";
+            this.currentFileLabel.Size = new System.Drawing.Size(112, 18);
+            this.currentFileLabel.Text = "< New File >";
+            // 
+            // toolStatusLabel
+            // 
+            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.toolStatusLabel.Name = "toolStatusLabel";
+            this.toolStatusLabel.Size = new System.Drawing.Size(747, 18);
+            this.toolStatusLabel.Spring = true;
+            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tileToolMenu
+            // 
+            this.tileToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.tiles;
+            this.tileToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tileToolMenu.Name = "tileToolMenu";
+            this.tileToolMenu.Size = new System.Drawing.Size(74, 29);
+            this.tileToolMenu.Text = "&Tiles";
+            this.tileToolMenu.Click += new System.EventHandler(this.tileToolMenu_Click);
+            // 
+            // eraseMenu
+            // 
+            this.eraseMenu.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
+            this.eraseMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.eraseMenu.Name = "eraseMenu";
+            this.eraseMenu.Size = new System.Drawing.Size(81, 29);
+            this.eraseMenu.Text = "Erase";
+            this.eraseMenu.Click += new System.EventHandler(this.eraseMenu_Click);
+            // 
+            // rectangleMenu
+            // 
+            this.rectangleMenu.Image = global::RogueboyLevelEditor.Properties.Resources.Icon7;
+            this.rectangleMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.rectangleMenu.Name = "rectangleMenu";
+            this.rectangleMenu.Size = new System.Drawing.Size(116, 29);
+            this.rectangleMenu.Text = "Rectangle";
+            this.rectangleMenu.Click += new System.EventHandler(this.rectangleMenu_Click);
+            // 
+            // moveToMenu
+            // 
+            this.moveToMenu.Image = global::RogueboyLevelEditor.Properties.Resources.move;
+            this.moveToMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveToMenu.Name = "moveToMenu";
+            this.moveToMenu.Size = new System.Drawing.Size(108, 29);
+            this.moveToMenu.Text = "Move To";
+            this.moveToMenu.Click += new System.EventHandler(this.moveToMenu_Click);
+            // 
+            // centreMenu
+            // 
+            this.centreMenu.Image = global::RogueboyLevelEditor.Properties.Resources.centre;
+            this.centreMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.centreMenu.Name = "centreMenu";
+            this.centreMenu.Size = new System.Drawing.Size(91, 29);
+            this.centreMenu.Text = "Centre";
+            this.centreMenu.Click += new System.EventHandler(this.centreMenu_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            // 
+            // spriteToolMenu
+            // 
+            this.spriteToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.sprites;
+            this.spriteToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.spriteToolMenu.Name = "spriteToolMenu";
+            this.spriteToolMenu.Size = new System.Drawing.Size(94, 29);
+            this.spriteToolMenu.Text = "&Sprites";
+            this.spriteToolMenu.Click += new System.EventHandler(this.spriteToolMenu_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // connectionToolMenu
+            // 
+            this.connectionToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.connection;
+            this.connectionToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.connectionToolMenu.Name = "connectionToolMenu";
+            this.connectionToolMenu.Size = new System.Drawing.Size(138, 29);
+            this.connectionToolMenu.Text = "&Connections";
+            this.connectionToolMenu.Click += new System.EventHandler(this.connectionToolMenu_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+            // 
+            // playerStartMenu
+            // 
+            this.playerStartMenu.Image = global::RogueboyLevelEditor.Properties.Resources.playerStart;
+            this.playerStartMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.playerStartMenu.Name = "playerStartMenu";
+            this.playerStartMenu.Size = new System.Drawing.Size(128, 29);
+            this.playerStartMenu.Text = "&Player Start";
+            this.playerStartMenu.Click += new System.EventHandler(this.playerStartMenu_Click);
+            // 
+            // ddToolStripMenuItem
+            // 
+            this.ddToolStripMenuItem.Name = "ddToolStripMenuItem";
+            this.ddToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
+            this.ddToolStripMenuItem.Text = "dd";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileMenu,
+            this.editMenu,
+            this.mapsMenu,
+            this.helpMenu});
+            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1141, 33);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tileToolMenu,
+            this.eraseMenu,
+            this.rectangleMenu,
+            this.moveToMenu,
+            this.centreMenu,
+            this.toolStripSeparator1,
+            this.spriteToolMenu,
+            this.toolStripSeparator2,
+            this.connectionToolMenu,
+            this.toolStripSeparator3,
+            this.playerStartMenu});
+            this.toolStrip1.Location = new System.Drawing.Point(4, 37);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1141, 32);
+            this.toolStrip1.TabIndex = 12;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // xxx
+            // 
+            this.xxx.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.xxx.Image = ((System.Drawing.Image)(resources.GetObject("xxx.Image")));
+            this.xxx.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.xxx.Name = "xxx";
+            this.xxx.Size = new System.Drawing.Size(28, 28);
+            this.xxx.Text = "toolStripButton1";
+            // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(816, 524);
-            this.Controls.Add(this.overallTableLayout);
+            this.ClientSize = new System.Drawing.Size(1149, 794);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.overallTableLayout);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(830, 530);
             this.Name = "MapEditorForm";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dark Ritual Level Editor";
             this.Load += new System.EventHandler(this.MapEditorForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.spriteContextMenu.ResumeLayout(false);
             this.connectionContextMenu.ResumeLayout(false);
             this.tilesContextMenu.ResumeLayout(false);
             this.overallTableLayout.ResumeLayout(false);
             this.overallTableLayout.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPages.ResumeLayout(false);
             this.tabTileTool.ResumeLayout(false);
             this.tabSpriteTool.ResumeLayout(false);
@@ -1100,14 +1150,16 @@
             this.tabConnectionTool.ResumeLayout(false);
             this.connectionToolTableLayout.ResumeLayout(false);
             this.tabPlayerStart.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem fileSaveMenu;
         private System.Windows.Forms.ToolStripMenuItem fileLoadMenu;
@@ -1145,16 +1197,6 @@
         private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_Remove;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.TableLayoutPanel overallTableLayout;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton playerStartRadioButton;
-        private System.Windows.Forms.RadioButton edgeRadioButton;
-        private System.Windows.Forms.RadioButton rectangleRadioButton;
-        private System.Windows.Forms.Button centreMap;
-        private System.Windows.Forms.RadioButton moveToRadioButton;
-        private System.Windows.Forms.RadioButton spriteToolRadioButton;
-        private System.Windows.Forms.RadioButton connectionToolRadioButton;
-        private System.Windows.Forms.RadioButton eraseRadioButton;
-        private System.Windows.Forms.RadioButton tileToolRadioButton;
         public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel currentMapLabel;
@@ -1206,5 +1248,28 @@
         private System.Windows.Forms.Button removeConnection;
         private System.Windows.Forms.TabPage tabPlayerStart;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripButton tileToolMenu;
+        private System.Windows.Forms.ToolStripButton spriteToolMenu;
+        private System.Windows.Forms.ToolStripButton connectionToolMenu;
+        private System.Windows.Forms.ToolStripButton eraseMenu;
+        private System.Windows.Forms.ToolStripButton playerStartMenu;
+        private System.Windows.Forms.ToolStripButton moveToMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton centreMenu;
+        private System.Windows.Forms.ToolStripButton rectangleMenu;
+        private System.Windows.Forms.ToolStripStatusLabel toolStatusLabel;
+        private System.Windows.Forms.ToolStripMenuItem eraseMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rectangleMenuItem;
+        private System.Windows.Forms.ImageList tabImageList;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem moveToMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem centreMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ddToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton xxx;
     }
 }

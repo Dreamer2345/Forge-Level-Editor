@@ -81,6 +81,11 @@
     <Compile Include="map\Tools\Tool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TextureHandler\TextureManager.cs" />
     <EmbeddedResource Include="Forms\MapEditorForm.resx">
       <DependentUpon>MapEditorForm.cs</DependentUpon>
@@ -91,14 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,6 +133,18 @@
     <None Include="icons\Icon7.png" />
     <None Include="icons\Icon9.png" />
     <None Include="icons\Icon10.png" />
+    <None Include="icons\New\move.png" />
+    <None Include="icons\New\centre.png" />
+    <None Include="icons\New\tiles.png" />
+    <None Include="icons\New\connection.png" />
+    <None Include="icons\New\playerStart.png" />
+    <None Include="icons\New\playerStart2.png" />
+    <None Include="icons\New\erase.png" />
+    <None Include="icons\New\map.png" />
+    <None Include="icons\New\resize.png" />
+    <None Include="icons\New\save.png" />
+    <None Include="icons\New\save-as.png" />
+    <None Include="icons\New\sprites.png" />
     <Content Include="Textures\Sprites\Bat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
