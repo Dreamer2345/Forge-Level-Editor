@@ -204,10 +204,10 @@
 		<exit>false</exit>
 		<gate>
 			<active>0</active>
-			<value>false</value>
+			<value>true</value>
 		</gate>
 		<switch>
-			<value>true</value>
+			<value>false</value>
 		</switch>
 	</tile>
 	<tile> 
