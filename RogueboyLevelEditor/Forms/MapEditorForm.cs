@@ -157,7 +157,7 @@ namespace RogueboyLevelEditor.Forms
             map.CentreMap();
 
             ToolStripMenuItem newMenuItem = new ToolStripMenuItem(map.Name);
-            newMenuItem.Click += NewMenuButton_Click;
+            newMenuItem.Click += changeMap_Click;
             newMenuItem.Tag = map;
             newMenuItem.Name = map.Name;
             mapsMenu.DropDownItems.Add(newMenuItem);
@@ -170,7 +170,7 @@ namespace RogueboyLevelEditor.Forms
             }
 
         }
-        private void NewMenuButton_Click(object sender, EventArgs e) {
+        private void changeMap_Click(object sender, EventArgs e) {
             ToolStripMenuItem menu = (ToolStripMenuItem)sender;
             Map chosenMap = (Map)menu.Tag;
 
@@ -429,6 +429,7 @@ namespace RogueboyLevelEditor.Forms
                     enableMapMenuOptions(mapCollection.CurrentMap.Name);
 
                     UpdateCurrentSprites();
+                    UpdateCurrentConnectors();
                     pictureBox1.Invalidate();
                     pictureBox1.Refresh();
 

@@ -86,6 +86,10 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.overallTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPages = new System.Windows.Forms.TabControl();
             this.tabTileTool = new System.Windows.Forms.TabPage();
@@ -123,10 +127,6 @@
             this.tabPlayerStart = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.tabImageList = new System.Windows.Forms.ImageList(this.components);
-            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -141,9 +141,6 @@
             this.spriteToolMenu = new System.Windows.Forms.ToolStripButton();
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
-            this.xxx = new System.Windows.Forms.ToolStripButton();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.spriteContextMenu.SuspendLayout();
             this.connectionContextMenu.SuspendLayout();
@@ -394,13 +391,12 @@
             // 
             // spriteContextMenu
             // 
-            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteContextMenu_FindInList,
             this.spriteContextMenu_Remove,
             this.toolStripMenuItem4});
             this.spriteContextMenu.Name = "spriteContextMenu";
-            this.spriteContextMenu.Size = new System.Drawing.Size(170, 70);
+            this.spriteContextMenu.Size = new System.Drawing.Size(241, 103);
             // 
             // spriteContextMenu_FindInList
             // 
@@ -425,7 +421,6 @@
             // 
             // connectionContextMenu
             // 
-            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionContextMenu_FindInList,
             this.connectionContextMenu_Remove});
@@ -450,7 +445,6 @@
             // 
             // tilesContextMenu
             // 
-            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesContextMenu_FindInList,
             this.tilesContextMenu_Remove,
@@ -460,7 +454,7 @@
             this.tilesContextMenu_Row,
             this.toolStripMenuItem6});
             this.tilesContextMenu.Name = "tilesContextMenu";
-            this.tilesContextMenu.Size = new System.Drawing.Size(195, 166);
+            this.tilesContextMenu.Size = new System.Drawing.Size(187, 166);
             // 
             // tilesContextMenu_FindInList
             // 
@@ -604,13 +598,40 @@
             this.currentMapLabel,
             this.toolStripStatusLabel1,
             this.currentFileLabel,
-            this.toolStatusLabel
-            });
+            this.toolStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 763);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1141, 23);
             this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // currentMapLabel
+            // 
+            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentMapLabel.Name = "currentMapLabel";
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 18);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 18);
+            this.toolStripStatusLabel1.Text = " in ";
+            // 
+            // currentFileLabel
+            // 
+            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentFileLabel.Name = "currentFileLabel";
+            this.currentFileLabel.Size = new System.Drawing.Size(112, 18);
+            this.currentFileLabel.Text = "< New File >";
+            // 
+            // toolStatusLabel
+            // 
+            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.toolStatusLabel.Name = "toolStatusLabel";
+            this.toolStatusLabel.Size = new System.Drawing.Size(978, 18);
+            this.toolStatusLabel.Spring = true;
+            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBox1
             // 
@@ -643,10 +664,10 @@
             // 
             this.tabTileTool.Controls.Add(this.tilesListView);
             this.tabTileTool.ImageIndex = 4;
-            this.tabTileTool.Location = new System.Drawing.Point(4, 31);
+            this.tabTileTool.Location = new System.Drawing.Point(4, 29);
             this.tabTileTool.Name = "tabTileTool";
             this.tabTileTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTileTool.Size = new System.Drawing.Size(401, 671);
+            this.tabTileTool.Size = new System.Drawing.Size(401, 673);
             this.tabTileTool.TabIndex = 0;
             this.tabTileTool.Text = "Tiles  ";
             this.tabTileTool.UseVisualStyleBackColor = true;
@@ -671,7 +692,7 @@
             this.tilesListView.Margin = new System.Windows.Forms.Padding(0);
             this.tilesListView.MultiSelect = false;
             this.tilesListView.Name = "tilesListView";
-            this.tilesListView.Size = new System.Drawing.Size(395, 665);
+            this.tilesListView.Size = new System.Drawing.Size(395, 667);
             this.tilesListView.TabIndex = 21;
             this.tilesListView.UseCompatibleStateImageBehavior = false;
             this.tilesListView.View = System.Windows.Forms.View.Details;
@@ -715,10 +736,10 @@
             // 
             this.tabSpriteTool.Controls.Add(this.spriteToolTableLayout);
             this.tabSpriteTool.ImageIndex = 5;
-            this.tabSpriteTool.Location = new System.Drawing.Point(4, 31);
+            this.tabSpriteTool.Location = new System.Drawing.Point(4, 29);
             this.tabSpriteTool.Name = "tabSpriteTool";
             this.tabSpriteTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSpriteTool.Size = new System.Drawing.Size(401, 671);
+            this.tabSpriteTool.Size = new System.Drawing.Size(401, 673);
             this.tabSpriteTool.TabIndex = 1;
             this.tabSpriteTool.Text = "Sprites  ";
             this.tabSpriteTool.UseVisualStyleBackColor = true;
@@ -737,7 +758,7 @@
             this.spriteToolTableLayout.RowCount = 2;
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 665);
+            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 667);
             this.spriteToolTableLayout.TabIndex = 25;
             // 
             // spritesPlacedListView
@@ -756,10 +777,10 @@
             this.spritesPlacedListView.GridLines = true;
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 335);
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 336);
             this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 327);
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 328);
             this.spritesPlacedListView.TabIndex = 27;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
@@ -819,7 +840,7 @@
             this.spritesListView.Location = new System.Drawing.Point(66, 3);
             this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
-            this.spritesListView.Size = new System.Drawing.Size(326, 326);
+            this.spritesListView.Size = new System.Drawing.Size(326, 327);
             this.spritesListView.TabIndex = 25;
             this.spritesListView.UseCompatibleStateImageBehavior = false;
             this.spritesListView.View = System.Windows.Forms.View.Details;
@@ -862,10 +883,10 @@
             // 
             this.tabConnectionTool.Controls.Add(this.connectionToolTableLayout);
             this.tabConnectionTool.ImageIndex = 6;
-            this.tabConnectionTool.Location = new System.Drawing.Point(4, 31);
+            this.tabConnectionTool.Location = new System.Drawing.Point(4, 29);
             this.tabConnectionTool.Name = "tabConnectionTool";
             this.tabConnectionTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConnectionTool.Size = new System.Drawing.Size(401, 671);
+            this.tabConnectionTool.Size = new System.Drawing.Size(401, 673);
             this.tabConnectionTool.TabIndex = 2;
             this.tabConnectionTool.Text = "Connections  ";
             this.tabConnectionTool.UseVisualStyleBackColor = true;
@@ -882,7 +903,7 @@
             this.connectionToolTableLayout.Name = "connectionToolTableLayout";
             this.connectionToolTableLayout.RowCount = 1;
             this.connectionToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 665);
+            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 667);
             this.connectionToolTableLayout.TabIndex = 24;
             // 
             // connectionListView
@@ -903,7 +924,7 @@
             this.connectionListView.Location = new System.Drawing.Point(69, 3);
             this.connectionListView.MultiSelect = false;
             this.connectionListView.Name = "connectionListView";
-            this.connectionListView.Size = new System.Drawing.Size(323, 659);
+            this.connectionListView.Size = new System.Drawing.Size(323, 661);
             this.connectionListView.TabIndex = 24;
             this.connectionListView.UseCompatibleStateImageBehavior = false;
             this.connectionListView.View = System.Windows.Forms.View.Details;
@@ -945,10 +966,10 @@
             // 
             this.tabPlayerStart.Controls.Add(this.label1);
             this.tabPlayerStart.ImageIndex = 7;
-            this.tabPlayerStart.Location = new System.Drawing.Point(4, 31);
+            this.tabPlayerStart.Location = new System.Drawing.Point(4, 29);
             this.tabPlayerStart.Name = "tabPlayerStart";
             this.tabPlayerStart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlayerStart.Size = new System.Drawing.Size(401, 671);
+            this.tabPlayerStart.Size = new System.Drawing.Size(401, 673);
             this.tabPlayerStart.TabIndex = 3;
             this.tabPlayerStart.Text = "Player Start  ";
             this.tabPlayerStart.UseVisualStyleBackColor = true;
@@ -975,34 +996,6 @@
             this.tabImageList.Images.SetKeyName(6, "itinerary.png");
             this.tabImageList.Images.SetKeyName(7, "region-code.png");
             // 
-            // currentMapLabel
-            // 
-            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentMapLabel.Name = "currentMapLabel";
-            this.currentMapLabel.Size = new System.Drawing.Size(0, 18);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 18);
-            this.toolStripStatusLabel1.Text = " in ";
-            // 
-            // currentFileLabel
-            // 
-            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(112, 18);
-            this.currentFileLabel.Text = "< New File >";
-            // 
-            // toolStatusLabel
-            // 
-            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.toolStatusLabel.Name = "toolStatusLabel";
-            this.toolStatusLabel.Size = new System.Drawing.Size(747, 18);
-            this.toolStatusLabel.Spring = true;
-            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -1017,14 +1010,18 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-
+            // 
+            // ddToolStripMenuItem
+            // 
+            this.ddToolStripMenuItem.Name = "ddToolStripMenuItem";
+            this.ddToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
+            this.viewMenu,
             this.mapsMenu,
             this.helpMenu});
             this.menuStrip1.Location = new System.Drawing.Point(4, 4);
@@ -1125,27 +1122,6 @@
             this.playerStartMenu.Size = new System.Drawing.Size(128, 29);
             this.playerStartMenu.Text = "&Player Start";
             this.playerStartMenu.Click += new System.EventHandler(this.playerStartMenu_Click);
-            // 
-            // xxx
-            // 
-            this.xxx.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.xxx.Image = ((System.Drawing.Image)(resources.GetObject("xxx.Image")));
-            this.xxx.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.xxx.Name = "xxx";
-            this.xxx.Size = new System.Drawing.Size(28, 28);
-            this.xxx.Text = "toolStripButton1";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(179, 18);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(179, 18);
-            this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             // 
             // MapEditorForm
             // 
@@ -1298,9 +1274,6 @@
         private System.Windows.Forms.ToolStripMenuItem ddToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton xxx;
         private System.Windows.Forms.ToolStripMenuItem useTileTypeContextMenu;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }
