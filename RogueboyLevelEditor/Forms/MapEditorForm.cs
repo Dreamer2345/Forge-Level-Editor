@@ -1103,6 +1103,45 @@ namespace RogueboyLevelEditor.Forms
 
             }
 
+
+            // Update sprites ..
+
+            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites) {
+
+                if (sprite.SpritePosition.X >= xPos) {
+
+                    sprite.SpritePosition.X++;
+
+                }
+
+            }
+
+
+            // Update connections ..
+
+            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors) {
+
+                if (connector.Start.X >= xPos) {
+
+                    connector.Start.X++;
+
+                }
+
+                if (connector.End.X >= xPos) {
+
+                    connector.End.X++;
+
+                }
+
+            }
+
+
+            // Refresh form ..
+
+            pictureBox1.Invalidate();
+            UpdateCurrentSprites();
+            UpdateCurrentConnectors();
+
         }
 
         private void tilesContextMenu_ColumnDelete_Click(object sender, EventArgs e) {
@@ -1143,6 +1182,62 @@ namespace RogueboyLevelEditor.Forms
                 }
 
             }
+
+
+            // Update sprites ..
+
+            for (int i = mapCollection.CurrentMap.Sprites.Count - 1; i >= 0; i--) {
+
+                SpriteComponent sprite = mapCollection.CurrentMap.Sprites[i];
+
+                if (sprite.SpritePosition.X == xPos) {
+
+                    mapCollection.CurrentMap.Sprites.RemoveAt(i);
+
+                }
+
+                if (sprite.SpritePosition.X > xPos) {
+
+                    sprite.SpritePosition.X--;
+
+                }
+
+            }
+
+
+            // Update connections ..
+
+            for (int i = mapCollection.CurrentMap.Connectors.Count - 1; i >= 0; i--) {
+
+                EnviromentAffectComponent connector = mapCollection.CurrentMap.Connectors[i];
+
+                if (connector.Start.X == xPos || connector.End.X == xPos) {
+
+                    mapCollection.CurrentMap.Connectors.RemoveAt(i);
+
+                }
+
+                if (connector.Start.X > xPos) {
+
+                    connector.Start.X--;
+
+                }
+
+                if (connector.End.X > xPos) {
+
+                    connector.End.X--;
+
+                }
+
+            }
+            
+
+            // Refresh form ..
+
+            pictureBox1.Invalidate();
+            UpdateCurrentSprites();
+            UpdateCurrentConnectors();
+
         }
 
 
@@ -1179,12 +1274,53 @@ namespace RogueboyLevelEditor.Forms
 
             }
 
+
+            // Fill new line with blanks ..
+
             for (int x = 0; x < mapCollection.CurrentMap.Width; x++) {
 
                 RogueboyLevelEditor.map.point.Point point = new RogueboyLevelEditor.map.point.Point(x, yPos);
                 mapCollection.CurrentMap.SetTile(point, -1);
 
             }
+
+
+            // Update sprites ..
+
+            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites) {
+
+                if (sprite.SpritePosition.Y >= yPos) {
+
+                    sprite.SpritePosition.Y++;
+
+                }
+
+            }
+
+            // Update connections ..
+
+            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors) {
+
+                if (connector.Start.Y >= yPos) {
+
+                    connector.Start.Y++;
+
+                }
+
+                if (connector.End.Y >= yPos) {
+
+                    connector.End.Y++;
+
+                }
+
+            }
+            
+
+            // Refresh form ..
+
+            pictureBox1.Invalidate();
+            UpdateCurrentSprites();
+            UpdateCurrentConnectors();
 
         }
 
@@ -1226,6 +1362,62 @@ namespace RogueboyLevelEditor.Forms
                 }
 
             }
+
+
+
+            // Update sprites ..
+
+            for (int i = mapCollection.CurrentMap.Sprites.Count - 1; i >= 0; i--) {
+
+                SpriteComponent sprite = mapCollection.CurrentMap.Sprites[i];
+
+                if (sprite.SpritePosition.Y == yPos) {
+
+                    mapCollection.CurrentMap.Sprites.RemoveAt(i);
+
+                }
+
+                if (sprite.SpritePosition.Y > yPos) {
+
+                    sprite.SpritePosition.X--;
+
+                }
+
+            }
+
+
+            // Update connections ..
+
+            for (int i = mapCollection.CurrentMap.Connectors.Count - 1; i >= 0; i--) {
+
+                EnviromentAffectComponent connector = mapCollection.CurrentMap.Connectors[i];
+
+                if (connector.Start.Y == yPos || connector.End.Y == yPos) {
+
+                    mapCollection.CurrentMap.Connectors.RemoveAt(i);
+
+                }
+
+                if (connector.Start.Y > yPos) {
+
+                    connector.Start.Y--;
+
+                }
+
+                if (connector.End.Y > yPos) {
+
+                    connector.End.Y--;
+
+                }
+
+            }
+            
+
+            // Refresh form ..
+
+            pictureBox1.Invalidate();
+            UpdateCurrentSprites();
+            UpdateCurrentConnectors();
 
         }
 
@@ -1387,6 +1579,19 @@ namespace RogueboyLevelEditor.Forms
             tool.SetBrush(tileId);
             addTileToMenu(tileId, tileName);
 
+            foreach (ListViewItem item in tilesListView.Items) {
+
+                if (tileId == Int32.Parse(item.SubItems[1].Text)) {
+
+                    item.Selected = true;
+                    item.EnsureVisible();
+                    tilesListView.Focus();
+                    break;
+
+                }
+
+            }
+
         }
 
         private void addTileToMenu(int id, String tileName) {
@@ -1412,7 +1617,7 @@ namespace RogueboyLevelEditor.Forms
             newMenuItem.Click += new System.EventHandler(tilesContextMenu_Item_Click);
             tilesContextMenu.Items.Insert(7, newMenuItem);
 
-            if (tilesContextMenu.Items.Count > 12) { tilesContextMenu.Items.RemoveAt(11); }
+            if (tilesContextMenu.Items.Count > 15) { tilesContextMenu.Items.RemoveAt(14); }
 
         }
 
