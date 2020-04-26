@@ -142,11 +142,14 @@
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
             this.xxx = new System.Windows.Forms.ToolStripButton();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.spriteContextMenu.SuspendLayout();
             this.connectionContextMenu.SuspendLayout();
             this.tilesContextMenu.SuspendLayout();
             this.overallTableLayout.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPages.SuspendLayout();
             this.tabTileTool.SuspendLayout();
@@ -391,12 +394,13 @@
             // 
             // spriteContextMenu
             // 
+            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteContextMenu_FindInList,
             this.spriteContextMenu_Remove,
             this.toolStripMenuItem4});
             this.spriteContextMenu.Name = "spriteContextMenu";
-            this.spriteContextMenu.Size = new System.Drawing.Size(241, 103);
+            this.spriteContextMenu.Size = new System.Drawing.Size(170, 70);
             // 
             // spriteContextMenu_FindInList
             // 
@@ -421,6 +425,7 @@
             // 
             // connectionContextMenu
             // 
+            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionContextMenu_FindInList,
             this.connectionContextMenu_Remove});
@@ -445,6 +450,7 @@
             // 
             // tilesContextMenu
             // 
+            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesContextMenu_FindInList,
             this.tilesContextMenu_Remove,
@@ -454,7 +460,7 @@
             this.tilesContextMenu_Row,
             this.toolStripMenuItem6});
             this.tilesContextMenu.Name = "tilesContextMenu";
-            this.tilesContextMenu.Size = new System.Drawing.Size(187, 166);
+            this.tilesContextMenu.Size = new System.Drawing.Size(195, 166);
             // 
             // tilesContextMenu_FindInList
             // 
@@ -594,9 +600,15 @@
             // 
             this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 764);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentMapLabel,
+            this.toolStripStatusLabel1,
+            this.currentFileLabel,
+            this.toolStatusLabel
+            });
+            this.statusStrip1.Location = new System.Drawing.Point(0, 763);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1141, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1141, 23);
             this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1005,12 +1017,7 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
-            // ddToolStripMenuItem
-            // 
-            this.ddToolStripMenuItem.Name = "ddToolStripMenuItem";
-            this.ddToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
-            this.ddToolStripMenuItem.Text = "dd";
+
             // 
             // menuStrip1
             // 
@@ -1128,6 +1135,18 @@
             this.xxx.Size = new System.Drawing.Size(28, 28);
             this.xxx.Text = "toolStripButton1";
             // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(179, 18);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(179, 18);
+            this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
+            // 
             // MapEditorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1149,6 +1168,8 @@
             this.tilesContextMenu.ResumeLayout(false);
             this.overallTableLayout.ResumeLayout(false);
             this.overallTableLayout.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPages.ResumeLayout(false);
             this.tabTileTool.ResumeLayout(false);
@@ -1279,5 +1300,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton xxx;
         private System.Windows.Forms.ToolStripMenuItem useTileTypeContextMenu;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }
