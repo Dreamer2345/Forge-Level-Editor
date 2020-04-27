@@ -5,7 +5,7 @@ If there are any issues/Addons you want please add them to this handy todo list
 ## Miscellaneous
 * [X] Position the map in the centre of the screen by default.  
 Currently, even a smal 15x15 map requires the user to reposition it to see the entire map.
-* [ ] Allow users to edit the 'health' settings on sprites.  
+* [X] Allow users to edit the 'health' settings on sprites.  
 Obviously this only applies to 'enemy' sprites but there is no harm in letting them change others (other than it will be useless).  
 Health is a `uint8_t`.
 * [X] Allow users to specify a starting position.
@@ -14,6 +14,7 @@ Health is a `uint8_t`.
 ** This will mean having to redo rendering entirely
 
 ## Bugs
+* [ ] Edge tool is missing - Film broked film fixeth
 * [ ] Edge tool rendering is broken (see #18)
 * [ ] 'Centre Map' and 'Player Start' icons have gone missing (see #19)
 
