@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MapEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="TextureHandler\TextureManager.cs" />
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapEditorForm.resx">
       <DependentUpon>MapEditorForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -146,6 +155,7 @@
     <None Include="icons\New\save-as.png" />
     <None Include="icons\New\sprites.png" />
     <None Include="icons\New\eyedropper.png" />
+    <Content Include="icons\New\About.png" />
     <Content Include="Textures\Sprites\Bat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

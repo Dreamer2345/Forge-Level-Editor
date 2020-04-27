@@ -1621,6 +1621,10 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
+        private void aboutMenu_Click(object sender, EventArgs e) {
+            AboutForm form = new AboutForm();
+            form.ShowDialog(this);
+        }
     }
 
 }
