@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace RogueboyLevelEditor.map.Tools
@@ -22,10 +17,10 @@ namespace RogueboyLevelEditor.map.Tools
         bool StartMade = false;
         bool LastMouseDown = false;
 
-        public TileRectangle(Form Parent,int Tile,Map map,int Offx, int Offy)
+        public TileRectangle(Form Parent, int Tile, Map map, int Offx, int Offy)
         {
             this.Parent = Parent;
-            
+
             DrawOffsetX = Offx;
             DrawOffsetY = Offy;
             TileID = Tile;
@@ -41,7 +36,7 @@ namespace RogueboyLevelEditor.map.Tools
             if (StartMade)
             {
                 graphics.FillRectangle(System.Drawing.Brushes.Green, MapToEdit.ToScreenSpaceX(StartPoint.X) - 1, MapToEdit.ToScreenSpaceY(StartPoint.Y) - 1, 17, 17);
-                
+
             }
         }
 
@@ -56,7 +51,7 @@ namespace RogueboyLevelEditor.map.Tools
             if ((LastMouseDown == true) && (MouseDown == false))
             {
                 Point EndPoint = Position;
-                if(StartPoint.X > EndPoint.X)
+                if (StartPoint.X > EndPoint.X)
                 {
                     int temp = StartPoint.X;
                     StartPoint.X = EndPoint.X;
@@ -70,12 +65,12 @@ namespace RogueboyLevelEditor.map.Tools
                     EndPoint.Y = temp;
                 }
                 Parent.Cursor = Cursors.WaitCursor;
-                for (int i = StartPoint.X; i < EndPoint.X+1; i++)
-                    for (int j = StartPoint.Y; j < EndPoint.Y+1; j++)
-                        MapToEdit.SetTile(new point.Point(i, j), TileID);
+                for (int i = StartPoint.X; i < EndPoint.X + 1; i++)
+                    for (int j = StartPoint.Y; j < EndPoint.Y + 1; j++)
+                        MapToEdit.SetTile(new Point(i, j), TileID);
                 Parent.Cursor = Cursors.Default;
-                StartPoint = new Point(-1,-1);
-                EndPoint = new Point(-1,-1);
+                StartPoint = new Point(-1, -1);
+                EndPoint = new Point(-1, -1);
 
                 StartMade = false;
                 LastMouseDown = MouseDown;

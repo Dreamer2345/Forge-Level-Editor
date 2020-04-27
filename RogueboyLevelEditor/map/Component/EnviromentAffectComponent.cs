@@ -1,10 +1,4 @@
-﻿using RogueboyLevelEditor.map.point;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using Point = System.Drawing.Point;
 
 
@@ -30,8 +24,8 @@ namespace RogueboyLevelEditor.map.Component
         void UpdateValid()
         {
             TileManager tm = new TileManager();
-            BaseMapComponent p = parentMap.GetTile(point.Point.ToPoint(Start));
-            BaseMapComponent p1 = parentMap.GetTile(point.Point.ToPoint(End));
+            BaseMapComponent p = parentMap.GetTile(Start);
+            BaseMapComponent p1 = parentMap.GetTile(End);
             IsValid = false;
             if (tm.GetTile(p.tileID).IsSender)
                 if (tm.GetTile(p1.tileID).IsReciver)
@@ -50,11 +44,13 @@ namespace RogueboyLevelEditor.map.Component
             pen.Color = Color.Red;
             graphics.DrawRectangle(pen, ScreenEnd.X - 1, ScreenEnd.Y - 1, 17, 17);
 
-            if (this.Highlight) {
+            if (this.Highlight)
+            {
                 pen = new Pen(Color.Red);
                 this.Highlight = false;
             }
-            else {
+            else
+            {
                 pen = new Pen(Color.Blue);
             }
 
@@ -62,7 +58,7 @@ namespace RogueboyLevelEditor.map.Component
             graphics.DrawLine(pen, ScreenStart.X + 8, ScreenStart.Y + 8, ScreenEnd.X + 8, ScreenEnd.Y + 8);
 
         }
-        
+
     }
 
 }

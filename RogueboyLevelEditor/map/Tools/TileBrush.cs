@@ -1,10 +1,4 @@
-﻿using RogueboyLevelEditor.map.Component;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace RogueboyLevelEditor.map.Tools
 {
@@ -25,14 +19,14 @@ namespace RogueboyLevelEditor.map.Tools
 
         public override void Draw(Graphics graphics)
         {
-            
+
         }
 
         public override bool Update()
         {
             if (MouseDown)
             {
-                MapToEdit.SetTile(new point.Point(Position.X, Position.Y), CurrentTile);
+                MapToEdit.SetTile(new Point(Position.X, Position.Y), CurrentTile);
                 return true;
             }
             return false;

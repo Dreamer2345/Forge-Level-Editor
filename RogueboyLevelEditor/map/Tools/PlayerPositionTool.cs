@@ -26,7 +26,7 @@ namespace RogueboyLevelEditor.map.Tools
         {
             if((LastMouseDown == false)&&(MouseDown == true))
             {
-                MapToEdit.PlayerStart = point.Point.ToPoint(Position);
+                MapToEdit.PlayerStart = Position;
                 LastMouseDown = MouseDown;
                 return true;
             }

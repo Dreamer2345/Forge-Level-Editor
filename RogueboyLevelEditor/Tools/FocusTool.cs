@@ -34,7 +34,7 @@ namespace RogueboyLevelEditor.Tools
 
         private void Control_MouseUp(object sender, MouseEventArgs e)
         {
-            this.control.MapCollection.CurrentMap.DrawPos = map.point.Point.ToPoint(this.control.MapCollection.CurrentMap.ToTileSpace(e.Location));
+            this.control.MapCollection.CurrentMap.DrawPos = this.control.MapCollection.CurrentMap.ToTileSpace(e.Location);
             this.control.Invalidate();
         }
     }

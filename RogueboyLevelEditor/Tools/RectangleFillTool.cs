@@ -1,8 +1,7 @@
-﻿using System;
+﻿using RogueboyLevelEditor.Controls;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using RogueboyLevelEditor.Controls;
 
 namespace RogueboyLevelEditor.Tools
 {
@@ -88,7 +87,7 @@ namespace RogueboyLevelEditor.Tools
                 // Set the tiles
                 for (int y = startY; y <= endY; ++y)
                     for (int x = startX; x <= endX; ++x)
-                        map.SetTile(new map.point.Point(x, y), tileId);
+                        map.SetTile(new Point(x, y), tileId);
 
                 // Nullify the start and end points
                 this.startPoint = null;

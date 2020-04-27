@@ -49,7 +49,7 @@ namespace RogueboyLevelEditor.Tools
         private void SelectTileAt(Point clientLocation)
         {
             var location = this.control.MapCollection.CurrentMap.ToTileSpace(clientLocation);
-            var mapComponent = this.control.MapCollection.CurrentMap.GetTile(map.point.Point.ToPoint(location));
+            var mapComponent = this.control.MapCollection.CurrentMap.GetTile(location);
 
             this.control.SelectedTileId = mapComponent.tileID;
 

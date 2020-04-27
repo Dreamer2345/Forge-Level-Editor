@@ -23,18 +23,19 @@ namespace RogueboyLevelEditor.map
         public bool ShowPlayerStart = false;
         public int Timer;
         int width, height;
-        public point.Point PlayerStart = new point.Point(0, 0);
-        public point.Point DrawPos = new point.Point(0, 0);
+        public Point PlayerStart = new Point(0, 0);
+        public Point DrawPos = new Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
         public List<EnviromentAffectComponent> Connectors;
-        public point.Point Centre
+        public Point Centre
         {
-            get => new point.Point(this.Width / 2, this.Height / 2);
+            get => new Point(this.Width / 2, this.Height / 2);
         }
 
-        T[,] ResizeArray<T>(T[,] original, int rows, int cols) {
+        T[,] ResizeArray<T>(T[,] original, int rows, int cols)
+        {
             var newArray = new T[rows, cols];
             int minRows = Math.Min(rows, original.GetLength(0));
             int minCols = Math.Min(cols, original.GetLength(1));
@@ -44,15 +45,19 @@ namespace RogueboyLevelEditor.map
             return newArray;
         }
 
-        public int Height {
+        public int Height
+        {
             get { return this.height; }
-            set {
+            set
+            {
                 this.height = value;
                 MapComponents = ResizeArray<BaseMapComponent>(MapComponents, MapComponents.GetLength(0), value);
 
-                for (int y = 0; y < MapComponents.GetLength(1); y++) {
+                for (int y = 0; y < MapComponents.GetLength(1); y++)
+                {
 
-                    for (int x = 0; x < MapComponents.GetLength(0); x++) {
+                    for (int x = 0; x < MapComponents.GetLength(0); x++)
+                    {
 
                         if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
 
@@ -61,16 +66,20 @@ namespace RogueboyLevelEditor.map
                 }
             }
         }
-        
-        public int Width {
+
+        public int Width
+        {
             get { return this.width; }
-            set {
+            set
+            {
                 this.width = value;
                 MapComponents = ResizeArray<BaseMapComponent>(MapComponents, value, MapComponents.GetLength(1));
 
-                for (int y = 0; y < MapComponents.GetLength(1); y++) {
+                for (int y = 0; y < MapComponents.GetLength(1); y++)
+                {
 
-                    for (int x = 0; x < MapComponents.GetLength(0); x++) {
+                    for (int x = 0; x < MapComponents.GetLength(0); x++)
+                    {
 
                         if (MapComponents[x, y] == null) MapComponents[x, y] = new BaseMapComponent(-1);
 
@@ -100,7 +109,7 @@ namespace RogueboyLevelEditor.map
                 return null;
             }
 
-            point.Point playerStart = new point.Point(Array[++Pointer], Array[++Pointer]);
+            Point playerStart = new Point(Array[++Pointer], Array[++Pointer]);
             byte Timer = Array[++Pointer];
             BaseMapComponent outOfBoundsTile = new BaseMapComponent(Array[++Pointer]);
             Pointer++;
@@ -111,7 +120,7 @@ namespace RogueboyLevelEditor.map
             {
                 for (int j = 0; j < height; j++)
                 {
-                    newMap.SetTile(new point.Point(i, j), Array[(i + (j * width)) + Pointer]);
+                    newMap.SetTile(new Point(i, j), Array[(i + (j * width)) + Pointer]);
                 }
             }
 
@@ -274,7 +283,7 @@ namespace RogueboyLevelEditor.map
             this.CentreMap();
         }
 
-        public void SetTile(point.Point pos, int ID)
+        public void SetTile(Point pos, int ID)
         {
             if (CheckInRange(pos.X, pos.Y))
             {
@@ -282,7 +291,7 @@ namespace RogueboyLevelEditor.map
             }
         }
 
-        public BaseMapComponent GetTile(point.Point pos)
+        public BaseMapComponent GetTile(Point pos)
         {
             if (CheckInRange(pos.X, pos.Y))
             {

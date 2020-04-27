@@ -36,7 +36,7 @@ namespace RogueboyLevelEditor.Tools
         {
             var location = this.control.MapCollection.CurrentMap.ToTileSpace(e.Location);
 
-            this.control.CurrentMap.PlayerStart = map.point.Point.ToPoint(location);
+            this.control.CurrentMap.PlayerStart = location;
 
             this.control.Invalidate();
         }

@@ -40,7 +40,7 @@ namespace RogueboyLevelEditor.Tools
             var location = this.control.MapCollection.CurrentMap.ToTileSpace(point);
             var tileId = this.control.SelectedTileId;
 
-            this.control.MapCollection.CurrentMap.SetTile(map.point.Point.ToPoint(location), tileId);
+            this.control.MapCollection.CurrentMap.SetTile(location, tileId);
             this.control.Invalidate();
         }
 
