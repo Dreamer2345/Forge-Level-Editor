@@ -58,6 +58,7 @@
             this.mapMoveDownMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -369,9 +370,18 @@
             // 
             // helpMenu
             // 
+            this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMenu});
             this.helpMenu.Name = "helpMenu";
             this.helpMenu.Size = new System.Drawing.Size(61, 29);
             this.helpMenu.Text = "&Help";
+            // 
+            // aboutMenu
+            // 
+            this.aboutMenu.Name = "aboutMenu";
+            this.aboutMenu.Size = new System.Drawing.Size(146, 30);
+            this.aboutMenu.Text = "&About";
+            this.aboutMenu.Click += new System.EventHandler(this.aboutMenu_Click);
             // 
             // saveFileDialog1
             // 
@@ -629,7 +639,7 @@
             // 
             this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.toolStatusLabel.Name = "toolStatusLabel";
-            this.toolStatusLabel.Size = new System.Drawing.Size(978, 18);
+            this.toolStatusLabel.Size = new System.Drawing.Size(801, 18);
             this.toolStatusLabel.Spring = true;
             this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -739,7 +749,7 @@
             this.tabSpriteTool.Location = new System.Drawing.Point(4, 29);
             this.tabSpriteTool.Name = "tabSpriteTool";
             this.tabSpriteTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSpriteTool.Size = new System.Drawing.Size(401, 673);
+            this.tabSpriteTool.Size = new System.Drawing.Size(401, 558);
             this.tabSpriteTool.TabIndex = 1;
             this.tabSpriteTool.Text = "Sprites  ";
             this.tabSpriteTool.UseVisualStyleBackColor = true;
@@ -758,7 +768,7 @@
             this.spriteToolTableLayout.RowCount = 2;
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 667);
+            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 552);
             this.spriteToolTableLayout.TabIndex = 25;
             // 
             // spritesPlacedListView
@@ -777,10 +787,10 @@
             this.spritesPlacedListView.GridLines = true;
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 336);
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 279);
             this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 328);
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 270);
             this.spritesPlacedListView.TabIndex = 27;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
@@ -840,7 +850,7 @@
             this.spritesListView.Location = new System.Drawing.Point(66, 3);
             this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
-            this.spritesListView.Size = new System.Drawing.Size(326, 327);
+            this.spritesListView.Size = new System.Drawing.Size(326, 270);
             this.spritesListView.TabIndex = 25;
             this.spritesListView.UseCompatibleStateImageBehavior = false;
             this.spritesListView.View = System.Windows.Forms.View.Details;
@@ -886,7 +896,7 @@
             this.tabConnectionTool.Location = new System.Drawing.Point(4, 29);
             this.tabConnectionTool.Name = "tabConnectionTool";
             this.tabConnectionTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConnectionTool.Size = new System.Drawing.Size(401, 673);
+            this.tabConnectionTool.Size = new System.Drawing.Size(401, 558);
             this.tabConnectionTool.TabIndex = 2;
             this.tabConnectionTool.Text = "Connections  ";
             this.tabConnectionTool.UseVisualStyleBackColor = true;
@@ -903,7 +913,7 @@
             this.connectionToolTableLayout.Name = "connectionToolTableLayout";
             this.connectionToolTableLayout.RowCount = 1;
             this.connectionToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 667);
+            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 552);
             this.connectionToolTableLayout.TabIndex = 24;
             // 
             // connectionListView
@@ -924,7 +934,7 @@
             this.connectionListView.Location = new System.Drawing.Point(69, 3);
             this.connectionListView.MultiSelect = false;
             this.connectionListView.Name = "connectionListView";
-            this.connectionListView.Size = new System.Drawing.Size(323, 661);
+            this.connectionListView.Size = new System.Drawing.Size(323, 546);
             this.connectionListView.TabIndex = 24;
             this.connectionListView.UseCompatibleStateImageBehavior = false;
             this.connectionListView.View = System.Windows.Forms.View.Details;
@@ -969,7 +979,7 @@
             this.tabPlayerStart.Location = new System.Drawing.Point(4, 29);
             this.tabPlayerStart.Name = "tabPlayerStart";
             this.tabPlayerStart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlayerStart.Size = new System.Drawing.Size(401, 673);
+            this.tabPlayerStart.Size = new System.Drawing.Size(401, 558);
             this.tabPlayerStart.TabIndex = 3;
             this.tabPlayerStart.Text = "Player Start  ";
             this.tabPlayerStart.UseVisualStyleBackColor = true;
@@ -1018,7 +1028,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
@@ -1276,5 +1285,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripMenuItem useTileTypeContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenu;
     }
 }
