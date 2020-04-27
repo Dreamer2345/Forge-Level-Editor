@@ -884,6 +884,19 @@ namespace RogueboyLevelEditor.Forms
         private void spritesPlacedListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
 
+            if (spritesPlacedListView.SelectedItems.Count > 0)
+            {
+                int Health = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
+                numericUpDown1.Value = Health;
+                SetSpriteHealth.Visible = true;
+                numericUpDown1.Visible = true;
+            }
+            else
+            {
+                SetSpriteHealth.Visible = false;
+                numericUpDown1.Visible = false;
+            }
+
             ListViewItem selectedItem = e.Item;
 
             Point point = new Point();
@@ -1825,17 +1838,6 @@ namespace RogueboyLevelEditor.Forms
         {
             AboutForm form = new AboutForm();
             form.ShowDialog(this);
-        }
-
-        private void spritesPlacedListView_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-           if(spritesPlacedListView.SelectedItems.Count > 0)
-           {
-                int Health = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
-                numericUpDown1.Value = Health;
-                SetSpriteHealth.Visible = true;
-                numericUpDown1.Visible = true;
-           }
         }
 
         private void SetSpriteHealth_Click(object sender, EventArgs e)

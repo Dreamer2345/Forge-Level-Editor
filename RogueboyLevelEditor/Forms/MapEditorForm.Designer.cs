@@ -802,7 +802,6 @@
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
             this.spritesPlacedListView.Visible = false;
             this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
-            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
             // 
             // SpritePicture
             // 
