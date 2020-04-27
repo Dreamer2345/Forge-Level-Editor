@@ -406,7 +406,7 @@
             this.spriteContextMenu_Remove,
             this.toolStripMenuItem4});
             this.spriteContextMenu.Name = "spriteContextMenu";
-            this.spriteContextMenu.Size = new System.Drawing.Size(241, 103);
+            this.spriteContextMenu.Size = new System.Drawing.Size(170, 70);
             // 
             // spriteContextMenu_FindInList
             // 
@@ -1028,7 +1028,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
