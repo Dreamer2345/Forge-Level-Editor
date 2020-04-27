@@ -772,7 +772,7 @@
             this.spriteToolTableLayout.Name = "spriteToolTableLayout";
             this.spriteToolTableLayout.RowCount = 3;
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 558);
             this.spriteToolTableLayout.TabIndex = 25;
@@ -793,10 +793,10 @@
             this.spritesPlacedListView.GridLines = true;
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 295);
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 302);
             this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 260);
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 253);
             this.spritesPlacedListView.TabIndex = 27;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
@@ -856,7 +856,7 @@
             this.spritesListView.Location = new System.Drawing.Point(66, 3);
             this.spritesListView.MultiSelect = false;
             this.spritesListView.Name = "spritesListView";
-            this.spritesListView.Size = new System.Drawing.Size(326, 260);
+            this.spritesListView.Size = new System.Drawing.Size(326, 252);
             this.spritesListView.TabIndex = 25;
             this.spritesListView.UseCompatibleStateImageBehavior = false;
             this.spritesListView.View = System.Windows.Forms.View.Details;
@@ -897,24 +897,24 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(66, 269);
+            this.numericUpDown1.Location = new System.Drawing.Point(66, 261);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(66, 20);
             this.numericUpDown1.TabIndex = 28;
             this.numericUpDown1.Visible = false;
             // 
             // SetSpriteHealth
             // 
-            this.SetSpriteHealth.Location = new System.Drawing.Point(3, 269);
+            this.SetSpriteHealth.Location = new System.Drawing.Point(3, 261);
             this.SetSpriteHealth.Name = "SetSpriteHealth";
-            this.SetSpriteHealth.Size = new System.Drawing.Size(57, 20);
+            this.SetSpriteHealth.Size = new System.Drawing.Size(57, 34);
             this.SetSpriteHealth.TabIndex = 29;
-            this.SetSpriteHealth.Text = "Set";
+            this.SetSpriteHealth.Text = "Set Health";
             this.SetSpriteHealth.UseVisualStyleBackColor = true;
             this.SetSpriteHealth.Visible = false;
             this.SetSpriteHealth.Click += new System.EventHandler(this.SetSpriteHealth_Click);
