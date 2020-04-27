@@ -320,6 +320,16 @@ namespace RogueboyLevelEditor.map
             }
         }
 
+        public void UpdateSprite(Point p, int ID, int NewHealth)
+        {
+            int found = Sprites.FindIndex(x => x.SpritePosition == p && x.Type == ID);
+            if(found != -1)
+            {
+                Sprites[found].Health = NewHealth;
+            }
+            
+        }
+
         public EnviromentAffectComponent AddConnection(Point start, Point end)
         {
             EnviromentAffectComponent env = new EnviromentAffectComponent(start, end, this);
