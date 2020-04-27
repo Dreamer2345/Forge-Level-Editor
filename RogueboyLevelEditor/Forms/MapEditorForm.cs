@@ -1826,6 +1826,33 @@ namespace RogueboyLevelEditor.Forms
             AboutForm form = new AboutForm();
             form.ShowDialog(this);
         }
+
+        private void spritesPlacedListView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+           if(spritesPlacedListView.SelectedItems.Count > 0)
+           {
+                int Health = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
+                numericUpDown1.Value = Health;
+                SetSpriteHealth.Visible = true;
+                numericUpDown1.Visible = true;
+           }
+        }
+
+        private void SetSpriteHealth_Click(object sender, EventArgs e)
+        {
+            if (spritesPlacedListView.SelectedItems.Count > 0)
+            {
+                int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
+                int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[2].Text);
+                int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
+                mapCollection?.CurrentMap.UpdateSprite(new Point(X,Y),ID, (int)numericUpDown1.Value);
+                spritesPlacedListView.SelectedItems[0].SubItems[4].Text = ((int)numericUpDown1.Value).ToString();
+            }
+
+
+            SetSpriteHealth.Visible = false;
+            numericUpDown1.Visible = false;
+        }
     }
 
 }
