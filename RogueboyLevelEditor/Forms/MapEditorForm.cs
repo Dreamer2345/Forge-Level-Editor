@@ -77,6 +77,7 @@ namespace RogueboyLevelEditor.Forms
                     (obj, args) => mapsMenu.DropDown.AutoClose = true;
 
             mapsMenu.DropDown.MouseLeave += new System.EventHandler(this.mapsMenu_DropDown_MouseLeave);
+            HealthNumericUpDown.Visible = false;
 
         }
 
@@ -91,7 +92,7 @@ namespace RogueboyLevelEditor.Forms
                 newItem.SubItems.Add(i.Type.ToString());
                 newItem.SubItems.Add(i.SpritePosition.X.ToString());
                 newItem.SubItems.Add(i.SpritePosition.Y.ToString());
-                newItem.SubItems.Add(i.Health.ToString());
+                newItem.SubItems.Add(i.Health == 0 ? "" : i.Health.ToString());
                 newItem.SubItems.Add(sprite.Name);
                 newItem.ImageKey = sprite.TextureID;
                 spritesPlacedListView.Items.Add(newItem);
@@ -162,7 +163,7 @@ namespace RogueboyLevelEditor.Forms
                 ListViewItem newItem = new ListViewItem();
                 newItem.SubItems.Add(i.Item1.ToString());
                 newItem.SubItems.Add(i.Item2.Name);
-                newItem.SubItems.Add(i.Item2.Health.ToString());
+                newItem.SubItems.Add(i.Item2.Health == 0 ? "" : i.Item2.Health.ToString());
                 newItem.ImageKey = i.Item2.TextureID;
                 spritesListView.Items.Add(newItem);
             }
@@ -355,6 +356,7 @@ namespace RogueboyLevelEditor.Forms
         }
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            HealthNumericUpDown.Visible = false;
             cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
             if (tool != null)
             {
@@ -621,7 +623,7 @@ namespace RogueboyLevelEditor.Forms
         {
             if (spritesListView.SelectedItems.Count > 0)
             {
-                tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
+                tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), (spritesListView.SelectedItems[0].SubItems[3].Text == "" ? 0 : int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text)));
             }
 
         }
@@ -884,17 +886,8 @@ namespace RogueboyLevelEditor.Forms
         private void spritesPlacedListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
 
-            if (spritesPlacedListView.SelectedItems.Count > 0)
-            {
-                int Health = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
-                numericUpDown1.Value = Health;
-                SetSpriteHealth.Visible = true;
-                numericUpDown1.Visible = true;
-            }
-            else
-            {
-                SetSpriteHealth.Visible = false;
-                numericUpDown1.Visible = false;
+            if (spritesPlacedListView.SelectedItems.Count == 0) { 
+                HealthNumericUpDown.Visible = false;
             }
 
             ListViewItem selectedItem = e.Item;
@@ -1840,21 +1833,98 @@ namespace RogueboyLevelEditor.Forms
             form.ShowDialog(this);
         }
 
-        private void SetSpriteHealth_Click(object sender, EventArgs e)
-        {
-            if (spritesPlacedListView.SelectedItems.Count > 0)
-            {
-                int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
-                int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[2].Text);
-                int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
-                mapCollection?.CurrentMap.UpdateSprite(new Point(X,Y),ID, (int)numericUpDown1.Value);
-                spritesPlacedListView.SelectedItems[0].SubItems[4].Text = ((int)numericUpDown1.Value).ToString();
+        private void spritesPlacedListView_Scroll(object sender, ScrollEventArgs e) {
+
+            HealthNumericUpDown.Visible = false;
+
+        }
+
+        private void spritesPlacedListView_SelectedIndexChanged(object sender, EventArgs e) {
+
+            HealthNumericUpDown.Visible = false;
+
+        }
+
+        private void spritesPlacedListView_MouseDoubleClick(object sender, MouseEventArgs e) {
+
+            if (spritesPlacedListView.SelectedItems.Count > 0 && spritesPlacedListView.SelectedItems[0].SubItems[4].Text != "") {
+
+                HealthNumericUpDown.Left = tabPages.Left + spritesPlacedListView.Left + spritesPlacedListView_IDColumn.Width + spritesPlacedListView_Name.Width + spritesPlacedListView_XColumn.Width + spritesPlacedListView_YColumn.Width + 42;
+                HealthNumericUpDown.Top = spritesPlacedListView.Top + 108 + ((spritesPlacedListView.SelectedIndices[0] - spritesPlacedListView.TopItem.Index) * 17);
+                HealthNumericUpDown.Width = spritesPlacedListView_HealthColumn.Width;
+                HealthNumericUpDown.Value = Int32.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
+                HealthNumericUpDown.Visible = true;
+                HealthNumericUpDown.Tag = spritesPlacedListView.SelectedItems[0].Index;
+
             }
 
-
-            SetSpriteHealth.Visible = false;
-            numericUpDown1.Visible = false;
         }
+
+        private void HealthNumericUpDown_Leave(object sender, EventArgs e) {
+
+            HealthNumericUpDown.Visible = false;
+        }
+
+        private void MapEditorForm_Resize(object sender, EventArgs e) {
+
+            HealthNumericUpDown.Visible = false;
+
+        }
+        
+        private void tabPages_MouseEnter(object sender, EventArgs e) {
+
+            HealthNumericUpDown.Visible = false;
+
+        }
+
+        private void HealthNumericUpDown_ValueChanged(object sender, EventArgs e) {
+
+            if (spritesPlacedListView.SelectedItems.Count > 0 && HealthNumericUpDown.Tag != null && (((int)HealthNumericUpDown.Tag) == spritesPlacedListView.SelectedIndices[0])) {
+
+                if (spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text != HealthNumericUpDown.Value.ToString()) {
+
+                    spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text = HealthNumericUpDown.Value.ToString();
+
+                    SpriteComponent sprite = this.mapCollection.CurrentMap.Sprites[(int)HealthNumericUpDown.Tag];
+
+                    sprite.Health = (int)HealthNumericUpDown.Value;
+
+                }
+
+            }
+
+        }
+
+        private void HealthNumericUpDown_KeyDown(object sender, KeyEventArgs e) {
+
+            if (e.KeyCode == Keys.Enter) {
+
+                HealthNumericUpDown.Visible = false;
+
+            }
+
+        }
+
+        private void spritesPlacedListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e) {
+
+            int colIndex = e.ColumnIndex;
+
+            if (spritesPlacedListView.Columns[colIndex].Width != Int32.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString())) {
+                spritesPlacedListView.Columns[colIndex].Width = Int32.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString());
+            }
+
+        }
+
+        private void spritesListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e) {
+
+            int colIndex = e.ColumnIndex;
+
+            if (spritesListView.Columns[colIndex].Width != Int32.Parse(spritesListView.Columns[colIndex].Tag.ToString())) {
+                spritesListView.Columns[colIndex].Width = Int32.Parse(spritesListView.Columns[colIndex].Tag.ToString());
+            }
+
+        }
+
     }
 
 }
