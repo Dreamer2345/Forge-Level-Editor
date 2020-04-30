@@ -98,8 +98,7 @@ namespace RogueboyLevelEditor.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.mapCollection != null)
-                this.mapCollection.Draw(e.Graphics);
+            this.mapCollection?.Draw(e.Graphics);
 
             this.DrawSelectedTile(e.Graphics);
             this.DrawTileCursor(e.Graphics);
@@ -111,8 +110,10 @@ namespace RogueboyLevelEditor.Controls
         {
             base.OnMouseMove(e);
 
-            var map = this.MapCollection.CurrentMap;
-            this.tileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
+            var map = this.MapCollection?.CurrentMap;
+
+            if (map != null)
+                this.tileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
 
             this.Invalidate();
         }
