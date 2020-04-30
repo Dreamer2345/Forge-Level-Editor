@@ -138,4 +138,10 @@
     <texture>necromancer</texture>
     <health>60</health>
   </sprite>
+  <sprite>
+    <name>Hobgoblin</name>
+    <id>24</id>
+    <texture>hobgoblin</texture>
+    <health>60</health>
+  </sprite>
 </sprites>

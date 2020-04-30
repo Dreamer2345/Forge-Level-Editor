@@ -197,6 +197,9 @@
     <Content Include="Textures\Sprites\GreenSpell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Sprites\Hobgoblin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\Sprites\IceSpell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -519,6 +522,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Tile_96.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Tile_97.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\UI\ConnectionEditButton.png" />
