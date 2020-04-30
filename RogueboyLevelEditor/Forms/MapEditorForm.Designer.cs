@@ -402,7 +402,6 @@
             // 
             // spriteContextMenu
             // 
-            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spriteContextMenu_FindInList,
             this.spriteContextMenu_Remove,
@@ -433,7 +432,6 @@
             // 
             // connectionContextMenu
             // 
-            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionContextMenu_FindInList,
             this.connectionContextMenu_Remove});
@@ -458,7 +456,6 @@
             // 
             // tilesContextMenu
             // 
-            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesContextMenu_FindInList,
             this.tilesContextMenu_Remove,
@@ -468,13 +465,13 @@
             this.tilesContextMenu_Row,
             this.toolStripMenuItem6});
             this.tilesContextMenu.Name = "tilesContextMenu";
-            this.tilesContextMenu.Size = new System.Drawing.Size(195, 166);
+            this.tilesContextMenu.Size = new System.Drawing.Size(187, 166);
             // 
             // tilesContextMenu_FindInList
             // 
             this.tilesContextMenu_FindInList.Enabled = false;
             this.tilesContextMenu_FindInList.Name = "tilesContextMenu_FindInList";
-            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(194, 30);
+            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(186, 30);
             this.tilesContextMenu_FindInList.Text = "&Find In List";
             this.tilesContextMenu_FindInList.Click += new System.EventHandler(this.tilesContextMenu_FindInList_Click);
             // 
@@ -482,7 +479,7 @@
             // 
             this.tilesContextMenu_Remove.Enabled = false;
             this.tilesContextMenu_Remove.Name = "tilesContextMenu_Remove";
-            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(194, 30);
+            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(186, 30);
             this.tilesContextMenu_Remove.Text = "&Remove";
             this.tilesContextMenu_Remove.Click += new System.EventHandler(this.tilesContextMenu_Remove_Click);
             // 
@@ -490,14 +487,14 @@
             // 
             this.useTileTypeContextMenu.Image = global::RogueboyLevelEditor.Properties.Resources.eyedropper;
             this.useTileTypeContextMenu.Name = "useTileTypeContextMenu";
-            this.useTileTypeContextMenu.Size = new System.Drawing.Size(194, 30);
+            this.useTileTypeContextMenu.Size = new System.Drawing.Size(186, 30);
             this.useTileTypeContextMenu.Text = "&Use Tile Type";
             this.useTileTypeContextMenu.Click += new System.EventHandler(this.useTileTypeContextMenu_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(191, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(183, 6);
             // 
             // tilesContextMenu_Column
             // 
@@ -508,7 +505,7 @@
             this.tilesContextMenu_ColumnMoveLeft});
             this.tilesContextMenu_Column.Enabled = false;
             this.tilesContextMenu_Column.Name = "tilesContextMenu_Column";
-            this.tilesContextMenu_Column.Size = new System.Drawing.Size(194, 30);
+            this.tilesContextMenu_Column.Size = new System.Drawing.Size(186, 30);
             this.tilesContextMenu_Column.Text = "&Column";
             // 
             // tilesContextMenu_ColumnInsert
@@ -548,7 +545,7 @@
             this.tilesContextMenu_ColumnMoveUp});
             this.tilesContextMenu_Row.Enabled = false;
             this.tilesContextMenu_Row.Name = "tilesContextMenu_Row";
-            this.tilesContextMenu_Row.Size = new System.Drawing.Size(194, 30);
+            this.tilesContextMenu_Row.Size = new System.Drawing.Size(186, 30);
             this.tilesContextMenu_Row.Text = "&Row";
             // 
             // tilesContextMenu_RowInsert
@@ -582,7 +579,7 @@
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(191, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(183, 6);
             // 
             // overallTableLayout
             // 
@@ -1045,7 +1042,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
