@@ -653,5 +653,10 @@
     <filepath>Textures/Sprites/Necromancer.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
+  <texture>
+    <id>hobgoblin</id>
+    <filepath>Textures/Sprites/Hobgoblin.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
 
 </textures>

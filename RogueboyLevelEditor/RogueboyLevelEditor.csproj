@@ -194,6 +194,9 @@
     <Content Include="Textures\Sprites\GreenSpell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Sprites\Hobgoblin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\Sprites\IceSpell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
