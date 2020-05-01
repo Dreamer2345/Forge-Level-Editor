@@ -91,7 +91,7 @@ namespace RogueboyLevelEditor.Tools
                 var map = this.control.CurrentMap;
                 var tilePoint = this.startPoint.Value;
 
-                var start = map.ToScreenSpace(tilePoint - new Size(1, 1));
+                var start = (map.ToScreenSpace(tilePoint) - new Size(1, 1));
                 var end = map.ToScreenSpace(tilePoint + new Size(1, 1));
 
                 var rectangle = Rectangle.FromLTRB(start.X, start.Y, end.X, end.Y);
