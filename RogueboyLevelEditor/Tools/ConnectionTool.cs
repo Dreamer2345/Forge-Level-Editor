@@ -62,6 +62,9 @@ namespace RogueboyLevelEditor.Tools
 
         private void Control_MouseDown(object sender, MouseEventArgs e)
         {
+            if (!e.Button.HasFlag(MouseButtons.Left))
+                return;
+
             var location = this.control.MapCollection.CurrentMap.ToTileSpace(e.Location);
 
             if (!this.control.CurrentMap.CheckInRange(location.X, location.Y))
