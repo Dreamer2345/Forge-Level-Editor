@@ -49,9 +49,8 @@ namespace RogueboyLevelEditor.Tools
         {
             var effectComponent = this.control.CurrentMap.AddConnection(startPoint, endPoint);
 
-            var listViewItem = new ListViewItem();
+            var listViewItem = new ListViewItem(effectComponent.IsValid.ToString());
 
-            _ = listViewItem.SubItems.Add(effectComponent.IsValid.ToString());
             _ = listViewItem.SubItems.Add(effectComponent.Start.X.ToString());
             _ = listViewItem.SubItems.Add(effectComponent.Start.Y.ToString());
             _ = listViewItem.SubItems.Add(effectComponent.End.X.ToString());
