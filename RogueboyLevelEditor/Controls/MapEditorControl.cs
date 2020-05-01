@@ -124,8 +124,6 @@ namespace RogueboyLevelEditor.Controls
 
             if (map != null)
                 this.TileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
-
-            this.Invalidate();
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -133,8 +131,6 @@ namespace RogueboyLevelEditor.Controls
             base.OnMouseLeave(e);
 
             this.TileCursor = null;
-
-            this.Invalidate();
         }
     }
 }
