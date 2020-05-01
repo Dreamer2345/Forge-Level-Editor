@@ -46,13 +46,14 @@ namespace RogueboyLevelEditor.Tools
 
         private void Control_MouseDown(object sender, MouseEventArgs e)
         {
-            SetTile(e.Location);
+            if (e.Button.HasFlag(MouseButtons.Left))
+                this.SetTile(e.Location);
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button.HasFlag(MouseButtons.Left))
-                SetTile(e.Location);
+                this.SetTile(e.Location);
         }
     }
 }
