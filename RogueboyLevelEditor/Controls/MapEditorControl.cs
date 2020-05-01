@@ -82,7 +82,11 @@ namespace RogueboyLevelEditor.Controls
         public Point? TileCursor
         {
             get => this.tileCursor;
-            set => this.tileCursor = value;
+            set
+            {
+                this.tileCursor = value;
+                this.Invalidate();
+            }
         }
 
         private void DrawSelectedTile(Graphics graphics)
