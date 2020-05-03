@@ -47,55 +47,58 @@ namespace RogueboyLevelEditor.Tools
 
         private void Control_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!this.startPoint.HasValue)
-            {
-                this.startPoint = e.Location;
-                this.endPoint = e.Location;
-                this.control.Invalidate();
-            }
+            if (e.Button.HasFlag(MouseButtons.Left))
+                if (!this.startPoint.HasValue)
+                {
+                    this.startPoint = e.Location;
+                    this.endPoint = e.Location;
+                    this.control.Invalidate();
+                }
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)
         {
-            if (this.startPoint.HasValue)
-            {
-                this.endPoint = e.Location;
-                this.control.Invalidate();
-            }
+            if (e.Button.HasFlag(MouseButtons.Left))
+                if (this.startPoint.HasValue)
+                {
+                    this.endPoint = e.Location;
+                    this.control.Invalidate();
+                }
         }
 
         private void Control_MouseUp(object sender, MouseEventArgs e)
         {
-            if (this.startPoint.HasValue && this.endPoint.HasValue)
-            {
-                // Cache the map
-                var map = this.control.MapCollection.CurrentMap;
+            if (e.Button.HasFlag(MouseButtons.Left))
+                if (this.startPoint.HasValue && this.endPoint.HasValue)
+                {
+                    // Cache the map
+                    var map = this.control.MapCollection.CurrentMap;
 
-                // Get the start and end tiles
-                var startLocation = map.ToTileSpace(this.startPoint.Value);
-                var endLocation = map.ToTileSpace(e.Location);
+                    // Get the start and end tiles
+                    var startLocation = map.ToTileSpace(this.startPoint.Value);
+                    var endLocation = map.ToTileSpace(e.Location);
 
-                // Ensure the points go from low coordinates to high coordinates
-                var startX = Math.Min(startLocation.X, endLocation.X);
-                var startY = Math.Min(startLocation.Y, endLocation.Y);
-                var endX = Math.Max(startLocation.X, endLocation.X);
-                var endY = Math.Max(startLocation.Y, endLocation.Y);
+                    // Ensure the points go from low coordinates to high coordinates
+                    var startX = Math.Min(startLocation.X, endLocation.X);
+                    var startY = Math.Min(startLocation.Y, endLocation.Y);
+                    var endX = Math.Max(startLocation.X, endLocation.X);
+                    var endY = Math.Max(startLocation.Y, endLocation.Y);
 
-                // Cache the tile id
-                var tileId = this.control.SelectedTileId;
+                    // Cache the tile id
+                    var tileId = this.control.SelectedTileId;
 
-                // Set the tiles
-                for (int y = startY; y <= endY; ++y)
-                    for (int x = startX; x <= endX; ++x)
-                        map.SetTile(new Point(x, y), tileId);
+                    // Set the tiles
+                    for (int y = startY; y <= endY; ++y)
+                        for (int x = startX; x <= endX; ++x)
+                            map.SetTile(new Point(x, y), tileId);
 
-                // Nullify the start and end points
-                this.startPoint = null;
-                this.endPoint = null;
+                    // Nullify the start and end points
+                    this.startPoint = null;
+                    this.endPoint = null;
 
-                // Request a redraw
-                this.control.Invalidate();
-            }
+                    // Request a redraw
+                    this.control.Invalidate();
+                }
         }
 
         private void Control_Paint(object sender, PaintEventArgs e)

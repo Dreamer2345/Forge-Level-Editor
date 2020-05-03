@@ -91,6 +91,7 @@
     <Compile Include="map\Tools\TileBrush.cs" />
     <Compile Include="map\Tools\TileRectangle.cs" />
     <Compile Include="map\Tools\Tool.cs" />
+    <Compile Include="Tools\ConnectionTool.cs" />
     <Compile Include="Tools\ITool.cs" />
     <Compile Include="Tools\DragMoveTool.cs" />
     <Compile Include="Tools\FocusTool.cs" />

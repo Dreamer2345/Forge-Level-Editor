@@ -3,6 +3,7 @@ using RogueboyLevelEditor.map.Component;
 using RogueboyLevelEditor.map.Tools;
 using RogueboyLevelEditor.mapCollection;
 using RogueboyLevelEditor.TextureHandler;
+using RogueboyLevelEditor.Tools;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,7 +22,7 @@ namespace RogueboyLevelEditor.Forms
 
         MapCollection mapCollection;
         TileManager tileManager = new TileManager();
-        TileCursor cursor;
+        TileCursor cursor = new TileCursor();
         Tool tool;
 
         void AddTextures()
@@ -55,14 +56,14 @@ namespace RogueboyLevelEditor.Forms
 
         public MapEditorForm()
         {
-            mapCollection = new MapCollection();
-            Map map = new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250);
-            mapCollection.AddMap(map);
-            cursor = new TileCursor();
             AddTextures();
             AddTiles();
             AddSprites();
             InitializeComponent();
+
+            this.mapEditorControl.Tool = new TileTool();
+            this.mapCollection = this.mapEditorControl.MapCollection;
+            this.mapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250));
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
             {
@@ -78,7 +79,6 @@ namespace RogueboyLevelEditor.Forms
 
             mapsMenu.DropDown.MouseLeave += new System.EventHandler(this.mapsMenu_DropDown_MouseLeave);
             HealthNumericUpDown.Visible = false;
-
         }
 
         void UpdateCurrentSprites()
@@ -209,7 +209,6 @@ namespace RogueboyLevelEditor.Forms
 
         private void MapEditorForm_Load(object sender, EventArgs e)
         {
-
             pictureBox1.Paint += PictureBox1_Paint;
             pictureBox1.MouseMove += PictureBox1_MouseMove;
             pictureBox1.MouseDown += PictureBox1_MouseDown;
@@ -391,6 +390,8 @@ namespace RogueboyLevelEditor.Forms
         //Tools
         private void tileToolRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            this.mapEditorControl.Tool = new TileTool();
+
             showTileTools();
         }
 
@@ -409,7 +410,11 @@ namespace RogueboyLevelEditor.Forms
         private void tilesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tilesListView.SelectedItems.Count > 0)
+            {
+                this.mapEditorControl.SelectedTileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
+
                 tool.SetBrush(int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text));
+            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -623,9 +628,10 @@ namespace RogueboyLevelEditor.Forms
         {
             if (spritesListView.SelectedItems.Count > 0)
             {
+                this.mapEditorControl.SelectedSpriteId = int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text);
+
                 tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), (spritesListView.SelectedItems[0].SubItems[3].Text == "" ? 0 : int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text)));
             }
-
         }
 
         private void mapAddMenu_Click(object sender, EventArgs e)
@@ -880,24 +886,24 @@ namespace RogueboyLevelEditor.Forms
         private void mapsMenu_DropDown_MouseLeave(object sender, EventArgs e)
         {
             mapsMenu.DropDown.Close();
-
         }
 
         private void spritesPlacedListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
+            if (spritesPlacedListView.SelectedItems.Count == 0)
+                this.HealthNumericUpDown.Visible = false;
 
-            if (spritesPlacedListView.SelectedItems.Count == 0) { 
-                HealthNumericUpDown.Visible = false;
-            }
+            var selectedItem = e.Item;
+            var point = new Point()
+            {
+                X = int.Parse(selectedItem.SubItems[3].Text),
+                Y = int.Parse(selectedItem.SubItems[4].Text),
+            };
 
-            ListViewItem selectedItem = e.Item;
+            this.cursor.position = point;
+            this.pictureBox1.Invalidate();
 
-            Point point = new Point();
-            point.X = Int32.Parse(selectedItem.SubItems[2].Text);
-            point.Y = Int32.Parse(selectedItem.SubItems[3].Text);
-            cursor.position = point;
-            pictureBox1.Invalidate();
-
+            this.mapEditorControl.TileCursor = this.mapEditorControl.CurrentMap.ToScreenSpace(point);
         }
 
         private void connectionListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -969,8 +975,8 @@ namespace RogueboyLevelEditor.Forms
             foreach (ListViewItem item in spritesPlacedListView.Items)
             {
 
-                if (foundSprite.SpritePosition.X == Int32.Parse(item.SubItems[2].Text) &&
-                    foundSprite.SpritePosition.Y == Int32.Parse(item.SubItems[3].Text))
+                if (foundSprite.SpritePosition.X == Int32.Parse(item.SubItems[3].Text) &&
+                    foundSprite.SpritePosition.Y == Int32.Parse(item.SubItems[4].Text))
                 {
 
                     item.Selected = true;
@@ -1190,11 +1196,10 @@ namespace RogueboyLevelEditor.Forms
 
         private void overallTableLayout_SizeChanged(object sender, EventArgs e)
         {
-
             mapCollection.drawOffsetX = (pictureBox1.Width / 2) - 8;
             mapCollection.drawOffsetY = (pictureBox1.Height / 2) - 8;
             pictureBox1.Invalidate();
-
+            this.mapEditorControl.Invalidate();
         }
 
         private void tilesContextMenu_ColumnInsert_Click(object sender, EventArgs e)
@@ -1604,6 +1609,7 @@ namespace RogueboyLevelEditor.Forms
 
         private void showTileTools()
         {
+            this.mapEditorControl.Tool = new TileTool();
 
             int TileId = -1;
             if (tilesListView.SelectedItems.Count > 0)
@@ -1621,6 +1627,7 @@ namespace RogueboyLevelEditor.Forms
 
         private void showSpritesTool()
         {
+            this.mapEditorControl.Tool = new SpritePlacementTool(this.spritesPlacedListView);
 
             tool = new SpriteTool(mapCollection.CurrentMap, this);
             tabPages.SelectTab(1);
@@ -1642,6 +1649,7 @@ namespace RogueboyLevelEditor.Forms
 
         private void showConnectionTool()
         {
+            this.mapEditorControl.Tool = new ConnectionTool(this.connectionListView);
 
             tool = new ConnectorTool(mapCollection.CurrentMap, this);
             tabPages.SelectTab(2);
@@ -1674,7 +1682,10 @@ namespace RogueboyLevelEditor.Forms
                     break;
 
                 case 3:
+                    this.mapEditorControl.Tool = new PlayerPlacementTool();
+
                     tool = new PlayerPositionTool(mapCollection.CurrentMap);
+
                     eraseMenu.Enabled = false;
                     eraseMenuItem.Enabled = false;
                     rectangleMenu.Enabled = false;
@@ -1702,11 +1713,16 @@ namespace RogueboyLevelEditor.Forms
 
         private void eraseMenu_Click(object sender, EventArgs e)
         {
+            this.mapEditorControl.Tool = new TileTool();
+            this.mapEditorControl.SelectedTileId = -1;
+
             tool = new TileBrush(-1, mapCollection.CurrentMap);
         }
 
         private void moveToMenu_Click(object sender, EventArgs e)
         {
+            this.mapEditorControl.Tool = new FocusTool();
+
             tool = new MoveTool(mapCollection.CurrentMap);
         }
 
@@ -1714,23 +1730,24 @@ namespace RogueboyLevelEditor.Forms
         {
             if (!(tool is PlayerPositionTool))
             {
+                this.mapEditorControl.Tool = new PlayerPlacementTool();
+
                 tool = new PlayerPositionTool(mapCollection.CurrentMap);
                 tabPages.SelectTab(3);
                 eraseMenu.Enabled = false;
                 rectangleMenu.Enabled = false;
             }
-
         }
 
         private void centreMenu_Click(object sender, EventArgs e)
         {
-            mapCollection.CurrentMap.CentreMap();
-            pictureBox1.Invalidate();
+            this.mapCollection.CurrentMap.CentreMap();
+            this.pictureBox1.Invalidate();
+            this.mapEditorControl.Invalidate();
         }
 
         private void rectangleMenu_Click(object sender, EventArgs e)
         {
-
             showTileTools();
 
             int tileId = -1;
@@ -1739,16 +1756,18 @@ namespace RogueboyLevelEditor.Forms
             tool = new TileRectangle(this, tileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
             tilesListView.Visible = true;
 
+            this.mapEditorControl.Tool = new RectangleFillTool();
         }
 
         private void eraseMenuItem_Click(object sender, EventArgs e)
         {
+            this.mapEditorControl.SelectedTileId = -1;
+            this.mapEditorControl.Tool = new TileTool();
             tool = new TileBrush(-1, mapCollection.CurrentMap);
         }
 
         private void rectangleMenuItem_Click(object sender, EventArgs e)
         {
-
             showTileTools();
 
             int tileId = -1;
@@ -1757,10 +1776,12 @@ namespace RogueboyLevelEditor.Forms
             tool = new TileRectangle(this, tileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
             tilesListView.Visible = true;
 
+            this.mapEditorControl.Tool = new RectangleFillTool();
         }
 
         private void moveToMenuItem_Click(object sender, EventArgs e)
         {
+            this.mapEditorControl.Tool = new FocusTool();
             tool = new MoveTool(mapCollection.CurrentMap);
         }
 
@@ -1925,6 +1946,460 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-    }
+        #region Map Context Menu Events
+        private void mapEditorContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (sender is ContextMenuStrip contextMenu)
+            {
+                var map = this.mapEditorControl.CurrentMap;
 
+                var menuPosition = this.mapEditorControl.PointToClient(contextMenu.Location);
+                var tilePosition = map.ToTileSpace(menuPosition);
+                this.mapEditorControl.TileCursor = tilePosition;
+
+                this.addColumnToolStripMenuItem.Enabled = (map.Width < 40);
+                this.removeColumnToolStripMenuItem.Enabled = (map.Width > 1);
+
+                this.addRowToolStripMenuItem.Enabled = (map.Height < 40);
+                this.removeRowToolStripMenuItem.Enabled = (map.Height > 1);
+
+                var foundSprite = map.Sprites.FindIndex(sprite => (sprite.SpritePosition == tilePosition));
+                this.spriteToolStripMenuItem.Enabled = (foundSprite != -1);
+
+                var foundConnector = map.Connectors.FindIndex(connector => ((connector.Start == tilePosition) || (connector.End == tilePosition)));
+                this.connectionToolStripMenuItem.Enabled = (foundConnector != -1);
+            }
+        }
+
+        private void addColumnToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem menu)
+            {
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var column = this.mapEditorControl.CurrentMap.ToTileSpaceX(menuPosition.X);
+
+                this.InsertColumn(column);
+            }
+        }
+
+        private void removeColumnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var column = this.mapEditorControl.CurrentMap.ToTileSpaceX(menuPosition.X);
+
+                this.RemoveColumn(column);
+            }
+        }
+
+        private void addRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var row = this.mapEditorControl.CurrentMap.ToTileSpaceY(menuPosition.Y);
+
+                this.InsertRow(row);
+            }
+        }
+
+        private void removeRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var row = this.mapEditorControl.CurrentMap.ToTileSpaceY(menuPosition.Y);
+
+                this.RemoveRow(row);
+            }
+        }
+
+        private void selectTileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var tilePosition = this.mapEditorControl.CurrentMap.ToTileSpace(menuPosition);
+                var tileId = this.mapEditorControl.CurrentMap.GetTile(tilePosition).tileID;
+
+                this.SelectTileInListView(tileId);
+            }
+        }
+
+        private void eraseTileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var tilePosition = this.mapEditorControl.CurrentMap.ToTileSpace(menuPosition);
+                
+                this.mapEditorControl.CurrentMap.SetTile(tilePosition, -1);
+            }
+        }
+
+        private void selectSpriteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                var map = this.mapEditorControl.CurrentMap;
+
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var tilePosition = map.ToTileSpace(menuPosition);
+
+                this.SelectSpriteInListView(tilePosition);
+            }
+        }
+
+        private void removeSpriteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem menu)
+            {
+                var map = this.mapEditorControl.CurrentMap;
+
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var tilePosition = map.ToTileSpace(menuPosition);
+
+                this.RemoveSpriteInListView(tilePosition);
+            }
+        }
+
+        private void selectConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem menu)
+            {
+                var map = this.mapEditorControl.CurrentMap;
+
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var tilePosition = map.ToTileSpace(menuPosition);
+
+                this.SelectConnectionInListView(tilePosition);
+            }
+        }
+
+        private void removeConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem menu)
+            {
+                var map = this.mapEditorControl.CurrentMap;
+                var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
+                var tilePosition = map.ToTileSpace(menuPosition);
+
+                this.RemoveConnectionInListView(tilePosition);
+            }
+        }
+        #endregion
+
+        #region Map Context Menu Helpers
+
+        private void SelectTileInListView(int tileId)
+        {
+            var tileAsText = tileId.ToString();
+
+            var targetItem = this.tilesListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(item => (tileAsText == item.SubItems[1].Text));
+
+            if (targetItem == null)
+                return;
+
+            targetItem.Selected = true;
+            targetItem.EnsureVisible();
+            targetItem.Focused = true;
+            _ = this.tilesListView.Focus();
+        }
+
+        private void SelectSpriteInListView(Point tilePosition)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            var targetSprite = map.Sprites.Find(sprite => sprite.SpritePosition == tilePosition);
+
+            if (targetSprite == null)
+                return;
+
+            var x = targetSprite.SpritePosition.X.ToString();
+            var y = targetSprite.SpritePosition.Y.ToString();
+
+            var targetItem = this.spritesPlacedListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(item => (x == item.SubItems[3].Text) && (y == item.SubItems[4].Text));
+
+            if (targetItem == null)
+                return;
+
+            targetItem.Selected = true;
+            targetItem.EnsureVisible();
+            targetItem.Focused = true;
+            _ = this.spritesPlacedListView.Focus();
+        }
+
+        private void RemoveSpriteInListView(Point tilePosition)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            var spriteIndex = map.Sprites.FindIndex(sprite => sprite.SpritePosition == tilePosition);
+
+            if (spriteIndex == -1)
+                return;
+
+            var targetSprite = map.Sprites[spriteIndex];
+            map.Sprites.RemoveAt(spriteIndex);
+
+            this.mapEditorControl.Invalidate();
+
+            var x = targetSprite.SpritePosition.X.ToString();
+            var y = targetSprite.SpritePosition.Y.ToString();
+
+            var targetItem = this.spritesPlacedListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(item => (x == item.SubItems[3].Text) && (y == item.SubItems[4].Text));
+
+            if (targetItem == null)
+                return;
+
+            this.spritesPlacedListView.Items.Remove(targetItem);
+            _ = this.spritesPlacedListView.Focus();
+        }
+
+        private void SelectConnectionInListView(Point tilePosition)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            var targetConnection = map.Connectors.Find(connection => ((connection.Start == tilePosition) || (connection.End == tilePosition)));
+
+            if (targetConnection == null)
+                return;
+
+            var startX = targetConnection.Start.X.ToString();
+            var startY = targetConnection.Start.Y.ToString();
+            var endX = targetConnection.End.X.ToString();
+            var endY = targetConnection.End.Y.ToString();
+
+            var targetItem = this.connectionListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(item => ((startX == item.SubItems[1].Text) && (startY == item.SubItems[2].Text)) && ((endX == item.SubItems[3].Text) && (endY == item.SubItems[4].Text)));
+
+            if (targetItem == null)
+                return;
+
+            targetItem.Selected = true;
+            targetItem.EnsureVisible();
+            targetItem.Focused = true;
+            _ = this.connectionListView.Focus();
+        }
+
+        private void RemoveConnectionInListView(Point tilePosition)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            var connectionIndex = map.Connectors.FindIndex(connection => ((connection.Start == tilePosition) || (connection.End == tilePosition)));
+
+            if (connectionIndex == -1)
+                return;
+
+            var targetConnection = map.Connectors[connectionIndex];
+            map.Connectors.RemoveAt(connectionIndex);
+
+            var startX = targetConnection.Start.X.ToString();
+            var startY = targetConnection.Start.Y.ToString();
+            var endX = targetConnection.End.X.ToString();
+            var endY = targetConnection.End.Y.ToString();
+
+            var targetItem = this.connectionListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(item => ((startX == item.SubItems[1].Text) && (startY == item.SubItems[2].Text)) && ((endX == item.SubItems[3].Text) && (endY == item.SubItems[4].Text)));
+
+            if (targetItem == null)
+                return;
+
+            targetItem.Selected = true;
+            targetItem.EnsureVisible();
+            _ = this.connectionListView.Focus();
+
+            this.connectionListView.Items.Remove(targetItem);
+            _ = this.connectionListView.Focus();
+        }
+
+        private void RefreshMap()
+        {
+            this.mapEditorControl.Invalidate();
+            this.UpdateCurrentSprites();
+            this.UpdateCurrentConnectors();
+        }
+
+        private void InsertColumn(int column)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            map.Width += 1;
+
+            for (int x = map.Width - 1; x >= column; --x)
+                for (int y = 0; y < map.Height; ++y)
+                {
+                    Point point = new Point(x, y);
+                    int id = map.GetTile(point).tileID;
+                    point.X += 1;
+
+                    map.SetTile(point, id);
+                }
+
+            for (int y = 0; y < map.Height; ++y)
+                map.SetTile(new Point(column, y), -1);
+
+            // Update sprites
+            foreach (var sprite in map.Sprites)
+                if (sprite.SpritePosition.X >= column)
+                    sprite.SpritePosition.X++;
+
+            // Update connections
+            foreach (var connector in map.Connectors)
+            {
+                if (connector.Start.X >= column)
+                    connector.Start.X++;
+
+                if (connector.End.X >= column)
+                    connector.End.X++;
+            }
+
+            this.RefreshMap();
+        }
+
+        private void RemoveColumn(int column)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            for (int x = column + 1; x < map.Width; ++x)
+                for (int y = 0; y < map.Height; ++y)
+                {
+                    Point point = new Point(x, y);
+
+                    int id = map.GetTile(point).tileID;
+                    point.X -= 1;
+
+                    map.SetTile(point, id);
+                }
+
+            map.Width -= 1;
+
+            // Update sprites
+            for (int index = map.Sprites.Count - 1; index >= 0; --index)
+            {
+                SpriteComponent sprite = map.Sprites[index];
+
+                if (sprite.SpritePosition.X == column)
+                    map.Sprites.RemoveAt(index);
+
+                if (sprite.SpritePosition.X > column)
+                    sprite.SpritePosition.X--;
+            }
+
+
+            // Update connections
+            for (int index = map.Connectors.Count - 1; index >= 0; --index)
+            {
+                EnviromentAffectComponent connector = map.Connectors[index];
+
+                if ((connector.Start.X == column) || (connector.End.X == column))
+                    map.Connectors.RemoveAt(index);
+
+                if (connector.Start.X > column)
+                    connector.Start.X--;
+
+                if (connector.End.X > column)
+                    connector.End.X--;
+            }
+
+            this.RefreshMap();
+        }
+
+        private void InsertRow(int row)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            map.Height += 1;
+
+            for (int y = map.Height - 1; y >= row; --y)
+                for (int x = 0; x < map.Width; ++x)
+                {
+                    Point point = new Point(x, y);
+
+                    int id = map.GetTile(point).tileID;
+                    point.Y = point.Y + 1;
+
+                    map.SetTile(point, id);
+                }
+
+            // Fill new line with blanks
+            for (int x = 0; x < map.Width; x++)
+                map.SetTile(new Point(x, row), -1);
+
+
+            // Update sprites
+            foreach (var sprite in map.Sprites)
+                if (sprite.SpritePosition.Y >= row)
+                    sprite.SpritePosition.Y++;
+
+            // Update connections
+            foreach (var connector in map.Connectors)
+            {
+                if (connector.Start.Y >= row)
+                    connector.Start.Y++;
+
+                if (connector.End.Y >= row)
+                    connector.End.Y++;
+            }
+
+            this.RefreshMap();
+        }
+
+        private void RemoveRow(int row)
+        {
+            var map = this.mapEditorControl.CurrentMap;
+
+            for (int y = row + 1; y < map.Height; ++y)
+                for (int x = 0; x < map.Width; ++x)
+                {
+                    Point point = new Point(x, y);
+
+                    int id = map.GetTile(point).tileID;
+                    point.Y -= 1;
+
+                    map.SetTile(point, id);
+                }
+
+            map.Height -= 1;
+
+            // Update sprites
+            for (int index = map.Sprites.Count - 1; index >= 0; --index)
+            {
+                var sprite = map.Sprites[index];
+
+                if (sprite.SpritePosition.Y == row)
+                    map.Sprites.RemoveAt(index);
+
+                if (sprite.SpritePosition.Y > row)
+                    sprite.SpritePosition.X--;
+            }
+
+            // Update connections
+            for (int index = map.Connectors.Count - 1; index >= 0; --index)
+            {
+                var connector = map.Connectors[index];
+
+                if ((connector.Start.Y == row) || (connector.End.Y == row))
+                    map.Connectors.RemoveAt(index);
+
+                if (connector.Start.Y > row)
+                    connector.Start.Y--;
+
+                if (connector.End.Y > row)
+                    connector.End.Y--;
+            }
+
+            this.RefreshMap();
+        }
+
+        #endregion
+    }
 }

@@ -79,6 +79,16 @@ namespace RogueboyLevelEditor.Controls
             }
         }
 
+        public Point? TileCursor
+        {
+            get => this.tileCursor;
+            set
+            {
+                this.tileCursor = value;
+                this.Invalidate();
+            }
+        }
+
         private void DrawSelectedTile(Graphics graphics)
         {
             var textureId = this.tileManager.GetTile(this.SelectedTileId).TextureID;
@@ -92,14 +102,13 @@ namespace RogueboyLevelEditor.Controls
 
         private void DrawTileCursor(Graphics graphics)
         {
-            if (this.tileCursor.HasValue)
-                graphics.DrawRectangle(Pens.Red, this.tileCursor.Value.X - 1, this.tileCursor.Value.Y - 1, 16 + 2, 16 + 2);
+            if (this.TileCursor.HasValue)
+                graphics.DrawRectangle(Pens.Red, this.TileCursor.Value.X - 1, this.TileCursor.Value.Y - 1, 16 + 1, 16 + 1);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.mapCollection != null)
-                this.mapCollection.Draw(e.Graphics);
+            this.mapCollection?.Draw(e.Graphics);
 
             this.DrawSelectedTile(e.Graphics);
             this.DrawTileCursor(e.Graphics);
@@ -111,19 +120,17 @@ namespace RogueboyLevelEditor.Controls
         {
             base.OnMouseMove(e);
 
-            var map = this.MapCollection.CurrentMap;
-            this.tileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
+            var map = this.MapCollection?.CurrentMap;
 
-            this.Invalidate();
+            if (map != null)
+                this.TileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
 
-            this.tileCursor = null;
-
-            this.Invalidate();
+            this.TileCursor = null;
         }
     }
 }
