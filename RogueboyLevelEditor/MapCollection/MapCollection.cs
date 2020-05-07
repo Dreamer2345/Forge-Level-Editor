@@ -160,16 +160,6 @@ namespace RogueboyLevelEditor.mapCollection
                 CurrentMap.DrawPlayer(graphics);
         }
 
-        public string[] GetNames()
-        {
-            List<string> names = new List<string>();
-            foreach(Map map in OpenMaps)
-            {
-                names.Add(map.Name);
-            }
-            return names.ToArray();
-        }
-
         private static readonly Regex mapLoadRegex = new Regex(@"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
         private static readonly HashSet<char> mapLoadCharacters = new HashSet<char>() { ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         
