@@ -63,29 +63,6 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.spriteContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.spriteContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
-            this.spriteContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.connectionContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.connectionContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectionContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tilesContextMenu_FindInList = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_Remove = new System.Windows.Forms.ToolStripMenuItem();
-            this.useTileTypeContextMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tilesContextMenu_Column = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_ColumnInsert = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_ColumnMoveRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_ColumnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_ColumnMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_Row = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_RowInsert = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_ColumnMoveDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_RowDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tilesContextMenu_ColumnMoveUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.overallTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.tabPages = new System.Windows.Forms.TabControl();
             this.tabTileTool = new System.Windows.Forms.TabPage();
@@ -98,6 +75,13 @@
             this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabSpriteTool = new System.Windows.Forms.TabPage();
             this.spriteToolTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
+            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesListView = new System.Windows.Forms.ListView();
             this.Texture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -116,13 +100,17 @@
             this.tabPlayerStart = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.tabImageList = new System.Windows.Forms.ImageList(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
             this.mapEditorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eraseTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,27 +131,12 @@
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
             this.HealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eraseTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
-            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
+            this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.spriteContextMenu.SuspendLayout();
-            this.connectionContextMenu.SuspendLayout();
-            this.tilesContextMenu.SuspendLayout();
             this.overallTableLayout.SuspendLayout();
             this.tabPages.SuspendLayout();
             this.tabTileTool.SuspendLayout();
@@ -172,12 +145,11 @@
             this.tabConnectionTool.SuspendLayout();
             this.connectionToolTableLayout.SuspendLayout();
             this.tabPlayerStart.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mapEditorContextMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HealthNumericUpDown)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fileMenu
@@ -419,190 +391,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // spriteContextMenu
-            // 
-            this.spriteContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.spriteContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.spriteContextMenu_FindInList,
-            this.spriteContextMenu_Remove,
-            this.toolStripMenuItem4});
-            this.spriteContextMenu.Name = "spriteContextMenu";
-            this.spriteContextMenu.Size = new System.Drawing.Size(132, 54);
-            // 
-            // spriteContextMenu_FindInList
-            // 
-            this.spriteContextMenu_FindInList.Enabled = false;
-            this.spriteContextMenu_FindInList.Name = "spriteContextMenu_FindInList";
-            this.spriteContextMenu_FindInList.Size = new System.Drawing.Size(131, 22);
-            this.spriteContextMenu_FindInList.Text = "&Find In List";
-            this.spriteContextMenu_FindInList.Click += new System.EventHandler(this.spriteContextMenu_FindInList_Click);
-            // 
-            // spriteContextMenu_Remove
-            // 
-            this.spriteContextMenu_Remove.Enabled = false;
-            this.spriteContextMenu_Remove.Name = "spriteContextMenu_Remove";
-            this.spriteContextMenu_Remove.Size = new System.Drawing.Size(131, 22);
-            this.spriteContextMenu_Remove.Text = "&Remove";
-            this.spriteContextMenu_Remove.Click += new System.EventHandler(this.spriteContextMenu_Remove_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(128, 6);
-            // 
-            // connectionContextMenu
-            // 
-            this.connectionContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.connectionContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectionContextMenu_FindInList,
-            this.connectionContextMenu_Remove});
-            this.connectionContextMenu.Name = "connectionContextMenu";
-            this.connectionContextMenu.Size = new System.Drawing.Size(132, 48);
-            // 
-            // connectionContextMenu_FindInList
-            // 
-            this.connectionContextMenu_FindInList.Enabled = false;
-            this.connectionContextMenu_FindInList.Name = "connectionContextMenu_FindInList";
-            this.connectionContextMenu_FindInList.Size = new System.Drawing.Size(131, 22);
-            this.connectionContextMenu_FindInList.Text = "&Find In List";
-            this.connectionContextMenu_FindInList.Click += new System.EventHandler(this.connectionContextMenu_FindInList_Click);
-            // 
-            // connectionContextMenu_Remove
-            // 
-            this.connectionContextMenu_Remove.Enabled = false;
-            this.connectionContextMenu_Remove.Name = "connectionContextMenu_Remove";
-            this.connectionContextMenu_Remove.Size = new System.Drawing.Size(131, 22);
-            this.connectionContextMenu_Remove.Text = "&Remove";
-            this.connectionContextMenu_Remove.Click += new System.EventHandler(this.connectionContextMenu_Remove_Click);
-            // 
-            // tilesContextMenu
-            // 
-            this.tilesContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tilesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tilesContextMenu_FindInList,
-            this.tilesContextMenu_Remove,
-            this.useTileTypeContextMenu,
-            this.toolStripMenuItem5,
-            this.tilesContextMenu_Column,
-            this.tilesContextMenu_Row,
-            this.toolStripMenuItem6});
-            this.tilesContextMenu.Name = "tilesContextMenu";
-            this.tilesContextMenu.Size = new System.Drawing.Size(189, 188);
-            // 
-            // tilesContextMenu_FindInList
-            // 
-            this.tilesContextMenu_FindInList.Enabled = false;
-            this.tilesContextMenu_FindInList.Name = "tilesContextMenu_FindInList";
-            this.tilesContextMenu_FindInList.Size = new System.Drawing.Size(188, 30);
-            this.tilesContextMenu_FindInList.Text = "&Find In List";
-            this.tilesContextMenu_FindInList.Click += new System.EventHandler(this.tilesContextMenu_FindInList_Click);
-            // 
-            // tilesContextMenu_Remove
-            // 
-            this.tilesContextMenu_Remove.Enabled = false;
-            this.tilesContextMenu_Remove.Name = "tilesContextMenu_Remove";
-            this.tilesContextMenu_Remove.Size = new System.Drawing.Size(188, 30);
-            this.tilesContextMenu_Remove.Text = "&Remove";
-            this.tilesContextMenu_Remove.Click += new System.EventHandler(this.tilesContextMenu_Remove_Click);
-            // 
-            // useTileTypeContextMenu
-            // 
-            this.useTileTypeContextMenu.Image = global::RogueboyLevelEditor.Properties.Resources.eyedropper;
-            this.useTileTypeContextMenu.Name = "useTileTypeContextMenu";
-            this.useTileTypeContextMenu.Size = new System.Drawing.Size(188, 30);
-            this.useTileTypeContextMenu.Text = "&Use Tile Type";
-            this.useTileTypeContextMenu.Click += new System.EventHandler(this.useTileTypeContextMenu_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(185, 6);
-            // 
-            // tilesContextMenu_Column
-            // 
-            this.tilesContextMenu_Column.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tilesContextMenu_ColumnInsert,
-            this.tilesContextMenu_ColumnMoveRight,
-            this.tilesContextMenu_ColumnDelete,
-            this.tilesContextMenu_ColumnMoveLeft});
-            this.tilesContextMenu_Column.Enabled = false;
-            this.tilesContextMenu_Column.Name = "tilesContextMenu_Column";
-            this.tilesContextMenu_Column.Size = new System.Drawing.Size(188, 30);
-            this.tilesContextMenu_Column.Text = "&Column";
-            // 
-            // tilesContextMenu_ColumnInsert
-            // 
-            this.tilesContextMenu_ColumnInsert.Name = "tilesContextMenu_ColumnInsert";
-            this.tilesContextMenu_ColumnInsert.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_ColumnInsert.Text = "&Insert (expand size)";
-            this.tilesContextMenu_ColumnInsert.Click += new System.EventHandler(this.tilesContextMenu_ColumnInsert_Click);
-            // 
-            // tilesContextMenu_ColumnMoveRight
-            // 
-            this.tilesContextMenu_ColumnMoveRight.Name = "tilesContextMenu_ColumnMoveRight";
-            this.tilesContextMenu_ColumnMoveRight.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_ColumnMoveRight.Text = "I&nsert (retain size)";
-            this.tilesContextMenu_ColumnMoveRight.Click += new System.EventHandler(this.tilesContextMenu_ColumnMove_Click);
-            // 
-            // tilesContextMenu_ColumnDelete
-            // 
-            this.tilesContextMenu_ColumnDelete.Name = "tilesContextMenu_ColumnDelete";
-            this.tilesContextMenu_ColumnDelete.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_ColumnDelete.Text = "&Delete (contract size)";
-            this.tilesContextMenu_ColumnDelete.Click += new System.EventHandler(this.tilesContextMenu_ColumnDelete_Click);
-            // 
-            // tilesContextMenu_ColumnMoveLeft
-            // 
-            this.tilesContextMenu_ColumnMoveLeft.Name = "tilesContextMenu_ColumnMoveLeft";
-            this.tilesContextMenu_ColumnMoveLeft.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_ColumnMoveLeft.Text = "D&elete (retain size)";
-            this.tilesContextMenu_ColumnMoveLeft.Click += new System.EventHandler(this.tilesContextMenu_ColumnMoveLeft_Click);
-            // 
-            // tilesContextMenu_Row
-            // 
-            this.tilesContextMenu_Row.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tilesContextMenu_RowInsert,
-            this.tilesContextMenu_ColumnMoveDown,
-            this.tilesContextMenu_RowDelete,
-            this.tilesContextMenu_ColumnMoveUp});
-            this.tilesContextMenu_Row.Enabled = false;
-            this.tilesContextMenu_Row.Name = "tilesContextMenu_Row";
-            this.tilesContextMenu_Row.Size = new System.Drawing.Size(188, 30);
-            this.tilesContextMenu_Row.Text = "&Row";
-            // 
-            // tilesContextMenu_RowInsert
-            // 
-            this.tilesContextMenu_RowInsert.Name = "tilesContextMenu_RowInsert";
-            this.tilesContextMenu_RowInsert.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_RowInsert.Text = "&Insert (expand size)";
-            this.tilesContextMenu_RowInsert.Click += new System.EventHandler(this.tilesContextMenu_RowInsert_Click);
-            // 
-            // tilesContextMenu_ColumnMoveDown
-            // 
-            this.tilesContextMenu_ColumnMoveDown.Name = "tilesContextMenu_ColumnMoveDown";
-            this.tilesContextMenu_ColumnMoveDown.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_ColumnMoveDown.Text = "I&nsert (retain size)";
-            this.tilesContextMenu_ColumnMoveDown.Click += new System.EventHandler(this.tilesContextMenu_RowMoveDown_Click);
-            // 
-            // tilesContextMenu_RowDelete
-            // 
-            this.tilesContextMenu_RowDelete.Name = "tilesContextMenu_RowDelete";
-            this.tilesContextMenu_RowDelete.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_RowDelete.Text = "&Delete (contract size)";
-            this.tilesContextMenu_RowDelete.Click += new System.EventHandler(this.tilesContextMenu_RowDelete_Click);
-            // 
-            // tilesContextMenu_ColumnMoveUp
-            // 
-            this.tilesContextMenu_ColumnMoveUp.Name = "tilesContextMenu_ColumnMoveUp";
-            this.tilesContextMenu_ColumnMoveUp.Size = new System.Drawing.Size(184, 22);
-            this.tilesContextMenu_ColumnMoveUp.Text = "D&elete (retain size)";
-            this.tilesContextMenu_ColumnMoveUp.Click += new System.EventHandler(this.tilesContextMenu_RowMoveUp_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(185, 6);
-            // 
             // overallTableLayout
             // 
             this.overallTableLayout.AutoSize = true;
@@ -611,16 +399,15 @@
             this.overallTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
             this.overallTableLayout.Controls.Add(this.tabPages, 1, 1);
             this.overallTableLayout.Controls.Add(this.statusStrip1, 1, 2);
-            this.overallTableLayout.Controls.Add(this.pictureBox1, 0, 2);
             this.overallTableLayout.Controls.Add(this.mapEditorControl, 0, 1);
             this.overallTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overallTableLayout.Location = new System.Drawing.Point(4, 4);
             this.overallTableLayout.Name = "overallTableLayout";
-            this.overallTableLayout.RowCount = 3;
+            this.overallTableLayout.RowCount = 1;
             this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 296F));
-            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.overallTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.overallTableLayout.Size = new System.Drawing.Size(964, 671);
             this.overallTableLayout.TabIndex = 10;
             this.overallTableLayout.SizeChanged += new System.EventHandler(this.overallTableLayout_SizeChanged);
@@ -637,7 +424,7 @@
             this.tabPages.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
             this.tabPages.Name = "tabPages";
             this.tabPages.SelectedIndex = 0;
-            this.tabPages.Size = new System.Drawing.Size(409, 298);
+            this.tabPages.Size = new System.Drawing.Size(409, 592);
             this.tabPages.TabIndex = 15;
             this.tabPages.SelectedIndexChanged += new System.EventHandler(this.tabPages_SelectedIndexChanged);
             this.tabPages.MouseEnter += new System.EventHandler(this.tabPages_MouseEnter);
@@ -649,7 +436,7 @@
             this.tabTileTool.Location = new System.Drawing.Point(4, 23);
             this.tabTileTool.Name = "tabTileTool";
             this.tabTileTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTileTool.Size = new System.Drawing.Size(401, 271);
+            this.tabTileTool.Size = new System.Drawing.Size(401, 565);
             this.tabTileTool.TabIndex = 0;
             this.tabTileTool.Text = "Tiles  ";
             this.tabTileTool.UseVisualStyleBackColor = true;
@@ -674,7 +461,7 @@
             this.tilesListView.Margin = new System.Windows.Forms.Padding(0);
             this.tilesListView.MultiSelect = false;
             this.tilesListView.Name = "tilesListView";
-            this.tilesListView.Size = new System.Drawing.Size(395, 265);
+            this.tilesListView.Size = new System.Drawing.Size(395, 559);
             this.tilesListView.TabIndex = 21;
             this.tilesListView.UseCompatibleStateImageBehavior = false;
             this.tilesListView.View = System.Windows.Forms.View.Details;
@@ -743,6 +530,75 @@
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 265);
             this.spriteToolTableLayout.TabIndex = 25;
+            // 
+            // spritesPlacedListView
+            // 
+            this.spritesPlacedListView.AutoArrange = false;
+            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SpritePicture,
+            this.spritesPlacedListView_IDColumn,
+            this.spritesPlacedListView_Name,
+            this.spritesPlacedListView_XColumn,
+            this.spritesPlacedListView_YColumn,
+            this.spritesPlacedListView_HealthColumn});
+            this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spritesPlacedListView.FullRowSelect = true;
+            this.spritesPlacedListView.GridLines = true;
+            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.spritesPlacedListView.HideSelection = false;
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 135);
+            this.spritesPlacedListView.MultiSelect = false;
+            this.spritesPlacedListView.Name = "spritesPlacedListView";
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 127);
+            this.spritesPlacedListView.TabIndex = 27;
+            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
+            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
+            this.spritesPlacedListView.Visible = false;
+            this.spritesPlacedListView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.spritesPlacedListView_Scroll);
+            this.spritesPlacedListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesPlacedListView_ColumnWidthChanged);
+            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
+            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesPlacedListView_SelectedIndexChanged);
+            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
+            // 
+            // SpritePicture
+            // 
+            this.SpritePicture.Tag = "30";
+            this.SpritePicture.Text = "";
+            this.SpritePicture.Width = 30;
+            // 
+            // spritesPlacedListView_IDColumn
+            // 
+            this.spritesPlacedListView_IDColumn.Tag = "40";
+            this.spritesPlacedListView_IDColumn.Text = "ID";
+            this.spritesPlacedListView_IDColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_IDColumn.Width = 40;
+            // 
+            // spritesPlacedListView_Name
+            // 
+            this.spritesPlacedListView_Name.Tag = "96";
+            this.spritesPlacedListView_Name.Text = "Name";
+            this.spritesPlacedListView_Name.Width = 96;
+            // 
+            // spritesPlacedListView_XColumn
+            // 
+            this.spritesPlacedListView_XColumn.Tag = "36";
+            this.spritesPlacedListView_XColumn.Text = "X";
+            this.spritesPlacedListView_XColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_XColumn.Width = 36;
+            // 
+            // spritesPlacedListView_YColumn
+            // 
+            this.spritesPlacedListView_YColumn.Tag = "36";
+            this.spritesPlacedListView_YColumn.Text = "Y";
+            this.spritesPlacedListView_YColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_YColumn.Width = 38;
+            // 
+            // spritesPlacedListView_HealthColumn
+            // 
+            this.spritesPlacedListView_HealthColumn.Tag = "60";
+            this.spritesPlacedListView_HealthColumn.Text = "Health";
+            this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // spritesListView
             // 
@@ -922,59 +778,31 @@
             this.tabImageList.Images.SetKeyName(6, "itinerary.png");
             this.tabImageList.Images.SetKeyName(7, "region-code.png");
             // 
-            // statusStrip1
+            // mapEditorControl
             // 
-            this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentMapLabel,
-            this.toolStripStatusLabel1,
-            this.currentFileLabel,
-            this.toolStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 651);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(964, 20);
-            this.statusStrip1.TabIndex = 14;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // currentMapLabel
-            // 
-            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentMapLabel.Name = "currentMapLabel";
-            this.currentMapLabel.Size = new System.Drawing.Size(0, 15);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(23, 15);
-            this.toolStripStatusLabel1.Text = " in ";
-            // 
-            // currentFileLabel
-            // 
-            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(74, 15);
-            this.currentFileLabel.Text = "< New File >";
-            // 
-            // toolStatusLabel
-            // 
-            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.toolStatusLabel.Name = "toolStatusLabel";
-            this.toolStatusLabel.Size = new System.Drawing.Size(852, 15);
-            this.toolStatusLabel.Spring = true;
-            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 358);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(546, 290);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mapEditorControl.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
+            this.mapEditorControl.CurrentMap = null;
+            this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
+            mapCollection1.drawBackground = true;
+            mapCollection1.drawConnections = true;
+            mapCollection1.drawOffsetX = 0;
+            mapCollection1.drawOffsetY = 0;
+            mapCollection1.drawPlayer = true;
+            mapCollection1.drawSprites = true;
+            mapCollection1.viewHeight = 10;
+            mapCollection1.viewWidth = 10;
+            this.mapEditorControl.MapCollection = mapCollection1;
+            this.mapEditorControl.Name = "mapEditorControl";
+            this.mapEditorControl.SelectedSpriteId = -1;
+            this.mapEditorControl.SelectedTileId = -1;
+            this.mapEditorControl.Size = new System.Drawing.Size(546, 591);
+            this.mapEditorControl.TabIndex = 16;
+            this.mapEditorControl.TileCursor = null;
+            this.mapEditorControl.Tool = null;
             // 
             // mapEditorContextMenu
             // 
@@ -987,6 +815,75 @@
             this.mapEditorContextMenu.Name = "contextMenuStrip1";
             this.mapEditorContextMenu.Size = new System.Drawing.Size(137, 114);
             this.mapEditorContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.mapEditorContextMenu_Opening);
+            // 
+            // tileToolStripMenuItem
+            // 
+            this.tileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectTileToolStripMenuItem,
+            this.eraseTileToolStripMenuItem});
+            this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
+            this.tileToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.tileToolStripMenuItem.Text = "Tile";
+            // 
+            // selectTileToolStripMenuItem
+            // 
+            this.selectTileToolStripMenuItem.Name = "selectTileToolStripMenuItem";
+            this.selectTileToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.selectTileToolStripMenuItem.Text = "Select";
+            this.selectTileToolStripMenuItem.Click += new System.EventHandler(this.selectTileToolStripMenuItem_Click);
+            // 
+            // eraseTileToolStripMenuItem
+            // 
+            this.eraseTileToolStripMenuItem.Name = "eraseTileToolStripMenuItem";
+            this.eraseTileToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.eraseTileToolStripMenuItem.Text = "Erase";
+            this.eraseTileToolStripMenuItem.Click += new System.EventHandler(this.eraseTileToolStripMenuItem_Click);
+            // 
+            // spriteToolStripMenuItem
+            // 
+            this.spriteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectSpriteToolStripMenuItem,
+            this.removeSpriteToolStripMenuItem});
+            this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
+            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.spriteToolStripMenuItem.Text = "Sprite";
+            // 
+            // selectSpriteToolStripMenuItem
+            // 
+            this.selectSpriteToolStripMenuItem.Name = "selectSpriteToolStripMenuItem";
+            this.selectSpriteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.selectSpriteToolStripMenuItem.Text = "Select";
+            this.selectSpriteToolStripMenuItem.Click += new System.EventHandler(this.selectSpriteToolStripMenuItem_Click);
+            // 
+            // removeSpriteToolStripMenuItem
+            // 
+            this.removeSpriteToolStripMenuItem.Name = "removeSpriteToolStripMenuItem";
+            this.removeSpriteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeSpriteToolStripMenuItem.Text = "Remove";
+            this.removeSpriteToolStripMenuItem.Click += new System.EventHandler(this.removeSpriteToolStripMenuItem_Click);
+            // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectConnectionToolStripMenuItem,
+            this.removeConnectionToolStripMenuItem});
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            // 
+            // selectConnectionToolStripMenuItem
+            // 
+            this.selectConnectionToolStripMenuItem.Name = "selectConnectionToolStripMenuItem";
+            this.selectConnectionToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.selectConnectionToolStripMenuItem.Text = "Select";
+            this.selectConnectionToolStripMenuItem.Click += new System.EventHandler(this.selectConnectionToolStripMenuItem_Click);
+            // 
+            // removeConnectionToolStripMenuItem
+            // 
+            this.removeConnectionToolStripMenuItem.Name = "removeConnectionToolStripMenuItem";
+            this.removeConnectionToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeConnectionToolStripMenuItem.Text = "Remove";
+            this.removeConnectionToolStripMenuItem.Click += new System.EventHandler(this.removeConnectionToolStripMenuItem_Click);
             // 
             // columnToolStripMenuItem
             // 
@@ -1174,169 +1071,48 @@
             this.HealthNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthNumericUpDown_KeyDown);
             this.HealthNumericUpDown.Leave += new System.EventHandler(this.HealthNumericUpDown_Leave);
             // 
-            // tileToolStripMenuItem
+            // currentMapLabel
             // 
-            this.tileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectTileToolStripMenuItem,
-            this.eraseTileToolStripMenuItem});
-            this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
-            this.tileToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.tileToolStripMenuItem.Text = "Tile";
+            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentMapLabel.Name = "currentMapLabel";
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // selectTileToolStripMenuItem
+            // toolStripStatusLabel1
             // 
-            this.selectTileToolStripMenuItem.Name = "selectTileToolStripMenuItem";
-            this.selectTileToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.selectTileToolStripMenuItem.Text = "Select";
-            this.selectTileToolStripMenuItem.Click += new System.EventHandler(this.selectTileToolStripMenuItem_Click);
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(23, 17);
+            this.toolStripStatusLabel1.Text = " in ";
             // 
-            // eraseTileToolStripMenuItem
+            // currentFileLabel
             // 
-            this.eraseTileToolStripMenuItem.Name = "eraseTileToolStripMenuItem";
-            this.eraseTileToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.eraseTileToolStripMenuItem.Text = "Erase";
-            this.eraseTileToolStripMenuItem.Click += new System.EventHandler(this.eraseTileToolStripMenuItem_Click);
+            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentFileLabel.Name = "currentFileLabel";
+            this.currentFileLabel.Size = new System.Drawing.Size(74, 17);
+            this.currentFileLabel.Text = "< New File >";
             // 
-            // spriteToolStripMenuItem
+            // toolStatusLabel
             // 
-            this.spriteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectSpriteToolStripMenuItem,
-            this.removeSpriteToolStripMenuItem});
-            this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
-            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.spriteToolStripMenuItem.Text = "Sprite";
+            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.toolStatusLabel.Name = "toolStatusLabel";
+            this.toolStatusLabel.Size = new System.Drawing.Size(852, 17);
+            this.toolStatusLabel.Spring = true;
+            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // connectionToolStripMenuItem
+            // statusStrip1
             // 
-            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectConnectionToolStripMenuItem,
-            this.removeConnectionToolStripMenuItem});
-            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.connectionToolStripMenuItem.Text = "Connection";
-            // 
-            // removeSpriteToolStripMenuItem
-            // 
-            this.removeSpriteToolStripMenuItem.Name = "removeSpriteToolStripMenuItem";
-            this.removeSpriteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeSpriteToolStripMenuItem.Text = "Remove";
-            this.removeSpriteToolStripMenuItem.Click += new System.EventHandler(this.removeSpriteToolStripMenuItem_Click);
-            // 
-            // selectSpriteToolStripMenuItem
-            // 
-            this.selectSpriteToolStripMenuItem.Name = "selectSpriteToolStripMenuItem";
-            this.selectSpriteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.selectSpriteToolStripMenuItem.Text = "Select";
-            this.selectSpriteToolStripMenuItem.Click += new System.EventHandler(this.selectSpriteToolStripMenuItem_Click);
-            // 
-            // selectConnectionToolStripMenuItem
-            // 
-            this.selectConnectionToolStripMenuItem.Name = "selectConnectionToolStripMenuItem";
-            this.selectConnectionToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.selectConnectionToolStripMenuItem.Text = "Select";
-            this.selectConnectionToolStripMenuItem.Click += new System.EventHandler(this.selectConnectionToolStripMenuItem_Click);
-            // 
-            // removeConnectionToolStripMenuItem
-            // 
-            this.removeConnectionToolStripMenuItem.Name = "removeConnectionToolStripMenuItem";
-            this.removeConnectionToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeConnectionToolStripMenuItem.Text = "Remove";
-            this.removeConnectionToolStripMenuItem.Click += new System.EventHandler(this.removeConnectionToolStripMenuItem_Click);
-            // 
-            // spritesPlacedListView
-            // 
-            this.spritesPlacedListView.AutoArrange = false;
-            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.SpritePicture,
-            this.spritesPlacedListView_IDColumn,
-            this.spritesPlacedListView_Name,
-            this.spritesPlacedListView_XColumn,
-            this.spritesPlacedListView_YColumn,
-            this.spritesPlacedListView_HealthColumn});
-            this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spritesPlacedListView.FullRowSelect = true;
-            this.spritesPlacedListView.GridLines = true;
-            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 135);
-            this.spritesPlacedListView.MultiSelect = false;
-            this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 127);
-            this.spritesPlacedListView.TabIndex = 27;
-            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
-            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
-            this.spritesPlacedListView.Visible = false;
-            this.spritesPlacedListView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.spritesPlacedListView_Scroll);
-            this.spritesPlacedListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesPlacedListView_ColumnWidthChanged);
-            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
-            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesPlacedListView_SelectedIndexChanged);
-            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
-            // 
-            // SpritePicture
-            // 
-            this.SpritePicture.Tag = "30";
-            this.SpritePicture.Text = "";
-            this.SpritePicture.Width = 30;
-            // 
-            // spritesPlacedListView_IDColumn
-            // 
-            this.spritesPlacedListView_IDColumn.Tag = "40";
-            this.spritesPlacedListView_IDColumn.Text = "ID";
-            this.spritesPlacedListView_IDColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_IDColumn.Width = 40;
-            // 
-            // spritesPlacedListView_Name
-            // 
-            this.spritesPlacedListView_Name.Tag = "96";
-            this.spritesPlacedListView_Name.Text = "Name";
-            this.spritesPlacedListView_Name.Width = 96;
-            // 
-            // spritesPlacedListView_XColumn
-            // 
-            this.spritesPlacedListView_XColumn.Tag = "36";
-            this.spritesPlacedListView_XColumn.Text = "X";
-            this.spritesPlacedListView_XColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_XColumn.Width = 36;
-            // 
-            // spritesPlacedListView_YColumn
-            // 
-            this.spritesPlacedListView_YColumn.Tag = "36";
-            this.spritesPlacedListView_YColumn.Text = "Y";
-            this.spritesPlacedListView_YColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_YColumn.Width = 38;
-            // 
-            // spritesPlacedListView_HealthColumn
-            // 
-            this.spritesPlacedListView_HealthColumn.Tag = "60";
-            this.spritesPlacedListView_HealthColumn.Text = "Health";
-            this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // mapEditorControl
-            // 
-            this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mapEditorControl.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
-            this.mapEditorControl.CurrentMap = null;
-            this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
-            mapCollection1.drawBackground = true;
-            mapCollection1.drawConnections = true;
-            mapCollection1.drawOffsetX = 0;
-            mapCollection1.drawOffsetY = 0;
-            mapCollection1.drawPlayer = true;
-            mapCollection1.drawSprites = true;
-            mapCollection1.viewHeight = 10;
-            mapCollection1.viewWidth = 10;
-            this.mapEditorControl.MapCollection = mapCollection1;
-            this.mapEditorControl.Name = "mapEditorControl";
-            this.mapEditorControl.SelectedSpriteId = -1;
-            this.mapEditorControl.SelectedTileId = -1;
-            this.mapEditorControl.Size = new System.Drawing.Size(546, 297);
-            this.mapEditorControl.TabIndex = 16;
-            this.mapEditorControl.TileCursor = null;
-            this.mapEditorControl.Tool = null;
+            this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentMapLabel,
+            this.toolStripStatusLabel1,
+            this.currentFileLabel,
+            this.toolStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 649);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(964, 22);
+            this.statusStrip1.TabIndex = 14;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // MapEditorForm
             // 
@@ -1356,9 +1132,6 @@
             this.Load += new System.EventHandler(this.MapEditorForm_Load);
             this.Resize += new System.EventHandler(this.MapEditorForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.spriteContextMenu.ResumeLayout(false);
-            this.connectionContextMenu.ResumeLayout(false);
-            this.tilesContextMenu.ResumeLayout(false);
             this.overallTableLayout.ResumeLayout(false);
             this.overallTableLayout.PerformLayout();
             this.tabPages.ResumeLayout(false);
@@ -1368,15 +1141,14 @@
             this.tabConnectionTool.ResumeLayout(false);
             this.connectionToolTableLayout.ResumeLayout(false);
             this.tabPlayerStart.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mapEditorContextMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HealthNumericUpDown)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1408,34 +1180,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileSaveAsMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem viewOutOfBoundsMenu;
-        private System.Windows.Forms.ContextMenuStrip spriteContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem spriteContextMenu_FindInList;
-        private System.Windows.Forms.ToolStripMenuItem spriteContextMenu_Remove;
-        private System.Windows.Forms.ContextMenuStrip connectionContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem connectionContextMenu_FindInList;
-        private System.Windows.Forms.ToolStripMenuItem connectionContextMenu_Remove;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ContextMenuStrip tilesContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_FindInList;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_Remove;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.TableLayoutPanel overallTableLayout;
-        public System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel currentMapLabel;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_Column;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_Row;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_ColumnInsert;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_ColumnDelete;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_RowInsert;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_RowDelete;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_ColumnMoveRight;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_ColumnMoveLeft;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_ColumnMoveDown;
-        private System.Windows.Forms.ToolStripMenuItem tilesContextMenu_ColumnMoveUp;
         private System.Windows.Forms.TabControl tabPages;
         private System.Windows.Forms.TabPage tabTileTool;
         private System.Windows.Forms.ListView tilesListView;
@@ -1482,7 +1227,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton centreMenu;
         private System.Windows.Forms.ToolStripButton rectangleMenu;
-        private System.Windows.Forms.ToolStripStatusLabel toolStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem eraseMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rectangleMenuItem;
         private System.Windows.Forms.ImageList tabImageList;
@@ -1492,7 +1236,6 @@
         private System.Windows.Forms.ToolStripMenuItem centreMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripMenuItem useTileTypeContextMenu;
         private System.Windows.Forms.ToolStripMenuItem aboutMenu;
         private System.Windows.Forms.NumericUpDown HealthNumericUpDown;
         private Controls.MapEditorControl mapEditorControl;
@@ -1512,5 +1255,10 @@
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectConnectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeConnectionToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel currentMapLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStatusLabel;
     }
 }
