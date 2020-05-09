@@ -1410,5 +1410,20 @@ namespace RogueboyLevelEditor.Forms
         }
 
         #endregion
+
+        private void mapEditorControl_MouseMove(object sender, MouseEventArgs e) {
+
+            Point point = mapEditorControl.CurrentMap.ToTileSpace(e.Location);
+
+            if (point.X >= 0 && point.X < mapEditorControl.CurrentMap.Width &&
+                point.Y >= 0 && point.X < mapEditorControl.CurrentMap.Height) {
+                toolStatusLabel.Text = point.ToString();
+            }
+            else {
+                toolStatusLabel.Text = "";
+            }
+
+        }
+
     }
 }
