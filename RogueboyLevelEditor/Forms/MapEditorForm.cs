@@ -1259,6 +1259,9 @@ namespace RogueboyLevelEditor.Forms
                     connector.End.X++;
             }
 
+            // Update player position
+            if (map.PlayerStart.X > column) map.PlayerStart.X++;
+
             this.RefreshMap();
         }
 
@@ -1307,6 +1310,9 @@ namespace RogueboyLevelEditor.Forms
                     connector.End.X--;
             }
 
+            // Update player position
+            if (map.PlayerStart.X >= column) map.PlayerStart.X--;
+
             this.RefreshMap();
         }
 
@@ -1346,6 +1352,9 @@ namespace RogueboyLevelEditor.Forms
                 if (connector.End.Y >= row)
                     connector.End.Y++;
             }
+            
+            // Update player position
+            if (map.PlayerStart.Y > row) map.PlayerStart.Y++;
 
             this.RefreshMap();
         }
@@ -1393,6 +1402,9 @@ namespace RogueboyLevelEditor.Forms
                 if (connector.End.Y > row)
                     connector.End.Y--;
             }
+
+            // Update player position
+            if (map.PlayerStart.Y >= row) map.PlayerStart.Y--;
 
             this.RefreshMap();
         }
