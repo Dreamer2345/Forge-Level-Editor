@@ -1,6 +1,5 @@
 ﻿using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
-using RogueboyLevelEditor.map.Tools;
 using RogueboyLevelEditor.mapCollection;
 using RogueboyLevelEditor.TextureHandler;
 using RogueboyLevelEditor.Tools;
@@ -17,41 +16,37 @@ namespace RogueboyLevelEditor.Forms
 {
     public partial class MapEditorForm : Form
     {
-        const String keepOpen = "KeepOpen";
-        const int spacing = 6;
+        private const string keepOpen = "KeepOpen";
 
-        MapCollection mapCollection;
-        TileManager tileManager = new TileManager();
-        TileCursor cursor = new TileCursor();
-        Tool tool;
+        private MapCollection mapCollection;
+        private readonly TileManager tileManager = new TileManager();
 
         void AddTextures()
         {
             TextureManager textureManager = new TextureManager();
             ExceptionReport exception = textureManager.Load(Directory.GetCurrentDirectory() + "/Config/TextureAssignments.xml");
+
             if (exception.Failed)
-            {
                 MessageBox.Show(exception.exception.ToString(), "Error loading Textures", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
+
         void AddTiles()
         {
             TileManager tileManager = new TileManager();
             ExceptionReport exception = tileManager.Load(Directory.GetCurrentDirectory() + "/Config/TileAssignments.xml");
+
             if (exception.Failed)
-            {
                 MessageBox.Show(exception.exception.ToString(), "Error loading Tiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
         }
+
         void AddSprites()
         {
             SpriteManager spriteManager = new SpriteManager();
             ExceptionReport exception = spriteManager.Load(Directory.GetCurrentDirectory() + "/Config/SpriteAssignments.xml");
+
             if (exception.Failed)
-            {
                 MessageBox.Show(exception.exception.ToString(), "Error loading Sprites", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         public MapEditorForm()
@@ -195,36 +190,24 @@ namespace RogueboyLevelEditor.Forms
 
             if (mapCollection.ChangeMap(chosenMap))
             {
-
                 tickMapMenuItem(chosenMap.Name);
                 enableMapMenuOptions(chosenMap.Name);
 
-                tool.MapToEdit = chosenMap;
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
-                pictureBox1.Invalidate();
             }
 
         }
 
         private void MapEditorForm_Load(object sender, EventArgs e)
         {
-            pictureBox1.Paint += PictureBox1_Paint;
-            pictureBox1.MouseMove += PictureBox1_MouseMove;
-            pictureBox1.MouseDown += PictureBox1_MouseDown;
-            pictureBox1.MouseUp += PictureBox1_MouseUp;
-
-            mapCollection.drawOffsetX = (pictureBox1.Width / 2) - 8;
-            mapCollection.drawOffsetY = (pictureBox1.Height / 2) - 8;
-            mapCollection.viewWidth = (int)Math.Ceiling(pictureBox1.Width / 16d);
-            mapCollection.viewHeight = (int)Math.Ceiling(pictureBox1.Height / 16d);
-            cursor.drawOffsetX = (pictureBox1.Width / 2) - 8;
-            cursor.drawOffsetY = (pictureBox1.Height / 2) - 8;
-            tool = new TileBrush(-1, mapCollection.CurrentMap);
+            mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            mapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
+            mapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
 
             if (mapCollection.OpenCount > 0)
             {
-
                 for (int i = 0; i < mapCollection.GetMaps().Count(); i++)
                 {
                     Map map = mapCollection.GetMaps()[i];
@@ -252,141 +235,6 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (tool != null)
-            {
-                tool.MouseDown = false;
-                if (tool.Update())
-                    pictureBox1.Invalidate();
-            }
-        }
-
-        private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-
-            if (tool != null && e.Button == MouseButtons.Left)
-            {
-
-                tool.MouseDown = true;
-                if (tool.Update())
-                    pictureBox1.Invalidate();
-
-
-                // Add the selected item to the context menu ..
-
-                if (tool is TileBrush && tilesListView.SelectedItems.Count > 0)
-                {
-
-                    int tileId = Int32.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-                    String tileName = tilesListView.SelectedItems[0].SubItems[2].Text;
-                    addTileToMenu(tileId, tileName);
-
-                }
-
-                if (tool is SpriteTool && spritesListView.SelectedItems.Count > 0)
-                {
-
-                    String spriteName = spritesListView.SelectedItems[0].SubItems[2].Text;
-
-                    for (int i = 3; i < spriteContextMenu.Items.Count; i++)
-                    {
-
-                        ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteContextMenu.Items[i];
-
-                        if (menuItem.Text == spriteName)
-                        {
-
-                            spriteContextMenu.Items.Remove(menuItem);
-                            break;
-
-                        }
-
-                    }
-
-
-                    ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
-                    newMenuItem.Text = spriteName;
-                    newMenuItem.Image = spritesListView.SmallImageList.Images[spritesListView.SelectedItems[0].ImageKey];
-                    newMenuItem.Tag = spritesListView.SelectedItems[0].Index;
-                    newMenuItem.Click += new System.EventHandler(spritesContextMenu_Item_Click);
-                    spriteContextMenu.Items.Insert(3, newMenuItem);
-
-                    if (spriteContextMenu.Items.Count > 11) { spriteContextMenu.Items.RemoveAt(10); }
-
-                }
-
-            }
-
-            if (tool is TileBrush && e.Button == MouseButtons.Right)
-            {
-
-                cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
-                tilesContextMenu_EnableOptions();
-                tilesContextMenu.Show(Cursor.Position);
-
-                tilesContextMenu_Column.Enabled = true;
-                tilesContextMenu_ColumnInsert.Enabled = (mapCollection.CurrentMap.Width < 40);
-                tilesContextMenu_ColumnDelete.Enabled = (mapCollection.CurrentMap.Width > 1);
-                tilesContextMenu_Row.Enabled = true;
-                tilesContextMenu_RowInsert.Enabled = (mapCollection.CurrentMap.Height < 40);
-                tilesContextMenu_RowDelete.Enabled = (mapCollection.CurrentMap.Height > 1);
-
-            }
-
-            if (tool is SpriteTool && e.Button == MouseButtons.Right)
-            {
-
-                cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
-                spriteContextMenu_EnableOptions();
-                spriteContextMenu.Show(Cursor.Position);
-
-            }
-
-            if (tool is ConnectorTool && e.Button == MouseButtons.Right)
-            {
-
-                cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
-                connectionContextMenu_EnableOptions();
-                connectionContextMenu.Show(Cursor.Position);
-
-            }
-
-        }
-        private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            HealthNumericUpDown.Visible = false;
-            cursor.position = mapCollection.CurrentMap.ToTileSpace(e.Location);
-            if (tool != null)
-            {
-                tool.Position = cursor.position;
-                if (tool.Update())
-                    pictureBox1.Invalidate();
-            }
-
-            if (cursor.PositionChanged)
-            {
-                pictureBox1.Invalidate();
-            }
-        }
-
-        private void PictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-
-            Graphics g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-            mapCollection.Draw(g);
-            cursor.Draw(g, mapCollection.CurrentMap);
-            toolStatusLabel.Text = $"X:{ cursor.position.X} Y: { cursor.position.Y}, ID : {mapCollection.CurrentMap.GetTile(cursor.position).tileID}, Tile :{tileManager.GetTile(mapCollection.CurrentMap.GetTile(cursor.position).tileID).Name}";
-            tool?.Draw(g);
-            ControlPaint.DrawBorder(g, pictureBox1.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Invalidate();
-        }
-
         //Tools
         private void tileToolRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -410,16 +258,11 @@ namespace RogueboyLevelEditor.Forms
         private void tilesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tilesListView.SelectedItems.Count > 0)
-            {
                 this.mapEditorControl.SelectedTileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-
-                tool.SetBrush(int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text));
-            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             openFileDialog.FileName = "Maps.h";
             openFileDialog.InitialDirectory = "/Maps";
 
@@ -427,24 +270,18 @@ namespace RogueboyLevelEditor.Forms
 
             if (diag == DialogResult.OK)
             {
-
                 if (openFileDialog.CheckFileExists)
                 {
-
                     mapCollection = new MapCollection();
                     mapCollection.FileName = System.IO.Path.GetFileName(openFileDialog.FileName);
                     mapCollection.FilePath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
                     mapCollection.AddMaps(MapCollection.LoadMaps(openFileDialog.FileName));
                     currentFileLabel.Text = openFileDialog.FileName;
 
-                    mapCollection.drawOffsetX = (pictureBox1.Width / 2) - 8;
-                    mapCollection.drawOffsetY = (pictureBox1.Height / 2) - 8;
-                    mapCollection.viewWidth = (int)Math.Ceiling(pictureBox1.Width / 16d);
-                    mapCollection.viewHeight = (int)Math.Ceiling(pictureBox1.Height / 16d);
-                    cursor.drawOffsetX = (pictureBox1.Width / 2) - 8;
-                    cursor.drawOffsetY = (pictureBox1.Height / 2) - 8;
-                    tool = new TileBrush(-1, mapCollection.CurrentMap);
-
+                    mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+                    mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+                    mapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
+                    mapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
 
                     if (mapCollection.OpenCount == 0)
                     {
@@ -457,24 +294,18 @@ namespace RogueboyLevelEditor.Forms
                     // Remove any existing menu items ..
 
                     while (mapsMenu.DropDownItems.Count > 6)
-                    {
-
                         mapsMenu.DropDownItems.RemoveAt(6);
-
-                    }
 
 
                     // Load new maps into menu ..
 
                     if (mapCollection.OpenCount > 0)
                     {
-
                         for (int i = 0; i < mapCollection.GetMaps().Count(); i++)
                         {
                             Map map = mapCollection.GetMaps()[i];
                             AddMapToOpenWindows(map, i == 0);
                         }
-
                     }
 
                     mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
@@ -485,20 +316,15 @@ namespace RogueboyLevelEditor.Forms
 
                     UpdateCurrentSprites();
                     UpdateCurrentConnectors();
-                    pictureBox1.Invalidate();
-                    pictureBox1.Refresh();
-
                 }
-
             }
-
         }
-
 
         private void fileExistMenu_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -551,12 +377,9 @@ namespace RogueboyLevelEditor.Forms
                 tickMapMenuItem(newMap.Name);
                 enableMapMenuOptions(newMap.Name);
 
-                tool.MapToEdit = newMap;
                 mapCollection.CurrentMap = newMap;
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
-                pictureBox1.Invalidate();
-                pictureBox1.Refresh();
 
             }
 
@@ -574,7 +397,7 @@ namespace RogueboyLevelEditor.Forms
                 int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
                 mapCollection?.CurrentMap.RemoveSprite(new Point(X, Y), ID);
                 spritesPlacedListView.Items.Remove(spritesPlacedListView.SelectedItems[0]);
-                pictureBox1.Invalidate();
+                this.mapEditorControl.Invalidate();
             }
         }
 
@@ -610,7 +433,7 @@ namespace RogueboyLevelEditor.Forms
 
                 mapCollection?.CurrentMap.RemoveConnection(new Point(X, Y), new Point(X1, Y1));
                 connectionListView.Items.Remove(connectionListView.SelectedItems[0]);
-                pictureBox1.Invalidate();
+                this.mapEditorControl.Invalidate();
             }
         }
 
@@ -627,11 +450,7 @@ namespace RogueboyLevelEditor.Forms
         private void spritesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (spritesListView.SelectedItems.Count > 0)
-            {
                 this.mapEditorControl.SelectedSpriteId = int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text);
-
-                tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), (spritesListView.SelectedItems[0].SubItems[3].Text == "" ? 0 : int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text)));
-            }
         }
 
         private void mapAddMenu_Click(object sender, EventArgs e)
@@ -647,12 +466,10 @@ namespace RogueboyLevelEditor.Forms
 
         private void mapDeleteMenu_Click(object sender, EventArgs e)
         {
-
             if (mapCollection.OpenCount == 1)
             {
                 MessageBox.Show("You cannot delete the last map.", "Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-
             }
 
             mapsMenu.DropDownItems.RemoveByKey(mapCollection.CurrentMap.Name);
@@ -660,15 +477,12 @@ namespace RogueboyLevelEditor.Forms
 
             if (mapCollection.OpenCount > 0)
             {
-
                 ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
                 tickMapMenuItem(mapCollection.CurrentMap.Name);
                 enableMapMenuOptions(mapCollection.CurrentMap.Name);
 
-                tool.MapToEdit = (Map)menuItem.Tag;
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
-                pictureBox1.Invalidate();
                 return;
 
             }
@@ -761,127 +575,97 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
+        // To Do: reduce the amount of code duplication in the following 5 functions
         private void viewTileMenu_Click(object sender, EventArgs e)
         {
-
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
 
             if (menuItem.Image == null)
             {
-
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
                 mapCollection.drawBackground = true;
-                pictureBox1.Invalidate();
-
             }
             else
             {
-
                 menuItem.Image = null;
                 mapCollection.drawBackground = false;
-                pictureBox1.Invalidate();
-
             }
 
+            this.mapEditorControl.Invalidate();
         }
 
         private void viewSpritesMenu_Click(object sender, EventArgs e)
         {
-
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
 
             if (menuItem.Image == null)
             {
-
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
                 mapCollection.drawSprites = true;
-                pictureBox1.Invalidate();
-
             }
             else
             {
-
                 menuItem.Image = null;
                 mapCollection.drawSprites = false;
-                pictureBox1.Invalidate();
-
             }
 
+            this.mapEditorControl.Invalidate();
         }
 
         private void viewConnectionsMenu_Click(object sender, EventArgs e)
         {
-
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
 
             if (menuItem.Image == null)
             {
-
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
                 mapCollection.drawConnections = true;
-                pictureBox1.Invalidate();
 
             }
             else
             {
-
                 menuItem.Image = null;
                 mapCollection.drawConnections = false;
-                pictureBox1.Invalidate();
-
             }
 
+            this.mapEditorControl.Invalidate();
         }
 
         private void viewPlayerStartMenu_Click(object sender, EventArgs e)
         {
-
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
 
             if (menuItem.Image == null)
             {
-
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
                 mapCollection.drawPlayer = true;
-                pictureBox1.Invalidate();
-
             }
             else
             {
-
                 menuItem.Image = null;
                 mapCollection.drawPlayer = false;
-                pictureBox1.Invalidate();
-
             }
 
+            this.mapEditorControl.Invalidate();
         }
 
         private void viewOutOfBoundsMenu_Click(object sender, EventArgs e)
         {
-
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
 
             if (menuItem.Image == null)
             {
-
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
                 mapCollection.CurrentMap.ShowOutOfBounds = true;
-                pictureBox1.Invalidate();
-
             }
             else
             {
-
                 menuItem.Image = null;
                 mapCollection.CurrentMap.ShowOutOfBounds = false;
-                pictureBox1.Invalidate();
-
             }
 
+            this.mapEditorControl.Invalidate();
         }
-
-
 
         private void mapsMenu_DropDown_MouseLeave(object sender, EventArgs e)
         {
@@ -900,721 +684,34 @@ namespace RogueboyLevelEditor.Forms
                 Y = int.Parse(selectedItem.SubItems[4].Text),
             };
 
-            this.cursor.position = point;
-            this.pictureBox1.Invalidate();
-
             this.mapEditorControl.TileCursor = this.mapEditorControl.CurrentMap.ToScreenSpace(point);
         }
 
         private void connectionListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-
             ListViewItem selectedItem = e.Item;
 
             foreach (EnviromentAffectComponent connection in mapCollection.CurrentMap.Connectors)
-            {
-
-                if (connection.Start.X == Int32.Parse(selectedItem.SubItems[1].Text) &&
-                    connection.Start.Y == Int32.Parse(selectedItem.SubItems[2].Text) &&
-                    connection.End.X == Int32.Parse(selectedItem.SubItems[3].Text) &&
-                    connection.End.Y == Int32.Parse(selectedItem.SubItems[4].Text))
-                {
-
-                    connection.Highlight = true;
-                    pictureBox1.Invalidate();
-
-                }
-                else
-                {
-
-                    connection.Highlight = false;
-
-                }
-
-            }
-
-        }
-
-        private void spriteContextMenu_EnableOptions()
-        {
-
-            bool isSprite = false;
-
-            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites)
-            {
-
-                if (sprite.SpritePosition == cursor.position)
-                {
-                    isSprite = true;
-                    break;
-                }
-
-            }
-
-            spriteContextMenu_FindInList.Enabled = isSprite;
-            spriteContextMenu_Remove.Enabled = isSprite;
-
-        }
-
-        private void spriteContextMenu_FindInList_Click(object sender, EventArgs e)
-        {
-
-            SpriteComponent foundSprite = null;
-
-            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites)
-            {
-
-                if (sprite.SpritePosition == cursor.position)
-                {
-                    foundSprite = sprite;
-                    break;
-                }
-
-            }
-
-            foreach (ListViewItem item in spritesPlacedListView.Items)
-            {
-
-                if (foundSprite.SpritePosition.X == Int32.Parse(item.SubItems[3].Text) &&
-                    foundSprite.SpritePosition.Y == Int32.Parse(item.SubItems[4].Text))
-                {
-
-                    item.Selected = true;
-                    item.EnsureVisible();
-                    spritesPlacedListView.Focus();
-                    break;
-
-                }
-
-            }
-
-        }
-
-        private void spriteContextMenu_Remove_Click(object sender, EventArgs e)
-        {
-
-            SpriteComponent foundSprite = null;
-
-            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites)
-            {
-
-                if (sprite.SpritePosition == cursor.position)
-                {
-                    foundSprite = sprite;
-                    mapCollection.CurrentMap.Sprites.Remove(sprite);
-                    pictureBox1.Invalidate();
-                    break;
-                }
-
-            }
-
-            foreach (ListViewItem item in spritesPlacedListView.Items)
-            {
-
-                if (foundSprite.SpritePosition.X == Int32.Parse(item.SubItems[2].Text) &&
-                    foundSprite.SpritePosition.Y == Int32.Parse(item.SubItems[3].Text))
-                {
-
-                    spritesPlacedListView.Items.Remove(item);
-                    spritesPlacedListView.Focus();
-                    break;
-
-                }
-
-            }
-
-        }
-
-        private void spritesContextMenu_Item_Click(object sender, EventArgs e)
-        {
-
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            spritesListView.Items[(int)item.Tag].Selected = true;
-            spritesListView.Items[(int)item.Tag].EnsureVisible();
-
-        }
-
-
-        private void connectionContextMenu_EnableOptions()
-        {
-
-            bool isConnection = false;
-
-            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors)
-            {
-
-                if (connector.Start == cursor.position || connector.End == cursor.position)
-                {
-                    isConnection = true;
-                    break;
-                }
-
-            }
-
-            connectionContextMenu_FindInList.Enabled = isConnection;
-            connectionContextMenu_Remove.Enabled = isConnection;
-
-        }
-
-        private void connectionContextMenu_FindInList_Click(object sender, EventArgs e)
-        {
-
-            EnviromentAffectComponent foundConnector = null;
-
-            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors)
-            {
-
-                if ((connector.Start == cursor.position) || (connector.End == cursor.position))
-                {
-                    foundConnector = connector;
-                    break;
-                }
-
-            }
-
-            foreach (ListViewItem item in connectionListView.Items)
-            {
-
-                if (
-                    (foundConnector.Start.X == Int32.Parse(item.SubItems[1].Text) &&
-                     foundConnector.Start.Y == Int32.Parse(item.SubItems[2].Text) &&
-                     foundConnector.End.X == Int32.Parse(item.SubItems[3].Text) &&
-                     foundConnector.End.Y == Int32.Parse(item.SubItems[4].Text)) ||
-
-                     (foundConnector.End.X == Int32.Parse(item.SubItems[1].Text) &&
-                     foundConnector.End.Y == Int32.Parse(item.SubItems[2].Text) &&
-                     foundConnector.Start.X == Int32.Parse(item.SubItems[3].Text) &&
-                     foundConnector.Start.Y == Int32.Parse(item.SubItems[4].Text))
-                   )
-                {
-
-                    item.Selected = true;
-                    item.EnsureVisible();
-                    connectionListView.Focus();
-                    break;
-
-                }
-
-            }
-
-        }
-
-
-        private void connectionContextMenu_Remove_Click(object sender, EventArgs e)
-        {
-
-            EnviromentAffectComponent foundConnector = null;
-
-            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors)
-            {
-
-                if ((connector.Start == cursor.position) || (connector.End == cursor.position))
-                {
-                    foundConnector = connector;
-                    mapCollection.CurrentMap.Connectors.Remove(connector);
-                    break;
-                }
-
-            }
-
-            foreach (ListViewItem item in connectionListView.Items)
-            {
-
-                if (
-                    (foundConnector.Start.X == Int32.Parse(item.SubItems[1].Text) &&
-                     foundConnector.Start.Y == Int32.Parse(item.SubItems[2].Text) &&
-                     foundConnector.End.X == Int32.Parse(item.SubItems[3].Text) &&
-                     foundConnector.End.Y == Int32.Parse(item.SubItems[4].Text)) ||
-
-                     (foundConnector.End.X == Int32.Parse(item.SubItems[1].Text) &&
-                     foundConnector.End.Y == Int32.Parse(item.SubItems[2].Text) &&
-                     foundConnector.Start.X == Int32.Parse(item.SubItems[3].Text) &&
-                     foundConnector.Start.Y == Int32.Parse(item.SubItems[4].Text))
-                   )
-                {
-
-                    connectionListView.Items.Remove(item);
-                    connectionListView.Focus();
-                    break;
-
-                }
-
-            }
-
-        }
-
-        private void tilesContextMenu_EnableOptions()
-        {
-
-            bool isTile = false;
-            BaseMapComponent tile = mapCollection.CurrentMap.GetTile(cursor.position);
-
-            if (tile.tileID != -1)
-            {
-                isTile = true;
-            }
-
-            tilesContextMenu_FindInList.Enabled = isTile;
-            tilesContextMenu_Remove.Enabled = isTile;
-
-        }
-
-        private void tilesContextMenu_Item_Click(object sender, EventArgs e)
-        {
-
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            tilesListView.Items[(int)item.Tag].Selected = true;
-            tilesListView.Items[(int)item.Tag].EnsureVisible();
-
-        }
-
-        private void tilesContextMenu_FindInList_Click(object sender, EventArgs e)
-        {
-            BaseMapComponent foundTile = mapCollection.CurrentMap.GetTile(cursor.position);
-
-            foreach (ListViewItem item in tilesListView.Items)
-            {
-
-                if (foundTile.tileID == Int32.Parse(item.SubItems[1].Text))
-                {
-
-                    item.Selected = true;
-                    item.EnsureVisible();
-                    tilesListView.Focus();
-                    break;
-
-                }
-
-            }
-
-        }
-
-        private void tilesContextMenu_Remove_Click(object sender, EventArgs e)
-        {
-            mapCollection.CurrentMap.SetTile(cursor.position, 0);
+                connection.Highlight =
+                    (connection.Start.X == int.Parse(selectedItem.SubItems[1].Text) &&
+                    connection.Start.Y == int.Parse(selectedItem.SubItems[2].Text) &&
+                    connection.End.X == int.Parse(selectedItem.SubItems[3].Text) &&
+                    connection.End.Y == int.Parse(selectedItem.SubItems[4].Text));
+
+            this.mapEditorControl.Invalidate();
         }
 
         private void overallTableLayout_SizeChanged(object sender, EventArgs e)
         {
-            mapCollection.drawOffsetX = (pictureBox1.Width / 2) - 8;
-            mapCollection.drawOffsetY = (pictureBox1.Height / 2) - 8;
-            pictureBox1.Invalidate();
+            mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
             this.mapEditorControl.Invalidate();
-        }
-
-        private void tilesContextMenu_ColumnInsert_Click(object sender, EventArgs e)
-        {
-
-            mapCollection.CurrentMap.Width = mapCollection.CurrentMap.Width + 1;
-            tiles_ColumnInsert();
-
-
-        }
-
-        private void tilesContextMenu_ColumnMove_Click(object sender, EventArgs e)
-        {
-
-            tiles_ColumnInsert();
-
-        }
-
-        private void tiles_ColumnInsert()
-        {
-
-            int xPos = cursor.position.X;
-
-            for (int x = mapCollection.CurrentMap.Width - 1; x >= xPos; x--)
-            {
-
-                for (int y = 0; y < mapCollection.CurrentMap.Height; y++)
-                {
-
-                    Point point = new Point(x, y);
-                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
-                    point.X = point.X + 1;
-
-                    mapCollection.CurrentMap.SetTile(point, id);
-
-                }
-
-            }
-
-            for (int y = 0; y < mapCollection.CurrentMap.Height; y++)
-            {
-
-                Point point = new Point(xPos, y);
-                mapCollection.CurrentMap.SetTile(point, -1);
-
-            }
-
-
-            // Update sprites ..
-
-            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites)
-            {
-
-                if (sprite.SpritePosition.X >= xPos)
-                {
-
-                    sprite.SpritePosition.X++;
-
-                }
-
-            }
-
-
-            // Update connections ..
-
-            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors)
-            {
-
-                if (connector.Start.X >= xPos)
-                {
-
-                    connector.Start.X++;
-
-                }
-
-                if (connector.End.X >= xPos)
-                {
-
-                    connector.End.X++;
-
-                }
-
-            }
-
-
-            // Refresh form ..
-
-            pictureBox1.Invalidate();
-            UpdateCurrentSprites();
-            UpdateCurrentConnectors();
-
-        }
-
-        private void tilesContextMenu_ColumnDelete_Click(object sender, EventArgs e)
-        {
-
-            tiles_ColumnDelete();
-            mapCollection.CurrentMap.Width = mapCollection.CurrentMap.Width - 1;
-
-        }
-
-        private void tilesContextMenu_ColumnMoveLeft_Click(object sender, EventArgs e)
-        {
-
-            tiles_ColumnDelete();
-
-            for (int y = 0; y < mapCollection.CurrentMap.Height; y++)
-            {
-
-                Point point = new Point(mapCollection.CurrentMap.Width - 1, y);
-                mapCollection.CurrentMap.SetTile(point, -1);
-
-            }
-
-        }
-
-        private void tiles_ColumnDelete()
-        {
-
-            int xPos = cursor.position.X;
-
-            for (int x = xPos + 1; x < mapCollection.CurrentMap.Width; x++)
-            {
-
-                for (int y = 0; y < mapCollection.CurrentMap.Height; y++)
-                {
-
-                    Point point = new Point(x, y);
-
-                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
-                    point.X = point.X - 1;
-
-                    mapCollection.CurrentMap.SetTile(point, id);
-
-                }
-
-            }
-
-
-            // Update sprites ..
-
-            for (int i = mapCollection.CurrentMap.Sprites.Count - 1; i >= 0; i--)
-            {
-
-                SpriteComponent sprite = mapCollection.CurrentMap.Sprites[i];
-
-                if (sprite.SpritePosition.X == xPos)
-                {
-
-                    mapCollection.CurrentMap.Sprites.RemoveAt(i);
-
-                }
-
-                if (sprite.SpritePosition.X > xPos)
-                {
-
-                    sprite.SpritePosition.X--;
-
-                }
-
-            }
-
-
-            // Update connections ..
-
-            for (int i = mapCollection.CurrentMap.Connectors.Count - 1; i >= 0; i--)
-            {
-
-                EnviromentAffectComponent connector = mapCollection.CurrentMap.Connectors[i];
-
-                if (connector.Start.X == xPos || connector.End.X == xPos)
-                {
-
-                    mapCollection.CurrentMap.Connectors.RemoveAt(i);
-
-                }
-
-                if (connector.Start.X > xPos)
-                {
-
-                    connector.Start.X--;
-
-                }
-
-                if (connector.End.X > xPos)
-                {
-
-                    connector.End.X--;
-
-                }
-
-            }
-
-
-            // Refresh form ..
-
-            pictureBox1.Invalidate();
-            UpdateCurrentSprites();
-            UpdateCurrentConnectors();
-
-        }
-
-
-        private void tilesContextMenu_RowInsert_Click(object sender, EventArgs e)
-        {
-
-            mapCollection.CurrentMap.Height = mapCollection.CurrentMap.Height + 1;
-            tiles_RowInsert();
-
-
-        }
-
-        private void tilesContextMenu_RowMoveDown_Click(object sender, EventArgs e)
-        {
-
-            tiles_RowInsert();
-
-        }
-
-        private void tiles_RowInsert()
-        {
-
-            int yPos = cursor.position.Y;
-
-            for (int y = mapCollection.CurrentMap.Height - 1; y >= yPos; y--)
-            {
-
-                for (int x = 0; x < mapCollection.CurrentMap.Width; x++)
-                {
-
-                    Point point = new Point(x, y);
-
-                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
-                    point.Y = point.Y + 1;
-
-                    mapCollection.CurrentMap.SetTile(point, id);
-
-                }
-
-            }
-
-
-            // Fill new line with blanks ..
-
-            for (int x = 0; x < mapCollection.CurrentMap.Width; x++)
-            {
-
-                Point point = new Point(x, yPos);
-                mapCollection.CurrentMap.SetTile(point, -1);
-
-            }
-
-
-            // Update sprites ..
-
-            foreach (SpriteComponent sprite in mapCollection.CurrentMap.Sprites)
-            {
-
-                if (sprite.SpritePosition.Y >= yPos)
-                {
-
-                    sprite.SpritePosition.Y++;
-
-                }
-
-            }
-
-            // Update connections ..
-
-            foreach (EnviromentAffectComponent connector in mapCollection.CurrentMap.Connectors)
-            {
-
-                if (connector.Start.Y >= yPos)
-                {
-
-                    connector.Start.Y++;
-
-                }
-
-                if (connector.End.Y >= yPos)
-                {
-
-                    connector.End.Y++;
-
-                }
-
-            }
-
-
-            // Refresh form ..
-
-            pictureBox1.Invalidate();
-            UpdateCurrentSprites();
-            UpdateCurrentConnectors();
-
-        }
-
-        private void tilesContextMenu_RowDelete_Click(object sender, EventArgs e)
-        {
-
-            tiles_RowDelete();
-            mapCollection.CurrentMap.Height = mapCollection.CurrentMap.Height - 1;
-
-        }
-
-        private void tilesContextMenu_RowMoveUp_Click(object sender, EventArgs e)
-        {
-
-            tiles_RowDelete();
-
-            for (int x = 0; x < mapCollection.CurrentMap.Width; x++)
-            {
-
-                Point point = new Point(x, mapCollection.CurrentMap.Height - 1);
-                mapCollection.CurrentMap.SetTile(point, -1);
-
-            }
-
-        }
-
-        private void tiles_RowDelete()
-        {
-
-            int yPos = cursor.position.Y;
-
-            for (int y = yPos + 1; y < mapCollection.CurrentMap.Height; y++)
-            {
-
-                for (int x = 0; x < mapCollection.CurrentMap.Width; x++)
-                {
-
-                    Point point = new Point(x, y);
-
-                    int id = mapCollection.CurrentMap.GetTile(point).tileID;
-                    point.Y = point.Y - 1;
-
-                    mapCollection.CurrentMap.SetTile(point, id);
-
-                }
-
-            }
-
-
-
-            // Update sprites ..
-
-            for (int i = mapCollection.CurrentMap.Sprites.Count - 1; i >= 0; i--)
-            {
-
-                SpriteComponent sprite = mapCollection.CurrentMap.Sprites[i];
-
-                if (sprite.SpritePosition.Y == yPos)
-                {
-
-                    mapCollection.CurrentMap.Sprites.RemoveAt(i);
-
-                }
-
-                if (sprite.SpritePosition.Y > yPos)
-                {
-
-                    sprite.SpritePosition.X--;
-
-                }
-
-            }
-
-
-            // Update connections ..
-
-            for (int i = mapCollection.CurrentMap.Connectors.Count - 1; i >= 0; i--)
-            {
-
-                EnviromentAffectComponent connector = mapCollection.CurrentMap.Connectors[i];
-
-                if (connector.Start.Y == yPos || connector.End.Y == yPos)
-                {
-
-                    mapCollection.CurrentMap.Connectors.RemoveAt(i);
-
-                }
-
-                if (connector.Start.Y > yPos)
-                {
-
-                    connector.Start.Y--;
-
-                }
-
-                if (connector.End.Y > yPos)
-                {
-
-                    connector.End.Y--;
-
-                }
-
-            }
-
-
-            // Refresh form ..
-
-            pictureBox1.Invalidate();
-            UpdateCurrentSprites();
-            UpdateCurrentConnectors();
-
         }
 
         private void showTileTools()
         {
             this.mapEditorControl.Tool = new TileTool();
 
-            int TileId = -1;
-            if (tilesListView.SelectedItems.Count > 0)
-                TileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-            tool = new TileBrush(TileId, mapCollection.CurrentMap);
             tabPages.SelectTab(0);
 
             tilesListView.Visible = true;
@@ -1629,16 +726,10 @@ namespace RogueboyLevelEditor.Forms
         {
             this.mapEditorControl.Tool = new SpritePlacementTool(this.spritesPlacedListView);
 
-            tool = new SpriteTool(mapCollection.CurrentMap, this);
             tabPages.SelectTab(1);
             spritesListView.Visible = true;
             spritesPlacedListView.Visible = true;
             removeSprite.Visible = true;
-
-            if (spritesListView.SelectedItems.Count > 0)
-            {
-                tool.SetBrush(int.Parse(spritesListView.SelectedItems[0].SubItems[1].Text), int.Parse(spritesListView.SelectedItems[0].SubItems[3].Text));
-            }
 
             eraseMenu.Enabled = false;
             eraseMenuItem.Enabled = false;
@@ -1651,7 +742,6 @@ namespace RogueboyLevelEditor.Forms
         {
             this.mapEditorControl.Tool = new ConnectionTool(this.connectionListView);
 
-            tool = new ConnectorTool(mapCollection.CurrentMap, this);
             tabPages.SelectTab(2);
             connectionListView.Visible = true;
             removeConnection.Visible = true;
@@ -1684,8 +774,6 @@ namespace RogueboyLevelEditor.Forms
                 case 3:
                     this.mapEditorControl.Tool = new PlayerPlacementTool();
 
-                    tool = new PlayerPositionTool(mapCollection.CurrentMap);
-
                     eraseMenu.Enabled = false;
                     eraseMenuItem.Enabled = false;
                     rectangleMenu.Enabled = false;
@@ -1715,34 +803,25 @@ namespace RogueboyLevelEditor.Forms
         {
             this.mapEditorControl.Tool = new TileTool();
             this.mapEditorControl.SelectedTileId = -1;
-
-            tool = new TileBrush(-1, mapCollection.CurrentMap);
         }
 
         private void moveToMenu_Click(object sender, EventArgs e)
         {
             this.mapEditorControl.Tool = new FocusTool();
-
-            tool = new MoveTool(mapCollection.CurrentMap);
         }
 
         private void playerStartMenu_Click(object sender, EventArgs e)
         {
-            if (!(tool is PlayerPositionTool))
-            {
-                this.mapEditorControl.Tool = new PlayerPlacementTool();
+            this.mapEditorControl.Tool = new PlayerPlacementTool();
 
-                tool = new PlayerPositionTool(mapCollection.CurrentMap);
-                tabPages.SelectTab(3);
-                eraseMenu.Enabled = false;
-                rectangleMenu.Enabled = false;
-            }
+            tabPages.SelectTab(3);
+            eraseMenu.Enabled = false;
+            rectangleMenu.Enabled = false;
         }
 
         private void centreMenu_Click(object sender, EventArgs e)
         {
             this.mapCollection.CurrentMap.CentreMap();
-            this.pictureBox1.Invalidate();
             this.mapEditorControl.Invalidate();
         }
 
@@ -1750,10 +829,6 @@ namespace RogueboyLevelEditor.Forms
         {
             showTileTools();
 
-            int tileId = -1;
-            if (tilesListView.SelectedItems.Count > 0)
-                tileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-            tool = new TileRectangle(this, tileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
             tilesListView.Visible = true;
 
             this.mapEditorControl.Tool = new RectangleFillTool();
@@ -1763,17 +838,12 @@ namespace RogueboyLevelEditor.Forms
         {
             this.mapEditorControl.SelectedTileId = -1;
             this.mapEditorControl.Tool = new TileTool();
-            tool = new TileBrush(-1, mapCollection.CurrentMap);
         }
 
         private void rectangleMenuItem_Click(object sender, EventArgs e)
         {
             showTileTools();
 
-            int tileId = -1;
-            if (tilesListView.SelectedItems.Count > 0)
-                tileId = int.Parse(tilesListView.SelectedItems[0].SubItems[1].Text);
-            tool = new TileRectangle(this, tileId, mapCollection.CurrentMap, pictureBox1.Width / 2, pictureBox1.Height / 2);
             tilesListView.Visible = true;
 
             this.mapEditorControl.Tool = new RectangleFillTool();
@@ -1782,70 +852,12 @@ namespace RogueboyLevelEditor.Forms
         private void moveToMenuItem_Click(object sender, EventArgs e)
         {
             this.mapEditorControl.Tool = new FocusTool();
-            tool = new MoveTool(mapCollection.CurrentMap);
         }
 
         private void centreMenuItem_Click(object sender, EventArgs e)
         {
             mapCollection.CurrentMap.CentreMap();
-            pictureBox1.Invalidate();
-        }
-
-        private void useTileTypeContextMenu_Click(object sender, EventArgs e)
-        {
-
-            Point point = new Point(cursor.position.X, cursor.position.Y);
-            int tileId = mapCollection.CurrentMap.GetTile(point).tileID;
-            String tileName = tileManager.GetTile(mapCollection.CurrentMap.GetTile(point).tileID).Name;
-
-            tool.SetBrush(tileId);
-            addTileToMenu(tileId, tileName);
-
-            foreach (ListViewItem item in tilesListView.Items)
-            {
-
-                if (tileId == Int32.Parse(item.SubItems[1].Text))
-                {
-
-                    item.Selected = true;
-                    item.EnsureVisible();
-                    tilesListView.Focus();
-                    break;
-
-                }
-
-            }
-
-        }
-
-        private void addTileToMenu(int id, String tileName)
-        {
-
-            for (int i = 7; i < tilesContextMenu.Items.Count; i++)
-            {
-
-                ToolStripMenuItem menuItem = (ToolStripMenuItem)tilesContextMenu.Items[i];
-
-                if (menuItem.Text == tileName)
-                {
-
-                    tilesContextMenu.Items.Remove(menuItem);
-                    break;
-
-                }
-
-            }
-
-            Tile tile = tileManager.GetTile(id);
-            ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
-            newMenuItem.Text = tileName;
-            newMenuItem.Image = tilesListView.SmallImageList.Images[tile.TextureID];
-            newMenuItem.Tag = id;
-            newMenuItem.Click += new System.EventHandler(tilesContextMenu_Item_Click);
-            tilesContextMenu.Items.Insert(7, newMenuItem);
-
-            if (tilesContextMenu.Items.Count > 15) { tilesContextMenu.Items.RemoveAt(14); }
-
+            this.mapEditorControl.Invalidate();
         }
 
         private void aboutMenu_Click(object sender, EventArgs e)
@@ -1873,7 +885,7 @@ namespace RogueboyLevelEditor.Forms
                 HealthNumericUpDown.Left = tabPages.Left + spritesPlacedListView.Left + spritesPlacedListView_IDColumn.Width + spritesPlacedListView_Name.Width + spritesPlacedListView_XColumn.Width + spritesPlacedListView_YColumn.Width + 42;
                 HealthNumericUpDown.Top = spritesPlacedListView.Top + 108 + ((spritesPlacedListView.SelectedIndices[0] - spritesPlacedListView.TopItem.Index) * 17);
                 HealthNumericUpDown.Width = spritesPlacedListView_HealthColumn.Width;
-                HealthNumericUpDown.Value = Int32.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
+                HealthNumericUpDown.Value = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
                 HealthNumericUpDown.Visible = true;
                 HealthNumericUpDown.Tag = spritesPlacedListView.SelectedItems[0].Index;
 
@@ -1881,69 +893,54 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
-        private void HealthNumericUpDown_Leave(object sender, EventArgs e) {
-
+        private void HealthNumericUpDown_Leave(object sender, EventArgs e)
+        {
             HealthNumericUpDown.Visible = false;
         }
 
-        private void MapEditorForm_Resize(object sender, EventArgs e) {
-
+        private void MapEditorForm_Resize(object sender, EventArgs e)
+        {
             HealthNumericUpDown.Visible = false;
-
-        }
-        
-        private void tabPages_MouseEnter(object sender, EventArgs e) {
-
-            HealthNumericUpDown.Visible = false;
-
         }
 
-        private void HealthNumericUpDown_ValueChanged(object sender, EventArgs e) {
+        private void tabPages_MouseEnter(object sender, EventArgs e)
+        {
+            HealthNumericUpDown.Visible = false;
+        }
 
-            if (spritesPlacedListView.SelectedItems.Count > 0 && HealthNumericUpDown.Tag != null && (((int)HealthNumericUpDown.Tag) == spritesPlacedListView.SelectedIndices[0])) {
-
-                if (spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text != HealthNumericUpDown.Value.ToString()) {
-
+        private void HealthNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (spritesPlacedListView.SelectedItems.Count > 0 && HealthNumericUpDown.Tag != null && (((int)HealthNumericUpDown.Tag) == spritesPlacedListView.SelectedIndices[0]))
+                if (spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text != HealthNumericUpDown.Value.ToString())
+                {
                     spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text = HealthNumericUpDown.Value.ToString();
 
                     SpriteComponent sprite = this.mapCollection.CurrentMap.Sprites[(int)HealthNumericUpDown.Tag];
 
                     sprite.Health = (int)HealthNumericUpDown.Value;
-
                 }
-
-            }
-
         }
 
-        private void HealthNumericUpDown_KeyDown(object sender, KeyEventArgs e) {
-
-            if (e.KeyCode == Keys.Enter) {
-
+        private void HealthNumericUpDown_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
                 HealthNumericUpDown.Visible = false;
-
-            }
-
         }
 
-        private void spritesPlacedListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e) {
-
+        private void spritesPlacedListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
             int colIndex = e.ColumnIndex;
 
-            if (spritesPlacedListView.Columns[colIndex].Width != Int32.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString())) {
-                spritesPlacedListView.Columns[colIndex].Width = Int32.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString());
-            }
-
+            if (spritesPlacedListView.Columns[colIndex].Width != int.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString()))
+                spritesPlacedListView.Columns[colIndex].Width = int.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString());
         }
 
-        private void spritesListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e) {
-
+        private void spritesListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
             int colIndex = e.ColumnIndex;
 
-            if (spritesListView.Columns[colIndex].Width != Int32.Parse(spritesListView.Columns[colIndex].Tag.ToString())) {
-                spritesListView.Columns[colIndex].Width = Int32.Parse(spritesListView.Columns[colIndex].Tag.ToString());
-            }
-
+            if (spritesListView.Columns[colIndex].Width != int.Parse(spritesListView.Columns[colIndex].Tag.ToString()))
+                spritesListView.Columns[colIndex].Width = int.Parse(spritesListView.Columns[colIndex].Tag.ToString());
         }
 
         #region Map Context Menu Events
