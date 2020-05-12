@@ -10,6 +10,7 @@ namespace RogueboyLevelEditor.Tools
     public class ConnectionTool : ITool<MapEditorControl>
     {
         private static readonly SpriteManager spriteManager = new SpriteManager();
+        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         private MapEditorControl control;
         private ListView listView;

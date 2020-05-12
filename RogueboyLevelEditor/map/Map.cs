@@ -300,12 +300,16 @@ namespace RogueboyLevelEditor.map
             return new BaseMapComponent(-1);
         }
 
-        public void AddSprite(int tileX, int tileY, int type, int health)
+        public SpriteComponent AddSprite(int tileX, int tileY, int type, int health)
         {
             if (CheckInRange(tileX, tileY))
             {
-                Sprites.Add(new SpriteComponent(new Point(tileX, tileY), type, health));
+                SpriteComponent sprite = new SpriteComponent(new Point(tileX, tileY), type, health);
+                Sprites.Add(sprite);
+                return sprite;
             }
+
+            return null;
         }
 
         public void RemoveSprite(Point p, int ID)

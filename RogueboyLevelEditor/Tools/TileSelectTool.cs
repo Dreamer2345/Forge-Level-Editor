@@ -9,6 +9,7 @@ namespace RogueboyLevelEditor.Tools
     public class TileSelectTool : ITool<MapEditorControl>
     {
         private MapEditorControl control;
+        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         public void Attach(MapEditorControl control)
         {

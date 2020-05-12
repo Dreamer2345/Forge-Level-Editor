@@ -11,6 +11,7 @@ namespace RogueboyLevelEditor.Tools
         private MapEditorControl control;
         private Point? startLocation;
         private Cursor oldCursor;
+        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         public void Attach(MapEditorControl control)
         {

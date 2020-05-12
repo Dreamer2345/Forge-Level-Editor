@@ -59,6 +59,7 @@ namespace RogueboyLevelEditor.Forms
             this.mapEditorControl.Tool = new TileTool();
             this.mapCollection = this.mapEditorControl.MapCollection;
             this.mapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250));
+            showTileTools();
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
             {
@@ -713,6 +714,7 @@ namespace RogueboyLevelEditor.Forms
             this.mapEditorControl.Tool = new TileTool();
 
             tabPages.SelectTab(0);
+            mapEditorControl.Tool.tileChanged += new EventHandler<TileChangedEventArgs>(onTileChanged);
 
             tilesListView.Visible = true;
             eraseMenu.Enabled = true;
@@ -721,12 +723,16 @@ namespace RogueboyLevelEditor.Forms
             rectangleMenuItem.Enabled = true;
 
         }
-
+        public void onTitleChanged(object sender, EventArgs e) {
+            Console.Out.WriteLine("Sdfsdf");
+        }
         private void showSpritesTool()
         {
             this.mapEditorControl.Tool = new SpritePlacementTool(this.spritesPlacedListView);
 
             tabPages.SelectTab(1);
+            mapEditorControl.Tool.tileChanged += new EventHandler<TileChangedEventArgs>(onSpriteAdded);
+
             spritesListView.Visible = true;
             spritesPlacedListView.Visible = true;
             removeSprite.Visible = true;
@@ -880,12 +886,12 @@ namespace RogueboyLevelEditor.Forms
 
         private void spritesPlacedListView_MouseDoubleClick(object sender, MouseEventArgs e) {
 
-            if (spritesPlacedListView.SelectedItems.Count > 0 && spritesPlacedListView.SelectedItems[0].SubItems[4].Text != "") {
+            if (spritesPlacedListView.SelectedItems.Count > 0 && spritesPlacedListView.SelectedItems[0].SubItems[5].Text != "") {
 
                 HealthNumericUpDown.Left = tabPages.Left + spritesPlacedListView.Left + spritesPlacedListView_IDColumn.Width + spritesPlacedListView_Name.Width + spritesPlacedListView_XColumn.Width + spritesPlacedListView_YColumn.Width + 42;
                 HealthNumericUpDown.Top = spritesPlacedListView.Top + 108 + ((spritesPlacedListView.SelectedIndices[0] - spritesPlacedListView.TopItem.Index) * 17);
                 HealthNumericUpDown.Width = spritesPlacedListView_HealthColumn.Width;
-                HealthNumericUpDown.Value = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
+                HealthNumericUpDown.Value = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[5].Text);
                 HealthNumericUpDown.Visible = true;
                 HealthNumericUpDown.Tag = spritesPlacedListView.SelectedItems[0].Index;
 
@@ -911,9 +917,9 @@ namespace RogueboyLevelEditor.Forms
         private void HealthNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (spritesPlacedListView.SelectedItems.Count > 0 && HealthNumericUpDown.Tag != null && (((int)HealthNumericUpDown.Tag) == spritesPlacedListView.SelectedIndices[0]))
-                if (spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text != HealthNumericUpDown.Value.ToString())
+                if (spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[5].Text != HealthNumericUpDown.Value.ToString())
                 {
-                    spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[4].Text = HealthNumericUpDown.Value.ToString();
+                    spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[5].Text = HealthNumericUpDown.Value.ToString();
 
                     SpriteComponent sprite = this.mapCollection.CurrentMap.Sprites[(int)HealthNumericUpDown.Tag];
 
@@ -961,7 +967,14 @@ namespace RogueboyLevelEditor.Forms
                 this.removeRowToolStripMenuItem.Enabled = (map.Height > 1);
 
                 var foundSprite = map.Sprites.FindIndex(sprite => (sprite.SpritePosition == tilePosition));
-                this.spriteToolStripMenuItem.Enabled = (foundSprite != -1);
+                if (spriteToolStripMenuItem.DropDownItems.Count > 3) {
+                    this.spriteToolStripMenuItem.Enabled = true;
+                    this.selectSpriteToolStripMenuItem.Enabled = (foundSprite != -1);
+                    this.removeSpriteToolStripMenuItem.Enabled = (foundSprite != -1);
+                }
+                else {
+                    this.spriteToolStripMenuItem.Enabled = (foundSprite != -1);
+                }
 
                 var foundConnector = map.Connectors.FindIndex(connector => ((connector.Start == tilePosition) || (connector.End == tilePosition)));
                 this.connectionToolStripMenuItem.Enabled = (foundConnector != -1);
@@ -1259,6 +1272,9 @@ namespace RogueboyLevelEditor.Forms
                     connector.End.X++;
             }
 
+            // Update player position
+            if (map.PlayerStart.X > column) map.PlayerStart.X++;
+
             this.RefreshMap();
         }
 
@@ -1307,6 +1323,9 @@ namespace RogueboyLevelEditor.Forms
                     connector.End.X--;
             }
 
+            // Update player position
+            if (map.PlayerStart.X >= column) map.PlayerStart.X--;
+
             this.RefreshMap();
         }
 
@@ -1346,6 +1365,9 @@ namespace RogueboyLevelEditor.Forms
                 if (connector.End.Y >= row)
                     connector.End.Y++;
             }
+            
+            // Update player position
+            if (map.PlayerStart.Y > row) map.PlayerStart.Y++;
 
             this.RefreshMap();
         }
@@ -1394,9 +1416,136 @@ namespace RogueboyLevelEditor.Forms
                     connector.End.Y--;
             }
 
+            // Update player position
+            if (map.PlayerStart.Y >= row) map.PlayerStart.Y--;
+
             this.RefreshMap();
         }
 
         #endregion
+
+        private void mapEditorControl_MouseMove(object sender, MouseEventArgs e) {
+
+            Point point = mapEditorControl.CurrentMap.ToTileSpace(e.Location);
+
+            if (point.X >= 0 && point.X < mapEditorControl.CurrentMap.Width &&
+                point.Y >= 0 && point.X < mapEditorControl.CurrentMap.Height) {
+                toolStatusLabel.Text = point.ToString();
+            }
+            else {
+                toolStatusLabel.Text = "";
+            }
+
+        }
+
+        private void onTileChanged(object sender, TileChangedEventArgs e) {
+
+            Tile tile = (Tile)e.NewItem;
+
+            for (int i = 3; i < tileToolStripMenuItem.DropDownItems.Count; i++) {
+
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)tileToolStripMenuItem.DropDownItems[i];
+
+                if (menuItem.Text == tile.Name) {
+
+                    tileToolStripMenuItem.DropDownItems.Remove(menuItem);
+                    break;
+
+                }
+
+            }
+
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
+            newMenuItem.Text = tile.Name;
+            newMenuItem.Image = tilesListView.SmallImageList.Images[tile.TextureID];
+            newMenuItem.Tag = int.Parse(tile.TextureID);
+            newMenuItem.Click += new System.EventHandler(mapEditorContextMenu_Tile_Item_Click);
+            tileToolStripMenuItem.DropDownItems.Insert(3, newMenuItem);
+
+            if (tileToolStripMenuItem.DropDownItems.Count > 11) { tileToolStripMenuItem.DropDownItems.RemoveAt(11); }
+
+        }
+
+        private void mapEditorContextMenu_Tile_Item_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+
+            // Switch to TileTool if not already selected ..
+
+            if (!(this.mapEditorControl.Tool is TileTool)) {
+
+                showTileTools();
+
+            }
+
+            for (int i = 0; i < tilesListView.Items.Count; i++) {
+
+                if (int.Parse(tilesListView.Items[i].SubItems[1].Text) == (int)item.Tag) {
+
+                    tilesListView.Items[i].Selected = true;
+                    tilesListView.Items[i].EnsureVisible();
+                    break;
+
+                }
+
+            }
+
+        }
+
+        private void onSpriteAdded(object sender, TileChangedEventArgs e) {
+
+            Sprite sprite = (Sprite)e.NewItem;
+
+            for (int i = 3; i < spriteToolStripMenuItem.DropDownItems.Count; i++) {
+
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteToolStripMenuItem.DropDownItems[i];
+
+                if (menuItem.Text == sprite.Name) {
+
+                    mapEditorContextMenu.Items.Remove(menuItem);
+                    break;
+
+                }
+
+            }
+
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
+            newMenuItem.Text = sprite.Name;
+            newMenuItem.Image = spritesListView.SmallImageList.Images[sprite.ID];
+            newMenuItem.Tag = sprite.ID;
+            newMenuItem.Click += new System.EventHandler(mapEditorContextMenu_Sprite_Item_Click);
+            spriteToolStripMenuItem.DropDownItems.Insert(3, newMenuItem);
+
+            if (spriteToolStripMenuItem.DropDownItems.Count > 11) { spriteToolStripMenuItem.DropDownItems.RemoveAt(11); }
+
+        }
+
+
+        private void mapEditorContextMenu_Sprite_Item_Click(object sender, EventArgs e) {
+
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+
+            // Switch to TileTool if not already selected ..
+
+            if (!(this.mapEditorControl.Tool is SpritePlacementTool)) {
+
+                showSpritesTool();
+
+            }
+
+            for (int i = 0; i < spritesListView.Items.Count; i++) {
+
+                if (int.Parse(spritesListView.Items[i].SubItems[1].Text) == (int)item.Tag) {
+
+                    spritesListView.Items[i].Selected = true;
+                    spritesListView.Items[i].EnsureVisible();
+                    break;
+
+                }
+
+            }
+
+        }
+
     }
 }

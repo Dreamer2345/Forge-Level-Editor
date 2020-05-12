@@ -11,12 +11,14 @@ namespace RogueboyLevelEditor.map.Component
 {
     public class Sprite
     {
+        public int ID { get; private set; }
         public string Name { get; private set; }
         public string TextureID { get; private set; }
         public int Health { get; private set; }
 
-        public Sprite(string name, string textureID, int health)
+        public Sprite(int id, string name, string textureID, int health)
         {
+            this.ID = id;
             this.Name = name;
             this.TextureID = textureID;
             this.Health = health;
@@ -42,7 +44,7 @@ namespace RogueboyLevelEditor.map.Component
                     string textureId = daughters.Find(o => o.Name == "texture").Value;
                     int health = int.Parse(daughters.Find(o => o.Name == "health").Value);
 
-                    AddSprite(id, new Sprite(name, textureId, health));
+                    AddSprite(id, new Sprite(id, name, textureId, health));
                 }
             }
             catch (Exception e)
@@ -88,7 +90,7 @@ namespace RogueboyLevelEditor.map.Component
             {
                 return Sprites[ID];
             }
-            return new Sprite("Null", "Null", 0);
+            return new Sprite(-1, "Null", "Null", 0);
         }
     }
 }
