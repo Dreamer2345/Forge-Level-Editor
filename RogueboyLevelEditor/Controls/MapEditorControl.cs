@@ -38,10 +38,13 @@ namespace RogueboyLevelEditor.Controls
             }
         }
 
-        public Map CurrentMap
-        {
+        public Map CurrentMap {
             get => this.mapCollection.CurrentMap;
             set => this.mapCollection.CurrentMap = value;
+        }
+
+        public TileManager TileManager {
+            get => this.tileManager;
         }
 
         public ITool<MapEditorControl> Tool

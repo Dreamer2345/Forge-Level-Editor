@@ -75,13 +75,6 @@
             this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabSpriteTool = new System.Windows.Forms.TabPage();
             this.spriteToolTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
-            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesListView = new System.Windows.Forms.ListView();
             this.Texture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -105,17 +98,19 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
             this.mapEditorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eraseTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.spriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.columnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,6 +131,14 @@
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
             this.HealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
+            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.overallTableLayout.SuspendLayout();
             this.tabPages.SuspendLayout();
@@ -161,14 +164,14 @@
             this.toolStripMenuItem3,
             this.FileExitMenu});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(50, 29);
+            this.fileMenu.Size = new System.Drawing.Size(37, 20);
             this.fileMenu.Text = "&File";
             // 
             // fileLoadMenu
             // 
             this.fileLoadMenu.Name = "fileLoadMenu";
             this.fileLoadMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.fileLoadMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileLoadMenu.Size = new System.Drawing.Size(159, 22);
             this.fileLoadMenu.Text = "Load";
             this.fileLoadMenu.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -176,26 +179,26 @@
             // 
             this.fileSaveMenu.Name = "fileSaveMenu";
             this.fileSaveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.fileSaveMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileSaveMenu.Size = new System.Drawing.Size(159, 22);
             this.fileSaveMenu.Text = "Save File";
             this.fileSaveMenu.Click += new System.EventHandler(this.fileSaveMenu_Click);
             // 
             // fileSaveAsMenu
             // 
             this.fileSaveAsMenu.Name = "fileSaveAsMenu";
-            this.fileSaveAsMenu.Size = new System.Drawing.Size(225, 30);
+            this.fileSaveAsMenu.Size = new System.Drawing.Size(159, 22);
             this.fileSaveAsMenu.Text = "Save File As ...";
             this.fileSaveAsMenu.Click += new System.EventHandler(this.fileSaveAsMenu_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(222, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(156, 6);
             // 
             // FileExitMenu
             // 
             this.FileExitMenu.Name = "FileExitMenu";
-            this.FileExitMenu.Size = new System.Drawing.Size(225, 30);
+            this.FileExitMenu.Size = new System.Drawing.Size(159, 22);
             this.FileExitMenu.Text = "E&xit";
             this.FileExitMenu.Click += new System.EventHandler(this.fileExistMenu_Click);
             // 
@@ -210,52 +213,52 @@
             this.moveToMenuItem,
             this.centreMenuItem});
             this.editMenu.Name = "editMenu";
-            this.editMenu.Size = new System.Drawing.Size(54, 29);
+            this.editMenu.Size = new System.Drawing.Size(39, 20);
             this.editMenu.Text = "&Edit";
             // 
             // mapPropertysToolStripMenuItem
             // 
             this.mapPropertysToolStripMenuItem.Name = "mapPropertysToolStripMenuItem";
             this.mapPropertysToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.mapPropertysToolStripMenuItem.Text = "Map &Properties";
             this.mapPropertysToolStripMenuItem.Click += new System.EventHandler(this.mapPropertysToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(281, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(196, 6);
             // 
             // eraseMenuItem
             // 
             this.eraseMenuItem.Name = "eraseMenuItem";
-            this.eraseMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.eraseMenuItem.Size = new System.Drawing.Size(199, 22);
             this.eraseMenuItem.Text = "&Erase";
             this.eraseMenuItem.Click += new System.EventHandler(this.eraseMenuItem_Click);
             // 
             // rectangleMenuItem
             // 
             this.rectangleMenuItem.Name = "rectangleMenuItem";
-            this.rectangleMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.rectangleMenuItem.Size = new System.Drawing.Size(199, 22);
             this.rectangleMenuItem.Text = "&Rectangle";
             this.rectangleMenuItem.Click += new System.EventHandler(this.rectangleMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(281, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(196, 6);
             // 
             // moveToMenuItem
             // 
             this.moveToMenuItem.Name = "moveToMenuItem";
-            this.moveToMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.moveToMenuItem.Size = new System.Drawing.Size(199, 22);
             this.moveToMenuItem.Text = "&Move To";
             this.moveToMenuItem.Click += new System.EventHandler(this.moveToMenuItem_Click);
             // 
             // centreMenuItem
             // 
             this.centreMenuItem.Name = "centreMenuItem";
-            this.centreMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.centreMenuItem.Size = new System.Drawing.Size(199, 22);
             this.centreMenuItem.Text = "&Centre";
             this.centreMenuItem.Click += new System.EventHandler(this.centreMenuItem_Click);
             // 
@@ -268,13 +271,13 @@
             this.viewConnectionsMenu,
             this.viewPlayerStartMenu});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(61, 29);
+            this.viewMenu.Size = new System.Drawing.Size(44, 20);
             this.viewMenu.Text = "&View";
             // 
             // viewOutOfBoundsMenu
             // 
             this.viewOutOfBoundsMenu.Name = "viewOutOfBoundsMenu";
-            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewOutOfBoundsMenu.Size = new System.Drawing.Size(153, 22);
             this.viewOutOfBoundsMenu.Text = "&Out Of Bounds";
             this.viewOutOfBoundsMenu.Visible = false;
             this.viewOutOfBoundsMenu.Click += new System.EventHandler(this.viewOutOfBoundsMenu_Click);
@@ -282,28 +285,28 @@
             // viewTileMenu
             // 
             this.viewTileMenu.Name = "viewTileMenu";
-            this.viewTileMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewTileMenu.Size = new System.Drawing.Size(153, 22);
             this.viewTileMenu.Text = "&Tiles";
             this.viewTileMenu.Click += new System.EventHandler(this.viewTileMenu_Click);
             // 
             // viewSpritesMenu
             // 
             this.viewSpritesMenu.Name = "viewSpritesMenu";
-            this.viewSpritesMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewSpritesMenu.Size = new System.Drawing.Size(153, 22);
             this.viewSpritesMenu.Text = "&Sprites";
             this.viewSpritesMenu.Click += new System.EventHandler(this.viewSpritesMenu_Click);
             // 
             // viewConnectionsMenu
             // 
             this.viewConnectionsMenu.Name = "viewConnectionsMenu";
-            this.viewConnectionsMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewConnectionsMenu.Size = new System.Drawing.Size(153, 22);
             this.viewConnectionsMenu.Text = "&Connections";
             this.viewConnectionsMenu.Click += new System.EventHandler(this.viewConnectionsMenu_Click);
             // 
             // viewPlayerStartMenu
             // 
             this.viewPlayerStartMenu.Name = "viewPlayerStartMenu";
-            this.viewPlayerStartMenu.Size = new System.Drawing.Size(216, 30);
+            this.viewPlayerStartMenu.Size = new System.Drawing.Size(153, 22);
             this.viewPlayerStartMenu.Text = "&Player Start";
             this.viewPlayerStartMenu.Click += new System.EventHandler(this.viewPlayerStartMenu_Click);
             // 
@@ -317,32 +320,32 @@
             this.mapMoveDownMenu,
             this.toolStripMenuItem2});
             this.mapsMenu.Name = "mapsMenu";
-            this.mapsMenu.Size = new System.Drawing.Size(68, 29);
+            this.mapsMenu.Size = new System.Drawing.Size(48, 20);
             this.mapsMenu.Text = "&Maps";
             // 
             // mapAddMenu
             // 
             this.mapAddMenu.Name = "mapAddMenu";
-            this.mapAddMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapAddMenu.Size = new System.Drawing.Size(138, 22);
             this.mapAddMenu.Text = "&Add Map";
             this.mapAddMenu.Click += new System.EventHandler(this.mapAddMenu_Click);
             // 
             // mapDeleteMenu
             // 
             this.mapDeleteMenu.Name = "mapDeleteMenu";
-            this.mapDeleteMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapDeleteMenu.Size = new System.Drawing.Size(138, 22);
             this.mapDeleteMenu.Text = "&Delete Map";
             this.mapDeleteMenu.Click += new System.EventHandler(this.mapDeleteMenu_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
             // 
             // mapMoveUpMenu
             // 
             this.mapMoveUpMenu.Name = "mapMoveUpMenu";
-            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(138, 22);
             this.mapMoveUpMenu.Tag = "KeepOpen";
             this.mapMoveUpMenu.Text = "Move &Up";
             this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
@@ -350,7 +353,7 @@
             // mapMoveDownMenu
             // 
             this.mapMoveDownMenu.Name = "mapMoveDownMenu";
-            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(138, 22);
             this.mapMoveDownMenu.Tag = "KeepOpen";
             this.mapMoveDownMenu.Text = "Move &Down";
             this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
@@ -358,20 +361,20 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(135, 6);
             // 
             // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutMenu});
             this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(61, 29);
+            this.helpMenu.Size = new System.Drawing.Size(44, 20);
             this.helpMenu.Text = "&Help";
             // 
             // aboutMenu
             // 
             this.aboutMenu.Name = "aboutMenu";
-            this.aboutMenu.Size = new System.Drawing.Size(146, 30);
+            this.aboutMenu.Size = new System.Drawing.Size(107, 22);
             this.aboutMenu.Text = "&About";
             this.aboutMenu.Click += new System.EventHandler(this.aboutMenu_Click);
             // 
@@ -424,7 +427,7 @@
             this.tabPages.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
             this.tabPages.Name = "tabPages";
             this.tabPages.SelectedIndex = 0;
-            this.tabPages.Size = new System.Drawing.Size(409, 584);
+            this.tabPages.Size = new System.Drawing.Size(409, 592);
             this.tabPages.TabIndex = 15;
             this.tabPages.SelectedIndexChanged += new System.EventHandler(this.tabPages_SelectedIndexChanged);
             this.tabPages.MouseEnter += new System.EventHandler(this.tabPages_MouseEnter);
@@ -433,10 +436,10 @@
             // 
             this.tabTileTool.Controls.Add(this.tilesListView);
             this.tabTileTool.ImageIndex = 4;
-            this.tabTileTool.Location = new System.Drawing.Point(4, 29);
+            this.tabTileTool.Location = new System.Drawing.Point(4, 23);
             this.tabTileTool.Name = "tabTileTool";
             this.tabTileTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTileTool.Size = new System.Drawing.Size(401, 551);
+            this.tabTileTool.Size = new System.Drawing.Size(401, 565);
             this.tabTileTool.TabIndex = 0;
             this.tabTileTool.Text = "Tiles  ";
             this.tabTileTool.UseVisualStyleBackColor = true;
@@ -461,7 +464,7 @@
             this.tilesListView.Margin = new System.Windows.Forms.Padding(0);
             this.tilesListView.MultiSelect = false;
             this.tilesListView.Name = "tilesListView";
-            this.tilesListView.Size = new System.Drawing.Size(395, 545);
+            this.tilesListView.Size = new System.Drawing.Size(395, 559);
             this.tilesListView.TabIndex = 21;
             this.tilesListView.UseCompatibleStateImageBehavior = false;
             this.tilesListView.View = System.Windows.Forms.View.Details;
@@ -505,10 +508,10 @@
             // 
             this.tabSpriteTool.Controls.Add(this.spriteToolTableLayout);
             this.tabSpriteTool.ImageIndex = 5;
-            this.tabSpriteTool.Location = new System.Drawing.Point(4, 29);
+            this.tabSpriteTool.Location = new System.Drawing.Point(4, 23);
             this.tabSpriteTool.Name = "tabSpriteTool";
             this.tabSpriteTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSpriteTool.Size = new System.Drawing.Size(401, 551);
+            this.tabSpriteTool.Size = new System.Drawing.Size(401, 565);
             this.tabSpriteTool.TabIndex = 1;
             this.tabSpriteTool.Text = "Sprites  ";
             this.tabSpriteTool.UseVisualStyleBackColor = true;
@@ -520,7 +523,7 @@
             this.spriteToolTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.83372F));
             this.spriteToolTableLayout.Controls.Add(this.spritesPlacedListView, 1, 1);
             this.spriteToolTableLayout.Controls.Add(this.spritesListView, 1, 0);
-            this.spriteToolTableLayout.Controls.Add(this.removeSprite, 0, 0);
+            this.spriteToolTableLayout.Controls.Add(this.removeSprite, 0, 1);
             this.spriteToolTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spriteToolTableLayout.Location = new System.Drawing.Point(3, 3);
             this.spriteToolTableLayout.Name = "spriteToolTableLayout";
@@ -528,8 +531,515 @@
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 545);
+            this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 559);
             this.spriteToolTableLayout.TabIndex = 25;
+            // 
+            // spritesListView
+            // 
+            this.spritesListView.AutoArrange = false;
+            this.spritesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spritesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Texture,
+            this.SpriteID,
+            this.SpriteName,
+            this.SpriteHealth});
+            this.spritesListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spritesListView.FullRowSelect = true;
+            this.spritesListView.GridLines = true;
+            this.spritesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.spritesListView.HideSelection = false;
+            this.spritesListView.Location = new System.Drawing.Point(66, 3);
+            this.spritesListView.MultiSelect = false;
+            this.spritesListView.Name = "spritesListView";
+            this.spritesListView.Size = new System.Drawing.Size(326, 273);
+            this.spritesListView.TabIndex = 25;
+            this.spritesListView.UseCompatibleStateImageBehavior = false;
+            this.spritesListView.View = System.Windows.Forms.View.Details;
+            this.spritesListView.Visible = false;
+            this.spritesListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesListView_ColumnWidthChanged);
+            this.spritesListView.SelectedIndexChanged += new System.EventHandler(this.spritesListView_SelectedIndexChanged);
+            // 
+            // Texture
+            // 
+            this.Texture.Tag = 30;
+            this.Texture.Text = "";
+            this.Texture.Width = 30;
+            // 
+            // SpriteID
+            // 
+            this.SpriteID.Tag = 40;
+            this.SpriteID.Text = "ID";
+            this.SpriteID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpriteID.Width = 40;
+            // 
+            // SpriteName
+            // 
+            this.SpriteName.Tag = 170;
+            this.SpriteName.Text = "Name";
+            this.SpriteName.Width = 170;
+            // 
+            // SpriteHealth
+            // 
+            this.SpriteHealth.Tag = "60";
+            this.SpriteHealth.Text = "Health";
+            this.SpriteHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // removeSprite
+            // 
+            this.removeSprite.Location = new System.Drawing.Point(3, 282);
+            this.removeSprite.Name = "removeSprite";
+            this.removeSprite.Size = new System.Drawing.Size(57, 35);
+            this.removeSprite.TabIndex = 24;
+            this.removeSprite.Text = "Remove Sprite";
+            this.removeSprite.UseVisualStyleBackColor = true;
+            this.removeSprite.Visible = false;
+            this.removeSprite.Click += new System.EventHandler(this.removeSprite_Click);
+            // 
+            // tabConnectionTool
+            // 
+            this.tabConnectionTool.Controls.Add(this.connectionToolTableLayout);
+            this.tabConnectionTool.ImageIndex = 6;
+            this.tabConnectionTool.Location = new System.Drawing.Point(4, 23);
+            this.tabConnectionTool.Name = "tabConnectionTool";
+            this.tabConnectionTool.Padding = new System.Windows.Forms.Padding(3);
+            this.tabConnectionTool.Size = new System.Drawing.Size(401, 565);
+            this.tabConnectionTool.TabIndex = 2;
+            this.tabConnectionTool.Text = "Connections  ";
+            this.tabConnectionTool.UseVisualStyleBackColor = true;
+            // 
+            // connectionToolTableLayout
+            // 
+            this.connectionToolTableLayout.ColumnCount = 2;
+            this.connectionToolTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.85912F));
+            this.connectionToolTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.14088F));
+            this.connectionToolTableLayout.Controls.Add(this.connectionListView, 1, 0);
+            this.connectionToolTableLayout.Controls.Add(this.removeConnection, 0, 0);
+            this.connectionToolTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.connectionToolTableLayout.Location = new System.Drawing.Point(3, 3);
+            this.connectionToolTableLayout.Name = "connectionToolTableLayout";
+            this.connectionToolTableLayout.RowCount = 1;
+            this.connectionToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 559);
+            this.connectionToolTableLayout.TabIndex = 24;
+            // 
+            // connectionListView
+            // 
+            this.connectionListView.AutoArrange = false;
+            this.connectionListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.connectionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader12,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
+            this.connectionListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.connectionListView.FullRowSelect = true;
+            this.connectionListView.GridLines = true;
+            this.connectionListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.connectionListView.HideSelection = false;
+            this.connectionListView.Location = new System.Drawing.Point(69, 3);
+            this.connectionListView.MultiSelect = false;
+            this.connectionListView.Name = "connectionListView";
+            this.connectionListView.Size = new System.Drawing.Size(323, 553);
+            this.connectionListView.TabIndex = 24;
+            this.connectionListView.UseCompatibleStateImageBehavior = false;
+            this.connectionListView.View = System.Windows.Forms.View.Details;
+            this.connectionListView.Visible = false;
+            this.connectionListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.connectionListView_ItemSelectionChanged);
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Valid";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "StartX";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "StartY";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "EndX";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "EndY";
+            // 
+            // removeConnection
+            // 
+            this.removeConnection.Location = new System.Drawing.Point(3, 3);
+            this.removeConnection.Name = "removeConnection";
+            this.removeConnection.Size = new System.Drawing.Size(60, 36);
+            this.removeConnection.TabIndex = 23;
+            this.removeConnection.Text = "Remove Connector";
+            this.removeConnection.UseVisualStyleBackColor = true;
+            this.removeConnection.Visible = false;
+            this.removeConnection.Click += new System.EventHandler(this.removeConnection_Click);
+            // 
+            // tabPlayerStart
+            // 
+            this.tabPlayerStart.Controls.Add(this.label1);
+            this.tabPlayerStart.ImageIndex = 7;
+            this.tabPlayerStart.Location = new System.Drawing.Point(4, 23);
+            this.tabPlayerStart.Name = "tabPlayerStart";
+            this.tabPlayerStart.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlayerStart.Size = new System.Drawing.Size(401, 565);
+            this.tabPlayerStart.TabIndex = 3;
+            this.tabPlayerStart.Text = "Player Start  ";
+            this.tabPlayerStart.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(101, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 63);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Select a starting position for the player on this level.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tabImageList
+            // 
+            this.tabImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabImageList.ImageStream")));
+            this.tabImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.tabImageList.Images.SetKeyName(0, "Icon3.png");
+            this.tabImageList.Images.SetKeyName(1, "Icon9.png");
+            this.tabImageList.Images.SetKeyName(2, "Icon2.png");
+            this.tabImageList.Images.SetKeyName(3, "Icon4.png");
+            this.tabImageList.Images.SetKeyName(4, "tiles.png");
+            this.tabImageList.Images.SetKeyName(5, "sprites.png");
+            this.tabImageList.Images.SetKeyName(6, "connection.png");
+            this.tabImageList.Images.SetKeyName(7, "playerStart.png");
+            // 
+            // statusStrip1
+            // 
+            this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentMapLabel,
+            this.toolStripStatusLabel1,
+            this.currentFileLabel,
+            this.toolStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 649);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(964, 22);
+            this.statusStrip1.TabIndex = 14;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // currentMapLabel
+            // 
+            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentMapLabel.Name = "currentMapLabel";
+            this.currentMapLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(23, 17);
+            this.toolStripStatusLabel1.Text = " in ";
+            // 
+            // currentFileLabel
+            // 
+            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.currentFileLabel.Name = "currentFileLabel";
+            this.currentFileLabel.Size = new System.Drawing.Size(74, 17);
+            this.currentFileLabel.Text = "< New File >";
+            // 
+            // toolStatusLabel
+            // 
+            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.toolStatusLabel.Name = "toolStatusLabel";
+            this.toolStatusLabel.Size = new System.Drawing.Size(852, 17);
+            this.toolStatusLabel.Spring = true;
+            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapEditorContextMenu
+            // 
+            this.mapEditorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tileToolStripMenuItem,
+            this.spriteToolStripMenuItem,
+            this.connectionToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.columnToolStripMenuItem,
+            this.rowToolStripMenuItem});
+            this.mapEditorContextMenu.Name = "contextMenuStrip1";
+            this.mapEditorContextMenu.Size = new System.Drawing.Size(137, 120);
+            this.mapEditorContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.mapEditorContextMenu_Opening);
+            // 
+            // tileToolStripMenuItem
+            // 
+            this.tileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectTileToolStripMenuItem,
+            this.eraseTileToolStripMenuItem,
+            this.toolStripMenuItem5});
+            this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
+            this.tileToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.tileToolStripMenuItem.Text = "Tile";
+            // 
+            // selectTileToolStripMenuItem
+            // 
+            this.selectTileToolStripMenuItem.Name = "selectTileToolStripMenuItem";
+            this.selectTileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectTileToolStripMenuItem.Text = "Select";
+            this.selectTileToolStripMenuItem.Click += new System.EventHandler(this.selectTileToolStripMenuItem_Click);
+            // 
+            // eraseTileToolStripMenuItem
+            // 
+            this.eraseTileToolStripMenuItem.Name = "eraseTileToolStripMenuItem";
+            this.eraseTileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eraseTileToolStripMenuItem.Text = "Erase";
+            this.eraseTileToolStripMenuItem.Click += new System.EventHandler(this.eraseTileToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            // 
+            // spriteToolStripMenuItem
+            // 
+            this.spriteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectSpriteToolStripMenuItem,
+            this.removeSpriteToolStripMenuItem,
+            this.toolStripMenuItem6});
+            this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
+            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.spriteToolStripMenuItem.Text = "Sprite";
+            // 
+            // selectSpriteToolStripMenuItem
+            // 
+            this.selectSpriteToolStripMenuItem.Name = "selectSpriteToolStripMenuItem";
+            this.selectSpriteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectSpriteToolStripMenuItem.Text = "Select";
+            this.selectSpriteToolStripMenuItem.Click += new System.EventHandler(this.selectSpriteToolStripMenuItem_Click);
+            // 
+            // removeSpriteToolStripMenuItem
+            // 
+            this.removeSpriteToolStripMenuItem.Name = "removeSpriteToolStripMenuItem";
+            this.removeSpriteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeSpriteToolStripMenuItem.Text = "Remove";
+            this.removeSpriteToolStripMenuItem.Click += new System.EventHandler(this.removeSpriteToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
+            // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectConnectionToolStripMenuItem,
+            this.removeConnectionToolStripMenuItem});
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            // 
+            // selectConnectionToolStripMenuItem
+            // 
+            this.selectConnectionToolStripMenuItem.Name = "selectConnectionToolStripMenuItem";
+            this.selectConnectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectConnectionToolStripMenuItem.Text = "Select";
+            this.selectConnectionToolStripMenuItem.Click += new System.EventHandler(this.selectConnectionToolStripMenuItem_Click);
+            // 
+            // removeConnectionToolStripMenuItem
+            // 
+            this.removeConnectionToolStripMenuItem.Name = "removeConnectionToolStripMenuItem";
+            this.removeConnectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeConnectionToolStripMenuItem.Text = "Remove";
+            this.removeConnectionToolStripMenuItem.Click += new System.EventHandler(this.removeConnectionToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(133, 6);
+            // 
+            // columnToolStripMenuItem
+            // 
+            this.columnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addColumnToolStripMenuItem,
+            this.removeColumnToolStripMenuItem});
+            this.columnToolStripMenuItem.Name = "columnToolStripMenuItem";
+            this.columnToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.columnToolStripMenuItem.Text = "Column";
+            // 
+            // addColumnToolStripMenuItem
+            // 
+            this.addColumnToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.tiles;
+            this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addColumnToolStripMenuItem.Text = "Add";
+            this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.addColumnToolStripMenuItem_Click_1);
+            // 
+            // removeColumnToolStripMenuItem
+            // 
+            this.removeColumnToolStripMenuItem.Name = "removeColumnToolStripMenuItem";
+            this.removeColumnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeColumnToolStripMenuItem.Text = "Remove";
+            this.removeColumnToolStripMenuItem.Click += new System.EventHandler(this.removeColumnToolStripMenuItem_Click);
+            // 
+            // rowToolStripMenuItem
+            // 
+            this.rowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addRowToolStripMenuItem,
+            this.removeRowToolStripMenuItem});
+            this.rowToolStripMenuItem.Name = "rowToolStripMenuItem";
+            this.rowToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.rowToolStripMenuItem.Text = "Row";
+            // 
+            // addRowToolStripMenuItem
+            // 
+            this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
+            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRowToolStripMenuItem.Text = "Add";
+            this.addRowToolStripMenuItem.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
+            // 
+            // removeRowToolStripMenuItem
+            // 
+            this.removeRowToolStripMenuItem.Name = "removeRowToolStripMenuItem";
+            this.removeRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeRowToolStripMenuItem.Text = "Remove";
+            this.removeRowToolStripMenuItem.Click += new System.EventHandler(this.removeRowToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileMenu,
+            this.editMenu,
+            this.viewMenu,
+            this.mapsMenu,
+            this.helpMenu});
+            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(964, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tileToolMenu,
+            this.eraseMenu,
+            this.rectangleMenu,
+            this.moveToMenu,
+            this.centreMenu,
+            this.toolStripSeparator1,
+            this.spriteToolMenu,
+            this.toolStripSeparator2,
+            this.connectionToolMenu,
+            this.toolStripSeparator3,
+            this.playerStartMenu});
+            this.toolStrip1.Location = new System.Drawing.Point(4, 28);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(964, 31);
+            this.toolStrip1.TabIndex = 12;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tileToolMenu
+            // 
+            this.tileToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.tiles;
+            this.tileToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tileToolMenu.Name = "tileToolMenu";
+            this.tileToolMenu.Size = new System.Drawing.Size(58, 28);
+            this.tileToolMenu.Text = "&Tiles";
+            this.tileToolMenu.Click += new System.EventHandler(this.tileToolMenu_Click);
+            // 
+            // eraseMenu
+            // 
+            this.eraseMenu.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
+            this.eraseMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.eraseMenu.Name = "eraseMenu";
+            this.eraseMenu.Size = new System.Drawing.Size(62, 28);
+            this.eraseMenu.Text = "Erase";
+            this.eraseMenu.Click += new System.EventHandler(this.eraseMenu_Click);
+            // 
+            // rectangleMenu
+            // 
+            this.rectangleMenu.Image = global::RogueboyLevelEditor.Properties.Resources.Icon7;
+            this.rectangleMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.rectangleMenu.Name = "rectangleMenu";
+            this.rectangleMenu.Size = new System.Drawing.Size(87, 28);
+            this.rectangleMenu.Text = "Rectangle";
+            this.rectangleMenu.Click += new System.EventHandler(this.rectangleMenu_Click);
+            // 
+            // moveToMenu
+            // 
+            this.moveToMenu.Image = global::RogueboyLevelEditor.Properties.Resources.move;
+            this.moveToMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveToMenu.Name = "moveToMenu";
+            this.moveToMenu.Size = new System.Drawing.Size(80, 28);
+            this.moveToMenu.Text = "Move To";
+            this.moveToMenu.Click += new System.EventHandler(this.moveToMenu_Click);
+            // 
+            // centreMenu
+            // 
+            this.centreMenu.Image = global::RogueboyLevelEditor.Properties.Resources.centre;
+            this.centreMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.centreMenu.Name = "centreMenu";
+            this.centreMenu.Size = new System.Drawing.Size(70, 28);
+            this.centreMenu.Text = "Centre";
+            this.centreMenu.Click += new System.EventHandler(this.centreMenu_Click);
+            // 
+            // spriteToolMenu
+            // 
+            this.spriteToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.sprites;
+            this.spriteToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.spriteToolMenu.Name = "spriteToolMenu";
+            this.spriteToolMenu.Size = new System.Drawing.Size(70, 28);
+            this.spriteToolMenu.Text = "&Sprites";
+            this.spriteToolMenu.Click += new System.EventHandler(this.spriteToolMenu_Click);
+            // 
+            // connectionToolMenu
+            // 
+            this.connectionToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.connection;
+            this.connectionToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.connectionToolMenu.Name = "connectionToolMenu";
+            this.connectionToolMenu.Size = new System.Drawing.Size(102, 28);
+            this.connectionToolMenu.Text = "&Connections";
+            this.connectionToolMenu.Click += new System.EventHandler(this.connectionToolMenu_Click);
+            // 
+            // playerStartMenu
+            // 
+            this.playerStartMenu.Image = global::RogueboyLevelEditor.Properties.Resources.playerStart;
+            this.playerStartMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.playerStartMenu.Name = "playerStartMenu";
+            this.playerStartMenu.Size = new System.Drawing.Size(94, 28);
+            this.playerStartMenu.Text = "&Player Start";
+            this.playerStartMenu.Click += new System.EventHandler(this.playerStartMenu_Click);
+            // 
+            // HealthNumericUpDown
+            // 
+            this.HealthNumericUpDown.Location = new System.Drawing.Point(458, 326);
+            this.HealthNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.HealthNumericUpDown.Name = "HealthNumericUpDown";
+            this.HealthNumericUpDown.Size = new System.Drawing.Size(57, 20);
+            this.HealthNumericUpDown.TabIndex = 31;
+            this.HealthNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HealthNumericUpDown.Visible = false;
+            this.HealthNumericUpDown.ValueChanged += new System.EventHandler(this.HealthNumericUpDown_ValueChanged);
+            this.HealthNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthNumericUpDown_KeyDown);
+            this.HealthNumericUpDown.Leave += new System.EventHandler(this.HealthNumericUpDown_Leave);
             // 
             // spritesPlacedListView
             // 
@@ -547,10 +1057,10 @@
             this.spritesPlacedListView.GridLines = true;
             this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 275);
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 282);
             this.spritesPlacedListView.MultiSelect = false;
             this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 267);
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 274);
             this.spritesPlacedListView.TabIndex = 27;
             this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
             this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
@@ -600,227 +1110,6 @@
             this.spritesPlacedListView_HealthColumn.Text = "Health";
             this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // spritesListView
-            // 
-            this.spritesListView.AutoArrange = false;
-            this.spritesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.spritesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Texture,
-            this.SpriteID,
-            this.SpriteName,
-            this.SpriteHealth});
-            this.spritesListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spritesListView.FullRowSelect = true;
-            this.spritesListView.GridLines = true;
-            this.spritesListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.spritesListView.HideSelection = false;
-            this.spritesListView.Location = new System.Drawing.Point(66, 3);
-            this.spritesListView.MultiSelect = false;
-            this.spritesListView.Name = "spritesListView";
-            this.spritesListView.Size = new System.Drawing.Size(326, 266);
-            this.spritesListView.TabIndex = 25;
-            this.spritesListView.UseCompatibleStateImageBehavior = false;
-            this.spritesListView.View = System.Windows.Forms.View.Details;
-            this.spritesListView.Visible = false;
-            this.spritesListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesListView_ColumnWidthChanged);
-            this.spritesListView.SelectedIndexChanged += new System.EventHandler(this.spritesListView_SelectedIndexChanged);
-            // 
-            // Texture
-            // 
-            this.Texture.Tag = 30;
-            this.Texture.Text = "";
-            this.Texture.Width = 30;
-            // 
-            // SpriteID
-            // 
-            this.SpriteID.Tag = 40;
-            this.SpriteID.Text = "ID";
-            this.SpriteID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpriteID.Width = 40;
-            // 
-            // SpriteName
-            // 
-            this.SpriteName.Tag = 170;
-            this.SpriteName.Text = "Name";
-            this.SpriteName.Width = 170;
-            // 
-            // SpriteHealth
-            // 
-            this.SpriteHealth.Tag = "60";
-            this.SpriteHealth.Text = "Health";
-            this.SpriteHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // removeSprite
-            // 
-            this.removeSprite.Location = new System.Drawing.Point(3, 3);
-            this.removeSprite.Name = "removeSprite";
-            this.removeSprite.Size = new System.Drawing.Size(57, 42);
-            this.removeSprite.TabIndex = 24;
-            this.removeSprite.Text = "Remove Sprite";
-            this.removeSprite.UseVisualStyleBackColor = true;
-            this.removeSprite.Visible = false;
-            this.removeSprite.Click += new System.EventHandler(this.removeSprite_Click);
-            // 
-            // tabConnectionTool
-            // 
-            this.tabConnectionTool.Controls.Add(this.connectionToolTableLayout);
-            this.tabConnectionTool.ImageIndex = 6;
-            this.tabConnectionTool.Location = new System.Drawing.Point(4, 29);
-            this.tabConnectionTool.Name = "tabConnectionTool";
-            this.tabConnectionTool.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConnectionTool.Size = new System.Drawing.Size(401, 551);
-            this.tabConnectionTool.TabIndex = 2;
-            this.tabConnectionTool.Text = "Connections  ";
-            this.tabConnectionTool.UseVisualStyleBackColor = true;
-            // 
-            // connectionToolTableLayout
-            // 
-            this.connectionToolTableLayout.ColumnCount = 2;
-            this.connectionToolTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.85912F));
-            this.connectionToolTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.14088F));
-            this.connectionToolTableLayout.Controls.Add(this.connectionListView, 1, 0);
-            this.connectionToolTableLayout.Controls.Add(this.removeConnection, 0, 0);
-            this.connectionToolTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.connectionToolTableLayout.Location = new System.Drawing.Point(3, 3);
-            this.connectionToolTableLayout.Name = "connectionToolTableLayout";
-            this.connectionToolTableLayout.RowCount = 1;
-            this.connectionToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.connectionToolTableLayout.Size = new System.Drawing.Size(395, 545);
-            this.connectionToolTableLayout.TabIndex = 24;
-            // 
-            // connectionListView
-            // 
-            this.connectionListView.AutoArrange = false;
-            this.connectionListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.connectionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11});
-            this.connectionListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.connectionListView.FullRowSelect = true;
-            this.connectionListView.GridLines = true;
-            this.connectionListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.connectionListView.HideSelection = false;
-            this.connectionListView.Location = new System.Drawing.Point(69, 3);
-            this.connectionListView.MultiSelect = false;
-            this.connectionListView.Name = "connectionListView";
-            this.connectionListView.Size = new System.Drawing.Size(323, 539);
-            this.connectionListView.TabIndex = 24;
-            this.connectionListView.UseCompatibleStateImageBehavior = false;
-            this.connectionListView.View = System.Windows.Forms.View.Details;
-            this.connectionListView.Visible = false;
-            this.connectionListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.connectionListView_ItemSelectionChanged);
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Valid";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "StartX";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "StartY";
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "EndX";
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "EndY";
-            // 
-            // removeConnection
-            // 
-            this.removeConnection.Location = new System.Drawing.Point(3, 3);
-            this.removeConnection.Name = "removeConnection";
-            this.removeConnection.Size = new System.Drawing.Size(60, 42);
-            this.removeConnection.TabIndex = 23;
-            this.removeConnection.Text = "Remove Connector";
-            this.removeConnection.UseVisualStyleBackColor = true;
-            this.removeConnection.Visible = false;
-            this.removeConnection.Click += new System.EventHandler(this.removeConnection_Click);
-            // 
-            // tabPlayerStart
-            // 
-            this.tabPlayerStart.Controls.Add(this.label1);
-            this.tabPlayerStart.ImageIndex = 7;
-            this.tabPlayerStart.Location = new System.Drawing.Point(4, 29);
-            this.tabPlayerStart.Name = "tabPlayerStart";
-            this.tabPlayerStart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlayerStart.Size = new System.Drawing.Size(401, 551);
-            this.tabPlayerStart.TabIndex = 3;
-            this.tabPlayerStart.Text = "Player Start  ";
-            this.tabPlayerStart.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(101, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 63);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Select a starting position for the player on this level.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tabImageList
-            // 
-            this.tabImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabImageList.ImageStream")));
-            this.tabImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.tabImageList.Images.SetKeyName(0, "Icon3.png");
-            this.tabImageList.Images.SetKeyName(1, "Icon9.png");
-            this.tabImageList.Images.SetKeyName(2, "Icon2.png");
-            this.tabImageList.Images.SetKeyName(3, "Icon10.png");
-            this.tabImageList.Images.SetKeyName(4, "edit.png");
-            this.tabImageList.Images.SetKeyName(5, "swiss-army-knife.png");
-            this.tabImageList.Images.SetKeyName(6, "itinerary.png");
-            this.tabImageList.Images.SetKeyName(7, "region-code.png");
-            // 
-            // statusStrip1
-            // 
-            this.overallTableLayout.SetColumnSpan(this.statusStrip1, 2);
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentMapLabel,
-            this.toolStripStatusLabel1,
-            this.currentFileLabel,
-            this.toolStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 641);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(964, 30);
-            this.statusStrip1.TabIndex = 14;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // currentMapLabel
-            // 
-            this.currentMapLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentMapLabel.Name = "currentMapLabel";
-            this.currentMapLabel.Size = new System.Drawing.Size(0, 25);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(36, 25);
-            this.toolStripStatusLabel1.Text = " in ";
-            // 
-            // currentFileLabel
-            // 
-            this.currentFileLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(112, 25);
-            this.currentFileLabel.Text = "< New File >";
-            // 
-            // toolStatusLabel
-            // 
-            this.toolStatusLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.toolStatusLabel.Name = "toolStatusLabel";
-            this.toolStatusLabel.Size = new System.Drawing.Size(801, 25);
-            this.toolStatusLabel.Spring = true;
-            this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // mapEditorControl
             // 
             this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -842,279 +1131,11 @@
             this.mapEditorControl.Name = "mapEditorControl";
             this.mapEditorControl.SelectedSpriteId = -1;
             this.mapEditorControl.SelectedTileId = -1;
-            this.mapEditorControl.Size = new System.Drawing.Size(546, 583);
+            this.mapEditorControl.Size = new System.Drawing.Size(546, 591);
             this.mapEditorControl.TabIndex = 16;
             this.mapEditorControl.TileCursor = null;
             this.mapEditorControl.Tool = null;
             this.mapEditorControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapEditorControl_MouseMove);
-            // 
-            // mapEditorContextMenu
-            // 
-            this.mapEditorContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.mapEditorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tileToolStripMenuItem,
-            this.spriteToolStripMenuItem,
-            this.connectionToolStripMenuItem,
-            this.columnToolStripMenuItem,
-            this.rowToolStripMenuItem});
-            this.mapEditorContextMenu.Name = "contextMenuStrip1";
-            this.mapEditorContextMenu.Size = new System.Drawing.Size(175, 154);
-            this.mapEditorContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.mapEditorContextMenu_Opening);
-            // 
-            // tileToolStripMenuItem
-            // 
-            this.tileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectTileToolStripMenuItem,
-            this.eraseTileToolStripMenuItem});
-            this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
-            this.tileToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
-            this.tileToolStripMenuItem.Text = "Tile";
-            // 
-            // selectTileToolStripMenuItem
-            // 
-            this.selectTileToolStripMenuItem.Name = "selectTileToolStripMenuItem";
-            this.selectTileToolStripMenuItem.Size = new System.Drawing.Size(142, 30);
-            this.selectTileToolStripMenuItem.Text = "Select";
-            this.selectTileToolStripMenuItem.Click += new System.EventHandler(this.selectTileToolStripMenuItem_Click);
-            // 
-            // eraseTileToolStripMenuItem
-            // 
-            this.eraseTileToolStripMenuItem.Name = "eraseTileToolStripMenuItem";
-            this.eraseTileToolStripMenuItem.Size = new System.Drawing.Size(142, 30);
-            this.eraseTileToolStripMenuItem.Text = "Erase";
-            this.eraseTileToolStripMenuItem.Click += new System.EventHandler(this.eraseTileToolStripMenuItem_Click);
-            // 
-            // spriteToolStripMenuItem
-            // 
-            this.spriteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectSpriteToolStripMenuItem,
-            this.removeSpriteToolStripMenuItem});
-            this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
-            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
-            this.spriteToolStripMenuItem.Text = "Sprite";
-            // 
-            // selectSpriteToolStripMenuItem
-            // 
-            this.selectSpriteToolStripMenuItem.Name = "selectSpriteToolStripMenuItem";
-            this.selectSpriteToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.selectSpriteToolStripMenuItem.Text = "Select";
-            this.selectSpriteToolStripMenuItem.Click += new System.EventHandler(this.selectSpriteToolStripMenuItem_Click);
-            // 
-            // removeSpriteToolStripMenuItem
-            // 
-            this.removeSpriteToolStripMenuItem.Name = "removeSpriteToolStripMenuItem";
-            this.removeSpriteToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.removeSpriteToolStripMenuItem.Text = "Remove";
-            this.removeSpriteToolStripMenuItem.Click += new System.EventHandler(this.removeSpriteToolStripMenuItem_Click);
-            // 
-            // connectionToolStripMenuItem
-            // 
-            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectConnectionToolStripMenuItem,
-            this.removeConnectionToolStripMenuItem});
-            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
-            this.connectionToolStripMenuItem.Text = "Connection";
-            // 
-            // selectConnectionToolStripMenuItem
-            // 
-            this.selectConnectionToolStripMenuItem.Name = "selectConnectionToolStripMenuItem";
-            this.selectConnectionToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.selectConnectionToolStripMenuItem.Text = "Select";
-            this.selectConnectionToolStripMenuItem.Click += new System.EventHandler(this.selectConnectionToolStripMenuItem_Click);
-            // 
-            // removeConnectionToolStripMenuItem
-            // 
-            this.removeConnectionToolStripMenuItem.Name = "removeConnectionToolStripMenuItem";
-            this.removeConnectionToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.removeConnectionToolStripMenuItem.Text = "Remove";
-            this.removeConnectionToolStripMenuItem.Click += new System.EventHandler(this.removeConnectionToolStripMenuItem_Click);
-            // 
-            // columnToolStripMenuItem
-            // 
-            this.columnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addColumnToolStripMenuItem,
-            this.removeColumnToolStripMenuItem});
-            this.columnToolStripMenuItem.Name = "columnToolStripMenuItem";
-            this.columnToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
-            this.columnToolStripMenuItem.Text = "Column";
-            // 
-            // addColumnToolStripMenuItem
-            // 
-            this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
-            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.addColumnToolStripMenuItem.Text = "Add";
-            this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.addColumnToolStripMenuItem_Click_1);
-            // 
-            // removeColumnToolStripMenuItem
-            // 
-            this.removeColumnToolStripMenuItem.Name = "removeColumnToolStripMenuItem";
-            this.removeColumnToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.removeColumnToolStripMenuItem.Text = "Remove";
-            this.removeColumnToolStripMenuItem.Click += new System.EventHandler(this.removeColumnToolStripMenuItem_Click);
-            // 
-            // rowToolStripMenuItem
-            // 
-            this.rowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addRowToolStripMenuItem,
-            this.removeRowToolStripMenuItem});
-            this.rowToolStripMenuItem.Name = "rowToolStripMenuItem";
-            this.rowToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
-            this.rowToolStripMenuItem.Text = "Row";
-            // 
-            // addRowToolStripMenuItem
-            // 
-            this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
-            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.addRowToolStripMenuItem.Text = "Add";
-            this.addRowToolStripMenuItem.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
-            // 
-            // removeRowToolStripMenuItem
-            // 
-            this.removeRowToolStripMenuItem.Name = "removeRowToolStripMenuItem";
-            this.removeRowToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
-            this.removeRowToolStripMenuItem.Text = "Remove";
-            this.removeRowToolStripMenuItem.Click += new System.EventHandler(this.removeRowToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenu,
-            this.editMenu,
-            this.viewMenu,
-            this.mapsMenu,
-            this.helpMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(4, 4);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(964, 33);
-            this.menuStrip1.TabIndex = 11;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tileToolMenu,
-            this.eraseMenu,
-            this.rectangleMenu,
-            this.moveToMenu,
-            this.centreMenu,
-            this.toolStripSeparator1,
-            this.spriteToolMenu,
-            this.toolStripSeparator2,
-            this.connectionToolMenu,
-            this.toolStripSeparator3,
-            this.playerStartMenu});
-            this.toolStrip1.Location = new System.Drawing.Point(4, 37);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(964, 32);
-            this.toolStrip1.TabIndex = 12;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tileToolMenu
-            // 
-            this.tileToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.tiles;
-            this.tileToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tileToolMenu.Name = "tileToolMenu";
-            this.tileToolMenu.Size = new System.Drawing.Size(74, 29);
-            this.tileToolMenu.Text = "&Tiles";
-            this.tileToolMenu.Click += new System.EventHandler(this.tileToolMenu_Click);
-            // 
-            // eraseMenu
-            // 
-            this.eraseMenu.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
-            this.eraseMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.eraseMenu.Name = "eraseMenu";
-            this.eraseMenu.Size = new System.Drawing.Size(81, 29);
-            this.eraseMenu.Text = "Erase";
-            this.eraseMenu.Click += new System.EventHandler(this.eraseMenu_Click);
-            // 
-            // rectangleMenu
-            // 
-            this.rectangleMenu.Image = global::RogueboyLevelEditor.Properties.Resources.Icon7;
-            this.rectangleMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.rectangleMenu.Name = "rectangleMenu";
-            this.rectangleMenu.Size = new System.Drawing.Size(116, 29);
-            this.rectangleMenu.Text = "Rectangle";
-            this.rectangleMenu.Click += new System.EventHandler(this.rectangleMenu_Click);
-            // 
-            // moveToMenu
-            // 
-            this.moveToMenu.Image = global::RogueboyLevelEditor.Properties.Resources.move;
-            this.moveToMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.moveToMenu.Name = "moveToMenu";
-            this.moveToMenu.Size = new System.Drawing.Size(108, 29);
-            this.moveToMenu.Text = "Move To";
-            this.moveToMenu.Click += new System.EventHandler(this.moveToMenu_Click);
-            // 
-            // centreMenu
-            // 
-            this.centreMenu.Image = global::RogueboyLevelEditor.Properties.Resources.centre;
-            this.centreMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.centreMenu.Name = "centreMenu";
-            this.centreMenu.Size = new System.Drawing.Size(91, 29);
-            this.centreMenu.Text = "Centre";
-            this.centreMenu.Click += new System.EventHandler(this.centreMenu_Click);
-            // 
-            // spriteToolMenu
-            // 
-            this.spriteToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.sprites;
-            this.spriteToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.spriteToolMenu.Name = "spriteToolMenu";
-            this.spriteToolMenu.Size = new System.Drawing.Size(94, 29);
-            this.spriteToolMenu.Text = "&Sprites";
-            this.spriteToolMenu.Click += new System.EventHandler(this.spriteToolMenu_Click);
-            // 
-            // connectionToolMenu
-            // 
-            this.connectionToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.connection;
-            this.connectionToolMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.connectionToolMenu.Name = "connectionToolMenu";
-            this.connectionToolMenu.Size = new System.Drawing.Size(138, 29);
-            this.connectionToolMenu.Text = "&Connections";
-            this.connectionToolMenu.Click += new System.EventHandler(this.connectionToolMenu_Click);
-            // 
-            // playerStartMenu
-            // 
-            this.playerStartMenu.Image = global::RogueboyLevelEditor.Properties.Resources.playerStart;
-            this.playerStartMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.playerStartMenu.Name = "playerStartMenu";
-            this.playerStartMenu.Size = new System.Drawing.Size(128, 29);
-            this.playerStartMenu.Text = "&Player Start";
-            this.playerStartMenu.Click += new System.EventHandler(this.playerStartMenu_Click);
-            // 
-            // HealthNumericUpDown
-            // 
-            this.HealthNumericUpDown.Location = new System.Drawing.Point(458, 326);
-            this.HealthNumericUpDown.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.HealthNumericUpDown.Name = "HealthNumericUpDown";
-            this.HealthNumericUpDown.Size = new System.Drawing.Size(57, 26);
-            this.HealthNumericUpDown.TabIndex = 31;
-            this.HealthNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HealthNumericUpDown.Visible = false;
-            this.HealthNumericUpDown.ValueChanged += new System.EventHandler(this.HealthNumericUpDown_ValueChanged);
-            this.HealthNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthNumericUpDown_KeyDown);
-            this.HealthNumericUpDown.Leave += new System.EventHandler(this.HealthNumericUpDown_Leave);
             // 
             // MapEditorForm
             // 
@@ -1262,5 +1283,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel currentFileLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStatusLabel;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
     }
 }

@@ -10,6 +10,7 @@ namespace RogueboyLevelEditor.Tools
     public class SpritePlacementTool : ITool<MapEditorControl>
     {
         private static readonly SpriteManager spriteManager = new SpriteManager();
+        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         private MapEditorControl control;
         private ListView listView;
@@ -42,7 +43,7 @@ namespace RogueboyLevelEditor.Tools
             this.control.MouseDown -= this.Control_MouseDown;
         }
 
-        private void AddSprite(Point point)
+        private Sprite AddSprite(Point point)
         {
             var spriteId = this.control.SelectedSpriteId;
             var sprite = spriteManager.GetSprite(spriteId);
@@ -54,11 +55,12 @@ namespace RogueboyLevelEditor.Tools
             _ = listViewItem.SubItems.Add(sprite.Name);
             _ = listViewItem.SubItems.Add(point.X.ToString());
             _ = listViewItem.SubItems.Add(point.Y.ToString());
-            _ = listViewItem.SubItems.Add(sprite.Health.ToString());
+            _ = listViewItem.SubItems.Add(sprite.Health == 0 ? "" : sprite.Health.ToString());
 
             listViewItem.ImageKey = sprite.TextureID;
 
             this.listView.Items.Add(listViewItem);
+            return sprite;
         }
 
         private void Control_MouseDown(object sender, MouseEventArgs e)
@@ -71,7 +73,19 @@ namespace RogueboyLevelEditor.Tools
             if (!this.control.CurrentMap.CheckInRange(location.X, location.Y))
                 return;
 
-            this.AddSprite(location);
+            Sprite sprite = this.AddSprite(location);
+
+
+            Point point = new Point();
+            point.X = this.control.CurrentMap.ToTileSpaceX(e.Location.X);
+            point.Y = this.control.CurrentMap.ToTileSpaceY(e.Location.Y);
+
+            TileChangedEventArgs eventArgs = new TileChangedEventArgs();
+            eventArgs.NewItem = sprite;
+            eventArgs.Location = point;
+
+            EventHandler<TileChangedEventArgs> handler = tileChanged;
+            handler?.Invoke(sender, eventArgs);
 
             this.control.Invalidate();
         }
