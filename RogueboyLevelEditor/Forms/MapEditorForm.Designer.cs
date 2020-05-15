@@ -140,6 +140,7 @@
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
             this.HealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.moveButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.overallTableLayout.SuspendLayout();
             this.tabPages.SuspendLayout();
@@ -1036,6 +1037,7 @@
             this.eraseMenu,
             this.rectangleMenu,
             this.selectTileButton,
+            this.moveButton,
             this.moveToMenu,
             this.centreMenu,
             this.toolStripSeparator1,
@@ -1147,6 +1149,15 @@
             this.HealthNumericUpDown.ValueChanged += new System.EventHandler(this.HealthNumericUpDown_ValueChanged);
             this.HealthNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthNumericUpDown_KeyDown);
             this.HealthNumericUpDown.Leave += new System.EventHandler(this.HealthNumericUpDown_Leave);
+            // 
+            // moveButton
+            // 
+            this.moveButton.Image = global::RogueboyLevelEditor.Properties.Resources.move;
+            this.moveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveButton.Name = "moveButton";
+            this.moveButton.Size = new System.Drawing.Size(65, 28);
+            this.moveButton.Text = "&Move";
+            this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
             // MapEditorForm
             // 
@@ -1298,5 +1309,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripButton selectTileButton;
+        private System.Windows.Forms.ToolStripButton moveButton;
     }
 }

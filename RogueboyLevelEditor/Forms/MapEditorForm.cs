@@ -845,6 +845,11 @@ namespace RogueboyLevelEditor.Forms
             this.mapEditorControl.Tool = new TileSelectTool();
         }
 
+        private void moveButton_Click(object sender, EventArgs e)
+        {
+            this.mapEditorControl.Tool = new DragMoveTool();
+        }
+
         private void eraseMenuItem_Click(object sender, EventArgs e)
         {
             this.mapEditorControl.SelectedTileId = -1;
