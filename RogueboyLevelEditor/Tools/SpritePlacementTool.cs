@@ -46,8 +46,14 @@ namespace RogueboyLevelEditor.Tools
         private Sprite AddSprite(Point point)
         {
             var spriteId = this.control.SelectedSpriteId;
+
+            // Np sprite selected ..
+
+            if (spriteId == -1) return null;
+
             var sprite = spriteManager.GetSprite(spriteId);
             this.control.CurrentMap.AddSprite(point.X, point.Y, spriteId, sprite.Health);
+            this.control.AddSprite(point, sprite);
 
             var listViewItem = new ListViewItem();
 
@@ -74,20 +80,8 @@ namespace RogueboyLevelEditor.Tools
                 return;
 
             Sprite sprite = this.AddSprite(location);
-
-
-            Point point = new Point();
-            point.X = this.control.CurrentMap.ToTileSpaceX(e.Location.X);
-            point.Y = this.control.CurrentMap.ToTileSpaceY(e.Location.Y);
-
-            TileChangedEventArgs eventArgs = new TileChangedEventArgs();
-            eventArgs.NewItem = sprite;
-            eventArgs.Location = point;
-
-            EventHandler<TileChangedEventArgs> handler = tileChanged;
-            handler?.Invoke(sender, eventArgs);
-
             this.control.Invalidate();
+
         }
     }
 }

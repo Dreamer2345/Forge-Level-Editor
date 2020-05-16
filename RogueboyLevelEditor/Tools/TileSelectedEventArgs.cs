@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace RogueboyLevelEditor.Tools
 {
-    public class TileChangedEventArgs : EventArgs
+    public class TileSelectedEventArgs : EventArgs
     {
 
         public Point Location;
-        public Tile OrigTile;
-        public Tile NewTile;
+        public Tile Tile;
 
     }
 }
