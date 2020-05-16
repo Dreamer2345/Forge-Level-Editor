@@ -828,6 +828,8 @@ namespace RogueboyLevelEditor.Forms
         private void centreMenu_Click(object sender, EventArgs e)
         {
             this.mapCollection.CurrentMap.CentreMap();
+            this.mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            this.mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
             this.mapEditorControl.Invalidate();
         }
 
