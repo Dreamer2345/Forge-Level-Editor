@@ -77,6 +77,7 @@ namespace RogueboyLevelEditor.Forms
             mapEditorControl.TileChanged += new EventHandler<TileChangedEventArgs>(mapEditorControl_onTileChanged);
             mapEditorControl.TileSelected += new EventHandler<TileSelectedEventArgs>(mapEditorControl_onTileSelected);
             mapEditorControl.SpriteAdded += new EventHandler<SpriteAddedEventArgs>(mapEditorControl_onSpriteAdded);
+            mapEditorControl.SingleActionComplete += new EventHandler<SingleActionEventArgs>(mapEditorControl_onSingleActionComplete);
 
             HealthNumericUpDown.Visible = false;
         }
@@ -724,6 +725,15 @@ namespace RogueboyLevelEditor.Forms
             eraseMenuItem.Enabled = true;
             rectangleMenu.Enabled = true;
             rectangleMenuItem.Enabled = true;
+            selectTileButton.Enabled = true;
+            pickTileMenuItem.Enabled = true;
+
+            moveButton.Enabled = true;
+            moveMenuItem.Enabled = true;
+            moveToMenu.Enabled = true;
+            moveToMenuItem.Enabled = true;
+            centreMenu.Enabled = true;
+            centreMenuItem.Enabled = true;
 
         }
 
@@ -741,7 +751,15 @@ namespace RogueboyLevelEditor.Forms
             eraseMenuItem.Enabled = false;
             rectangleMenu.Enabled = false;
             rectangleMenuItem.Enabled = false;
+            selectTileButton.Enabled = false;
+            pickTileMenuItem.Enabled = false;
 
+            moveButton.Enabled = true;
+            moveMenuItem.Enabled = true;
+            moveToMenu.Enabled = true;
+            moveToMenuItem.Enabled = true;
+            centreMenu.Enabled = true;
+            centreMenuItem.Enabled = true;
         }
 
         private void showConnectionTool()
@@ -756,7 +774,15 @@ namespace RogueboyLevelEditor.Forms
             eraseMenuItem.Enabled = false;
             rectangleMenu.Enabled = false;
             rectangleMenuItem.Enabled = false;
+            selectTileButton.Enabled = false;
+            pickTileMenuItem.Enabled = false;
 
+            moveButton.Enabled = true;
+            moveMenuItem.Enabled = true;
+            moveToMenu.Enabled = true;
+            moveToMenuItem.Enabled = true;
+            centreMenu.Enabled = true;
+            centreMenuItem.Enabled = true;
         }
 
         private void tabPages_SelectedIndexChanged(object sender, EventArgs e)
@@ -784,6 +810,16 @@ namespace RogueboyLevelEditor.Forms
                     eraseMenuItem.Enabled = false;
                     rectangleMenu.Enabled = false;
                     rectangleMenuItem.Enabled = false;
+                    selectTileButton.Enabled = false;
+                    pickTileMenuItem.Enabled = false;
+
+                    moveButton.Enabled = true;
+                    moveMenuItem.Enabled = true;
+                    moveToMenu.Enabled = true;
+                    moveToMenuItem.Enabled = true;
+                    centreMenu.Enabled = true;
+                    centreMenuItem.Enabled = true;
+
                     break;
 
             }
@@ -809,11 +845,25 @@ namespace RogueboyLevelEditor.Forms
         {
             this.mapEditorControl.Tool = new TileTool();
             this.mapEditorControl.SelectedTileId = -1;
+            this.SelectTileInListView(-1);
+
         }
 
         private void moveToMenu_Click(object sender, EventArgs e)
         {
             this.mapEditorControl.Tool = new FocusTool();
+            eraseMenu.Enabled = false;
+            eraseMenuItem.Enabled = false;
+            rectangleMenu.Enabled = false;
+            rectangleMenuItem.Enabled = false;
+            selectTileButton.Enabled = false;
+            pickTileMenuItem.Enabled = false;
+            moveButton.Enabled = false;
+            moveMenuItem.Enabled = false;
+            //moveToMenu.Enabled = false;
+            //moveToMenuItem.Enabled = false;
+            centreMenu.Enabled = false;
+            centreMenuItem.Enabled = false;
         }
 
         private void playerStartMenu_Click(object sender, EventArgs e)
@@ -829,6 +879,7 @@ namespace RogueboyLevelEditor.Forms
         {
             this.mapCollection.CurrentMap.CentreMap();
             this.mapEditorControl.Invalidate();
+            this.mapEditorControl.Refresh();
         }
 
         private void rectangleMenu_Click(object sender, EventArgs e)
@@ -838,16 +889,44 @@ namespace RogueboyLevelEditor.Forms
             tilesListView.Visible = true;
 
             this.mapEditorControl.Tool = new RectangleFillTool();
+
         }
 
         private void selectTileButton_Click(object sender, EventArgs e)
         {
             this.mapEditorControl.Tool = new TileSelectTool();
+
+            eraseMenu.Enabled = false;
+            eraseMenuItem.Enabled = false;
+            rectangleMenu.Enabled = false;
+            rectangleMenuItem.Enabled = false;
+            //selectTileButton.Enabled = false;
+            //pickTileMenuItem.Enabled = false;
+            moveButton.Enabled = false;
+            moveMenuItem.Enabled = false;
+            moveToMenu.Enabled = false;
+            moveToMenuItem.Enabled = false;
+            centreMenu.Enabled = false;
+            centreMenuItem.Enabled = false;
+
+
         }
 
         private void moveButton_Click(object sender, EventArgs e)
         {
             this.mapEditorControl.Tool = new DragMoveTool();
+            eraseMenu.Enabled = false;
+            eraseMenuItem.Enabled = false;
+            rectangleMenu.Enabled = false;
+            rectangleMenuItem.Enabled = false;
+            selectTileButton.Enabled = false;
+            pickTileMenuItem.Enabled = false;
+            //moveButton.Enabled = false;
+            //moveMenuItem.Enabled = false;
+            moveToMenu.Enabled = false;
+            moveToMenuItem.Enabled = false;
+            centreMenu.Enabled = false;
+            centreMenuItem.Enabled = false;
         }
 
         private void eraseMenuItem_Click(object sender, EventArgs e)
@@ -864,12 +943,7 @@ namespace RogueboyLevelEditor.Forms
 
             this.mapEditorControl.Tool = new RectangleFillTool();
         }
-
-        private void moveToMenuItem_Click(object sender, EventArgs e)
-        {
-            this.mapEditorControl.Tool = new FocusTool();
-        }
-
+        
         private void centreMenuItem_Click(object sender, EventArgs e)
         {
             mapCollection.CurrentMap.CentreMap();
@@ -1563,16 +1637,37 @@ namespace RogueboyLevelEditor.Forms
             this.SelectTileInListView(e.Tile.ID);
 
         }
+        
+        private void mapEditorControl_onSingleActionComplete(object sender, SingleActionEventArgs e) {
 
-        private void moveMenuItem_Click(object sender, EventArgs e) {
-            this.mapEditorControl.Tool = new DragMoveTool();
+            switch (tabPages.SelectedIndex) {
+
+                case 0:
+                    showTileTools();
+                    break;
+
+                case 1:
+                    showSpritesTool();
+                    break;
+
+                case 2:
+                    showConnectionTool();
+                    break;
+
+            }
+
+        }
+        
+        private void MapEditorForm_KeyDown(object sender, KeyEventArgs e) {
+
+            if ((centreMenu.Enabled == false) && (e.KeyCode == Keys.Escape)) {
+
+                showTileTools();
+
+            }
+
         }
 
-        private void pickTileMenuItem_Click(object sender, EventArgs e) {
-
-            this.mapEditorControl.Tool = new TileSelectTool();
-
-        }
     }
 
 }

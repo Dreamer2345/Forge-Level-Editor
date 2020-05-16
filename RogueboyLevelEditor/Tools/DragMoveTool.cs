@@ -11,7 +11,6 @@ namespace RogueboyLevelEditor.Tools
         private MapEditorControl control;
         private Point? startLocation;
         private Cursor oldCursor;
-        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         public void Attach(MapEditorControl control)
         {
@@ -62,6 +61,7 @@ namespace RogueboyLevelEditor.Tools
                 this.control.CurrentMap.drawOffsetY += (endLocation.Y - startLocation.Y);
 
                 this.startLocation = null;
+                this.control.CompleteSingleAction(this);
 
                 this.control.Invalidate();
             }

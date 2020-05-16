@@ -39,6 +39,7 @@ namespace RogueboyLevelEditor.Tools
         {
             this.SelectTileAt(e.Location);
             this.control.SelectTile(e.Location);
+            this.control.CompleteSingleAction(this);
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)

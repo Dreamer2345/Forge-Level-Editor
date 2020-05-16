@@ -8,7 +8,6 @@ namespace RogueboyLevelEditor.Tools
     public class FocusTool : ITool<MapEditorControl>
     {
         private MapEditorControl control;
-        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         public void Attach(MapEditorControl control)
         {
@@ -36,6 +35,7 @@ namespace RogueboyLevelEditor.Tools
         private void Control_MouseUp(object sender, MouseEventArgs e)
         {
             this.control.MapCollection.CurrentMap.DrawPos = this.control.MapCollection.CurrentMap.ToTileSpace(e.Location);
+            this.control.CompleteSingleAction(this);
             this.control.Invalidate();
         }
     }

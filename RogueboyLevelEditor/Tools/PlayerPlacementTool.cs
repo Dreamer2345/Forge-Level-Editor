@@ -8,7 +8,6 @@ namespace RogueboyLevelEditor.Tools
     public class PlayerPlacementTool : ITool<MapEditorControl>
     {
         private MapEditorControl control;
-        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         public void Attach(MapEditorControl control)
         {

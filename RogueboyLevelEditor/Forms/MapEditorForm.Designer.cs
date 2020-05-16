@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            RogueboyLevelEditor.mapCollection.MapCollection mapCollection2 = new RogueboyLevelEditor.mapCollection.MapCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapEditorForm));
+            RogueboyLevelEditor.mapCollection.MapCollection mapCollection1 = new RogueboyLevelEditor.mapCollection.MapCollection();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.fileLoadMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSaveMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,11 +42,11 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.eraseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rectangleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pickTileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.moveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveToMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pickTileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewOutOfBoundsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewTileMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -249,6 +249,13 @@
             this.rectangleMenuItem.Text = "&Rectangle";
             this.rectangleMenuItem.Click += new System.EventHandler(this.rectangleMenuItem_Click);
             // 
+            // pickTileMenuItem
+            // 
+            this.pickTileMenuItem.Name = "pickTileMenuItem";
+            this.pickTileMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.pickTileMenuItem.Text = "Pi&ck Tile";
+            this.pickTileMenuItem.Click += new System.EventHandler(this.selectTileButton_Click);
+            // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
@@ -259,14 +266,14 @@
             this.moveMenuItem.Name = "moveMenuItem";
             this.moveMenuItem.Size = new System.Drawing.Size(284, 30);
             this.moveMenuItem.Text = "&Move";
-            this.moveMenuItem.Click += new System.EventHandler(this.moveMenuItem_Click);
+            this.moveMenuItem.Click += new System.EventHandler(this.moveButton_Click);
             // 
             // moveToMenuItem
             // 
             this.moveToMenuItem.Name = "moveToMenuItem";
             this.moveToMenuItem.Size = new System.Drawing.Size(284, 30);
             this.moveToMenuItem.Text = "Move To";
-            this.moveToMenuItem.Click += new System.EventHandler(this.moveToMenuItem_Click);
+            this.moveToMenuItem.Click += new System.EventHandler(this.moveToMenu_Click);
             // 
             // centreMenuItem
             // 
@@ -274,13 +281,6 @@
             this.centreMenuItem.Size = new System.Drawing.Size(284, 30);
             this.centreMenuItem.Text = "&Centre";
             this.centreMenuItem.Click += new System.EventHandler(this.centreMenuItem_Click);
-            // 
-            // pickTileMenuItem
-            // 
-            this.pickTileMenuItem.Name = "pickTileMenuItem";
-            this.pickTileMenuItem.Size = new System.Drawing.Size(284, 30);
-            this.pickTileMenuItem.Text = "Pi&ck Tile";
-            this.pickTileMenuItem.Click += new System.EventHandler(this.pickTileMenuItem_Click);
             // 
             // viewMenu
             // 
@@ -853,15 +853,15 @@
             this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
             this.mapEditorControl.CurrentMap = null;
             this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
-            mapCollection2.drawBackground = true;
-            mapCollection2.drawConnections = true;
-            mapCollection2.drawOffsetX = 0;
-            mapCollection2.drawOffsetY = 0;
-            mapCollection2.drawPlayer = true;
-            mapCollection2.drawSprites = true;
-            mapCollection2.viewHeight = 10;
-            mapCollection2.viewWidth = 10;
-            this.mapEditorControl.MapCollection = mapCollection2;
+            mapCollection1.drawBackground = true;
+            mapCollection1.drawConnections = true;
+            mapCollection1.drawOffsetX = 0;
+            mapCollection1.drawOffsetY = 0;
+            mapCollection1.drawPlayer = true;
+            mapCollection1.drawSprites = true;
+            mapCollection1.viewHeight = 10;
+            mapCollection1.viewWidth = 10;
+            this.mapEditorControl.MapCollection = mapCollection1;
             this.mapEditorControl.Name = "mapEditorControl";
             this.mapEditorControl.SelectedSpriteId = -1;
             this.mapEditorControl.SelectedTileId = -1;
@@ -873,7 +873,6 @@
             // 
             // mapEditorContextMenu
             // 
-            this.mapEditorContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mapEditorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tileToolStripMenuItem,
             this.spriteToolStripMenuItem,
@@ -1188,12 +1187,14 @@
             this.Controls.Add(this.overallTableLayout);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(830, 530);
             this.Name = "MapEditorForm";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dark Ritual Level Editor";
             this.Load += new System.EventHandler(this.MapEditorForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MapEditorForm_KeyDown);
             this.Resize += new System.EventHandler(this.MapEditorForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.overallTableLayout.ResumeLayout(false);

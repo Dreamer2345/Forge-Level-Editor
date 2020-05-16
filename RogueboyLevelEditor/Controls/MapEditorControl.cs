@@ -15,6 +15,7 @@ namespace RogueboyLevelEditor.Controls
         public event EventHandler<TileChangedEventArgs> TileChanged;
         public event EventHandler<TileSelectedEventArgs> TileSelected;
         public event EventHandler<SpriteAddedEventArgs> SpriteAdded;
+        public event EventHandler<SingleActionEventArgs> SingleActionComplete;
 
         private readonly TextureManager textureManager = new TextureManager();
         private readonly TileManager tileManager = new TileManager();
@@ -190,6 +191,17 @@ namespace RogueboyLevelEditor.Controls
             eventArgs.Location = point;
 
             EventHandler<SpriteAddedEventArgs> handler = SpriteAdded;
+            handler?.Invoke(this, eventArgs);
+
+        }
+
+
+        public void CompleteSingleAction(object tool) {
+            
+            SingleActionEventArgs eventArgs = new SingleActionEventArgs();
+            eventArgs.Tool = tool;
+
+            EventHandler<SingleActionEventArgs> handler = SingleActionComplete;
             handler?.Invoke(this, eventArgs);
 
         }
