@@ -12,6 +12,11 @@ namespace RogueboyLevelEditor.Controls
 {
     public class MapEditorControl : Control
     {
+        public event EventHandler<TileChangedEventArgs> TileChanged;
+        public event EventHandler<TileSelectedEventArgs> TileSelected;
+        public event EventHandler<SpriteAddedEventArgs> SpriteAdded;
+        public event EventHandler<SingleActionEventArgs> SingleActionComplete;
+
         private readonly TextureManager textureManager = new TextureManager();
         private readonly TileManager tileManager = new TileManager();
 
@@ -97,7 +102,7 @@ namespace RogueboyLevelEditor.Controls
             var textureId = this.tileManager.GetTile(this.SelectedTileId).TextureID;
             var bitmap = this.textureManager.GetTexture(textureId);
 
-            // This colour seems arbitrary
+            // This colour seems arbitrary < not really, its the pink colour in the Pico8 palette but should probably be specified somewhere.
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
 
             graphics.DrawImage(bitmap, 8, 8, 16, 16);
@@ -135,5 +140,72 @@ namespace RogueboyLevelEditor.Controls
 
             this.TileCursor = null;
         }
+
+        public void ChangeTile(Point location) {
+
+            Point point = new Point();
+            point.X = this.CurrentMap.ToTileSpaceX(location.X);
+            point.Y = this.CurrentMap.ToTileSpaceY(location.Y);
+
+            int origTileId = this.CurrentMap.GetTile(point).tileID;
+            Tile origTile = this.TileManager.GetTile(origTileId);
+            Tile newTile = this.TileManager.GetTile(this.SelectedTileId);
+
+            TileChangedEventArgs eventArgs = new TileChangedEventArgs();
+            eventArgs.OrigTile = origTile;
+            eventArgs.NewTile = newTile;
+            eventArgs.Location = point;
+
+            EventHandler<TileChangedEventArgs> handler = TileChanged;
+            handler?.Invoke(this, eventArgs);
+
+        }
+
+
+        public void SelectTile(Point location) {
+
+            Point point = new Point();
+            point.X = this.CurrentMap.ToTileSpaceX(location.X);
+            point.Y = this.CurrentMap.ToTileSpaceY(location.Y);
+
+            Tile newTile = this.TileManager.GetTile(this.SelectedTileId);
+
+            TileSelectedEventArgs eventArgs = new TileSelectedEventArgs();
+            eventArgs.Tile = newTile;
+            eventArgs.Location = point;
+
+            EventHandler<TileSelectedEventArgs> handler = TileSelected;
+            handler?.Invoke(this, eventArgs);
+
+        }
+
+
+        public void AddSprite(Point location, Sprite sprite) {
+
+            Point point = new Point();
+            point.X = this.CurrentMap.ToTileSpaceX(location.X);
+            point.Y = this.CurrentMap.ToTileSpaceY(location.Y);
+
+            SpriteAddedEventArgs eventArgs = new SpriteAddedEventArgs();
+            eventArgs.Sprite = sprite;
+            eventArgs.Location = point;
+
+            EventHandler<SpriteAddedEventArgs> handler = SpriteAdded;
+            handler?.Invoke(this, eventArgs);
+
+        }
+
+
+        public void CompleteSingleAction(object tool) {
+            
+            SingleActionEventArgs eventArgs = new SingleActionEventArgs();
+            eventArgs.Tool = tool;
+
+            EventHandler<SingleActionEventArgs> handler = SingleActionComplete;
+            handler?.Invoke(this, eventArgs);
+
+        }
+
     }
+
 }

@@ -89,6 +89,9 @@
     <Compile Include="Tools\PlayerPlacementTool.cs" />
     <Compile Include="Tools\RectangleFillTool.cs" />
     <Compile Include="Tools\SpritePlacementTool.cs" />
+    <Compile Include="Tools\SpriteAddedEventArgs.cs" />
+    <Compile Include="Tools\SingleActionEventArgs.cs" />
+    <Compile Include="Tools\TileSelectedEventArgs.cs" />
     <Compile Include="Tools\TileChangedEventArgs.cs" />
     <Compile Include="Tools\TileSelectTool.cs" />
     <Compile Include="Tools\TileTool.cs" />

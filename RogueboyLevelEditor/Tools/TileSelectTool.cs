@@ -9,7 +9,6 @@ namespace RogueboyLevelEditor.Tools
     public class TileSelectTool : ITool<MapEditorControl>
     {
         private MapEditorControl control;
-        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         public void Attach(MapEditorControl control)
         {
@@ -39,6 +38,8 @@ namespace RogueboyLevelEditor.Tools
         private void Control_MouseDown(object sender, MouseEventArgs e)
         {
             this.SelectTileAt(e.Location);
+            this.control.SelectTile(e.Location);
+            this.control.CompleteSingleAction(this);
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)

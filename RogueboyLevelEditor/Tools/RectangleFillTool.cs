@@ -9,7 +9,6 @@ namespace RogueboyLevelEditor.Tools
     {
         // Half-transparent green
         private static readonly Color defaultColor = Color.FromArgb(127, 0, 255, 0);
-        public event EventHandler<TileChangedEventArgs> tileChanged;
 
         private MapEditorControl control;
         private Point? startPoint;

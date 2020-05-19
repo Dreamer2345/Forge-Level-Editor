@@ -28,7 +28,7 @@ namespace RogueboyLevelEditor.map.Component
             BaseMapComponent p1 = parentMap.GetTile(End);
             IsValid = false;
             if (tm.GetTile(p.tileID).IsSender)
-                if (tm.GetTile(p1.tileID).IsReciver)
+                if (tm.GetTile(p1.tileID).IsReceiver)
                     IsValid = true;
         }
 

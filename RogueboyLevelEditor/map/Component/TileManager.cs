@@ -10,17 +10,19 @@ namespace RogueboyLevelEditor.map.Component
 {
     public class Tile
     {
+        public int ID { get; private set; }
         public bool IsExit { get; private set; }
         public bool IsSender { get; private set; }
-        public bool IsReciver { get; private set; }
+        public bool IsReceiver { get; private set; }
         public string Name { get; private set; }
         public string TextureID { get; private set; }
 
-        public Tile(string Name, string TextureID, bool Exit = false, bool Sender = false, bool Reciver = false)
+        public Tile(int ID, string Name, string TextureID, bool Exit = false, bool Sender = false, bool Receiver = false)
         {
+            this.ID = ID;
             IsExit = Exit;
             IsSender = Sender;
-            IsReciver = Reciver;
+            IsReceiver = Receiver;
             this.Name = Name;
             this.TextureID = TextureID;
         }
@@ -69,7 +71,7 @@ namespace RogueboyLevelEditor.map.Component
                     }
 
 
-                    AddTile(ID, new Tile(Name, TextureID, IsExit, IsSender, IsReciver));
+                    AddTile(ID, new Tile(ID, Name, TextureID, IsExit, IsSender, IsReciver));
                 }
             }
             catch (Exception e)
@@ -85,7 +87,7 @@ namespace RogueboyLevelEditor.map.Component
             if (Tiles == null)
             {
                 Tiles = new Dictionary<int, Tile>();
-                Tiles.Add(-1, new Tile("Null", "Null"));
+                Tiles.Add(-1, new Tile(-1, "Null", "Null"));
             }
 
         }
@@ -116,7 +118,7 @@ namespace RogueboyLevelEditor.map.Component
             {
                 return Tiles[ID];
             }
-            return new Tile("Null","Null");
+            return new Tile(ID, "Null","Null");
         }
     }
 }

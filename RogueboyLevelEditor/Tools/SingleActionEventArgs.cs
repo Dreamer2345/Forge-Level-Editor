@@ -5,15 +5,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RogueboyLevelEditor.Tools
 {
-    public class TileChangedEventArgs : EventArgs
+    public class SingleActionEventArgs : EventArgs
     {
-
-        public Point Location;
-        public Tile OrigTile;
-        public Tile NewTile;
-
+        public object Tool;
     }
 }
