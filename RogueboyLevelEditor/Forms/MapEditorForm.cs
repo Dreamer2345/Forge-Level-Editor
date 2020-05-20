@@ -478,8 +478,13 @@ namespace RogueboyLevelEditor.Forms
                 return;
             }
 
-            mapsMenu.DropDownItems.RemoveByKey(mapCollection.CurrentMap.Name);
-            mapCollection.RemoveMap(mapCollection.CurrentMap);
+            using (var oldMenuItem = mapsMenu.DropDownItems[mapCollection.CurrentMap.Name])
+            {
+                oldMenuItem.Click -= changeMap_Click;
+
+                mapsMenu.DropDownItems.RemoveByKey(mapCollection.CurrentMap.Name);
+                mapCollection.RemoveMap(mapCollection.CurrentMap);
+            }
 
             if (mapCollection.OpenCount > 0)
             {
@@ -490,11 +495,9 @@ namespace RogueboyLevelEditor.Forms
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
                 return;
-
             }
 
             this.Close();
-
         }
 
         private void mapMoveUpMenu_Click(object sender, EventArgs e)
