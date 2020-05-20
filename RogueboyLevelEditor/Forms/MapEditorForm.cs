@@ -1,4 +1,4 @@
-﻿using RogueboyLevelEditor.map;
+using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
 using RogueboyLevelEditor.mapCollection;
 using RogueboyLevelEditor.TextureHandler;
@@ -18,8 +18,13 @@ namespace RogueboyLevelEditor.Forms
     {
         private const string keepOpen = "KeepOpen";
 
-        private MapCollection mapCollection;
         private readonly TileManager tileManager = new TileManager();
+
+        private MapCollection MapCollection
+        {
+            get => this.mapEditorControl.MapCollection;
+            set => this.mapEditorControl.MapCollection = value;
+        }
 
         void AddTextures()
         {
@@ -57,8 +62,7 @@ namespace RogueboyLevelEditor.Forms
             InitializeComponent();
 
             this.mapEditorControl.Tool = new TileTool();
-            this.mapCollection = this.mapEditorControl.MapCollection;
-            this.mapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250));
+            this.MapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250));
             showTileTools();
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
@@ -86,7 +90,7 @@ namespace RogueboyLevelEditor.Forms
         {
             spritesPlacedListView.Items.Clear();
             SpriteManager sm = new SpriteManager();
-            foreach (SpriteComponent i in mapCollection.CurrentMap.Sprites)
+            foreach (SpriteComponent i in MapCollection.CurrentMap.Sprites)
             {
                 Sprite sprite = sm.GetSprite(i.Type);
                 ListViewItem newItem = new ListViewItem();
@@ -103,7 +107,7 @@ namespace RogueboyLevelEditor.Forms
         void UpdateCurrentConnectors()
         {
             connectionListView.Items.Clear();
-            foreach (EnviromentAffectComponent i in mapCollection.CurrentMap.Connectors)
+            foreach (EnviromentAffectComponent i in MapCollection.CurrentMap.Connectors)
             {
                 EnviromentAffectComponent env = i;
                 ListViewItem newItem = new ListViewItem(env.IsValid.ToString());
@@ -194,7 +198,7 @@ namespace RogueboyLevelEditor.Forms
             ToolStripMenuItem menu = (ToolStripMenuItem)sender;
             Map chosenMap = (Map)menu.Tag;
 
-            if (mapCollection.ChangeMap(chosenMap))
+            if (MapCollection.ChangeMap(chosenMap))
             {
                 tickMapMenuItem(chosenMap.Name);
                 enableMapMenuOptions(chosenMap.Name);
@@ -207,24 +211,24 @@ namespace RogueboyLevelEditor.Forms
 
         private void MapEditorForm_Load(object sender, EventArgs e)
         {
-            mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-            mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
-            mapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
-            mapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
+            MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            MapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
+            MapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
 
-            if (mapCollection.OpenCount > 0)
+            if (MapCollection.OpenCount > 0)
             {
-                for (int i = 0; i < mapCollection.GetMaps().Count(); i++)
+                for (int i = 0; i < MapCollection.GetMaps().Count(); i++)
                 {
-                    Map map = mapCollection.GetMaps()[i];
+                    Map map = MapCollection.GetMaps()[i];
                     AddMapToOpenWindows(map, i == 0);
                 }
 
-                mapsMenu.DropDownItems[mapCollection.CurrentMap.Name].Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                mapsMenu.DropDownItems[MapCollection.CurrentMap.Name].Image = RogueboyLevelEditor.Properties.Resources.Tick;
                 mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
                 mapMoveDownMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowDown;
-                mapMoveDownMenu.Enabled = mapCollection.OpenCount > 1;
-                currentMapLabel.Text = mapCollection.GetMaps()[0].Name;
+                mapMoveDownMenu.Enabled = MapCollection.OpenCount > 1;
+                currentMapLabel.Text = MapCollection.GetMaps()[0].Name;
 
             }
 
@@ -278,21 +282,21 @@ namespace RogueboyLevelEditor.Forms
             {
                 if (openFileDialog.CheckFileExists)
                 {
-                    mapCollection = new MapCollection();
-                    mapCollection.FileName = System.IO.Path.GetFileName(openFileDialog.FileName);
-                    mapCollection.FilePath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
-                    mapCollection.AddMaps(MapCollection.LoadMaps(openFileDialog.FileName));
+                    MapCollection = new MapCollection();
+                    MapCollection.FileName = System.IO.Path.GetFileName(openFileDialog.FileName);
+                    MapCollection.FilePath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                    MapCollection.AddMaps(MapCollection.LoadMaps(openFileDialog.FileName));
                     currentFileLabel.Text = openFileDialog.FileName;
 
-                    mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-                    mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
-                    mapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
-                    mapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
+                    MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+                    MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+                    MapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
+                    MapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
 
-                    if (mapCollection.OpenCount == 0)
+                    if (MapCollection.OpenCount == 0)
                     {
                         MessageBox.Show("Error parsing map file.", "Parsing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        mapCollection = new MapCollection();
+                        MapCollection = new MapCollection();
                         return;
                     }
 
@@ -305,11 +309,11 @@ namespace RogueboyLevelEditor.Forms
 
                     // Load new maps into menu ..
 
-                    if (mapCollection.OpenCount > 0)
+                    if (MapCollection.OpenCount > 0)
                     {
-                        for (int i = 0; i < mapCollection.GetMaps().Count(); i++)
+                        for (int i = 0; i < MapCollection.GetMaps().Count(); i++)
                         {
-                            Map map = mapCollection.GetMaps()[i];
+                            Map map = MapCollection.GetMaps()[i];
                             AddMapToOpenWindows(map, i == 0);
                         }
                     }
@@ -317,8 +321,8 @@ namespace RogueboyLevelEditor.Forms
                     mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
                     mapMoveDownMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowDown;
 
-                    tickMapMenuItem(mapCollection.CurrentMap.Name);
-                    enableMapMenuOptions(mapCollection.CurrentMap.Name);
+                    tickMapMenuItem(MapCollection.CurrentMap.Name);
+                    enableMapMenuOptions(MapCollection.CurrentMap.Name);
 
                     UpdateCurrentSprites();
                     UpdateCurrentConnectors();
@@ -334,7 +338,7 @@ namespace RogueboyLevelEditor.Forms
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            NewMapForm form = new NewMapForm(mapCollection, null, mapCollection.FilePath);
+            NewMapForm form = new NewMapForm(MapCollection, null, MapCollection.FilePath);
             form.Owner = this;
             form.callback += Form_callback;
             form.Show();
@@ -349,7 +353,7 @@ namespace RogueboyLevelEditor.Forms
 
                 // Was this an existing map or a new one?
 
-                if (mapCollection.GetMaps().Contains(newMap))
+                if (MapCollection.GetMaps().Contains(newMap))
                 {
 
                     // Existing? Locate existing ticked map and change the name ..
@@ -375,7 +379,7 @@ namespace RogueboyLevelEditor.Forms
                     // New?  Add the entry to the collection and menu ..
 
                     AddMapToOpenWindows(newMap, true);
-                    mapCollection.AddMap(newMap);
+                    MapCollection.AddMap(newMap);
                     newMap.CentreMap();
 
                 }
@@ -383,7 +387,7 @@ namespace RogueboyLevelEditor.Forms
                 tickMapMenuItem(newMap.Name);
                 enableMapMenuOptions(newMap.Name);
 
-                mapCollection.CurrentMap = newMap;
+                MapCollection.CurrentMap = newMap;
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
 
@@ -401,7 +405,7 @@ namespace RogueboyLevelEditor.Forms
                 int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
                 int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[2].Text);
                 int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
-                mapCollection?.CurrentMap.RemoveSprite(new Point(X, Y), ID);
+                MapCollection?.CurrentMap.RemoveSprite(new Point(X, Y), ID);
                 spritesPlacedListView.Items.Remove(spritesPlacedListView.SelectedItems[0]);
                 this.mapEditorControl.Invalidate();
             }
@@ -409,22 +413,22 @@ namespace RogueboyLevelEditor.Forms
 
         private void fileSaveMenu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(mapCollection.FileName))
+            if (string.IsNullOrEmpty(MapCollection.FileName))
             {
-                saveFileDialog1.InitialDirectory = mapCollection.FilePath;
+                saveFileDialog1.InitialDirectory = MapCollection.FilePath;
                 saveFileDialog1.FileName = "Maps.h";
                 DialogResult result = saveFileDialog1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    mapCollection.FileName = System.IO.Path.GetFileName(saveFileDialog1.FileName);
-                    mapCollection.FilePath = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
+                    MapCollection.FileName = System.IO.Path.GetFileName(saveFileDialog1.FileName);
+                    MapCollection.FilePath = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
                     currentFileLabel.Text = saveFileDialog1.FileName;
-                    mapCollection.SaveMaps();
+                    MapCollection.SaveMaps();
                 }
             }
             else
             {
-                mapCollection.SaveMaps();
+                MapCollection.SaveMaps();
             }
         }
 
@@ -437,7 +441,7 @@ namespace RogueboyLevelEditor.Forms
                 int X1 = int.Parse(connectionListView.SelectedItems[0].SubItems[3].Text);
                 int Y1 = int.Parse(connectionListView.SelectedItems[0].SubItems[4].Text);
 
-                mapCollection?.CurrentMap.RemoveConnection(new Point(X, Y), new Point(X1, Y1));
+                MapCollection?.CurrentMap.RemoveConnection(new Point(X, Y), new Point(X1, Y1));
                 connectionListView.Items.Remove(connectionListView.SelectedItems[0]);
                 this.mapEditorControl.Invalidate();
             }
@@ -445,8 +449,8 @@ namespace RogueboyLevelEditor.Forms
 
         private void deleteMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mapCollection.RemoveMap(mapCollection.CurrentMap);
-            if (mapCollection.OpenCount > 0)
+            MapCollection.RemoveMap(MapCollection.CurrentMap);
+            if (MapCollection.OpenCount > 0)
                 return;
 
             Owner.Show();
@@ -462,7 +466,7 @@ namespace RogueboyLevelEditor.Forms
         private void mapAddMenu_Click(object sender, EventArgs e)
         {
 
-            NewMapForm form = new NewMapForm(mapCollection, null, mapCollection.FilePath);
+            NewMapForm form = new NewMapForm(MapCollection, null, MapCollection.FilePath);
             form.Owner = this;
             form.callback += Form_callback;
             form.Show();
@@ -472,25 +476,25 @@ namespace RogueboyLevelEditor.Forms
 
         private void mapDeleteMenu_Click(object sender, EventArgs e)
         {
-            if (mapCollection.OpenCount == 1)
+            if (MapCollection.OpenCount == 1)
             {
                 MessageBox.Show("You cannot delete the last map.", "Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            using (var oldMenuItem = mapsMenu.DropDownItems[mapCollection.CurrentMap.Name])
+            using (var oldMenuItem = mapsMenu.DropDownItems[MapCollection.CurrentMap.Name])
             {
                 oldMenuItem.Click -= changeMap_Click;
 
-                mapsMenu.DropDownItems.RemoveByKey(mapCollection.CurrentMap.Name);
-                mapCollection.RemoveMap(mapCollection.CurrentMap);
+                mapsMenu.DropDownItems.RemoveByKey(MapCollection.CurrentMap.Name);
+                MapCollection.RemoveMap(MapCollection.CurrentMap);
             }
 
-            if (mapCollection.OpenCount > 0)
+            if (MapCollection.OpenCount > 0)
             {
-                ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
-                tickMapMenuItem(mapCollection.CurrentMap.Name);
-                enableMapMenuOptions(mapCollection.CurrentMap.Name);
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[MapCollection.CurrentMap.Name];
+                tickMapMenuItem(MapCollection.CurrentMap.Name);
+                enableMapMenuOptions(MapCollection.CurrentMap.Name);
 
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
@@ -503,11 +507,11 @@ namespace RogueboyLevelEditor.Forms
         private void mapMoveUpMenu_Click(object sender, EventArgs e)
         {
 
-            ToolStripMenuItem menu = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
-            int menuIndex = mapsMenu.DropDownItems.IndexOfKey(mapCollection.CurrentMap.Name);
+            ToolStripMenuItem menu = (ToolStripMenuItem)mapsMenu.DropDownItems[MapCollection.CurrentMap.Name];
+            int menuIndex = mapsMenu.DropDownItems.IndexOfKey(MapCollection.CurrentMap.Name);
             mapsMenu.DropDownItems.RemoveByKey(menu.Name);
             mapsMenu.DropDownItems.Insert(menuIndex - 1, menu);
-            mapCollection.MoveCurrentMapUp();
+            MapCollection.MoveCurrentMapUp();
 
             enableMapMenuOptions(menu.Name);
 
@@ -516,11 +520,11 @@ namespace RogueboyLevelEditor.Forms
         private void mapMoveDownMenu_Click(object sender, EventArgs e)
         {
 
-            ToolStripMenuItem menu = (ToolStripMenuItem)mapsMenu.DropDownItems[mapCollection.CurrentMap.Name];
-            int menuIndex = mapsMenu.DropDownItems.IndexOfKey(mapCollection.CurrentMap.Name);
+            ToolStripMenuItem menu = (ToolStripMenuItem)mapsMenu.DropDownItems[MapCollection.CurrentMap.Name];
+            int menuIndex = mapsMenu.DropDownItems.IndexOfKey(MapCollection.CurrentMap.Name);
             mapsMenu.DropDownItems.RemoveByKey(menu.Name);
             mapsMenu.DropDownItems.Insert(menuIndex + 1, menu);
-            mapCollection.MoveCurrentMapDown();
+            MapCollection.MoveCurrentMapDown();
 
             enableMapMenuOptions(menu.Name);
 
@@ -558,16 +562,16 @@ namespace RogueboyLevelEditor.Forms
         private void fileSaveAsMenu_Click(object sender, EventArgs e)
         {
 
-            saveFileDialog1.InitialDirectory = mapCollection.FilePath;
-            saveFileDialog1.FileName = (string.IsNullOrWhiteSpace(mapCollection.FileName) ? "Maps.h" : mapCollection.FileName);
+            saveFileDialog1.InitialDirectory = MapCollection.FilePath;
+            saveFileDialog1.FileName = (string.IsNullOrWhiteSpace(MapCollection.FileName) ? "Maps.h" : MapCollection.FileName);
 
             DialogResult result = saveFileDialog1.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                mapCollection.FileName = System.IO.Path.GetFileName(saveFileDialog1.FileName);
-                mapCollection.FilePath = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
-                mapCollection.SaveMaps();
+                MapCollection.FileName = System.IO.Path.GetFileName(saveFileDialog1.FileName);
+                MapCollection.FilePath = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
+                MapCollection.SaveMaps();
                 currentFileLabel.Text = saveFileDialog1.FileName;
             }
 
@@ -576,7 +580,7 @@ namespace RogueboyLevelEditor.Forms
         private void mapPropertysToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            NewMapForm form = new NewMapForm(mapCollection, mapCollection.CurrentMap, mapCollection.FilePath);
+            NewMapForm form = new NewMapForm(MapCollection, MapCollection.CurrentMap, MapCollection.FilePath);
             form.Owner = this;
             form.callback += Form_callback;
             form.Show();
@@ -592,12 +596,12 @@ namespace RogueboyLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-                mapCollection.drawBackground = true;
+                MapCollection.drawBackground = true;
             }
             else
             {
                 menuItem.Image = null;
-                mapCollection.drawBackground = false;
+                MapCollection.drawBackground = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -610,12 +614,12 @@ namespace RogueboyLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-                mapCollection.drawSprites = true;
+                MapCollection.drawSprites = true;
             }
             else
             {
                 menuItem.Image = null;
-                mapCollection.drawSprites = false;
+                MapCollection.drawSprites = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -628,13 +632,13 @@ namespace RogueboyLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-                mapCollection.drawConnections = true;
+                MapCollection.drawConnections = true;
 
             }
             else
             {
                 menuItem.Image = null;
-                mapCollection.drawConnections = false;
+                MapCollection.drawConnections = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -647,12 +651,12 @@ namespace RogueboyLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-                mapCollection.drawPlayer = true;
+                MapCollection.drawPlayer = true;
             }
             else
             {
                 menuItem.Image = null;
-                mapCollection.drawPlayer = false;
+                MapCollection.drawPlayer = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -665,12 +669,12 @@ namespace RogueboyLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-                mapCollection.CurrentMap.ShowOutOfBounds = true;
+                MapCollection.CurrentMap.ShowOutOfBounds = true;
             }
             else
             {
                 menuItem.Image = null;
-                mapCollection.CurrentMap.ShowOutOfBounds = false;
+                MapCollection.CurrentMap.ShowOutOfBounds = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -700,7 +704,7 @@ namespace RogueboyLevelEditor.Forms
         {
             ListViewItem selectedItem = e.Item;
 
-            foreach (EnviromentAffectComponent connection in mapCollection.CurrentMap.Connectors)
+            foreach (EnviromentAffectComponent connection in MapCollection.CurrentMap.Connectors)
                 connection.Highlight =
                     (connection.Start.X == int.Parse(selectedItem.SubItems[1].Text) &&
                     connection.Start.Y == int.Parse(selectedItem.SubItems[2].Text) &&
@@ -712,8 +716,8 @@ namespace RogueboyLevelEditor.Forms
 
         private void overallTableLayout_SizeChanged(object sender, EventArgs e)
         {
-            mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-            mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
             this.mapEditorControl.Invalidate();
         }
 
@@ -880,9 +884,9 @@ namespace RogueboyLevelEditor.Forms
 
         private void centreMenu_Click(object sender, EventArgs e)
         {
-            this.mapCollection.CurrentMap.CentreMap();
-            this.mapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-            this.mapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            this.MapCollection.CurrentMap.CentreMap();
+            this.MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            this.MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
             this.mapEditorControl.Invalidate();
             this.mapEditorControl.Refresh();
         }
@@ -951,7 +955,7 @@ namespace RogueboyLevelEditor.Forms
         
         private void centreMenuItem_Click(object sender, EventArgs e)
         {
-            mapCollection.CurrentMap.CentreMap();
+            MapCollection.CurrentMap.CentreMap();
             this.mapEditorControl.Invalidate();
         }
 
@@ -1010,7 +1014,7 @@ namespace RogueboyLevelEditor.Forms
                 {
                     spritesPlacedListView.Items[(int)HealthNumericUpDown.Tag].SubItems[5].Text = HealthNumericUpDown.Value.ToString();
 
-                    SpriteComponent sprite = this.mapCollection.CurrentMap.Sprites[(int)HealthNumericUpDown.Tag];
+                    SpriteComponent sprite = this.MapCollection.CurrentMap.Sprites[(int)HealthNumericUpDown.Tag];
 
                     sprite.Health = (int)HealthNumericUpDown.Value;
                 }
