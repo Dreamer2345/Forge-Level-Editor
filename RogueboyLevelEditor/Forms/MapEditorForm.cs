@@ -1,4 +1,4 @@
-﻿using RogueboyLevelEditor.map;
+using RogueboyLevelEditor.map;
 using RogueboyLevelEditor.map.Component;
 using RogueboyLevelEditor.mapCollection;
 using RogueboyLevelEditor.TextureHandler;
