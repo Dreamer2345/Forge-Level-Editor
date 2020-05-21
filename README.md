@@ -19,19 +19,19 @@ So let’s get going!  In addition to downloading the level editor itself, you s
 
 Typically, you will want to add levels to the existing game’s collection.  This can be done by selecting the Load option from the File menu.
  
-<img src="/images/img1.png" data-canonical-src="/images/img1.png" width=100 />
+<img src="/images/img1.png" data-canonical-src="/images/img1.png" width=600 />
 
 <br/>
 
 Navigate to the Dark Ritual source code you downloaded earlier and locate the Maps.h file under the /src/maps directory.  Highlight the file and click Open.
 
-<img src="/images/img2.png" data-canonical-src="/images/img2.png" />
+<img src="/images/img2.png" data-canonical-src="/images/img2.png" width=600 />
 
 <br/>
 
 Once you have loaded the file, you can browse the existing maps under the Maps menu.  The map currently being viewed (and edited) is denoted by having a tick beside it.  Maps are played in the order they appear in the list and you will notice that you can move a map up or down in the list using the Move menu options.
 
-<img src="/images/img3.png" data-canonical-src="/images/img3.png" />
+<img src="/images/img3.png" data-canonical-src="/images/img3.png" width=600 />
 
 <br/>
 
@@ -39,7 +39,7 @@ Once you have loaded the file, you can browse the existing maps under the Maps m
 
 Additional maps can be added to the collection by clicking the Add Map option from the Maps menu.  This will reveal the Add a New Map dialogue as shown below.
 
-<img src="/images/img4.png" data-canonical-src="/images/img4.png" />
+<img src="/images/img4.png" data-canonical-src="/images/img4.png" width=600 />
 
 <br/>
 
@@ -51,7 +51,7 @@ Maps must be given a unique name that is also a valid C++ variable name, ie. it 
 
 Once the map is defined, you can add tiles and maps using the tools at your disposal.  Note that in addition to the tools on the menu, you can right click on elements of the map to reveal a context menu that allows you to interact with the tile or sprite below it.  Furthermore, a handy list of the most recently used tiles and sprites is available to speed up the development process.
 
-<img src="/images/img5.png" data-canonical-src="/images/img5.png" />
+<img src="/images/img5.png" data-canonical-src="/images/img5.png" width=600 />
 
 <br/>
 
@@ -83,19 +83,19 @@ A number of the tiles can interact with each other.  These combinations include 
 A simple example of a `switch` and `spear door` is shown below.  You may have noticed in the `Tiles` list that there are two columns named `IsSender` and `IsReceiver` which denotes whether the tile is something a player interacts with (the sender) or its state is altered by the action (the receiver).
 In the image below, the highlight `Spear Door` tile is a receiver of an action.  A few lines below that you can see that the `Worm Hole` is marked as both a sender and a receiver as two worm holes can be configured to provide bidirectional travel.
 
-<img src="/images/img6.png" data-canonical-src="/images/img6.png" />
+<img src="/images/img6.png" data-canonical-src="/images/img6.png" width=600 />
 
 <br/>
 
 The actions between tiles are defined on the Connections tab.  The connection defines a link from the sender to the receiver and is simply created by highlighting the corresponding tiles in this order.  As you add connections, they are validated in the right-hand side list.  Adding a connection between unrelated tiles or even from receiver to sender (ie backwards) will result in an invalid connection.
 
-<img src="/images/img7.png" data-canonical-src="/images/img7.png" />
+<img src="/images/img7.png" data-canonical-src="/images/img7.png" width=600 />
 
 <br/>
 
 `Worm Holes` can be configured as uni- or bi-directional by adding a single or multiple connections.  Note in the example below that two connections have been added with the start X/Y and end X/Y reversed.  
 
-<img src="/images/img8.png" data-canonical-src="/images/img8.png" />
+<img src="/images/img8.png" data-canonical-src="/images/img8.png" width=600 />
 
 <br/> 
 
@@ -103,7 +103,7 @@ The actions between tiles are defined on the Connections tab.  The connection de
 
 The final step to creating a level is to define the player’s starting position.  This can be achieved by selecting the `Player Start` tab and then clicking on the position within the map.  Once the starting position has been selected, it will be highlighted by a blue square.
 
-<img src="/images/img9.png" data-canonical-src="/images/img9.png" />
+<img src="/images/img9.png" data-canonical-src="/images/img9.png" width=600 />
 
 <br/>
 
@@ -112,6 +112,6 @@ The final step to creating a level is to define the player’s starting position
 
 Once you have completed your map design, you can save the changes by selecting `Save` from the `File` menu.  You are now ready to recompile the game with the new maps in place for testing .. I am going to assume you know how to compile a Pokitto progam using FemtoIDE or your favourite toolset.  If not contact me and I will help you!
 
-<img src="/images/img10.png" data-canonical-src="/images/img10.png" />
+<img src="/images/img10.png" data-canonical-src="/images/img10.png" width=600 />
 
 <br/>
