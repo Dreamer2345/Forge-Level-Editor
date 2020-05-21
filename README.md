@@ -17,19 +17,19 @@ So let’s get going!  In addition to downloading the level editor itself, you s
 
 ## Opening an Existing Map File
 
-Typically, you will want to add levels to the existing game’s collection.  This can be done by selecting the Load option from the File menu.
+Typically, you will want to add levels to the existing game’s collection.  This can be done by selecting the *Load* option from the *File* menu.
  
 <img src="/images/img1.png" data-canonical-src="/images/img1.png" width=650 />
 
 <br/>
 
-Navigate to the Dark Ritual source code you downloaded earlier and locate the Maps.h file under the /src/maps directory.  Highlight the file and click Open.
+Navigate to the Dark Ritual source code you downloaded earlier and locate the *Maps.h* file under the */src/maps* directory.  Highlight the file and click *Open*.
 
 <img src="/images/img2.png" data-canonical-src="/images/img2.png" width=660 />
 
 <br/>
 
-Once you have loaded the file, you can browse the existing maps under the Maps menu.  The map currently being viewed (and edited) is denoted by having a tick beside it.  Maps are played in the order they appear in the list and you will notice that you can move a map up or down in the list using the Move menu options.
+Once you have loaded the file, you can browse the existing maps under the *Maps* menu.  The map currently being viewed (and edited) is denoted by having a tick beside it.  Maps are played in the order they appear in the list and you will notice that you can move a map up or down in the list using the Move menu options.
 
 <img src="/images/img3.png" data-canonical-src="/images/img3.png" width=626 />
 
@@ -37,7 +37,7 @@ Once you have loaded the file, you can browse the existing maps under the Maps m
 
 ## Adding a new Level
 
-Additional maps can be added to the collection by clicking the Add Map option from the Maps menu.  This will reveal the Add a New Map dialogue as shown below.
+Additional maps can be added to the collection by clicking the *Add Map* option from the *Maps* menu.  This will reveal the *Add a New Map* dialogue as shown below.
 
 <img src="/images/img4.png" data-canonical-src="/images/img4.png" width=341 />
 
@@ -80,7 +80,7 @@ A number of the tiles require a brief description:
 ## Adding Switch Doors and other Active Elements
 
 A number of the tiles can interact with each other.  These combinations include `Lever/Spear Door`, `Lever/Exploding Barrel`, `Press Plate/Door` and `Worm Hole/Worm Hole`.
-A simple example of a `switch` and `spear door` is shown below.  You may have noticed in the `Tiles` list that there are two columns named `IsSender` and `IsReceiver` which denotes whether the tile is something a player interacts with (the sender) or its state is altered by the action (the receiver).
+A simple example of a `switch` and `spear door` is shown below.  You may have noticed in the *Tiles* list that there are two columns named `IsSender` and `IsReceiver` which denotes whether the tile is something a player interacts with (the sender) or its state is altered by the action (the receiver).
 In the image below, the highlight `Spear Door` tile is a receiver of an action.  A few lines below that you can see that the `Worm Hole` is marked as both a sender and a receiver as two worm holes can be configured to provide bidirectional travel.
 
 <img src="/images/img6.png" data-canonical-src="/images/img6.png" width=625 />
@@ -101,7 +101,7 @@ The actions between tiles are defined on the Connections tab.  The connection de
 
 ## Defining a Starting Position
 
-The final step to creating a level is to define the player’s starting position.  This can be achieved by selecting the `Player Start` tab and then clicking on the position within the map.  Once the starting position has been selected, it will be highlighted by a blue square.
+The final step to creating a level is to define the player’s starting position.  This can be achieved by selecting the *Player Start* tab and then clicking on the position within the map.  Once the starting position has been selected, it will be highlighted by a blue square.
 
 <img src="/images/img9.png" data-canonical-src="/images/img9.png" width=609 />
 
@@ -110,7 +110,7 @@ The final step to creating a level is to define the player’s starting position
 
 ## Saving the Map and Recompiling the Game.
 
-Once you have completed your map design, you can save the changes by selecting `Save` from the `File` menu.  You are now ready to recompile the game with the new maps in place for testing .. I am going to assume you know how to compile a Pokitto progam using FemtoIDE or your favourite toolset.  If not contact me and I will help you!
+Once you have completed your map design, you can save the changes by selecting *Save* from the *File* menu.  You are now ready to recompile the game with the new maps in place for testing .. I am going to assume you know how to compile a Pokitto progam using FemtoIDE or your favourite toolset.  If not contact me and I will help you!
 
 <img src="/images/img10.png" data-canonical-src="/images/img10.png" width=360 />
 
