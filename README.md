@@ -5,9 +5,13 @@ If you have played Dark Ritual enough, you may have realised that it consists of
 Defining a level is accomplished in four easy steps:
 
 •	design your level using the selection of tiles
+
 •	add sprites (enemies and objects the player interacts with) within the map
+
 •	wire up any actions that one tile has on another, such as a lever that opens a door
+
 •	define the player’s starting position
+
 
 Once done, you can save the map and recompile the game and start playing.
 So let’s get going!  In addition to downloading the level editor itself, you should also download the Dark Ritual source code. 
@@ -16,7 +20,7 @@ So let’s get going!  In addition to downloading the level editor itself, you s
 
 Typically, you will want to add levels to the existing game’s collection.  This can be done by selecting the Load option from the File menu.
  
- 
+<img src="/images/img1.png" data-canonical-src="/images/img1.png" />
 
 Navigate to the Dark Ritual source code you downloaded earlier and locate the Maps.h file under the /src/maps directory.  Highlight the file and click Open.
 
