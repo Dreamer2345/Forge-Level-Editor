@@ -19,7 +19,7 @@ So let’s get going!  In addition to downloading the level editor itself, you s
 
 Typically, you will want to add levels to the existing game’s collection.  This can be done by selecting the Load option from the File menu.
  
-<img src="/images/img1.png" data-canonical-src="/images/img1.png" />
+<img src="/images/img1.png" data-canonical-src="/images/img1.png" width=100 />
 
 <br/>
 
