@@ -17,6 +17,7 @@ namespace RogueboyLevelEditor.Forms
     public partial class MapEditorForm : Form
     {
         private const string keepOpen = "KeepOpen";
+        private const int mapMenu_MapStart = 7;
 
         private readonly TileManager tileManager = new TileManager();
 
@@ -303,8 +304,8 @@ namespace RogueboyLevelEditor.Forms
 
                     // Remove any existing menu items ..
 
-                    while (mapsMenu.DropDownItems.Count > 6)
-                        mapsMenu.DropDownItems.RemoveAt(6);
+                    while (mapsMenu.DropDownItems.Count > mapMenu_MapStart)
+                        mapsMenu.DropDownItems.RemoveAt(mapMenu_MapStart);
 
 
                     // Load new maps into menu ..
@@ -358,7 +359,7 @@ namespace RogueboyLevelEditor.Forms
 
                     // Existing? Locate existing ticked map and change the name ..
 
-                    for (int x = 6; x < mapsMenu.DropDownItems.Count; x++)
+                    for (int x = mapMenu_MapStart; x < mapsMenu.DropDownItems.Count; x++)
                     {
 
                         ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
@@ -536,7 +537,7 @@ namespace RogueboyLevelEditor.Forms
 
             // Remove other tick marks from menu items ..
 
-            for (int x = 6; x < mapsMenu.DropDownItems.Count; x++)
+            for (int x = mapMenu_MapStart; x < mapsMenu.DropDownItems.Count; x++)
             {
                 ToolStripMenuItem otherMenuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
                 otherMenuItem.ImageKey = null;
@@ -553,7 +554,7 @@ namespace RogueboyLevelEditor.Forms
         private void enableMapMenuOptions(String mapName)
         {
 
-            mapMoveUpMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != 6);
+            mapMoveUpMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != mapMenu_MapStart);
             mapMoveDownMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != mapsMenu.DropDownItems.Count - 1);
             currentMapLabel.Text = mapName;
 

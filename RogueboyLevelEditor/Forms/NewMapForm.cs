@@ -79,18 +79,6 @@ namespace RogueboyLevelEditor.Forms
                 return;
             }
 
-            //if (string.IsNullOrWhiteSpace(Filepath)||(Filepath == ""))
-            //{
-            //    folderBrowserDialog1.SelectedPath = Directory.GetCurrentDirectory() + "\\Maps";
-            //    DialogResult result = folderBrowserDialog1.ShowDialog();
-
-            //    if (result == DialogResult.Cancel)
-            //    {
-            //        return;
-            //    }
-            //    Filepath = folderBrowserDialog1.SelectedPath;
-            //} 
-
             if (Output == null) {
                 Output = new Map(new BaseMapComponent(-1), textBox1.Text, Filepath, (int)mapWidthUpDown.Value, (int)mapHeightUpDown.Value, (int)mapTimerUpDown.Value);
             }
@@ -106,26 +94,6 @@ namespace RogueboyLevelEditor.Forms
         public void CloseForm()
         {
             this.Close();
-        }
-
-        private void NewMapForm_Load(object sender, EventArgs e)
-        {
-            this.FormClosing += NewMapForm_FormClosing;
-        }
-
-        private void NewMapForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    Valid = false;
-            //    if (!Closing)
-            //    {
-            //        Closing = true;
-            //        callback?.Invoke(this);
-            //    }
-            //}
-            
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

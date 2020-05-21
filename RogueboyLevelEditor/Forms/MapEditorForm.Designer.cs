@@ -38,8 +38,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.FileExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapPropertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.eraseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rectangleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pickTileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +75,13 @@
             this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabSpriteTool = new System.Windows.Forms.TabPage();
             this.spriteToolTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
+            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesListView = new System.Windows.Forms.ListView();
             this.Texture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -100,6 +105,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
             this.mapEditorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,22 +134,15 @@
             this.eraseMenu = new System.Windows.Forms.ToolStripButton();
             this.rectangleMenu = new System.Windows.Forms.ToolStripButton();
             this.selectTileButton = new System.Windows.Forms.ToolStripButton();
-            this.moveButton = new System.Windows.Forms.ToolStripButton();
-            this.moveToMenu = new System.Windows.Forms.ToolStripButton();
-            this.centreMenu = new System.Windows.Forms.ToolStripButton();
             this.spriteToolMenu = new System.Windows.Forms.ToolStripButton();
             this.connectionToolMenu = new System.Windows.Forms.ToolStripButton();
             this.playerStartMenu = new System.Windows.Forms.ToolStripButton();
-            this.HealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
-            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
+            this.moveButton = new System.Windows.Forms.ToolStripButton();
+            this.moveToMenu = new System.Windows.Forms.ToolStripButton();
+            this.centreMenu = new System.Windows.Forms.ToolStripButton();
+            this.HealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.mapPropertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.overallTableLayout.SuspendLayout();
             this.tabPages.SuspendLayout();
@@ -210,8 +209,6 @@
             // editMenu
             // 
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mapPropertysToolStripMenuItem,
-            this.toolStripMenuItem7,
             this.eraseMenuItem,
             this.rectangleMenuItem,
             this.pickTileMenuItem,
@@ -223,63 +220,50 @@
             this.editMenu.Size = new System.Drawing.Size(54, 29);
             this.editMenu.Text = "&Edit";
             // 
-            // mapPropertysToolStripMenuItem
-            // 
-            this.mapPropertysToolStripMenuItem.Name = "mapPropertysToolStripMenuItem";
-            this.mapPropertysToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(284, 30);
-            this.mapPropertysToolStripMenuItem.Text = "Map &Properties";
-            this.mapPropertysToolStripMenuItem.Click += new System.EventHandler(this.mapPropertysToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(281, 6);
-            // 
             // eraseMenuItem
             // 
             this.eraseMenuItem.Name = "eraseMenuItem";
-            this.eraseMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.eraseMenuItem.Size = new System.Drawing.Size(252, 30);
             this.eraseMenuItem.Text = "&Erase";
             this.eraseMenuItem.Click += new System.EventHandler(this.eraseMenuItem_Click);
             // 
             // rectangleMenuItem
             // 
             this.rectangleMenuItem.Name = "rectangleMenuItem";
-            this.rectangleMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.rectangleMenuItem.Size = new System.Drawing.Size(252, 30);
             this.rectangleMenuItem.Text = "&Rectangle";
             this.rectangleMenuItem.Click += new System.EventHandler(this.rectangleMenuItem_Click);
             // 
             // pickTileMenuItem
             // 
             this.pickTileMenuItem.Name = "pickTileMenuItem";
-            this.pickTileMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.pickTileMenuItem.Size = new System.Drawing.Size(252, 30);
             this.pickTileMenuItem.Text = "Pi&ck Tile";
             this.pickTileMenuItem.Click += new System.EventHandler(this.selectTileButton_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(281, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(249, 6);
             // 
             // moveMenuItem
             // 
             this.moveMenuItem.Name = "moveMenuItem";
-            this.moveMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.moveMenuItem.Size = new System.Drawing.Size(252, 30);
             this.moveMenuItem.Text = "&Move";
             this.moveMenuItem.Click += new System.EventHandler(this.moveButton_Click);
             // 
             // moveToMenuItem
             // 
             this.moveToMenuItem.Name = "moveToMenuItem";
-            this.moveToMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.moveToMenuItem.Size = new System.Drawing.Size(252, 30);
             this.moveToMenuItem.Text = "Move To";
             this.moveToMenuItem.Click += new System.EventHandler(this.moveToMenu_Click);
             // 
             // centreMenuItem
             // 
             this.centreMenuItem.Name = "centreMenuItem";
-            this.centreMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.centreMenuItem.Size = new System.Drawing.Size(252, 30);
             this.centreMenuItem.Text = "&Centre";
             this.centreMenuItem.Click += new System.EventHandler(this.centreMenuItem_Click);
             // 
@@ -336,6 +320,7 @@
             this.mapsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mapAddMenu,
             this.mapDeleteMenu,
+            this.mapPropertysToolStripMenuItem,
             this.toolStripMenuItem1,
             this.mapMoveUpMenu,
             this.mapMoveDownMenu,
@@ -347,26 +332,26 @@
             // mapAddMenu
             // 
             this.mapAddMenu.Name = "mapAddMenu";
-            this.mapAddMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapAddMenu.Size = new System.Drawing.Size(284, 30);
             this.mapAddMenu.Text = "&Add Map";
             this.mapAddMenu.Click += new System.EventHandler(this.mapAddMenu_Click);
             // 
             // mapDeleteMenu
             // 
             this.mapDeleteMenu.Name = "mapDeleteMenu";
-            this.mapDeleteMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapDeleteMenu.Size = new System.Drawing.Size(284, 30);
             this.mapDeleteMenu.Text = "&Delete Map";
             this.mapDeleteMenu.Click += new System.EventHandler(this.mapDeleteMenu_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(281, 6);
             // 
             // mapMoveUpMenu
             // 
             this.mapMoveUpMenu.Name = "mapMoveUpMenu";
-            this.mapMoveUpMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveUpMenu.Size = new System.Drawing.Size(284, 30);
             this.mapMoveUpMenu.Tag = "KeepOpen";
             this.mapMoveUpMenu.Text = "Move &Up";
             this.mapMoveUpMenu.Click += new System.EventHandler(this.mapMoveUpMenu_Click);
@@ -374,7 +359,7 @@
             // mapMoveDownMenu
             // 
             this.mapMoveDownMenu.Name = "mapMoveDownMenu";
-            this.mapMoveDownMenu.Size = new System.Drawing.Size(193, 30);
+            this.mapMoveDownMenu.Size = new System.Drawing.Size(284, 30);
             this.mapMoveDownMenu.Tag = "KeepOpen";
             this.mapMoveDownMenu.Text = "Move &Down";
             this.mapMoveDownMenu.Click += new System.EventHandler(this.mapMoveDownMenu_Click);
@@ -382,7 +367,7 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(281, 6);
             // 
             // helpMenu
             // 
@@ -554,6 +539,75 @@
             this.spriteToolTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 545);
             this.spriteToolTableLayout.TabIndex = 25;
+            // 
+            // spritesPlacedListView
+            // 
+            this.spritesPlacedListView.AutoArrange = false;
+            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SpritePicture,
+            this.spritesPlacedListView_IDColumn,
+            this.spritesPlacedListView_Name,
+            this.spritesPlacedListView_XColumn,
+            this.spritesPlacedListView_YColumn,
+            this.spritesPlacedListView_HealthColumn});
+            this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spritesPlacedListView.FullRowSelect = true;
+            this.spritesPlacedListView.GridLines = true;
+            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.spritesPlacedListView.HideSelection = false;
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 275);
+            this.spritesPlacedListView.MultiSelect = false;
+            this.spritesPlacedListView.Name = "spritesPlacedListView";
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 267);
+            this.spritesPlacedListView.TabIndex = 27;
+            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
+            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
+            this.spritesPlacedListView.Visible = false;
+            this.spritesPlacedListView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.spritesPlacedListView_Scroll);
+            this.spritesPlacedListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesPlacedListView_ColumnWidthChanged);
+            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
+            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesPlacedListView_SelectedIndexChanged);
+            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
+            // 
+            // SpritePicture
+            // 
+            this.SpritePicture.Tag = "30";
+            this.SpritePicture.Text = "";
+            this.SpritePicture.Width = 30;
+            // 
+            // spritesPlacedListView_IDColumn
+            // 
+            this.spritesPlacedListView_IDColumn.Tag = "40";
+            this.spritesPlacedListView_IDColumn.Text = "ID";
+            this.spritesPlacedListView_IDColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_IDColumn.Width = 40;
+            // 
+            // spritesPlacedListView_Name
+            // 
+            this.spritesPlacedListView_Name.Tag = "96";
+            this.spritesPlacedListView_Name.Text = "Name";
+            this.spritesPlacedListView_Name.Width = 96;
+            // 
+            // spritesPlacedListView_XColumn
+            // 
+            this.spritesPlacedListView_XColumn.Tag = "36";
+            this.spritesPlacedListView_XColumn.Text = "X";
+            this.spritesPlacedListView_XColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_XColumn.Width = 36;
+            // 
+            // spritesPlacedListView_YColumn
+            // 
+            this.spritesPlacedListView_YColumn.Tag = "36";
+            this.spritesPlacedListView_YColumn.Text = "Y";
+            this.spritesPlacedListView_YColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_YColumn.Width = 38;
+            // 
+            // spritesPlacedListView_HealthColumn
+            // 
+            this.spritesPlacedListView_HealthColumn.Tag = "60";
+            this.spritesPlacedListView_HealthColumn.Text = "Health";
+            this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // spritesListView
             // 
@@ -776,6 +830,33 @@
             this.toolStatusLabel.Spring = true;
             this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // mapEditorControl
+            // 
+            this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mapEditorControl.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
+            this.mapEditorControl.CurrentMap = null;
+            this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
+            mapCollection1.drawBackground = true;
+            mapCollection1.drawConnections = true;
+            mapCollection1.drawOffsetX = 0;
+            mapCollection1.drawOffsetY = 0;
+            mapCollection1.drawPlayer = true;
+            mapCollection1.drawSprites = true;
+            mapCollection1.viewHeight = 10;
+            mapCollection1.viewWidth = 10;
+            this.mapEditorControl.MapCollection = mapCollection1;
+            this.mapEditorControl.Name = "mapEditorControl";
+            this.mapEditorControl.SelectedSpriteId = -1;
+            this.mapEditorControl.SelectedTileId = -1;
+            this.mapEditorControl.Size = new System.Drawing.Size(546, 583);
+            this.mapEditorControl.TabIndex = 16;
+            this.mapEditorControl.TileCursor = null;
+            this.mapEditorControl.Tool = null;
+            this.mapEditorControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapEditorControl_MouseMove);
+            // 
             // mapEditorContextMenu
             // 
             this.mapEditorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -939,7 +1020,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
@@ -1012,33 +1092,6 @@
             this.selectTileButton.Text = "Pi&ck Tile";
             this.selectTileButton.Click += new System.EventHandler(this.selectTileButton_Click);
             // 
-            // moveButton
-            // 
-            this.moveButton.Image = global::RogueboyLevelEditor.Properties.Resources.move;
-            this.moveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.moveButton.Name = "moveButton";
-            this.moveButton.Size = new System.Drawing.Size(85, 29);
-            this.moveButton.Text = "&Move";
-            this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
-            // 
-            // moveToMenu
-            // 
-            this.moveToMenu.Image = global::RogueboyLevelEditor.Properties.Resources.move;
-            this.moveToMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.moveToMenu.Name = "moveToMenu";
-            this.moveToMenu.Size = new System.Drawing.Size(108, 29);
-            this.moveToMenu.Text = "Move To";
-            this.moveToMenu.Click += new System.EventHandler(this.moveToMenu_Click);
-            // 
-            // centreMenu
-            // 
-            this.centreMenu.Image = global::RogueboyLevelEditor.Properties.Resources.centre;
-            this.centreMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.centreMenu.Name = "centreMenu";
-            this.centreMenu.Size = new System.Drawing.Size(91, 29);
-            this.centreMenu.Text = "Centre";
-            this.centreMenu.Click += new System.EventHandler(this.centreMenu_Click);
-            // 
             // spriteToolMenu
             // 
             this.spriteToolMenu.Image = global::RogueboyLevelEditor.Properties.Resources.sprites;
@@ -1066,6 +1119,38 @@
             this.playerStartMenu.Text = "&Player Start";
             this.playerStartMenu.Click += new System.EventHandler(this.playerStartMenu_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 32);
+            // 
+            // moveButton
+            // 
+            this.moveButton.Image = global::RogueboyLevelEditor.Properties.Resources.move;
+            this.moveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveButton.Name = "moveButton";
+            this.moveButton.Size = new System.Drawing.Size(85, 29);
+            this.moveButton.Text = "&Move";
+            this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
+            // 
+            // moveToMenu
+            // 
+            this.moveToMenu.Image = global::RogueboyLevelEditor.Properties.Resources.move;
+            this.moveToMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveToMenu.Name = "moveToMenu";
+            this.moveToMenu.Size = new System.Drawing.Size(108, 29);
+            this.moveToMenu.Text = "Move To";
+            this.moveToMenu.Click += new System.EventHandler(this.moveToMenu_Click);
+            // 
+            // centreMenu
+            // 
+            this.centreMenu.Image = global::RogueboyLevelEditor.Properties.Resources.centre;
+            this.centreMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.centreMenu.Name = "centreMenu";
+            this.centreMenu.Size = new System.Drawing.Size(91, 29);
+            this.centreMenu.Text = "Centre";
+            this.centreMenu.Click += new System.EventHandler(this.centreMenu_Click);
+            // 
             // HealthNumericUpDown
             // 
             this.HealthNumericUpDown.Location = new System.Drawing.Point(458, 326);
@@ -1083,106 +1168,13 @@
             this.HealthNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthNumericUpDown_KeyDown);
             this.HealthNumericUpDown.Leave += new System.EventHandler(this.HealthNumericUpDown_Leave);
             // 
-            // toolStripSeparator4
+            // mapPropertysToolStripMenuItem
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 32);
-            // 
-            // spritesPlacedListView
-            // 
-            this.spritesPlacedListView.AutoArrange = false;
-            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.SpritePicture,
-            this.spritesPlacedListView_IDColumn,
-            this.spritesPlacedListView_Name,
-            this.spritesPlacedListView_XColumn,
-            this.spritesPlacedListView_YColumn,
-            this.spritesPlacedListView_HealthColumn});
-            this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spritesPlacedListView.FullRowSelect = true;
-            this.spritesPlacedListView.GridLines = true;
-            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 275);
-            this.spritesPlacedListView.MultiSelect = false;
-            this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 267);
-            this.spritesPlacedListView.TabIndex = 27;
-            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
-            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
-            this.spritesPlacedListView.Visible = false;
-            this.spritesPlacedListView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.spritesPlacedListView_Scroll);
-            this.spritesPlacedListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesPlacedListView_ColumnWidthChanged);
-            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
-            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesPlacedListView_SelectedIndexChanged);
-            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
-            // 
-            // SpritePicture
-            // 
-            this.SpritePicture.Tag = "30";
-            this.SpritePicture.Text = "";
-            this.SpritePicture.Width = 30;
-            // 
-            // spritesPlacedListView_IDColumn
-            // 
-            this.spritesPlacedListView_IDColumn.Tag = "40";
-            this.spritesPlacedListView_IDColumn.Text = "ID";
-            this.spritesPlacedListView_IDColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_IDColumn.Width = 40;
-            // 
-            // spritesPlacedListView_Name
-            // 
-            this.spritesPlacedListView_Name.Tag = "96";
-            this.spritesPlacedListView_Name.Text = "Name";
-            this.spritesPlacedListView_Name.Width = 96;
-            // 
-            // spritesPlacedListView_XColumn
-            // 
-            this.spritesPlacedListView_XColumn.Tag = "36";
-            this.spritesPlacedListView_XColumn.Text = "X";
-            this.spritesPlacedListView_XColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_XColumn.Width = 36;
-            // 
-            // spritesPlacedListView_YColumn
-            // 
-            this.spritesPlacedListView_YColumn.Tag = "36";
-            this.spritesPlacedListView_YColumn.Text = "Y";
-            this.spritesPlacedListView_YColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_YColumn.Width = 38;
-            // 
-            // spritesPlacedListView_HealthColumn
-            // 
-            this.spritesPlacedListView_HealthColumn.Tag = "60";
-            this.spritesPlacedListView_HealthColumn.Text = "Health";
-            this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // mapEditorControl
-            // 
-            this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mapEditorControl.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
-            this.mapEditorControl.CurrentMap = null;
-            this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
-            mapCollection1.drawBackground = true;
-            mapCollection1.drawConnections = true;
-            mapCollection1.drawOffsetX = 0;
-            mapCollection1.drawOffsetY = 0;
-            mapCollection1.drawPlayer = true;
-            mapCollection1.drawSprites = true;
-            mapCollection1.viewHeight = 10;
-            mapCollection1.viewWidth = 10;
-            this.mapEditorControl.MapCollection = mapCollection1;
-            this.mapEditorControl.Name = "mapEditorControl";
-            this.mapEditorControl.SelectedSpriteId = -1;
-            this.mapEditorControl.SelectedTileId = -1;
-            this.mapEditorControl.Size = new System.Drawing.Size(546, 583);
-            this.mapEditorControl.TabIndex = 16;
-            this.mapEditorControl.TileCursor = null;
-            this.mapEditorControl.Tool = null;
-            this.mapEditorControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapEditorControl_MouseMove);
+            this.mapPropertysToolStripMenuItem.Name = "mapPropertysToolStripMenuItem";
+            this.mapPropertysToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.mapPropertysToolStripMenuItem.Size = new System.Drawing.Size(284, 30);
+            this.mapPropertysToolStripMenuItem.Text = "Map &Properties";
+            this.mapPropertysToolStripMenuItem.Click += new System.EventHandler(this.mapPropertysToolStripMenuItem_Click);
             // 
             // MapEditorForm
             // 
@@ -1195,7 +1187,7 @@
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(830, 530);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "MapEditorForm";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -1232,7 +1224,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileLoadMenu;
         private System.Windows.Forms.ToolStripMenuItem editMenu;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
-        private System.Windows.Forms.ToolStripMenuItem mapPropertysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mapsMenu;
         private System.Windows.Forms.ToolStripMenuItem viewMenu;
         private System.Windows.Forms.ToolStripMenuItem FileExitMenu;
@@ -1302,7 +1293,6 @@
         private System.Windows.Forms.ToolStripMenuItem eraseMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rectangleMenuItem;
         private System.Windows.Forms.ImageList tabImageList;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem moveToMenuItem;
         private System.Windows.Forms.ToolStripMenuItem centreMenuItem;
@@ -1340,5 +1330,6 @@
         private System.Windows.Forms.ToolStripMenuItem moveMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pickTileMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem mapPropertysToolStripMenuItem;
     }
 }

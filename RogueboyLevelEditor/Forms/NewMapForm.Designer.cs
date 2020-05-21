@@ -217,7 +217,6 @@
             this.Name = "NewMapForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Map";
-            this.Load += new System.EventHandler(this.NewMapForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mapWidthUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapHeightUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapTimerUpDown)).EndInit();
