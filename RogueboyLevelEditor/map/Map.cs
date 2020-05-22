@@ -113,7 +113,7 @@ namespace RogueboyLevelEditor.map
             byte Timer = Array[++Pointer];
             BaseMapComponent outOfBoundsTile = new BaseMapComponent(Array[++Pointer]);
             Pointer++;
-            Map newMap = new Map(outOfBoundsTile, name, FilePath, width, height, Timer, 0, 0);
+            Map newMap = new Map(outOfBoundsTile, name, width, height, Timer, 0, 0);
             newMap.PlayerStart = playerStart;
 
             for (int i = 0; i < width; i++)
@@ -266,13 +266,12 @@ namespace RogueboyLevelEditor.map
             }
         }
 
-        public Map(BaseMapComponent OutOfBounds, string Name = "Map", string Filepath = "", int xSize = 15, int ySize = 15, int timer = 255, int DrawOffsetX = 0, int DrawOffsetY = 0)
+        public Map(BaseMapComponent OutOfBounds, string Name = "Map", int xSize = 15, int ySize = 15, int timer = 255, int DrawOffsetX = 0, int DrawOffsetY = 0)
         {
             this.DrawOffsetX = DrawOffsetX;
             this.DrawOffsetY = DrawOffsetY;
             this.OutOfBoundsTile = OutOfBounds;
             this.Name = Name;
-            this.Filepath = Filepath;
             Timer = timer;
             this.width = xSize;
             this.height = ySize;

@@ -63,7 +63,7 @@ namespace RogueboyLevelEditor.Forms
             InitializeComponent();
 
             this.mapEditorControl.Tool = new TileTool();
-            this.MapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250));
+            this.MapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", 15, 15, 250));
             showTileTools();
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
