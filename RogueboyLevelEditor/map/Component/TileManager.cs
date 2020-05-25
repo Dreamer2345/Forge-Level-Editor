@@ -58,6 +58,12 @@ namespace RogueboyLevelEditor.map.Component
             tiles.Add(ID, tile);
         }
 
+        public static void Load(string filePath)
+        {
+            foreach (var tile in LoadTiles(filePath))
+                AddTile(tile.ID, tile);
+        }
+
         private static IEnumerable<Tile> LoadTiles(string filePath)
         {
             var xmlDoc = XDocument.Load(filePath);
@@ -97,12 +103,6 @@ namespace RogueboyLevelEditor.map.Component
 
                 yield return new Tile(id, name, textureID, isExit, isSender, isReceiver);
             }
-        }
-
-        public static void Load(string filePath)
-        {
-            foreach (var tile in LoadTiles(filePath))
-                AddTile(tile.ID, tile);
         }
     }
 }

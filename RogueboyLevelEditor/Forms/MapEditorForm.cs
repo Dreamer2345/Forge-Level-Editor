@@ -38,8 +38,8 @@ namespace RogueboyLevelEditor.Forms
         {
             try
             {
-                var tilePath = Path.Combine(Directory.GetCurrentDirectory(), "Config/TileAssignments.xml");
-                TileManager.Load(tilePath);
+                var tilesPath = Path.Combine(Directory.GetCurrentDirectory(), "Config/TileAssignments.xml");
+                TileManager.Load(tilesPath);
             }
             catch (Exception exception)
             {
@@ -50,12 +50,15 @@ namespace RogueboyLevelEditor.Forms
 
         void AddSprites()
         {
-            SpriteManager spriteManager = new SpriteManager();
-
-            ExceptionReport exception = spriteManager.Load(Directory.GetCurrentDirectory() + "/Config/SpriteAssignments.xml");
-
-            if (exception.Failed)
-                MessageBox.Show(exception.exception.ToString(), "Error loading Sprites", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                var spritesPath = Path.Combine(Directory.GetCurrentDirectory(), "Config/SpriteAssignments.xml");
+                SpriteManager.Load(spritesPath);
+            }
+            catch (Exception exception)
+            {
+                _ = MessageBox.Show(exception.ToString(), "Error loading Sprites", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public MapEditorForm()
@@ -93,33 +96,37 @@ namespace RogueboyLevelEditor.Forms
         void UpdateCurrentSprites()
         {
             spritesPlacedListView.Items.Clear();
-            SpriteManager sm = new SpriteManager();
+
             foreach (SpriteComponent i in MapCollection.CurrentMap.Sprites)
             {
-                Sprite sprite = sm.GetSprite(i.Type);
-                ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(i.Type.ToString());
-                newItem.SubItems.Add(sprite.Name);
-                newItem.SubItems.Add(i.SpritePosition.X.ToString());
-                newItem.SubItems.Add(i.SpritePosition.Y.ToString());
-                newItem.SubItems.Add(i.Health == 0 ? "" : i.Health.ToString());
-                newItem.ImageKey = sprite.TextureID;
-                spritesPlacedListView.Items.Add(newItem);
+                var sprite = SpriteManager.GetSprite(i.Type);
+
+                var newItem = new ListViewItem();
+                _ = newItem.SubItems.Add(i.Type.ToString());
+                _ = newItem.SubItems.Add(sprite.Name);
+                _ = newItem.SubItems.Add(i.SpritePosition.X.ToString());
+                _ = newItem.SubItems.Add(i.SpritePosition.Y.ToString());
+                _ = newItem.SubItems.Add(i.Health == 0 ? "" : i.Health.ToString());
+                _ = newItem.ImageKey = sprite.TextureID;
+
+                _ = this.spritesPlacedListView.Items.Add(newItem);
             }
         }
 
         void UpdateCurrentConnectors()
         {
-            connectionListView.Items.Clear();
-            foreach (EnviromentAffectComponent i in MapCollection.CurrentMap.Connectors)
+            this.connectionListView.Items.Clear();
+
+            foreach (EnviromentAffectComponent environment in MapCollection.CurrentMap.Connectors)
             {
-                EnviromentAffectComponent env = i;
-                ListViewItem newItem = new ListViewItem(env.IsValid.ToString());
-                newItem.SubItems.Add(env.Start.X.ToString());
-                newItem.SubItems.Add(env.Start.Y.ToString());
-                newItem.SubItems.Add(env.End.X.ToString());
-                newItem.SubItems.Add(env.End.Y.ToString());
-                connectionListView.Items.Add(newItem);
+                var newItem = new ListViewItem(environment.IsValid.ToString());
+
+                _ = newItem.SubItems.Add(environment.Start.X.ToString());
+                _ = newItem.SubItems.Add(environment.Start.Y.ToString());
+                _ = newItem.SubItems.Add(environment.End.X.ToString());
+                _ = newItem.SubItems.Add(environment.End.Y.ToString());
+
+                _ = this.connectionListView.Items.Add(newItem);
             }
         }
 
@@ -127,53 +134,61 @@ namespace RogueboyLevelEditor.Forms
         {
             TextureManager textureManager = new TextureManager();
 
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(16, 16);
-            imageList.TransparentColor = Color.FromArgb(255, 119, 168);
+            var imageList = new ImageList
+            {
+                ImageSize = new Size(16, 16),
+                TransparentColor = Color.FromArgb(255, 119, 168)
+            };
 
             foreach (Tile tile in TileManager.Tiles)
                 imageList.Images.Add(tile.TextureID, textureManager.GetTexture(tile.TextureID));
 
-            tilesListView.SmallImageList = imageList;
+            this.tilesListView.SmallImageList = imageList;
 
             foreach (KeyValuePair<int, Tile> pair in TileManager.EnumerateTiles())
             {
-                ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(pair.Key.ToString());
-                newItem.SubItems.Add(pair.Value.Name);
-                newItem.SubItems.Add(pair.Value.IsExit.ToString());
-                newItem.SubItems.Add(pair.Value.IsSender.ToString());
-                newItem.SubItems.Add(pair.Value.IsReceiver.ToString());
-                newItem.ImageKey = pair.Value.TextureID;
-                tilesListView.Items.Add(newItem);
+                var newItem = new ListViewItem();
+
+                _ = newItem.SubItems.Add(pair.Key.ToString());
+                _ = newItem.SubItems.Add(pair.Value.Name);
+                _ = newItem.SubItems.Add(pair.Value.IsExit.ToString());
+                _ = newItem.SubItems.Add(pair.Value.IsSender.ToString());
+                _ = newItem.SubItems.Add(pair.Value.IsReceiver.ToString());
+                _ = newItem.ImageKey = pair.Value.TextureID;
+
+                _ = this.tilesListView.Items.Add(newItem);
             }
         }
+
         void AddSpritesToListView()
         {
             TextureManager textureManager = new TextureManager();
-            SpriteManager SpriteManager = new SpriteManager();
-            List<Tuple<int, Sprite>> Tiles = SpriteManager.GetAllSprites();
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(16, 16);
-            imageList.TransparentColor = Color.FromArgb(255, 119, 168);
 
-            foreach (Tuple<int, Sprite> i in Tiles)
+            var imageList = new ImageList
             {
-                imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
-            }
+                ImageSize = new Size(16, 16),
+                TransparentColor = Color.FromArgb(255, 119, 168)
+            };
 
-            spritesListView.SmallImageList = imageList;
-            spritesPlacedListView.SmallImageList = imageList;
-            foreach (Tuple<int, Sprite> i in Tiles)
+            foreach (var sprite in SpriteManager.Sprites)
+                imageList.Images.Add(sprite.TextureID, textureManager.GetTexture(sprite.TextureID));
+
+            this.spritesListView.SmallImageList = imageList;
+            this.spritesPlacedListView.SmallImageList = imageList;
+
+            foreach (KeyValuePair<int, Sprite> pair in SpriteManager.EnumerateSprites())
             {
-                ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(i.Item1.ToString());
-                newItem.SubItems.Add(i.Item2.Name);
-                newItem.SubItems.Add(i.Item2.Health == 0 ? "" : i.Item2.Health.ToString());
-                newItem.ImageKey = i.Item2.TextureID;
-                spritesListView.Items.Add(newItem);
+                var newItem = new ListViewItem();
+
+                _ = newItem.SubItems.Add(pair.Key.ToString());
+                _ = newItem.SubItems.Add(pair.Value.Name);
+                _ = newItem.SubItems.Add(pair.Value.Health == 0 ? "" : pair.Value.Health.ToString());
+                _ = newItem.ImageKey = pair.Value.TextureID;
+
+                _ = this.spritesListView.Items.Add(newItem);
             }
         }
+
         void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
         {
             if (map == null) return;
