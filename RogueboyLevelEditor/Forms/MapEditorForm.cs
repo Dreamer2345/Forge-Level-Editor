@@ -99,7 +99,7 @@ namespace RogueboyLevelEditor.Forms
 
         void UpdateCurrentSprites()
         {
-            spritesPlacedListView.Items.Clear();
+            this.spritesPlacedListView.Items.Clear();
 
             foreach (SpriteComponent i in MapCollection.CurrentMap.Sprites)
             {

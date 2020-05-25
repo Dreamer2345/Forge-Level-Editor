@@ -34,7 +34,7 @@ namespace RogueboyLevelEditor.map.Component
             get; private set;
         }
 
-        public static Sprite Null { get; } = new Sprite(-1, "Null", "Null", 0);
+        public static Sprite Null { get; private set; } = new Sprite(-1, "Null", "Null", 0);
     }
 
     public static class SpriteManager

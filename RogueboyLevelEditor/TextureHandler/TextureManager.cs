@@ -8,16 +8,18 @@ namespace RogueboyLevelEditor.TextureHandler
 {
     public static class TextureManager
     {
+        private static readonly Bitmap errorTexture = GenerateErrorTexture(16, 16);
+
         private static Dictionary<string, Bitmap> textures = new Dictionary<string, Bitmap>()
         {
-            { "Null", Error }
+            { "Null", errorTexture }
         };
 
-        public static Bitmap Error { get; private set; } = GenerateErrorTexture(16, 16);
+        public static Bitmap ErrorTexture { get; private set; } = errorTexture;
 
         public static Bitmap GetTexture(string id)
         {
-            return textures.TryGetValue(id, out Bitmap bitmap) ? bitmap : Error;
+            return textures.TryGetValue(id, out Bitmap bitmap) ? bitmap : ErrorTexture;
         }
 
         private static void AddTexture(string id, Bitmap texture, Color transparentColour)
