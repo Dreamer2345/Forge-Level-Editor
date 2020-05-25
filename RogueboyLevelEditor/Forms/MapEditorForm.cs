@@ -19,8 +19,6 @@ namespace RogueboyLevelEditor.Forms
         private const string keepOpen = "KeepOpen";
         private const int mapMenu_MapStart = 7;
 
-        private readonly TileManager tileManager = new TileManager();
-
         private MapCollection MapCollection
         {
             get => this.mapEditorControl.MapCollection;
@@ -29,30 +27,42 @@ namespace RogueboyLevelEditor.Forms
 
         void AddTextures()
         {
-            TextureManager textureManager = new TextureManager();
-            ExceptionReport exception = textureManager.Load(Directory.GetCurrentDirectory() + "/Config/TextureAssignments.xml");
-
-            if (exception.Failed)
-                MessageBox.Show(exception.exception.ToString(), "Error loading Textures", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                var texturesPath = Path.Combine(Directory.GetCurrentDirectory(), "Config/TextureAssignments.xml");
+                TextureManager.Load(texturesPath);
+            }
+            catch (Exception exception)
+            {
+                _ = MessageBox.Show(exception.ToString(), "Error loading Textures", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void AddTiles()
         {
-            TileManager tileManager = new TileManager();
-            ExceptionReport exception = tileManager.Load(Directory.GetCurrentDirectory() + "/Config/TileAssignments.xml");
-
-            if (exception.Failed)
-                MessageBox.Show(exception.exception.ToString(), "Error loading Tiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                var tilesPath = Path.Combine(Directory.GetCurrentDirectory(), "Config/TileAssignments.xml");
+                TileManager.Load(tilesPath);
+            }
+            catch (Exception exception)
+            {
+                _ = MessageBox.Show(exception.ToString(), "Error loading Tiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         void AddSprites()
         {
-            SpriteManager spriteManager = new SpriteManager();
-            ExceptionReport exception = spriteManager.Load(Directory.GetCurrentDirectory() + "/Config/SpriteAssignments.xml");
-
-            if (exception.Failed)
-                MessageBox.Show(exception.exception.ToString(), "Error loading Sprites", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                var spritesPath = Path.Combine(Directory.GetCurrentDirectory(), "Config/SpriteAssignments.xml");
+                SpriteManager.Load(spritesPath);
+            }
+            catch (Exception exception)
+            {
+                _ = MessageBox.Show(exception.ToString(), "Error loading Sprites", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public MapEditorForm()
@@ -89,91 +99,96 @@ namespace RogueboyLevelEditor.Forms
 
         void UpdateCurrentSprites()
         {
-            spritesPlacedListView.Items.Clear();
-            SpriteManager sm = new SpriteManager();
+            this.spritesPlacedListView.Items.Clear();
+
             foreach (SpriteComponent i in MapCollection.CurrentMap.Sprites)
             {
-                Sprite sprite = sm.GetSprite(i.Type);
-                ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(i.Type.ToString());
-                newItem.SubItems.Add(sprite.Name);
-                newItem.SubItems.Add(i.SpritePosition.X.ToString());
-                newItem.SubItems.Add(i.SpritePosition.Y.ToString());
-                newItem.SubItems.Add(i.Health == 0 ? "" : i.Health.ToString());
-                newItem.ImageKey = sprite.TextureID;
-                spritesPlacedListView.Items.Add(newItem);
+                var sprite = SpriteManager.GetSprite(i.Type);
+
+                var newItem = new ListViewItem();
+                _ = newItem.SubItems.Add(i.Type.ToString());
+                _ = newItem.SubItems.Add(sprite.Name);
+                _ = newItem.SubItems.Add(i.SpritePosition.X.ToString());
+                _ = newItem.SubItems.Add(i.SpritePosition.Y.ToString());
+                _ = newItem.SubItems.Add(i.Health == 0 ? "" : i.Health.ToString());
+                _ = newItem.ImageKey = sprite.TextureID;
+
+                _ = this.spritesPlacedListView.Items.Add(newItem);
             }
         }
 
         void UpdateCurrentConnectors()
         {
-            connectionListView.Items.Clear();
-            foreach (EnviromentAffectComponent i in MapCollection.CurrentMap.Connectors)
+            this.connectionListView.Items.Clear();
+
+            foreach (EnviromentAffectComponent environment in MapCollection.CurrentMap.Connectors)
             {
-                EnviromentAffectComponent env = i;
-                ListViewItem newItem = new ListViewItem(env.IsValid.ToString());
-                newItem.SubItems.Add(env.Start.X.ToString());
-                newItem.SubItems.Add(env.Start.Y.ToString());
-                newItem.SubItems.Add(env.End.X.ToString());
-                newItem.SubItems.Add(env.End.Y.ToString());
-                connectionListView.Items.Add(newItem);
+                var newItem = new ListViewItem(environment.IsValid.ToString());
+
+                _ = newItem.SubItems.Add(environment.Start.X.ToString());
+                _ = newItem.SubItems.Add(environment.Start.Y.ToString());
+                _ = newItem.SubItems.Add(environment.End.X.ToString());
+                _ = newItem.SubItems.Add(environment.End.Y.ToString());
+
+                _ = this.connectionListView.Items.Add(newItem);
             }
         }
 
         void AddTilesToListView()
         {
-
-            TextureManager textureManager = new TextureManager();
-            List<Tuple<int, Tile>> Tiles = tileManager.GetAllTiles();
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(16, 16);
-            imageList.TransparentColor = Color.FromArgb(255, 119, 168);
-
-            foreach (Tuple<int, Tile> i in Tiles)
+            var imageList = new ImageList
             {
-                imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
-            }
+                ImageSize = new Size(16, 16),
+                TransparentColor = Color.FromArgb(255, 119, 168)
+            };
 
-            tilesListView.SmallImageList = imageList;
+            foreach (Tile tile in TileManager.Tiles)
+                imageList.Images.Add(tile.TextureID, TextureManager.GetTexture(tile.TextureID));
 
-            foreach (Tuple<int, Tile> i in Tiles)
+            this.tilesListView.SmallImageList = imageList;
+
+            foreach (KeyValuePair<int, Tile> pair in TileManager.EnumerateTiles())
             {
-                ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(i.Item1.ToString());
-                newItem.SubItems.Add(i.Item2.Name);
-                newItem.SubItems.Add(i.Item2.IsExit.ToString());
-                newItem.SubItems.Add(i.Item2.IsSender.ToString());
-                newItem.SubItems.Add(i.Item2.IsReceiver.ToString());
-                newItem.ImageKey = i.Item2.TextureID;
-                tilesListView.Items.Add(newItem);
+                var newItem = new ListViewItem();
+
+                _ = newItem.SubItems.Add(pair.Key.ToString());
+                _ = newItem.SubItems.Add(pair.Value.Name);
+                _ = newItem.SubItems.Add(pair.Value.IsExit.ToString());
+                _ = newItem.SubItems.Add(pair.Value.IsSender.ToString());
+                _ = newItem.SubItems.Add(pair.Value.IsReceiver.ToString());
+                _ = newItem.ImageKey = pair.Value.TextureID;
+
+                _ = this.tilesListView.Items.Add(newItem);
             }
         }
+
         void AddSpritesToListView()
         {
-            TextureManager textureManager = new TextureManager();
-            SpriteManager SpriteManager = new SpriteManager();
-            List<Tuple<int, Sprite>> Tiles = SpriteManager.GetAllSprites();
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(16, 16);
-            imageList.TransparentColor = Color.FromArgb(255, 119, 168);
-
-            foreach (Tuple<int, Sprite> i in Tiles)
+            var imageList = new ImageList
             {
-                imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
-            }
+                ImageSize = new Size(16, 16),
+                TransparentColor = Color.FromArgb(255, 119, 168)
+            };
 
-            spritesListView.SmallImageList = imageList;
-            spritesPlacedListView.SmallImageList = imageList;
-            foreach (Tuple<int, Sprite> i in Tiles)
+            foreach (var sprite in SpriteManager.Sprites)
+                imageList.Images.Add(sprite.TextureID, TextureManager.GetTexture(sprite.TextureID));
+
+            this.spritesListView.SmallImageList = imageList;
+            this.spritesPlacedListView.SmallImageList = imageList;
+
+            foreach (KeyValuePair<int, Sprite> pair in SpriteManager.EnumerateSprites())
             {
-                ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(i.Item1.ToString());
-                newItem.SubItems.Add(i.Item2.Name);
-                newItem.SubItems.Add(i.Item2.Health == 0 ? "" : i.Item2.Health.ToString());
-                newItem.ImageKey = i.Item2.TextureID;
-                spritesListView.Items.Add(newItem);
+                var newItem = new ListViewItem();
+
+                _ = newItem.SubItems.Add(pair.Key.ToString());
+                _ = newItem.SubItems.Add(pair.Value.Name);
+                _ = newItem.SubItems.Add(pair.Value.Health == 0 ? "" : pair.Value.Health.ToString());
+                _ = newItem.ImageKey = pair.Value.TextureID;
+
+                _ = this.spritesListView.Items.Add(newItem);
             }
         }
+
         void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
         {
             if (map == null) return;

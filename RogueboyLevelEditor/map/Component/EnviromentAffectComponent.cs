@@ -23,13 +23,9 @@ namespace RogueboyLevelEditor.map.Component
 
         void UpdateValid()
         {
-            TileManager tm = new TileManager();
-            BaseMapComponent p = parentMap.GetTile(Start);
-            BaseMapComponent p1 = parentMap.GetTile(End);
-            IsValid = false;
-            if (tm.GetTile(p.tileID).IsSender)
-                if (tm.GetTile(p1.tileID).IsReceiver)
-                    IsValid = true;
+            var p0 = parentMap.GetTile(Start);
+            var p1 = parentMap.GetTile(End);
+            this.IsValid = (TileManager.GetTile(p0.tileID).IsSender && TileManager.GetTile(p1.tileID).IsReceiver);
         }
 
         public override void Draw(Graphics graphics, Point Pos)
