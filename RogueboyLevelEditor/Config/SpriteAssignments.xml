@@ -193,33 +193,15 @@
     <health>0</health>
   </sprite>
   <sprite>
-    <name>Boss 01</name>
-    <id>40</id>
-    <texture>boss_01</texture>
-    <health>120</health>
-  </sprite>
-  <sprite>
-    <name>Boss 02</name>
+    <name>Beholder</name>
     <id>41</id>
-    <texture>boss_02</texture>
+    <texture>beholder</texture>
     <health>120</health>
   </sprite>
   <sprite>
-    <name>Boss 03</name>
+    <name>Cyclops</name>
     <id>42</id>
-    <texture>boss_03</texture>
-    <health>120</health>
-  </sprite>
-  <sprite>
-    <name>Boss 04</name>
-    <id>43</id>
-    <texture>boss_04</texture>
-    <health>120</health>
-  </sprite>
-  <sprite>
-    <name>Boss 05</name>
-    <id>44</id>
-    <texture>boss_05</texture>
+    <texture>cyclops</texture>
     <health>120</health>
   </sprite>
 </sprites>
