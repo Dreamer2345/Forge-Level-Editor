@@ -2,111 +2,79 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace RogueboyLevelEditor.TextureHandler
 {
-    public class TextureManager
+    public static class TextureManager
     {
-        public static Bitmap Error { get; private set; }
-        static Dictionary<string, Bitmap> Textures;
-
-
-        public TextureManager()
+        private static Dictionary<string, Bitmap> textures = new Dictionary<string, Bitmap>()
         {
-            if(Error == null)
-            {
-                Error = GenerateErrorTexture(16, 16);
-            }
+            { "Null", Error }
+        };
 
-            if (Textures == null)
-            {
-                Textures = new Dictionary<string, Bitmap>();
-                AddTexture("Null", Error,Color.Transparent);
-            }
+        public static Bitmap Error { get; private set; } = GenerateErrorTexture(16, 16);
 
+        public static Bitmap GetTexture(string id)
+        {
+            return textures.TryGetValue(id, out Bitmap bitmap) ? bitmap : Error;
         }
 
-        public struct ExceptionReport
+        private static void AddTexture(string id, Bitmap texture, Color transparentColour)
         {
-            public bool Failed;
-            public Exception exception;
-        }
-
-        public ExceptionReport Load(string Filepath)
-        {
-            try
-            {
-                XDocument xmlDoc = XDocument.Load(Filepath);
-                List<XElement> Nodes = (from element in xmlDoc.Descendants("textures").Elements() where element.Name == "texture" select element).ToList();
-                foreach (XElement x in Nodes)
-                {
-                    List<XElement> Daughters = x.Descendants().ToList();
-                    string TextureFilepath = Daughters.Find(o => o.Name == "filepath").Value;
-                    string TextureID = Daughters.Find(o => o.Name == "id").Value;
-                    XElement Colour = Daughters.Find(o => o.Name == "transparent");
-                    int Red = int.Parse(Colour.Attributes().Where(i => i.Name == "r").ToList()[0].Value);
-                    int Green = int.Parse(Colour.Attributes().Where(i => i.Name == "g").ToList()[0].Value);
-                    int Blue = int.Parse(Colour.Attributes().Where(i => i.Name == "b").ToList()[0].Value);
-                    int Alpha = int.Parse(Colour.Attributes().Where(i => i.Name == "a").ToList()[0].Value);
-                    Color Transparant = Color.FromArgb(Alpha, Red, Green, Blue);
-                   
-                    
-
-                    AddTexture(TextureID,(Bitmap)Bitmap.FromFile(TextureFilepath),Transparant);
-                }
-            }
-            catch (Exception e)
-            {
-                return new ExceptionReport() { Failed = true, exception = e};
-            }
-            return new ExceptionReport() { Failed = false, exception = null};
-        }
-
-        public void AddTexture(string ID, Bitmap Texture,Color TransparantColor)
-        {
-            if (Textures.ContainsKey(ID))
-            {
+            if (textures.ContainsKey(id))
                 return;
-            }
-            for (int i = 0; i < Texture.Width; i++)
-                for (int j = 0; j < Texture.Height; j++)
-                {
-                    if(Texture.GetPixel(i,j) == TransparantColor)
-                    {
-                        Texture.SetPixel(i, j, Color.Transparent);
-                    }
-                }
 
-            Textures.Add(ID, Texture);
+            for (int y = 0; y < texture.Height; y++)
+                for (int x = 0; x < texture.Width; x++)
+                    if (texture.GetPixel(x, y) == transparentColour)
+                        texture.SetPixel(x, y, Color.Transparent);
+
+            textures.Add(id, texture);
         }
 
-        static Bitmap GenerateErrorTexture(int x,int y)
+        private static Bitmap GenerateErrorTexture(int width, int height)
         {
-            Bitmap b = new Bitmap(x, y);
-            for(int i = 0; i < x; i++)
-                for (int j = 0; j < y; j++)
-                {
-                    if ((i == 0) || (j == 0) || (i == x - 1) || (j == y - 1))
-                        b.SetPixel(i, j, Color.Black);
-                    else
-                        if (i == j)
-                            b.SetPixel(i, j, Color.Red);
-                        else
-                            b.SetPixel(i, j, Color.Gray);
-                }
-            return b;
+            var result = new Bitmap(width, height);
+
+            using (var graphics = Graphics.FromImage(result))
+            {
+                graphics.FillRectangle(Brushes.Gray, 0, 0, width, height);
+                graphics.DrawLine(Pens.Red, 0, 0, width, height);
+                graphics.DrawRectangle(Pens.Black, 0, 0, width, height);
+            }
+
+            return result;
         }
 
-        public Bitmap GetTexture(string ID)
-        {         
-            if (Textures.ContainsKey(ID))
+        public static void Load(string filePath)
+        {
+            foreach (var tuple in LoadTextures(filePath))
+                AddTexture(tuple.Item1, tuple.Item2, tuple.Item3);
+        }
+
+        private static IEnumerable<Tuple<string, Bitmap, Color>> LoadTextures(string filePath)
+        {
+            var xmlDoc = XDocument.Load(filePath);
+            var nodes = xmlDoc.Descendants("textures").Elements().Where(element => element.Name == "texture");
+
+            foreach (XElement xElement in nodes)
             {
-                return (Bitmap)Textures[ID].Clone();
+                var children = xElement.Descendants().ToList();
+
+                var textureID = children.Find(o => o.Name == "id").Value;
+                var textureFilePath = children.Find(o => o.Name == "filepath").Value;
+                var colour = children.Find(o => o.Name == "transparent");
+
+                var alpha = int.Parse(colour.Attributes().Where(i => i.Name == "a").First().Value);
+                var red = int.Parse(colour.Attributes().Where(i => i.Name == "r").First().Value);
+                var green = int.Parse(colour.Attributes().Where(i => i.Name == "g").First().Value);
+                var blue = int.Parse(colour.Attributes().Where(i => i.Name == "b").First().Value);
+
+                var transparent = Color.FromArgb(alpha, red, green, blue);
+
+                yield return Tuple.Create(textureID, (Bitmap)Bitmap.FromFile(textureFilePath), transparent);
             }
-            return (Bitmap)Error.Clone();
         }
     }
 }

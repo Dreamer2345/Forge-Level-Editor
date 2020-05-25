@@ -27,11 +27,15 @@ namespace RogueboyLevelEditor.Forms
 
         void AddTextures()
         {
-            TextureManager textureManager = new TextureManager();
-            ExceptionReport exception = textureManager.Load(Directory.GetCurrentDirectory() + "/Config/TextureAssignments.xml");
-
-            if (exception.Failed)
-                MessageBox.Show(exception.exception.ToString(), "Error loading Textures", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                var texturesPath = Path.Combine(Directory.GetCurrentDirectory(), "Config/TextureAssignments.xml");
+                TextureManager.Load(texturesPath);
+            }
+            catch (Exception exception)
+            {
+                _ = MessageBox.Show(exception.ToString(), "Error loading Textures", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void AddTiles()
@@ -132,8 +136,6 @@ namespace RogueboyLevelEditor.Forms
 
         void AddTilesToListView()
         {
-            TextureManager textureManager = new TextureManager();
-
             var imageList = new ImageList
             {
                 ImageSize = new Size(16, 16),
@@ -141,7 +143,7 @@ namespace RogueboyLevelEditor.Forms
             };
 
             foreach (Tile tile in TileManager.Tiles)
-                imageList.Images.Add(tile.TextureID, textureManager.GetTexture(tile.TextureID));
+                imageList.Images.Add(tile.TextureID, TextureManager.GetTexture(tile.TextureID));
 
             this.tilesListView.SmallImageList = imageList;
 
@@ -162,8 +164,6 @@ namespace RogueboyLevelEditor.Forms
 
         void AddSpritesToListView()
         {
-            TextureManager textureManager = new TextureManager();
-
             var imageList = new ImageList
             {
                 ImageSize = new Size(16, 16),
@@ -171,7 +171,7 @@ namespace RogueboyLevelEditor.Forms
             };
 
             foreach (var sprite in SpriteManager.Sprites)
-                imageList.Images.Add(sprite.TextureID, textureManager.GetTexture(sprite.TextureID));
+                imageList.Images.Add(sprite.TextureID, TextureManager.GetTexture(sprite.TextureID));
 
             this.spritesListView.SmallImageList = imageList;
             this.spritesPlacedListView.SmallImageList = imageList;

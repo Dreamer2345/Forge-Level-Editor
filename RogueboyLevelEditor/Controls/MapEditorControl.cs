@@ -17,8 +17,6 @@ namespace RogueboyLevelEditor.Controls
         public event EventHandler<SpriteAddedEventArgs> SpriteAdded;
         public event EventHandler<SingleActionEventArgs> SingleActionComplete;
 
-        private readonly TextureManager textureManager = new TextureManager();
-
         private MapCollection mapCollection = new MapCollection();
         private ITool<MapEditorControl> tool = null;
         private Point? tileCursor = null;
@@ -96,7 +94,7 @@ namespace RogueboyLevelEditor.Controls
         private void DrawSelectedTile(Graphics graphics)
         {
             var textureId = TileManager.GetTile(this.SelectedTileId).TextureID;
-            var bitmap = this.textureManager.GetTexture(textureId);
+            var bitmap = TextureManager.GetTexture(textureId);
 
             // This colour seems arbitrary < not really, its the pink colour in the Pico8 palette but should probably be specified somewhere.
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));

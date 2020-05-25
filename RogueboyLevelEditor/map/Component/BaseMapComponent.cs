@@ -24,8 +24,7 @@ namespace RogueboyLevelEditor.map.Component
             if (Pos == null)
                 return;
 
-            TextureManager Texture = new TextureManager();
-            Bitmap bitmap = Texture.GetTexture(TileManager.GetTile(tileID).TextureID);
+            Bitmap bitmap = TextureManager.GetTexture(TileManager.GetTile(tileID).TextureID);
             
             if ((bitmap.Width != 16) || (bitmap.Height != 16))
                 Console.WriteLine("TileID: " + tileID + ", " + bitmap.Width + ":" + bitmap.Height);
