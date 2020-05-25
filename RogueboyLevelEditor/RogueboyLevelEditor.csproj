@@ -562,6 +562,9 @@
     <Content Include="Textures\Tile_96.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Tile_97.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\UI\ConnectionEditButton.png" />
     <Content Include="Textures\UI\DrawButtonIcon.png" />
     <Content Include="Textures\UI\EraserButtonIcon.png" />

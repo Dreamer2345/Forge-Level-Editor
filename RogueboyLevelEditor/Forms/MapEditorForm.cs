@@ -96,10 +96,10 @@ namespace RogueboyLevelEditor.Forms
                 Sprite sprite = sm.GetSprite(i.Type);
                 ListViewItem newItem = new ListViewItem();
                 newItem.SubItems.Add(i.Type.ToString());
+                newItem.SubItems.Add(sprite.Name);
                 newItem.SubItems.Add(i.SpritePosition.X.ToString());
                 newItem.SubItems.Add(i.SpritePosition.Y.ToString());
                 newItem.SubItems.Add(i.Health == 0 ? "" : i.Health.ToString());
-                newItem.SubItems.Add(sprite.Name);
                 newItem.ImageKey = sprite.TextureID;
                 spritesPlacedListView.Items.Add(newItem);
             }
@@ -404,8 +404,8 @@ namespace RogueboyLevelEditor.Forms
             if (spritesPlacedListView.SelectedItems.Count > 0)
             {
                 int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
-                int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[2].Text);
-                int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
+                int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
+                int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
                 MapCollection?.CurrentMap.RemoveSprite(new Point(X, Y), ID);
                 spritesPlacedListView.Items.Remove(spritesPlacedListView.SelectedItems[0]);
                 this.mapEditorControl.Invalidate();
@@ -1605,7 +1605,7 @@ namespace RogueboyLevelEditor.Forms
 
             ToolStripMenuItem newMenuItem = new ToolStripMenuItem();
             newMenuItem.Text = e.Sprite.Name;
-            newMenuItem.Image = spritesListView.SmallImageList.Images[e.Sprite.ID];
+            newMenuItem.Image = spritesListView.SmallImageList.Images[e.Sprite.TextureID];
             newMenuItem.Tag = e.Sprite.ID;
             newMenuItem.Click += new System.EventHandler(mapEditorContextMenu_Sprite_Item_Click);
             spriteToolStripMenuItem.DropDownItems.Insert(3, newMenuItem);
