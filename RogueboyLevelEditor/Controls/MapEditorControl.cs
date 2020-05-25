@@ -18,7 +18,6 @@ namespace RogueboyLevelEditor.Controls
         public event EventHandler<SingleActionEventArgs> SingleActionComplete;
 
         private readonly TextureManager textureManager = new TextureManager();
-        private readonly TileManager tileManager = new TileManager();
 
         private MapCollection mapCollection = new MapCollection();
         private ITool<MapEditorControl> tool = null;
@@ -43,13 +42,10 @@ namespace RogueboyLevelEditor.Controls
             }
         }
 
-        public Map CurrentMap {
+        public Map CurrentMap
+        {
             get => this.mapCollection.CurrentMap;
             set => this.mapCollection.CurrentMap = value;
-        }
-
-        public TileManager TileManager {
-            get => this.tileManager;
         }
 
         public ITool<MapEditorControl> Tool
@@ -99,7 +95,7 @@ namespace RogueboyLevelEditor.Controls
 
         private void DrawSelectedTile(Graphics graphics)
         {
-            var textureId = this.tileManager.GetTile(this.SelectedTileId).TextureID;
+            var textureId = TileManager.GetTile(this.SelectedTileId).TextureID;
             var bitmap = this.textureManager.GetTexture(textureId);
 
             // This colour seems arbitrary < not really, its the pink colour in the Pico8 palette but should probably be specified somewhere.
@@ -148,8 +144,8 @@ namespace RogueboyLevelEditor.Controls
             point.Y = this.CurrentMap.ToTileSpaceY(location.Y);
 
             int origTileId = this.CurrentMap.GetTile(point).tileID;
-            Tile origTile = this.TileManager.GetTile(origTileId);
-            Tile newTile = this.TileManager.GetTile(this.SelectedTileId);
+            Tile origTile = TileManager.GetTile(origTileId);
+            Tile newTile = TileManager.GetTile(this.SelectedTileId);
 
             TileChangedEventArgs eventArgs = new TileChangedEventArgs();
             eventArgs.OrigTile = origTile;
@@ -168,7 +164,7 @@ namespace RogueboyLevelEditor.Controls
             point.X = this.CurrentMap.ToTileSpaceX(location.X);
             point.Y = this.CurrentMap.ToTileSpaceY(location.Y);
 
-            Tile newTile = this.TileManager.GetTile(this.SelectedTileId);
+            Tile newTile = TileManager.GetTile(this.SelectedTileId);
 
             TileSelectedEventArgs eventArgs = new TileSelectedEventArgs();
             eventArgs.Tile = newTile;

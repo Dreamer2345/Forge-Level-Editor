@@ -19,8 +19,6 @@ namespace RogueboyLevelEditor.Forms
         private const string keepOpen = "KeepOpen";
         private const int mapMenu_MapStart = 7;
 
-        private readonly TileManager tileManager = new TileManager();
-
         private MapCollection MapCollection
         {
             get => this.mapEditorControl.MapCollection;
@@ -38,17 +36,22 @@ namespace RogueboyLevelEditor.Forms
 
         void AddTiles()
         {
-            TileManager tileManager = new TileManager();
-            ExceptionReport exception = tileManager.Load(Directory.GetCurrentDirectory() + "/Config/TileAssignments.xml");
-
-            if (exception.Failed)
-                MessageBox.Show(exception.exception.ToString(), "Error loading Tiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                var tilePath = Path.Combine(Directory.GetCurrentDirectory(), "Config/TileAssignments.xml");
+                TileManager.Load(tilePath);
+            }
+            catch (Exception exception)
+            {
+                _ = MessageBox.Show(exception.ToString(), "Error loading Tiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         void AddSprites()
         {
             SpriteManager spriteManager = new SpriteManager();
+
             ExceptionReport exception = spriteManager.Load(Directory.GetCurrentDirectory() + "/Config/SpriteAssignments.xml");
 
             if (exception.Failed)
@@ -122,29 +125,26 @@ namespace RogueboyLevelEditor.Forms
 
         void AddTilesToListView()
         {
-
             TextureManager textureManager = new TextureManager();
-            List<Tuple<int, Tile>> Tiles = tileManager.GetAllTiles();
+
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(16, 16);
             imageList.TransparentColor = Color.FromArgb(255, 119, 168);
 
-            foreach (Tuple<int, Tile> i in Tiles)
-            {
-                imageList.Images.Add(i.Item2.TextureID, textureManager.GetTexture(i.Item2.TextureID));
-            }
+            foreach (Tile tile in TileManager.Tiles)
+                imageList.Images.Add(tile.TextureID, textureManager.GetTexture(tile.TextureID));
 
             tilesListView.SmallImageList = imageList;
 
-            foreach (Tuple<int, Tile> i in Tiles)
+            foreach (KeyValuePair<int, Tile> pair in TileManager.EnumerateTiles())
             {
                 ListViewItem newItem = new ListViewItem();
-                newItem.SubItems.Add(i.Item1.ToString());
-                newItem.SubItems.Add(i.Item2.Name);
-                newItem.SubItems.Add(i.Item2.IsExit.ToString());
-                newItem.SubItems.Add(i.Item2.IsSender.ToString());
-                newItem.SubItems.Add(i.Item2.IsReceiver.ToString());
-                newItem.ImageKey = i.Item2.TextureID;
+                newItem.SubItems.Add(pair.Key.ToString());
+                newItem.SubItems.Add(pair.Value.Name);
+                newItem.SubItems.Add(pair.Value.IsExit.ToString());
+                newItem.SubItems.Add(pair.Value.IsSender.ToString());
+                newItem.SubItems.Add(pair.Value.IsReceiver.ToString());
+                newItem.ImageKey = pair.Value.TextureID;
                 tilesListView.Items.Add(newItem);
             }
         }
