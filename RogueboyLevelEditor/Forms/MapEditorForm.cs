@@ -1677,6 +1677,13 @@ namespace RogueboyLevelEditor.Forms
             }
 
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            float Value = trackBar1.Value / 100f;
+            this.mapEditorControl.MapCollection.CurrentMap.zoom = Value;
+            this.mapEditorControl.Invalidate();
+        }
     }
 
 }

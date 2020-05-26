@@ -32,7 +32,7 @@ namespace RogueboyLevelEditor.map.Component
                     IsValid = true;
         }
 
-        public override void Draw(Graphics graphics, Point Pos)
+        public override void Draw(Graphics graphics, Point Pos, Point Size)
         {
 
             UpdateValid();
@@ -40,9 +40,9 @@ namespace RogueboyLevelEditor.map.Component
             Pen pen = new Pen(Color.LawnGreen);
             Point ScreenStart = new Point(parentMap.ToScreenSpaceX(Start.X), parentMap.ToScreenSpaceY(Start.Y));
             Point ScreenEnd = new Point(parentMap.ToScreenSpaceX(End.X), parentMap.ToScreenSpaceY(End.Y));
-            graphics.DrawRectangle(pen, ScreenStart.X - 1, ScreenStart.Y - 1, 17, 17);
+            graphics.DrawRectangle(pen, ScreenStart.X - 1, ScreenStart.Y - 1, Size.X + 1, Size.Y +1);
             pen.Color = Color.Red;
-            graphics.DrawRectangle(pen, ScreenEnd.X - 1, ScreenEnd.Y - 1, 17, 17);
+            graphics.DrawRectangle(pen, ScreenEnd.X - 1, ScreenEnd.Y - 1, Size.X+1, Size.Y+1);
 
             if (this.Highlight)
             {
@@ -55,7 +55,7 @@ namespace RogueboyLevelEditor.map.Component
             }
 
             pen.Width = 2;
-            graphics.DrawLine(pen, ScreenStart.X + 8, ScreenStart.Y + 8, ScreenEnd.X + 8, ScreenEnd.Y + 8);
+            graphics.DrawLine(pen, ScreenStart.X + (Size.X / 2), ScreenStart.Y + (Size.Y / 2), ScreenEnd.X + (Size.X / 2), ScreenEnd.Y + (Size.Y / 2));
 
         }
 

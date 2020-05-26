@@ -111,7 +111,7 @@ namespace RogueboyLevelEditor.Controls
         private void DrawTileCursor(Graphics graphics)
         {
             if (this.TileCursor.HasValue)
-                graphics.DrawRectangle(Pens.Red, this.TileCursor.Value.X - 1, this.TileCursor.Value.Y - 1, 16 + 1, 16 + 1);
+                graphics.DrawRectangle(Pens.Red, this.TileCursor.Value.X - 1, this.TileCursor.Value.Y - 1, 16 * this.CurrentMap.zoom, 16 * this.CurrentMap.zoom);
         }
 
         protected override void OnPaint(PaintEventArgs e)

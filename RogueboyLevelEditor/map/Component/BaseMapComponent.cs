@@ -19,7 +19,7 @@ namespace RogueboyLevelEditor.map.Component
             tileID = ID;
         }
 
-        public override void Draw(Graphics graphics, Point Pos)
+        public override void Draw(Graphics graphics, Point Pos, Point Size)
         {
             if (Pos == null)
                 return;
@@ -31,7 +31,7 @@ namespace RogueboyLevelEditor.map.Component
             //    Console.WriteLine("TileID: " + tileID + ", " + bitmap.Width + ":" + bitmap.Height);
 
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
-            graphics.DrawImage(bitmap, Pos.X, Pos.Y, 16, 16);
+            graphics.DrawImage(bitmap, Pos.X, Pos.Y, Size.X, Size.Y);
             
         }
     }

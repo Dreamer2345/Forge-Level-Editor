@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapEditorForm));
-            RogueboyLevelEditor.mapCollection.MapCollection mapCollection2 = new RogueboyLevelEditor.mapCollection.MapCollection();
+            RogueboyLevelEditor.mapCollection.MapCollection mapCollection1 = new RogueboyLevelEditor.mapCollection.MapCollection();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.fileLoadMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSaveMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,13 +76,6 @@
             this.IsReciver = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabSpriteTool = new System.Windows.Forms.TabPage();
             this.spriteToolTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
-            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spritesListView = new System.Windows.Forms.ListView();
             this.Texture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpriteID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -109,7 +102,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentFileLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
             this.mapEditorContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,6 +138,14 @@
             this.moveToMenu = new System.Windows.Forms.ToolStripButton();
             this.centreMenu = new System.Windows.Forms.ToolStripButton();
             this.HealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.spritesPlacedListView = new RogueboyLevelEditor.Controls.ListViewEx();
+            this.SpritePicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_IDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_XColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_YColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spritesPlacedListView_HealthColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mapEditorControl = new RogueboyLevelEditor.Controls.MapEditorControl();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.overallTableLayout.SuspendLayout();
             this.tabPages.SuspendLayout();
@@ -554,75 +554,6 @@
             this.spriteToolTableLayout.Size = new System.Drawing.Size(395, 559);
             this.spriteToolTableLayout.TabIndex = 25;
             // 
-            // spritesPlacedListView
-            // 
-            this.spritesPlacedListView.AutoArrange = false;
-            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.SpritePicture,
-            this.spritesPlacedListView_IDColumn,
-            this.spritesPlacedListView_Name,
-            this.spritesPlacedListView_XColumn,
-            this.spritesPlacedListView_YColumn,
-            this.spritesPlacedListView_HealthColumn});
-            this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spritesPlacedListView.FullRowSelect = true;
-            this.spritesPlacedListView.GridLines = true;
-            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.spritesPlacedListView.HideSelection = false;
-            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 282);
-            this.spritesPlacedListView.MultiSelect = false;
-            this.spritesPlacedListView.Name = "spritesPlacedListView";
-            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 274);
-            this.spritesPlacedListView.TabIndex = 27;
-            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
-            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
-            this.spritesPlacedListView.Visible = false;
-            this.spritesPlacedListView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.spritesPlacedListView_Scroll);
-            this.spritesPlacedListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesPlacedListView_ColumnWidthChanged);
-            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
-            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesPlacedListView_SelectedIndexChanged);
-            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
-            // 
-            // SpritePicture
-            // 
-            this.SpritePicture.Tag = "30";
-            this.SpritePicture.Text = "";
-            this.SpritePicture.Width = 30;
-            // 
-            // spritesPlacedListView_IDColumn
-            // 
-            this.spritesPlacedListView_IDColumn.Tag = "40";
-            this.spritesPlacedListView_IDColumn.Text = "ID";
-            this.spritesPlacedListView_IDColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_IDColumn.Width = 40;
-            // 
-            // spritesPlacedListView_Name
-            // 
-            this.spritesPlacedListView_Name.Tag = "96";
-            this.spritesPlacedListView_Name.Text = "Name";
-            this.spritesPlacedListView_Name.Width = 96;
-            // 
-            // spritesPlacedListView_XColumn
-            // 
-            this.spritesPlacedListView_XColumn.Tag = "36";
-            this.spritesPlacedListView_XColumn.Text = "X";
-            this.spritesPlacedListView_XColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_XColumn.Width = 36;
-            // 
-            // spritesPlacedListView_YColumn
-            // 
-            this.spritesPlacedListView_YColumn.Tag = "36";
-            this.spritesPlacedListView_YColumn.Text = "Y";
-            this.spritesPlacedListView_YColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.spritesPlacedListView_YColumn.Width = 38;
-            // 
-            // spritesPlacedListView_HealthColumn
-            // 
-            this.spritesPlacedListView_HealthColumn.Tag = "60";
-            this.spritesPlacedListView_HealthColumn.Text = "Health";
-            this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // spritesListView
             // 
             this.spritesListView.AutoArrange = false;
@@ -815,12 +746,13 @@
             this.trackBar1.AutoSize = false;
             this.trackBar1.Location = new System.Drawing.Point(10, 23);
             this.trackBar1.Maximum = 300;
-            this.trackBar1.Minimum = -100;
+            this.trackBar1.Minimum = 50;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(102, 20);
             this.trackBar1.TabIndex = 0;
             this.trackBar1.TickFrequency = 20;
             this.trackBar1.Value = 100;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // tabImageList
             // 
@@ -877,33 +809,6 @@
             this.toolStatusLabel.Size = new System.Drawing.Size(852, 17);
             this.toolStatusLabel.Spring = true;
             this.toolStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapEditorControl
-            // 
-            this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mapEditorControl.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
-            this.mapEditorControl.CurrentMap = null;
-            this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
-            mapCollection2.drawBackground = true;
-            mapCollection2.drawConnections = true;
-            mapCollection2.drawOffsetX = 0;
-            mapCollection2.drawOffsetY = 0;
-            mapCollection2.drawPlayer = true;
-            mapCollection2.drawSprites = true;
-            mapCollection2.viewHeight = 10;
-            mapCollection2.viewWidth = 10;
-            this.mapEditorControl.MapCollection = mapCollection2;
-            this.mapEditorControl.Name = "mapEditorControl";
-            this.mapEditorControl.SelectedSpriteId = -1;
-            this.mapEditorControl.SelectedTileId = -1;
-            this.mapEditorControl.Size = new System.Drawing.Size(546, 591);
-            this.mapEditorControl.TabIndex = 16;
-            this.mapEditorControl.TileCursor = null;
-            this.mapEditorControl.Tool = null;
-            this.mapEditorControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapEditorControl_MouseMove);
             // 
             // mapEditorContextMenu
             // 
@@ -1215,6 +1120,102 @@
             this.HealthNumericUpDown.ValueChanged += new System.EventHandler(this.HealthNumericUpDown_ValueChanged);
             this.HealthNumericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthNumericUpDown_KeyDown);
             this.HealthNumericUpDown.Leave += new System.EventHandler(this.HealthNumericUpDown_Leave);
+            // 
+            // spritesPlacedListView
+            // 
+            this.spritesPlacedListView.AutoArrange = false;
+            this.spritesPlacedListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spritesPlacedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SpritePicture,
+            this.spritesPlacedListView_IDColumn,
+            this.spritesPlacedListView_Name,
+            this.spritesPlacedListView_XColumn,
+            this.spritesPlacedListView_YColumn,
+            this.spritesPlacedListView_HealthColumn});
+            this.spritesPlacedListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spritesPlacedListView.FullRowSelect = true;
+            this.spritesPlacedListView.GridLines = true;
+            this.spritesPlacedListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.spritesPlacedListView.HideSelection = false;
+            this.spritesPlacedListView.Location = new System.Drawing.Point(66, 282);
+            this.spritesPlacedListView.MultiSelect = false;
+            this.spritesPlacedListView.Name = "spritesPlacedListView";
+            this.spritesPlacedListView.Size = new System.Drawing.Size(326, 274);
+            this.spritesPlacedListView.TabIndex = 27;
+            this.spritesPlacedListView.UseCompatibleStateImageBehavior = false;
+            this.spritesPlacedListView.View = System.Windows.Forms.View.Details;
+            this.spritesPlacedListView.Visible = false;
+            this.spritesPlacedListView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.spritesPlacedListView_Scroll);
+            this.spritesPlacedListView.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.spritesPlacedListView_ColumnWidthChanged);
+            this.spritesPlacedListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.spritesPlacedListView_ItemSelectionChanged);
+            this.spritesPlacedListView.SelectedIndexChanged += new System.EventHandler(this.spritesPlacedListView_SelectedIndexChanged);
+            this.spritesPlacedListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.spritesPlacedListView_MouseDoubleClick);
+            // 
+            // SpritePicture
+            // 
+            this.SpritePicture.Tag = "30";
+            this.SpritePicture.Text = "";
+            this.SpritePicture.Width = 30;
+            // 
+            // spritesPlacedListView_IDColumn
+            // 
+            this.spritesPlacedListView_IDColumn.Tag = "40";
+            this.spritesPlacedListView_IDColumn.Text = "ID";
+            this.spritesPlacedListView_IDColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_IDColumn.Width = 40;
+            // 
+            // spritesPlacedListView_Name
+            // 
+            this.spritesPlacedListView_Name.Tag = "96";
+            this.spritesPlacedListView_Name.Text = "Name";
+            this.spritesPlacedListView_Name.Width = 96;
+            // 
+            // spritesPlacedListView_XColumn
+            // 
+            this.spritesPlacedListView_XColumn.Tag = "36";
+            this.spritesPlacedListView_XColumn.Text = "X";
+            this.spritesPlacedListView_XColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_XColumn.Width = 36;
+            // 
+            // spritesPlacedListView_YColumn
+            // 
+            this.spritesPlacedListView_YColumn.Tag = "36";
+            this.spritesPlacedListView_YColumn.Text = "Y";
+            this.spritesPlacedListView_YColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spritesPlacedListView_YColumn.Width = 38;
+            // 
+            // spritesPlacedListView_HealthColumn
+            // 
+            this.spritesPlacedListView_HealthColumn.Tag = "60";
+            this.spritesPlacedListView_HealthColumn.Text = "Health";
+            this.spritesPlacedListView_HealthColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mapEditorControl
+            // 
+            this.mapEditorControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mapEditorControl.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.mapEditorControl.ContextMenuStrip = this.mapEditorContextMenu;
+            this.mapEditorControl.CurrentMap = null;
+            this.mapEditorControl.Location = new System.Drawing.Point(3, 55);
+            mapCollection1.drawBackground = true;
+            mapCollection1.drawConnections = true;
+            mapCollection1.drawOffsetX = 0;
+            mapCollection1.drawOffsetY = 0;
+            mapCollection1.drawPlayer = true;
+            mapCollection1.drawSprites = true;
+            mapCollection1.viewHeight = 10;
+            mapCollection1.viewWidth = 10;
+            this.mapEditorControl.MapCollection = mapCollection1;
+            this.mapEditorControl.Name = "mapEditorControl";
+            this.mapEditorControl.SelectedSpriteId = -1;
+            this.mapEditorControl.SelectedTileId = -1;
+            this.mapEditorControl.Size = new System.Drawing.Size(546, 591);
+            this.mapEditorControl.TabIndex = 16;
+            this.mapEditorControl.TileCursor = null;
+            this.mapEditorControl.Tool = null;
+            this.mapEditorControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapEditorControl_MouseMove);
             // 
             // MapEditorForm
             // 
