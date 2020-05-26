@@ -1677,7 +1677,6 @@ namespace RogueboyLevelEditor.Forms
             }
 
         }
-
     }
 
 }
