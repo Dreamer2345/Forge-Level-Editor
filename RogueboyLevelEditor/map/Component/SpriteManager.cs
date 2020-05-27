@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using static RogueboyLevelEditor.TextureHandler.TextureManager;
 using System.Xml.Linq;
 
 namespace RogueboyLevelEditor.map.Component
 {
     public class Sprite
     {
-        public int ID { get; private set; }
-        public string Name { get; private set; }
-        public string TextureID { get; private set; }
-        public int Health { get; private set; }
-
         public Sprite(int id, string name, string textureID, int health)
         {
             this.ID = id;
@@ -23,74 +13,76 @@ namespace RogueboyLevelEditor.map.Component
             this.TextureID = textureID;
             this.Health = health;
         }
+
+        public int ID
+        {
+            get; private set;
+        }
+
+        public string Name
+        {
+            get; private set;
+        }
+
+        public string TextureID
+        {
+            get; private set;
+        }
+
+        public int Health
+        {
+            get; private set;
+        }
+
+        public static Sprite Null { get; private set; } = new Sprite(-1, "Null", "Null", 0);
     }
 
-    public class SpriteManager
+    public static class SpriteManager
     {
-        static Dictionary<int, Sprite> Sprites;
+        private static readonly Dictionary<int, Sprite> sprites = new Dictionary<int, Sprite>();
 
-        public ExceptionReport Load(string Filepath)
+        public static IEnumerable<Sprite> Sprites => sprites.Values;
+
+        private static void AddSprite(int id, Sprite Sprite)
         {
-            
-            try
-            {
-                XDocument xmlDoc = XDocument.Load(Filepath);
-                List<XElement> Nodes = (from element in xmlDoc.Descendants("sprites").Elements() where element.Name == "sprite" select element).ToList();
-                foreach (XElement x in Nodes)
-                {
-                    List<XElement> daughters = x.Descendants().ToList();
-                    int id = int.Parse(daughters.Find(o => o.Name == "id").Value);
-                    string name = daughters.Find(o => o.Name == "name").Value;
-                    string textureId = daughters.Find(o => o.Name == "texture").Value;
-                    int health = int.Parse(daughters.Find(o => o.Name == "health").Value);
-
-                    AddSprite(id, new Sprite(id, name, textureId, health));
-                }
-            }
-            catch (Exception e)
-            {
-                return new ExceptionReport() { Failed = true, exception = e };
-            }
-            return new ExceptionReport() { Failed = false, exception = null };
-        }
-
-        public SpriteManager()
-        {
-
-            if (Sprites == null)
-            {
-                Sprites = new Dictionary<int, Sprite>();
-            }
-
-        }
-
-        public List<Tuple<int, Sprite>> GetAllSprites()
-        {
-            List<Tuple<int, Sprite>> OutSprites = new List<Tuple<int, Sprite>>();
-            foreach (KeyValuePair<int, Sprite> i in Sprites)
-            {
-                OutSprites.Add(new Tuple<int, Sprite>(i.Key, i.Value));
-            }
-            return OutSprites;
-        }
-
-
-        public void AddSprite(int ID, Sprite Sprite)
-        {
-            if (Sprites.ContainsKey(ID))
-            {
+            if (sprites.ContainsKey(id))
                 return;
-            }
-            Sprites.Add(ID, Sprite);
+
+            sprites.Add(id, Sprite);
         }
 
-        public Sprite GetSprite(int ID)
+        public static Sprite GetSprite(int id)
         {
-            if (Sprites.ContainsKey(ID))
+            return sprites.TryGetValue(id, out Sprite sprite) ? sprite : Sprite.Null;
+        }
+
+        public static IEnumerable<KeyValuePair<int, Sprite>> EnumerateSprites()
+        {
+            return sprites;
+        }
+
+        public static void Load(string Filepath)
+        {
+            foreach(var sprite in LoadSprites(Filepath))
+                AddSprite(sprite.ID, sprite);
+        }
+
+        public static IEnumerable<Sprite> LoadSprites(string Filepath)
+        {
+            var xmlDoc = XDocument.Load(Filepath);
+            var nodes = xmlDoc.Descendants("sprites").Elements().Where(element => element.Name == "sprite");
+            
+            foreach (XElement xElement in nodes)
             {
-                return Sprites[ID];
+                var children = xElement.Descendants().ToList();
+
+                var id = int.Parse(children.Find(o => o.Name == "id").Value);
+                var name = children.Find(o => o.Name == "name").Value;
+                var textureID = children.Find(o => o.Name == "texture").Value;
+                var health = int.Parse(children.Find(o => o.Name == "health").Value);
+
+                yield return new Sprite(id, name, textureID, health);
             }
-            return new Sprite(-1, "Null", "Null", 0);
         }
     }
 }

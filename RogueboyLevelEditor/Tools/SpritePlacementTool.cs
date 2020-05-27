@@ -9,10 +9,8 @@ namespace RogueboyLevelEditor.Tools
 {
     public class SpritePlacementTool : ITool<MapEditorControl>
     {
-        private static readonly SpriteManager spriteManager = new SpriteManager();
-
         private MapEditorControl control;
-        private ListView listView;
+        private readonly ListView listView;
 
         public SpritePlacementTool(ListView listView)
         {
@@ -46,12 +44,11 @@ namespace RogueboyLevelEditor.Tools
         {
             var spriteId = this.control.SelectedSpriteId;
 
-            // Np sprite selected ..
+            if (spriteId == -1)
+                return null;
 
-            if (spriteId == -1) return null;
-
-            var sprite = spriteManager.GetSprite(spriteId);
-            this.control.CurrentMap.AddSprite(point.X, point.Y, spriteId, sprite.Health);
+            var sprite = SpriteManager.GetSprite(spriteId);
+            _ = this.control.CurrentMap.AddSprite(point.X, point.Y, spriteId, sprite.Health);
             this.control.AddSprite(point, sprite);
 
             var listViewItem = new ListViewItem();
@@ -64,7 +61,8 @@ namespace RogueboyLevelEditor.Tools
 
             listViewItem.ImageKey = sprite.TextureID;
 
-            this.listView.Items.Add(listViewItem);
+            _ = this.listView.Items.Add(listViewItem);
+
             return sprite;
         }
 
@@ -78,9 +76,8 @@ namespace RogueboyLevelEditor.Tools
             if (!this.control.CurrentMap.CheckInRange(location.X, location.Y))
                 return;
 
-            Sprite sprite = this.AddSprite(location);
+            _ = this.AddSprite(location);
             this.control.Invalidate();
-
         }
     }
 }

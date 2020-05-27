@@ -956,5 +956,18 @@
       <value>false</value>
     </switch>
   </tile>
+  <tile>
+    <name>Saving Post</name>
+    <id>97</id>
+    <texture>97</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
 
 </tiles>

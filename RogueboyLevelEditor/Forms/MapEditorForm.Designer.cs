@@ -835,6 +835,7 @@
             // 
             // selectTileToolStripMenuItem
             // 
+            this.selectTileToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.eyedropper;
             this.selectTileToolStripMenuItem.Name = "selectTileToolStripMenuItem";
             this.selectTileToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.selectTileToolStripMenuItem.Text = "Select";
@@ -842,6 +843,7 @@
             // 
             // eraseTileToolStripMenuItem
             // 
+            this.eraseTileToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
             this.eraseTileToolStripMenuItem.Name = "eraseTileToolStripMenuItem";
             this.eraseTileToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.eraseTileToolStripMenuItem.Text = "Erase";
@@ -864,6 +866,7 @@
             // 
             // selectSpriteToolStripMenuItem
             // 
+            this.selectSpriteToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.eyedropper;
             this.selectSpriteToolStripMenuItem.Name = "selectSpriteToolStripMenuItem";
             this.selectSpriteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.selectSpriteToolStripMenuItem.Text = "Select";
@@ -871,6 +874,7 @@
             // 
             // removeSpriteToolStripMenuItem
             // 
+            this.removeSpriteToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
             this.removeSpriteToolStripMenuItem.Name = "removeSpriteToolStripMenuItem";
             this.removeSpriteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeSpriteToolStripMenuItem.Text = "Remove";
@@ -928,6 +932,7 @@
             // 
             // removeColumnToolStripMenuItem
             // 
+            this.removeColumnToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
             this.removeColumnToolStripMenuItem.Name = "removeColumnToolStripMenuItem";
             this.removeColumnToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeColumnToolStripMenuItem.Text = "Remove";
@@ -944,6 +949,7 @@
             // 
             // addRowToolStripMenuItem
             // 
+            this.addRowToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.tiles;
             this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
             this.addRowToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addRowToolStripMenuItem.Text = "Add";
@@ -951,6 +957,7 @@
             // 
             // removeRowToolStripMenuItem
             // 
+            this.removeRowToolStripMenuItem.Image = global::RogueboyLevelEditor.Properties.Resources.erase;
             this.removeRowToolStripMenuItem.Name = "removeRowToolStripMenuItem";
             this.removeRowToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeRowToolStripMenuItem.Text = "Remove";

@@ -538,6 +538,11 @@
     <filepath>Textures/Tile_96.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
+  <texture>
+    <id>97</id>
+    <filepath>Textures/Tile_97.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
 
   <texture>
         <id>coin</id>
@@ -700,29 +705,13 @@
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
   <texture>
-    <id>boss_01</id>
-    <filepath>Textures/Sprites/Boss1.png</filepath>
+    <id>beholder</id>
+    <filepath>Textures/Sprites/Beholder.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
   <texture>
-    <id>boss_02</id>
-    <filepath>Textures/Sprites/Boss2.png</filepath>
+    <id>cyclops</id>
+    <filepath>Textures/Sprites/cyclops.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
-  <texture>
-    <id>boss_03</id>
-    <filepath>Textures/Sprites/Boss3.png</filepath>
-    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
-  </texture>
-  <texture>
-    <id>boss_04</id>
-    <filepath>Textures/Sprites/Boss4.png</filepath>
-    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
-  </texture>
-  <texture>
-    <id>boss_05</id>
-    <filepath>Textures/Sprites/Boss5.png</filepath>
-    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
-  </texture>
-
 </textures>

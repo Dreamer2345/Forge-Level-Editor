@@ -9,8 +9,6 @@ namespace RogueboyLevelEditor.Tools
 {
     public class ConnectionTool : ITool<MapEditorControl>
     {
-        private static readonly SpriteManager spriteManager = new SpriteManager();
-
         private MapEditorControl control;
         private ListView listView;
 
