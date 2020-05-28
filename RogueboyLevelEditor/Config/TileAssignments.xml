@@ -194,7 +194,7 @@
 			<value>false</value>
 		</gate>
 		<switch>
-			<value>false</value>
+			<value>true</value>
 		</switch>
 	</tile>
 	<tile> 
