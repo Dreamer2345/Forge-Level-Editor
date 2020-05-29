@@ -26,7 +26,20 @@
 			<value>false</value>
 		</switch>
 	</tile>
-	<tile> 
+  <tile>
+    <name>Corner Fill</name>
+    <id>98</id>
+    <texture>98</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
+  <tile> 
 		<name>Level Exit</name>
 		<id>3</id>
 		<texture>3</texture>

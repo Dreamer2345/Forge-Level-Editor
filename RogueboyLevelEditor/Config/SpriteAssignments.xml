@@ -79,19 +79,19 @@
     <health>0</health>
   </sprite>
   <sprite> 
-		<name>Green Spell</name>
+		<name>Tox Spell</name>
 		<id>13</id>
 		<texture>greenspell</texture>
 		<health>0</health>	
 	</sprite>
 	<sprite> 
-		<name>Red Spell</name>
+		<name>HRT Spell</name>
 		<id>14</id>
 		<texture>redspell</texture>
 		<health>0</health>	
 	</sprite>
   <sprite>
-    <name>Mauve Spell</name>
+    <name>Pow Spell</name>
     <id>15</id>
     <texture>mauvespell</texture>
     <health>0</health>

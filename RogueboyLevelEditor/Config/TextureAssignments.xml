@@ -13,7 +13,7 @@
         <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
     </texture>
 
-    <texture>
+  <texture>
         <id>2</id>
         <filepath>Textures/Tile_02.png</filepath>
         <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
@@ -544,6 +544,12 @@
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
 
+  <texture>
+    <id>98</id>
+    <filepath>Textures/Tile_98.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
+  
   <texture>
         <id>coin</id>
         <filepath>Textures/Sprites/Coin.png</filepath>
