@@ -105,7 +105,7 @@ namespace RogueboyLevelEditor.Controls
         private void DrawTileCursor(Graphics graphics)
         {
             if (this.TileCursor.HasValue)
-                graphics.DrawRectangle(Pens.Red, this.TileCursor.Value.X - 1, this.TileCursor.Value.Y - 1, 16 * this.CurrentMap.zoom, 16 * this.CurrentMap.zoom);
+                graphics.DrawRectangle(Pens.Red, this.TileCursor.Value.X - 1, this.TileCursor.Value.Y - 1, this.CurrentMap.TileSize.Width, this.CurrentMap.TileSize.Height);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -126,6 +126,38 @@ namespace RogueboyLevelEditor.Controls
 
             if (map != null)
                 this.TileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
+        }
+
+        private const int scrollScale = 2;
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            base.OnMouseWheel(e);
+
+            if (e.Delta != 0)
+            {
+                var map = this.MapCollection?.CurrentMap;
+
+                if (map != null)
+                {
+                    var delta = (Math.Sign(e.Delta) * scrollScale);
+
+                    var width = Math.Max(0, (map.TileSize.Width + delta));
+                    var height = Math.Max(0, (map.TileSize.Height + delta));
+                    map.TileSize = new Size(width, height);
+
+                    this.TileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
+
+                    this.Invalidate();
+                }
+            }
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+
+            this.Focus();
         }
 
         protected override void OnMouseLeave(EventArgs e)
