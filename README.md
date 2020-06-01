@@ -69,7 +69,7 @@ Maps should:
 *	have at least one Level Exit point. 
 *	not expose the ‘reverse’ side of a wall tile to the player.  The player / wall collision detection has been written with the front of the tiles in mind – you can possibly walk through tiles from the wrong side.
 *	have no more than 200 sprites.
-*	note have tiles placed in the ‘outside’ corners of walls.  You will notice in the diagram above that the ‘outside’ corners are left empty (by either using the `Null` or `Empty` tile).  When the game renders the level, it will fill that with the appropriate fill pattern.
+*	place a 'Corner Fill' in the ‘outside’ corners of walls as shown above.  When the game renders the level, it will fill that with the appropriate fill pattern.  Omitting the 'Corner Fill' tile will allow the player to drop inventory items outside of the wall boundaries if they happen to be both leaning against and facing away from the wall.
 
 A number of the tiles require a brief description:
 
