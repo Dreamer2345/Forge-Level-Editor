@@ -142,8 +142,8 @@ namespace RogueboyLevelEditor.Controls
                 {
                     var delta = (Math.Sign(e.Delta) * scrollScale);
 
-                    var width = Math.Max(0, (map.TileSize.Width + delta));
-                    var height = Math.Max(0, (map.TileSize.Height + delta));
+                    var width = Math.Min(Math.Max(4, (map.TileSize.Width + delta)), 64);
+                    var height = Math.Min(Math.Max(4, (map.TileSize.Height + delta)), 64);
                     map.TileSize = new Size(width, height);
 
                     this.TileCursor = map.ToScreenSpace(map.ToTileSpace(e.Location));
