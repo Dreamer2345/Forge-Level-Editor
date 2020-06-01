@@ -1,11 +1,11 @@
-﻿using RogueboyLevelEditor.map.Component;
+﻿using ForgeLevelEditor.map.Component;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using Point = System.Drawing.Point;
 
-namespace RogueboyLevelEditor.map
+namespace ForgeLevelEditor.map
 {
 
     public class Map

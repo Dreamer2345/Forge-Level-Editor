@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
-using RogueboyLevelEditor.map;
-using RogueboyLevelEditor.map.Component;
-using RogueboyLevelEditor.mapCollection;
+using ForgeLevelEditor.map;
+using ForgeLevelEditor.map.Component;
+using ForgeLevelEditor.mapCollection;
 using System.Text.RegularExpressions;
 
-namespace RogueboyLevelEditor.Forms
+namespace ForgeLevelEditor.Forms
 {
     public delegate void Callback(NewMapForm form);
     public partial class NewMapForm : Form

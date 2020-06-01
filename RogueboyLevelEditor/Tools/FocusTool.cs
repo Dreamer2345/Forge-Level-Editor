@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using RogueboyLevelEditor.Controls;
+using ForgeLevelEditor.Controls;
 
-namespace RogueboyLevelEditor.Tools
+namespace ForgeLevelEditor.Tools
 {
     public class FocusTool : ITool<MapEditorControl>
     {

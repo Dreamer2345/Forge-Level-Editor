@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace RogueboyLevelEditor.Tools
+namespace ForgeLevelEditor.Tools
 {
     public interface ITool<TControl> where TControl : Control
     {

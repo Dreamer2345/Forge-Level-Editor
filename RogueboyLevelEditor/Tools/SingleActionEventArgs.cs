@@ -1,4 +1,4 @@
-﻿using RogueboyLevelEditor.map.Component;
+﻿using ForgeLevelEditor.map.Component;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RogueboyLevelEditor.Tools
+namespace ForgeLevelEditor.Tools
 {
     public class SingleActionEventArgs : EventArgs
     {

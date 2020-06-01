@@ -1,4 +1,4 @@
-﻿namespace RogueboyLevelEditor.map.point
+﻿namespace ForgeLevelEditor.map.point
 {
 
 

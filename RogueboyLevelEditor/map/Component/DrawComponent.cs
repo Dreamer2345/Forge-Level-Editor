@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RogueboyLevelEditor.map.Component
+namespace ForgeLevelEditor.map.Component
 {
     public abstract class DrawComponent
     {

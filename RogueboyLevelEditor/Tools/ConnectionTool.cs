@@ -2,10 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using RogueboyLevelEditor.Controls;
-using RogueboyLevelEditor.map.Component;
+using ForgeLevelEditor.Controls;
+using ForgeLevelEditor.map.Component;
 
-namespace RogueboyLevelEditor.Tools
+namespace ForgeLevelEditor.Tools
 {
     public class ConnectionTool : ITool<MapEditorControl>
     {

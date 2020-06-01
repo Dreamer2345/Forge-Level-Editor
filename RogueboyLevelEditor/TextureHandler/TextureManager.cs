@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace RogueboyLevelEditor.TextureHandler
+namespace ForgeLevelEditor.TextureHandler
 {
     public static class TextureManager
     {

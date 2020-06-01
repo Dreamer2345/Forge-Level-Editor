@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml.Linq;
 
-namespace RogueboyLevelEditor.map.Component
+namespace ForgeLevelEditor.map.Component
 {
     public class Sprite
     {

@@ -1,8 +1,8 @@
-using RogueboyLevelEditor.map;
-using RogueboyLevelEditor.map.Component;
-using RogueboyLevelEditor.mapCollection;
-using RogueboyLevelEditor.TextureHandler;
-using RogueboyLevelEditor.Tools;
+using ForgeLevelEditor.map;
+using ForgeLevelEditor.map.Component;
+using ForgeLevelEditor.mapCollection;
+using ForgeLevelEditor.TextureHandler;
+using ForgeLevelEditor.Tools;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,9 +10,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static RogueboyLevelEditor.TextureHandler.TextureManager;
+using static ForgeLevelEditor.TextureHandler.TextureManager;
 
-namespace RogueboyLevelEditor.Forms
+namespace ForgeLevelEditor.Forms
 {
     public partial class MapEditorForm : Form
     {
@@ -241,9 +241,9 @@ namespace RogueboyLevelEditor.Forms
                     AddMapToOpenWindows(map, i == 0);
                 }
 
-                mapsMenu.DropDownItems[MapCollection.CurrentMap.Name].Image = RogueboyLevelEditor.Properties.Resources.Tick;
-                mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
-                mapMoveDownMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowDown;
+                mapsMenu.DropDownItems[MapCollection.CurrentMap.Name].Image = ForgeLevelEditor.Properties.Resources.Tick;
+                mapMoveUpMenu.Image = ForgeLevelEditor.Properties.Resources.ArrowUp;
+                mapMoveDownMenu.Image = ForgeLevelEditor.Properties.Resources.ArrowDown;
                 mapMoveDownMenu.Enabled = MapCollection.OpenCount > 1;
                 currentMapLabel.Text = MapCollection.GetMaps()[0].Name;
 
@@ -254,11 +254,11 @@ namespace RogueboyLevelEditor.Forms
             AddTilesToListView();
             AddSpritesToListView();
 
-            viewOutOfBoundsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-            viewTileMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-            viewSpritesMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-            viewConnectionsMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
-            viewPlayerStartMenu.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+            viewOutOfBoundsMenu.Image = ForgeLevelEditor.Properties.Resources.Tick;
+            viewTileMenu.Image = ForgeLevelEditor.Properties.Resources.Tick;
+            viewSpritesMenu.Image = ForgeLevelEditor.Properties.Resources.Tick;
+            viewConnectionsMenu.Image = ForgeLevelEditor.Properties.Resources.Tick;
+            viewPlayerStartMenu.Image = ForgeLevelEditor.Properties.Resources.Tick;
 
         }
 
@@ -335,8 +335,8 @@ namespace RogueboyLevelEditor.Forms
                         }
                     }
 
-                    mapMoveUpMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowUp;
-                    mapMoveDownMenu.Image = RogueboyLevelEditor.Properties.Resources.ArrowDown;
+                    mapMoveUpMenu.Image = ForgeLevelEditor.Properties.Resources.ArrowUp;
+                    mapMoveDownMenu.Image = ForgeLevelEditor.Properties.Resources.ArrowDown;
 
                     tickMapMenuItem(MapCollection.CurrentMap.Name);
                     enableMapMenuOptions(MapCollection.CurrentMap.Name);
@@ -563,7 +563,7 @@ namespace RogueboyLevelEditor.Forms
             // Tick the new map and reload ..
 
             ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[mapName];
-            menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+            menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
 
         }
 
@@ -612,7 +612,7 @@ namespace RogueboyLevelEditor.Forms
 
             if (menuItem.Image == null)
             {
-                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
                 MapCollection.drawBackground = true;
             }
             else
@@ -630,7 +630,7 @@ namespace RogueboyLevelEditor.Forms
 
             if (menuItem.Image == null)
             {
-                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
                 MapCollection.drawSprites = true;
             }
             else
@@ -648,7 +648,7 @@ namespace RogueboyLevelEditor.Forms
 
             if (menuItem.Image == null)
             {
-                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
                 MapCollection.drawConnections = true;
 
             }
@@ -667,7 +667,7 @@ namespace RogueboyLevelEditor.Forms
 
             if (menuItem.Image == null)
             {
-                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
                 MapCollection.drawPlayer = true;
             }
             else
@@ -685,7 +685,7 @@ namespace RogueboyLevelEditor.Forms
 
             if (menuItem.Image == null)
             {
-                menuItem.Image = RogueboyLevelEditor.Properties.Resources.Tick;
+                menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
                 MapCollection.CurrentMap.ShowOutOfBounds = true;
             }
             else
