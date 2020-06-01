@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RogueboyLevelEditor.Forms
+namespace ForgeLevelEditor.Forms
 {
     public partial class AboutForm : Form
     {

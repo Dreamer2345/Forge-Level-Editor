@@ -1,5 +1,5 @@
-﻿using RogueboyLevelEditor.map.point;
-using RogueboyLevelEditor.TextureHandler;
+﻿using ForgeLevelEditor.map.point;
+using ForgeLevelEditor.TextureHandler;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Point = System.Drawing.Point;
 
-namespace RogueboyLevelEditor.map.Component
+namespace ForgeLevelEditor.map.Component
 {
     public class SpriteComponent : DrawComponent
     {

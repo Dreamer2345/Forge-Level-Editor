@@ -1,4 +1,4 @@
-﻿namespace RogueboyLevelEditor.Forms
+﻿namespace ForgeLevelEditor.Forms
 {
     partial class NewMapForm
     {

@@ -2,13 +2,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using RogueboyLevelEditor.map;
-using RogueboyLevelEditor.map.Component;
-using RogueboyLevelEditor.mapCollection;
-using RogueboyLevelEditor.Tools;
-using RogueboyLevelEditor.TextureHandler;
+using ForgeLevelEditor.map;
+using ForgeLevelEditor.map.Component;
+using ForgeLevelEditor.mapCollection;
+using ForgeLevelEditor.Tools;
+using ForgeLevelEditor.TextureHandler;
 
-namespace RogueboyLevelEditor.Controls
+namespace ForgeLevelEditor.Controls
 {
     public class MapEditorControl : Control
     {

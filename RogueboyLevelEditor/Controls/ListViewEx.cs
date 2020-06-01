@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace RogueboyLevelEditor.Controls
+namespace ForgeLevelEditor.Controls
 {
     public class ListViewEx : ListView
     {

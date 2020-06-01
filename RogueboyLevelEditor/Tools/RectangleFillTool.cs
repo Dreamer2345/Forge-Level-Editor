@@ -1,9 +1,9 @@
-﻿using RogueboyLevelEditor.Controls;
+﻿using ForgeLevelEditor.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace RogueboyLevelEditor.Tools
+namespace ForgeLevelEditor.Tools
 {
     public class RectangleFillTool : ITool<MapEditorControl>
     {

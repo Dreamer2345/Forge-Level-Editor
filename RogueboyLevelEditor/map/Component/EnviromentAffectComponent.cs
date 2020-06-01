@@ -2,7 +2,7 @@
 using Point = System.Drawing.Point;
 
 
-namespace RogueboyLevelEditor.map.Component
+namespace ForgeLevelEditor.map.Component
 {
     public class EnviromentAffectComponent : DrawComponent
     {

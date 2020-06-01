@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using RogueboyLevelEditor.Controls;
+using ForgeLevelEditor.Controls;
 
-namespace RogueboyLevelEditor.Tools
+namespace ForgeLevelEditor.Tools
 {
     public class TileSelectTool : ITool<MapEditorControl>
     {

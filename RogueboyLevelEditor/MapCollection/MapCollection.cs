@@ -1,4 +1,4 @@
-﻿using RogueboyLevelEditor.map;
+﻿using ForgeLevelEditor.map;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace RogueboyLevelEditor.mapCollection
+namespace ForgeLevelEditor.mapCollection
 {
     public class MapCollection
     {

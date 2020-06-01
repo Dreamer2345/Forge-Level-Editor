@@ -39,6 +39,7 @@
       <value>false</value>
     </switch>
   </tile>
+
   <tile> 
 		<name>Level Exit</name>
 		<id>3</id>
@@ -982,5 +983,17 @@
       <value>false</value>
     </switch>
   </tile>
-
+  <tile>
+    <name>Three Skulls</name>
+    <id>99</id>
+    <texture>99</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
 </tiles>

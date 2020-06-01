@@ -1,11 +1,11 @@
-﻿using RogueboyLevelEditor.Forms;
+﻿using ForgeLevelEditor.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RogueboyLevelEditor
+namespace ForgeLevelEditor
 {
     static class Program
     {
