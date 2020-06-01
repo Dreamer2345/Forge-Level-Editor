@@ -138,4 +138,88 @@
     <texture>necromancer</texture>
     <health>60</health>
   </sprite>
+  <sprite>
+    <name>Hobgoblin</name>
+    <id>24</id>
+    <texture>hobgoblin</texture>
+    <health>60</health>
+  </sprite>
+  <sprite>
+    <name>Guide 01</name>
+    <id>32</id>
+    <texture>guide_01</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Guide 02</name>
+    <id>33</id>
+    <texture>guide_02</texture>
+    <health>60</health>
+  </sprite>
+  <sprite>
+    <name>Guide 03</name>
+    <id>34</id>
+    <texture>guide_03</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Guide 04</name>
+    <id>35</id>
+    <texture>guide_04</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Guide 05</name>
+    <id>36</id>
+    <texture>guide_05</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Guide 06</name>
+    <id>37</id>
+    <texture>guide_06</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Guide 07</name>
+    <id>38</id>
+    <texture>guide_07</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Guide 08</name>
+    <id>39</id>
+    <texture>guide_08</texture>
+    <health>0</health>
+  </sprite>
+  <sprite>
+    <name>Boss 01</name>
+    <id>40</id>
+    <texture>boss_01</texture>
+    <health>120</health>
+  </sprite>
+  <sprite>
+    <name>Boss 02</name>
+    <id>41</id>
+    <texture>boss_02</texture>
+    <health>120</health>
+  </sprite>
+  <sprite>
+    <name>Boss 03</name>
+    <id>42</id>
+    <texture>boss_03</texture>
+    <health>120</health>
+  </sprite>
+  <sprite>
+    <name>Boss 04</name>
+    <id>43</id>
+    <texture>boss_04</texture>
+    <health>120</health>
+  </sprite>
+  <sprite>
+    <name>Boss 05</name>
+    <id>44</id>
+    <texture>boss_05</texture>
+    <health>120</health>
+  </sprite>
 </sprites>

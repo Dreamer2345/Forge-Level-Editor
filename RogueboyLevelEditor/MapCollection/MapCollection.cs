@@ -32,7 +32,6 @@ namespace RogueboyLevelEditor.mapCollection
                 map.drawOffsetY = DrawOffsetY;
                 map.viewHeight = ViewHeight;
                 map.viewWidth = ViewWidth;
-                map.Filepath = FilePath;
             }
         }
 
@@ -81,9 +80,6 @@ namespace RogueboyLevelEditor.mapCollection
             map.viewWidth = ViewWidth;
             if (CurrentMap == null)
                 CurrentMap = map;
-            map.Filepath = FilePath;
-
-
             OpenMaps.Add(map);
         }
 

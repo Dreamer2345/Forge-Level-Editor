@@ -9,6 +9,6 @@ namespace RogueboyLevelEditor.map.Component
 {
     public abstract class DrawComponent
     {
-        public abstract void Draw(Graphics graphics, Point Pos);
+        public abstract void Draw(Graphics graphics, Point Pos, Point Size);
     }
 }

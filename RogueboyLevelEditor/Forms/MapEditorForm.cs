@@ -73,7 +73,7 @@ namespace RogueboyLevelEditor.Forms
             InitializeComponent();
 
             this.mapEditorControl.Tool = new TileTool();
-            this.MapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", "", 15, 15, 250));
+            this.MapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", 15, 15, 250));
             showTileTools();
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
@@ -1693,6 +1693,16 @@ namespace RogueboyLevelEditor.Forms
 
         }
 
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            float zoom = (this.trackBar1.Value / 100f);
+
+            var width = (int)(Map.DefaultTileWidth * zoom);
+            var height = (int)(Map.DefaultTileHeight * zoom);
+
+            this.mapEditorControl.CurrentMap.TileSize = new Size(width, height);
+            this.mapEditorControl.Invalidate();
+        }
     }
 
 }

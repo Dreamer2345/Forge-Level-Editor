@@ -80,7 +80,7 @@ namespace RogueboyLevelEditor.Forms
             }
 
             if (Output == null) {
-                Output = new Map(new BaseMapComponent(-1), textBox1.Text, Filepath, (int)mapWidthUpDown.Value, (int)mapHeightUpDown.Value, (int)mapTimerUpDown.Value);
+                Output = new Map(new BaseMapComponent(-1), textBox1.Text, (int)mapWidthUpDown.Value, (int)mapHeightUpDown.Value, (int)mapTimerUpDown.Value);
             }
             else {
                 Output.Name = textBox1.Text;

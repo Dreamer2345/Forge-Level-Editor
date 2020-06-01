@@ -10,12 +10,13 @@ namespace RogueboyLevelEditor.map
 
     public class Map
     {
+        public const int DefaultTileWidth = 16;
+        public const int DefaultTileHeight = 16;
+
         public bool Saved { get; private set; }
         public string Filepath = "";
         int ViewWidth = 10;
         int ViewHeight = 10;
-        const int TileWidth = 16;
-        const int TileHeight = 16;
         int DrawOffsetX = 0;
         int DrawOffsetY = 0;
         public string Name;
@@ -29,10 +30,13 @@ namespace RogueboyLevelEditor.map
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
         public List<EnviromentAffectComponent> Connectors;
+
         public Point Centre
         {
             get => new Point(this.Width / 2, this.Height / 2);
         }
+
+        public Size TileSize { get; set; } = new Size(DefaultTileWidth, DefaultTileHeight);
 
         T[,] ResizeArray<T>(T[,] original, int rows, int cols)
         {
@@ -113,7 +117,7 @@ namespace RogueboyLevelEditor.map
             byte Timer = Array[++Pointer];
             BaseMapComponent outOfBoundsTile = new BaseMapComponent(Array[++Pointer]);
             Pointer++;
-            Map newMap = new Map(outOfBoundsTile, name, FilePath, width, height, Timer, 0, 0);
+            Map newMap = new Map(outOfBoundsTile, name, width, height, Timer, 0, 0);
             newMap.PlayerStart = playerStart;
 
             for (int i = 0; i < width; i++)
@@ -224,30 +228,29 @@ namespace RogueboyLevelEditor.map
         public int viewWidth { get => ViewWidth; set => ViewWidth = value; }
         public int viewHeight { get => ViewHeight; set => ViewHeight = value; }
 
-
-        public System.Drawing.Point ToTileSpace(System.Drawing.Point point)
+        public Point ToTileSpace(Point point)
         {
-            return new System.Drawing.Point(ToTileSpaceX(point.X), ToTileSpaceY(point.Y));
+            return new Point(ToTileSpaceX(point.X), ToTileSpaceY(point.Y));
         }
         public int ToTileSpaceX(int X)
         {
-            return ((int)Math.Floor((X - drawOffsetX) / 16d)) + DrawPos.X;
+            return ((int)Math.Floor((X - drawOffsetX) / (double)TileSize.Width)) + DrawPos.X;
         }
         public int ToTileSpaceY(int Y)
         {
-            return ((int)Math.Floor((Y - drawOffsetY) / 16d)) + DrawPos.Y;
+            return ((int)Math.Floor((Y - drawOffsetY) / (double)TileSize.Height)) + DrawPos.Y;
         }
-        public System.Drawing.Point ToScreenSpace(System.Drawing.Point point)
+        public Point ToScreenSpace(Point point)
         {
-            return new System.Drawing.Point(ToScreenSpaceX(point.X), ToScreenSpaceY(point.Y));
+            return new Point(ToScreenSpaceX(point.X), ToScreenSpaceY(point.Y));
         }
         public int ToScreenSpaceX(int X)
         {
-            return (((X - DrawPos.X) * TileWidth) + DrawOffsetX);
+            return (((X - DrawPos.X) * TileSize.Width) + DrawOffsetX);
         }
         public int ToScreenSpaceY(int Y)
         {
-            return (((Y - DrawPos.Y) * TileHeight) + DrawOffsetY);
+            return (((Y - DrawPos.Y) * TileSize.Height) + DrawOffsetY);
         }
 
         public bool CheckInRange(int x, int y)
@@ -266,13 +269,12 @@ namespace RogueboyLevelEditor.map
             }
         }
 
-        public Map(BaseMapComponent OutOfBounds, string Name = "Map", string Filepath = "", int xSize = 15, int ySize = 15, int timer = 255, int DrawOffsetX = 0, int DrawOffsetY = 0)
+        public Map(BaseMapComponent OutOfBounds, string Name = "Map", int xSize = 15, int ySize = 15, int timer = 255, int DrawOffsetX = 0, int DrawOffsetY = 0)
         {
             this.DrawOffsetX = DrawOffsetX;
             this.DrawOffsetY = DrawOffsetY;
             this.OutOfBoundsTile = OutOfBounds;
             this.Name = Name;
-            this.Filepath = Filepath;
             Timer = timer;
             this.width = xSize;
             this.height = ySize;
@@ -327,11 +329,11 @@ namespace RogueboyLevelEditor.map
         public void UpdateSprite(Point p, int ID, int NewHealth)
         {
             int found = Sprites.FindIndex(x => x.SpritePosition == p && x.Type == ID);
-            if(found != -1)
+            if (found != -1)
             {
                 Sprites[found].Health = NewHealth;
             }
-            
+
         }
 
         public EnviromentAffectComponent AddConnection(Point start, Point end)
@@ -360,19 +362,19 @@ namespace RogueboyLevelEditor.map
                     {
                         if (ShowPlayerStart)
                         {
-                            MapComponents[i + DrawPos.X, j + DrawPos.Y].Draw(graphics, ToScreenSpace(new Point(i + DrawPos.X, j + DrawPos.Y)));
+                            MapComponents[i + DrawPos.X, j + DrawPos.Y].Draw(graphics, ToScreenSpace(new Point(i + DrawPos.X, j + DrawPos.Y)), new Point(TileSize.Width, TileSize.Height));
                         }
 
                         if (MapComponents[i + DrawPos.X, j + DrawPos.Y] != null)
                         {
-                            MapComponents[i + DrawPos.X, j + DrawPos.Y].Draw(graphics, ToScreenSpace(new Point(i + DrawPos.X, j + DrawPos.Y)));
+                            MapComponents[i + DrawPos.X, j + DrawPos.Y].Draw(graphics, ToScreenSpace(new Point(i + DrawPos.X, j + DrawPos.Y)), new Point(TileSize.Width, TileSize.Height));
                         }
                     }
                     else
                     {
                         if (ShowOutOfBounds)
                         {
-                            OutOfBoundsTile.Draw(graphics, ToScreenSpace(new Point(i, j)));
+                            OutOfBoundsTile.Draw(graphics, ToScreenSpace(new Point(i, j)), new Point(TileSize.Width, TileSize.Height));
                         }
                     }
                 }
@@ -383,7 +385,7 @@ namespace RogueboyLevelEditor.map
         {
             foreach (SpriteComponent i in Sprites)
             {
-                i.Draw(graphics, ToScreenSpace(new Point(i.SpritePosition.X, i.SpritePosition.Y)));
+                i.Draw(graphics, ToScreenSpace(new Point(i.SpritePosition.X, i.SpritePosition.Y)), new Point(TileSize.Width, TileSize.Height));
             }
         }
 
@@ -391,14 +393,14 @@ namespace RogueboyLevelEditor.map
         {
             foreach (EnviromentAffectComponent i in Connectors)
             {
-                i.Draw(graphics, ToScreenSpace(new Point(i.Start.X, i.Start.Y)));
+                i.Draw(graphics, ToScreenSpace(new Point(i.Start.X, i.Start.Y)), new Point(TileSize.Width, TileSize.Height));
             }
         }
 
         public void DrawPlayer(Graphics graphics)
         {
             Pen pen = new Pen(Color.Blue);
-            graphics.DrawRectangle(pen, ToScreenSpaceX(PlayerStart.X) - 1, ToScreenSpaceY(PlayerStart.Y) - 1, 17, 17);
+            graphics.DrawRectangle(pen, ToScreenSpaceX(PlayerStart.X) - 1, ToScreenSpaceY(PlayerStart.Y) - 1, TileSize.Width, TileSize.Height);
 
         }
 

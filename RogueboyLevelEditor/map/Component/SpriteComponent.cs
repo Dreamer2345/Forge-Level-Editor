@@ -23,11 +23,11 @@ namespace RogueboyLevelEditor.map.Component
             this.Health = health;
         }
 
-        public override void Draw(Graphics graphics, Point Pos)
+        public override void Draw(Graphics graphics, Point Pos, Point Size)
         {
             Bitmap bitmap = TextureManager.GetTexture(SpriteManager.GetSprite(Type).TextureID);
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
-            graphics.DrawImage(bitmap, Pos.X, Pos.Y, 16, 16);
+            graphics.DrawImage(bitmap, Pos.X, Pos.Y, Size.X, Size.Y);
         }
     }
 }
