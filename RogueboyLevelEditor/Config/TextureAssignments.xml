@@ -543,10 +543,14 @@
     <filepath>Textures/Tile_97.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
-
   <texture>
     <id>98</id>
     <filepath>Textures/Tile_98.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
+  <texture>
+    <id>99</id>
+    <filepath>Textures/Tile_99.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
   

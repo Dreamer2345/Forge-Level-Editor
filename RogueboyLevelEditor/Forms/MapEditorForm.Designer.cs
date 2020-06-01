@@ -100,9 +100,6 @@
             this.removeConnection = new System.Windows.Forms.Button();
             this.tabPlayerStart = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabMapSettings = new System.Windows.Forms.TabPage();
-            this.SettingsLabel1 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabImageList = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.currentMapLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -129,6 +126,7 @@
             this.rowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsLabel1 = new System.Windows.Forms.Label();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -155,8 +153,6 @@
             this.tabConnectionTool.SuspendLayout();
             this.connectionToolTableLayout.SuspendLayout();
             this.tabPlayerStart.SuspendLayout();
-            this.tabMapSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.mapEditorContextMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -440,7 +436,6 @@
             this.tabPages.Controls.Add(this.tabSpriteTool);
             this.tabPages.Controls.Add(this.tabConnectionTool);
             this.tabPages.Controls.Add(this.tabPlayerStart);
-            this.tabPages.Controls.Add(this.tabMapSettings);
             this.tabPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPages.ImageList = this.tabImageList;
             this.tabPages.Location = new System.Drawing.Point(555, 55);
@@ -788,41 +783,6 @@
             this.label1.Text = "Select a starting position for the player on this level.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // tabMapSettings
-            // 
-            this.tabMapSettings.Controls.Add(this.SettingsLabel1);
-            this.tabMapSettings.Controls.Add(this.trackBar1);
-            this.tabMapSettings.ImageIndex = 2;
-            this.tabMapSettings.Location = new System.Drawing.Point(4, 29);
-            this.tabMapSettings.Name = "tabMapSettings";
-            this.tabMapSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMapSettings.Size = new System.Drawing.Size(401, 551);
-            this.tabMapSettings.TabIndex = 4;
-            this.tabMapSettings.Text = "Settings";
-            this.tabMapSettings.UseVisualStyleBackColor = true;
-            // 
-            // SettingsLabel1
-            // 
-            this.SettingsLabel1.AutoSize = true;
-            this.SettingsLabel1.Location = new System.Drawing.Point(7, 7);
-            this.SettingsLabel1.Name = "SettingsLabel1";
-            this.SettingsLabel1.Size = new System.Drawing.Size(49, 20);
-            this.SettingsLabel1.TabIndex = 1;
-            this.SettingsLabel1.Text = "Scale";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Location = new System.Drawing.Point(10, 23);
-            this.trackBar1.Maximum = 300;
-            this.trackBar1.Minimum = 50;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(102, 20);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.TickFrequency = 20;
-            this.trackBar1.Value = 100;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
             // tabImageList
             // 
             this.tabImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabImageList.ImageStream")));
@@ -908,7 +868,6 @@
             // 
             // mapEditorContextMenu
             // 
-            this.mapEditorContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mapEditorContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tileToolStripMenuItem,
             this.spriteToolStripMenuItem,
@@ -917,7 +876,7 @@
             this.columnToolStripMenuItem,
             this.rowToolStripMenuItem});
             this.mapEditorContextMenu.Name = "contextMenuStrip1";
-            this.mapEditorContextMenu.Size = new System.Drawing.Size(175, 160);
+            this.mapEditorContextMenu.Size = new System.Drawing.Size(241, 193);
             this.mapEditorContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.mapEditorContextMenu_Opening);
             // 
             // tileToolStripMenuItem
@@ -927,7 +886,7 @@
             this.eraseTileToolStripMenuItem,
             this.toolStripMenuItem5});
             this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
-            this.tileToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.tileToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.tileToolStripMenuItem.Text = "Tile";
             // 
             // selectTileToolStripMenuItem
@@ -958,7 +917,7 @@
             this.removeSpriteToolStripMenuItem,
             this.toolStripMenuItem6});
             this.spriteToolStripMenuItem.Name = "spriteToolStripMenuItem";
-            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.spriteToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.spriteToolStripMenuItem.Text = "Sprite";
             // 
             // selectSpriteToolStripMenuItem
@@ -988,7 +947,7 @@
             this.selectConnectionToolStripMenuItem,
             this.removeConnectionToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.connectionToolStripMenuItem.Text = "Connection";
             // 
             // selectConnectionToolStripMenuItem
@@ -1008,7 +967,7 @@
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(171, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(237, 6);
             // 
             // columnToolStripMenuItem
             // 
@@ -1016,7 +975,7 @@
             this.addColumnToolStripMenuItem,
             this.removeColumnToolStripMenuItem});
             this.columnToolStripMenuItem.Name = "columnToolStripMenuItem";
-            this.columnToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.columnToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.columnToolStripMenuItem.Text = "Column";
             // 
             // addColumnToolStripMenuItem
@@ -1041,7 +1000,7 @@
             this.addRowToolStripMenuItem,
             this.removeRowToolStripMenuItem});
             this.rowToolStripMenuItem.Name = "rowToolStripMenuItem";
-            this.rowToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.rowToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
             this.rowToolStripMenuItem.Text = "Row";
             // 
             // addRowToolStripMenuItem
@@ -1060,6 +1019,15 @@
             this.removeRowToolStripMenuItem.Text = "Remove";
             this.removeRowToolStripMenuItem.Click += new System.EventHandler(this.removeRowToolStripMenuItem_Click);
             // 
+            // SettingsLabel1
+            // 
+            this.SettingsLabel1.AutoSize = true;
+            this.SettingsLabel1.Location = new System.Drawing.Point(7, 7);
+            this.SettingsLabel1.Name = "SettingsLabel1";
+            this.SettingsLabel1.Size = new System.Drawing.Size(49, 20);
+            this.SettingsLabel1.TabIndex = 1;
+            this.SettingsLabel1.Text = "Scale";
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -1077,7 +1045,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
@@ -1255,9 +1222,6 @@
             this.tabConnectionTool.ResumeLayout(false);
             this.connectionToolTableLayout.ResumeLayout(false);
             this.tabPlayerStart.ResumeLayout(false);
-            this.tabMapSettings.ResumeLayout(false);
-            this.tabMapSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.mapEditorContextMenu.ResumeLayout(false);
@@ -1384,8 +1348,6 @@
         private System.Windows.Forms.ToolStripMenuItem pickTileMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem mapPropertysToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabMapSettings;
         private System.Windows.Forms.Label SettingsLabel1;
-        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
