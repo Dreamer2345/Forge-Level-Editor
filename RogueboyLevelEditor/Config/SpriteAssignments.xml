@@ -13,15 +13,15 @@
 		<health>0</health>	
 	</sprite>
 	<sprite> 
-		<name>Bread</name>
-		<id>2</id>
-		<texture>bread</texture>
-		<health>0</health>	
-	</sprite>
-	<sprite> 
 		<name>Key</name>
 		<id>3</id>
 		<texture>key</texture>
+		<health>0</health>	
+	</sprite>
+  <sprite> 
+		<name>Bread</name>
+		<id>2</id>
+		<texture>bread</texture>
 		<health>0</health>	
 	</sprite>
 	<sprite> 
@@ -29,12 +29,6 @@
 		<id>4</id>
 		<texture>chicken</texture>
 		<health>0</health>	
-	</sprite>
-	<sprite> 
-		<name>Floater</name>
-		<id>5</id>
-		<texture>floater</texture>
-		<health>30</health>	
 	</sprite>
 	<sprite> 
 		<name>Eye</name>
@@ -55,23 +49,53 @@
 		<health>20</health>	
 	</sprite>
 	<sprite> 
-		<name>Tools</name>
-		<id>9</id>
-		<texture>tools</texture>
-		<health>0</health>	
-	</sprite>
-	<sprite> 
-		<name>Tonic</name>
-		<id>10</id>
-		<texture>tonic</texture>
-		<health>0</health>	
-	</sprite>
-	<sprite> 
 		<name>Large Spider</name>
 		<id>11</id>
 		<texture>largespider</texture>
 		<health>50</health>	
 	</sprite>
+  <sprite>
+    <name>Skeleton</name>
+    <id>16</id>
+    <texture>skeleton</texture>
+    <health>40</health>
+  </sprite>  
+  <sprite>
+    <name>Beholder</name>
+    <id>41</id>
+    <texture>beholder</texture>
+    <health>120</health>
+  </sprite>
+  <sprite>
+    <name>Cyclops</name>
+    <id>42</id>
+    <texture>cyclops</texture>
+    <health>120</health>
+  </sprite>
+  <sprite>
+    <name>Snake</name>
+    <id>21</id>
+    <texture>snake</texture>
+    <health>20</health>
+  </sprite>
+  <sprite>
+    <name>Necromancer</name>
+    <id>23</id>
+    <texture>necromancer</texture>
+    <health>60</health>
+  </sprite>
+  <sprite>
+    <name>Hobgoblin</name>
+    <id>24</id>
+    <texture>hobgoblin</texture>
+    <health>60</health>
+  </sprite>  
+	<sprite> 
+		<name>Tonic</name>
+		<id>10</id>
+		<texture>tonic</texture>
+		<health>0</health>	
+	</sprite>  
   <sprite>
     <name>Ice Spell</name>
     <id>12</id>
@@ -97,12 +121,6 @@
     <health>0</health>
   </sprite>
   <sprite>
-    <name>Skeleton</name>
-    <id>16</id>
-    <texture>skeleton</texture>
-    <health>40</health>
-  </sprite>
-  <sprite>
     <name>Spike LHS</name>
     <id>17</id>
     <texture>spikelhs</texture>
@@ -126,24 +144,12 @@
     <texture>firebot</texture>
     <health>0</health>
   </sprite>
-  <sprite>
-    <name>Snake</name>
-    <id>21</id>
-    <texture>snake</texture>
-    <health>20</health>
-  </sprite>
-  <sprite>
-    <name>Necromancer</name>
-    <id>23</id>
-    <texture>necromancer</texture>
-    <health>60</health>
-  </sprite>
-  <sprite>
-    <name>Hobgoblin</name>
-    <id>24</id>
-    <texture>hobgoblin</texture>
-    <health>60</health>
-  </sprite>
+	<sprite> 
+		<name>Tools</name>
+		<id>9</id>
+		<texture>tools</texture>
+		<health>0</health>	
+	</sprite>
   <sprite>
     <name>Guide 01</name>
     <id>32</id>
@@ -154,7 +160,7 @@
     <name>Guide 02</name>
     <id>33</id>
     <texture>guide_02</texture>
-    <health>60</health>
+    <health>0</health>
   </sprite>
   <sprite>
     <name>Guide 03</name>
@@ -191,17 +197,5 @@
     <id>39</id>
     <texture>guide_08</texture>
     <health>0</health>
-  </sprite>
-  <sprite>
-    <name>Beholder</name>
-    <id>41</id>
-    <texture>beholder</texture>
-    <health>120</health>
-  </sprite>
-  <sprite>
-    <name>Cyclops</name>
-    <id>42</id>
-    <texture>cyclops</texture>
-    <health>120</health>
   </sprite>
 </sprites>

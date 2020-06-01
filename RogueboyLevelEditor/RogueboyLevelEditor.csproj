@@ -165,6 +165,8 @@
     <None Include="icons\New\save-as.png" />
     <None Include="icons\New\sprites.png" />
     <None Include="icons\New\eyedropper.png" />
+    <Content Include="icons\Hammer16x16.png" />
+    <Content Include="icons\Hammer32x32.png" />
     <Content Include="icons\New\About.png" />
     <Content Include="Textures\Sprites\Bat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

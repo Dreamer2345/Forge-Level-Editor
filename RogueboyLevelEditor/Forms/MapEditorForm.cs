@@ -139,7 +139,8 @@ namespace RogueboyLevelEditor.Forms
             var imageList = new ImageList
             {
                 ImageSize = new Size(16, 16),
-                TransparentColor = Color.FromArgb(255, 119, 168)
+//                TransparentColor = Color.FromArgb(255, 119, 168)
+                TransparentColor = Color.FromArgb(213, 213, 213)
             };
 
             foreach (Tile tile in TileManager.Tiles)
