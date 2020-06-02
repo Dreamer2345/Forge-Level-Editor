@@ -125,11 +125,6 @@ namespace ForgeLevelEditor.mapCollection
             return false;
         }
 
-        public MapCollection()
-        {
-
-        }
-
         public void Draw(Graphics graphics)
         {
             if (this.CurrentMap == null)
