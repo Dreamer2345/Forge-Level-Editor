@@ -1,0 +1,16 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+# See also: https://docs.microsoft.com/en-us/visualstudio/ide/create-portable-custom-editor-options?view=vs-2017
+
+###############################
+# Core EditorConfig Options   #
+###############################
+
+root = true
+
+# Code files
+[*.{cs,csx,vb,vbx}]
+charset = utf-8-bom
+indent_size = 4
+indent_style = space
+end_of_line = lf
+insert_final_newline = true
