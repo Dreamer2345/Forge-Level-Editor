@@ -996,4 +996,17 @@
       <value>false</value>
     </switch>
   </tile>
+  <tile>
+    <name>Shadow</name>
+    <id>100</id>
+    <texture>100</texture>
+    <exit>false</exit>
+    <gate>
+      <active>0</active>
+      <value>false</value>
+    </gate>
+    <switch>
+      <value>false</value>
+    </switch>
+  </tile>
 </tiles>

@@ -553,7 +553,12 @@
     <filepath>Textures/Tile_99.png</filepath>
     <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
   </texture>
-  
+  <texture>
+    <id>100</id>
+    <filepath>Textures/Tile_100.png</filepath>
+    <transparent r = "255" g = "119" b = "168" a = "0"></transparent>
+  </texture>
+
   <texture>
         <id>coin</id>
         <filepath>Textures/Sprites/Coin.png</filepath>
