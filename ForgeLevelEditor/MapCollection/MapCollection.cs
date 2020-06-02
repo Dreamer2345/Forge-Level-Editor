@@ -125,14 +125,6 @@ namespace ForgeLevelEditor.mapCollection
             return false;
         }
 
-        public MapCollection(int DrawOffsetX,int DrawOffsetY,int ViewWidth, int ViewHeight)
-        {
-            this.DrawOffsetX = DrawOffsetX;
-            this.DrawOffsetY = DrawOffsetY;
-            this.ViewWidth = ViewWidth;
-            this.ViewHeight = ViewHeight;
-        }
-
         public MapCollection()
         {
 
@@ -143,7 +135,7 @@ namespace ForgeLevelEditor.mapCollection
             if (this.CurrentMap == null)
                 return;
 
-            if(DrawBackground)
+            if (DrawBackground)
                 CurrentMap.DrawBackground(graphics);
 
             if (DrawSprites)
