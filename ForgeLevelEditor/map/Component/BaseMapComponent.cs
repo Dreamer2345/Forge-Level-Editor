@@ -3,6 +3,7 @@ using ForgeLevelEditor.TextureHandler;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,6 @@ namespace ForgeLevelEditor.map.Component
             Bitmap bitmap = TextureManager.GetTexture(TileManager.GetTile(tileID).TextureID);
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
             graphics.DrawImage(bitmap, Pos.X, Pos.Y, Size.X, Size.Y);
-            
         }
     }
 }

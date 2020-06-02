@@ -1,6 +1,4 @@
 ﻿using System.Drawing;
-using Point = System.Drawing.Point;
-
 
 namespace ForgeLevelEditor.map.Component
 {
