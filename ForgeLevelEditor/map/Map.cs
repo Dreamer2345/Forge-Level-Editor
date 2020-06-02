@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using Point = System.Drawing.Point;
 
 namespace ForgeLevelEditor.map
 {
