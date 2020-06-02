@@ -110,6 +110,7 @@ namespace ForgeLevelEditor.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             this.mapCollection?.Draw(e.Graphics);
 
             this.DrawSelectedTile(e.Graphics);
