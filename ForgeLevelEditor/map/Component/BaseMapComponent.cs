@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace ForgeLevelEditor.map.Component
 {
-
-    public class BaseMapComponent : DrawComponent
+    public class BaseMapComponent
     {
         public int tileID = -1;
 
@@ -20,7 +19,7 @@ namespace ForgeLevelEditor.map.Component
             tileID = ID;
         }
 
-        public override void Draw(Graphics graphics, Point Pos, Point Size)
+        public void Draw(Graphics graphics, Point Pos, Point Size)
         {
             if (Pos == null)
                 return;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ForgeLevelEditor.map.Component
 {
-    public class SpriteComponent : DrawComponent
+    public class SpriteComponent
     {
         public int Type;
         public Point SpritePosition;
@@ -21,7 +21,7 @@ namespace ForgeLevelEditor.map.Component
             this.Health = health;
         }
 
-        public override void Draw(Graphics graphics, Point Pos, Point Size)
+        public void Draw(Graphics graphics, Point Pos, Point Size)
         {
             Bitmap bitmap = TextureManager.GetTexture(SpriteManager.GetSprite(Type).TextureID);
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
