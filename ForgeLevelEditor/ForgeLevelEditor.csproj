@@ -134,7 +134,6 @@
     </Compile>
     <Compile Include="MapCollection\MapCollection.cs" />
     <Compile Include="map\Component\BaseMapComponent.cs" />
-    <Compile Include="map\Component\DrawComponent.cs" />
     <Compile Include="map\Component\EnviromentAffectComponent.cs" />
     <Compile Include="map\Component\SpriteComponent.cs" />
     <Compile Include="map\Component\SpriteManager.cs" />

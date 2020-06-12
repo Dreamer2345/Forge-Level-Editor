@@ -2,7 +2,7 @@
 
 namespace ForgeLevelEditor.map.Component
 {
-    public class EnviromentAffectComponent : DrawComponent
+    public class EnviromentAffectComponent
     {
         Map parentMap;
         public Point Start;
@@ -26,7 +26,7 @@ namespace ForgeLevelEditor.map.Component
             this.IsValid = (TileManager.GetTile(p0.tileID).IsSender && TileManager.GetTile(p1.tileID).IsReceiver);
         }
 
-        public override void Draw(Graphics graphics, Point Pos, Point Size)
+        public void Draw(Graphics graphics, Point Pos, Point Size)
         {
 
             UpdateValid();
