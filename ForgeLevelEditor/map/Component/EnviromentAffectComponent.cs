@@ -4,7 +4,7 @@ namespace ForgeLevelEditor.map.Component
 {
     public class EnviromentAffectComponent
     {
-        Map parentMap;
+        private Map parentMap;
         public Point Start;
         public Point End;
         public bool IsValid;
@@ -19,7 +19,7 @@ namespace ForgeLevelEditor.map.Component
             UpdateValid();
         }
 
-        void UpdateValid()
+        private void UpdateValid()
         {
             var p0 = parentMap.GetTile(Start);
             var p1 = parentMap.GetTile(End);

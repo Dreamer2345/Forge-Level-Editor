@@ -14,15 +14,16 @@ namespace ForgeLevelEditor.map
 
         public bool Saved { get; private set; }
         public string Filepath = "";
-        int ViewWidth = 10;
-        int ViewHeight = 10;
-        int DrawOffsetX = 0;
-        int DrawOffsetY = 0;
+        private int ViewWidth = 10;
+        private int ViewHeight = 10;
+        private int DrawOffsetX = 0;
+        private int DrawOffsetY = 0;
         public string Name;
         public bool ShowOutOfBounds = false;
         public bool ShowPlayerStart = false;
         public int Timer;
-        int width, height;
+        private int width;
+        private int height;
         public Point PlayerStart = new Point(0, 0);
         public Point DrawPos = new Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);
@@ -37,7 +38,7 @@ namespace ForgeLevelEditor.map
 
         public Size TileSize { get; set; } = new Size(DefaultTileWidth, DefaultTileHeight);
 
-        T[,] ResizeArray<T>(T[,] original, int rows, int cols)
+        private T[,] ResizeArray<T>(T[,] original, int rows, int cols)
         {
             var newArray = new T[rows, cols];
             int minRows = Math.Min(rows, original.GetLength(0));

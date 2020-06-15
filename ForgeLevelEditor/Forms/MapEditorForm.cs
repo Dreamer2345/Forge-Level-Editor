@@ -1,4 +1,4 @@
-using ForgeLevelEditor.map;
+﻿using ForgeLevelEditor.map;
 using ForgeLevelEditor.map.Component;
 using ForgeLevelEditor.mapCollection;
 using ForgeLevelEditor.TextureHandler;
@@ -25,7 +25,7 @@ namespace ForgeLevelEditor.Forms
             set => this.mapEditorControl.MapCollection = value;
         }
 
-        void AddTextures()
+        private void AddTextures()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddTiles()
+        private void AddTiles()
         {
             try
             {
@@ -52,7 +52,7 @@ namespace ForgeLevelEditor.Forms
 
         }
 
-        void AddSprites()
+        private void AddSprites()
         {
             try
             {
@@ -97,7 +97,7 @@ namespace ForgeLevelEditor.Forms
             HealthNumericUpDown.Visible = false;
         }
 
-        void UpdateCurrentSprites()
+        private void UpdateCurrentSprites()
         {
             this.spritesPlacedListView.Items.Clear();
 
@@ -117,7 +117,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void UpdateCurrentConnectors()
+        private void UpdateCurrentConnectors()
         {
             this.connectionListView.Items.Clear();
 
@@ -134,7 +134,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddTilesToListView()
+        private void AddTilesToListView()
         {
             var imageList = new ImageList
             {
@@ -163,7 +163,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddSpritesToListView()
+        private void AddSpritesToListView()
         {
             var imageList = new ImageList
             {
@@ -190,7 +190,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
+        private void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
         {
             if (map == null) return;
             map.CentreMap();

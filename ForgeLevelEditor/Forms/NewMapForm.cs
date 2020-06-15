@@ -24,9 +24,9 @@ namespace ForgeLevelEditor.Forms
 
         public event Callback callback;
         public Map Output { get; private set; }
-        MapCollection mapCollection;
+        private MapCollection mapCollection;
         public bool Valid = false;
-        string Filepath;
+        private string Filepath;
 
         public NewMapForm(MapCollection mapCollection, Map mapToEdit = null, string Filepath = "")
         {

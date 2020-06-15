@@ -15,10 +15,10 @@ namespace ForgeLevelEditor.mapCollection
         public string FilePath = "";
         public string FileName = "";
 
-        int ViewWidth = 10;
-        int ViewHeight = 10;
-        int DrawOffsetX = 0;
-        int DrawOffsetY = 0;
+        private int ViewWidth = 10;
+        private int ViewHeight = 10;
+        private int DrawOffsetX = 0;
+        private int DrawOffsetY = 0;
         public int drawOffsetX { get => DrawOffsetX; set { DrawOffsetX = value;  UpdateViewParams(); } }
         public int drawOffsetY { get => DrawOffsetY; set { DrawOffsetY = value; UpdateViewParams(); } }
         public int viewWidth { get => ViewWidth; set { ViewWidth = value; UpdateViewParams(); } }
@@ -35,12 +35,12 @@ namespace ForgeLevelEditor.mapCollection
             }
         }
 
-        bool DrawBackground = true;
-        bool DrawSprites = true;
-        bool DrawConnections = true;
-        bool DrawPlayer = true;
+        private bool DrawBackground = true;
+        private bool DrawSprites = true;
+        private bool DrawConnections = true;
+        private bool DrawPlayer = true;
 
-        List<Map> OpenMaps = new List<Map>();
+        private List<Map> OpenMaps = new List<Map>();
         public Map CurrentMap = null;
 
         public void MoveCurrentMapUp() {
