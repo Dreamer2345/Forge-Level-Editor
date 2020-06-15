@@ -1,16 +1,16 @@
-﻿using ForgeLevelEditor.map;
-using ForgeLevelEditor.map.Component;
-using ForgeLevelEditor.mapCollection;
-using ForgeLevelEditor.TextureHandler;
-using ForgeLevelEditor.Tools;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static ForgeLevelEditor.TextureHandler.TextureManager;
+
+using ForgeLevelEditor.map;
+using ForgeLevelEditor.map.Component;
+using ForgeLevelEditor.mapCollection;
+using ForgeLevelEditor.TextureHandler;
+using ForgeLevelEditor.Tools;
 
 namespace ForgeLevelEditor.Forms
 {

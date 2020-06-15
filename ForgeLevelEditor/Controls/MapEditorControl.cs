@@ -5,8 +5,8 @@ using System.Windows.Forms;
 using ForgeLevelEditor.map;
 using ForgeLevelEditor.map.Component;
 using ForgeLevelEditor.mapCollection;
-using ForgeLevelEditor.Tools;
 using ForgeLevelEditor.TextureHandler;
+using ForgeLevelEditor.Tools;
 
 namespace ForgeLevelEditor.Controls
 {

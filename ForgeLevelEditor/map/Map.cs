@@ -1,8 +1,9 @@
-﻿using ForgeLevelEditor.map.Component;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+
+using ForgeLevelEditor.map.Component;
 
 namespace ForgeLevelEditor.map
 {
