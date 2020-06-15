@@ -97,7 +97,7 @@ namespace ForgeLevelEditor.map
         }
 
 
-        public static Map ParseMapArray(byte[] Array, string name, string FilePath)
+        public static Map ParseMapArray(byte[] Array, string name)
         {
             if (Array.Length < 5)
             {

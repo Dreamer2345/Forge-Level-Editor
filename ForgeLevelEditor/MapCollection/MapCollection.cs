@@ -171,7 +171,7 @@ namespace ForgeLevelEditor.mapCollection
                         }
                     }
 
-                    Map newmap = Map.ParseMapArray(DataArray, Name, FilePath);
+                    Map newmap = Map.ParseMapArray(DataArray, Name);
 
                     if (newmap != null)
                         yield return newmap;
