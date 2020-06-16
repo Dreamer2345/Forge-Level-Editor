@@ -10,7 +10,7 @@ namespace ForgeLevelEditor.TextureHandler
     {
         private static readonly Bitmap errorTexture = GenerateErrorTexture(16, 16);
 
-        private static Dictionary<string, Bitmap> textures = new Dictionary<string, Bitmap>()
+        private static readonly Dictionary<string, Bitmap> textures = new Dictionary<string, Bitmap>()
         {
             { "Null", errorTexture }
         };
