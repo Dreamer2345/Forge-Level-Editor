@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+
 using ForgeLevelEditor.map;
 using ForgeLevelEditor.map.Component;
 using ForgeLevelEditor.mapCollection;
-using System.Text.RegularExpressions;
 
 namespace ForgeLevelEditor.Forms
 {
@@ -22,16 +15,16 @@ namespace ForgeLevelEditor.Forms
         // but restricting to just alphanumerics is probably wise for sensible map names.
         private static Regex identifierRegex = new Regex("^[_a-zA-Z][_a-zA-Z0-9]*$");
 
-        public event Callback callback;
+        public event Callback Callback;
         public Map Output { get; private set; }
-        MapCollection mapCollection;
+        private MapCollection mapCollection;
         public bool Valid = false;
-        string Filepath;
+        private string filePath;
 
-        public NewMapForm(MapCollection mapCollection, Map mapToEdit = null, string Filepath = "")
+        public NewMapForm(MapCollection mapCollection, Map mapToEdit = null, string filePath = "")
         {
             Output = mapToEdit;
-            this.Filepath = Filepath;
+            this.filePath = filePath;
             this.mapCollection = mapCollection;
             InitializeComponent();
 
@@ -89,7 +82,7 @@ namespace ForgeLevelEditor.Forms
                 Output.Timer = (int)mapTimerUpDown.Value;
             }
             Valid = true;
-            callback?.Invoke(this);
+            Callback?.Invoke(this);
         }
         public void CloseForm()
         {
@@ -99,7 +92,7 @@ namespace ForgeLevelEditor.Forms
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Valid = false;
-            callback?.Invoke(this);
+            Callback?.Invoke(this);
         }
     }
 }

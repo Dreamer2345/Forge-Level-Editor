@@ -34,7 +34,7 @@ namespace ForgeLevelEditor.Tools
 
         private void Control_MouseUp(object sender, MouseEventArgs e)
         {
-            this.control.MapCollection.CurrentMap.DrawPos = this.control.MapCollection.CurrentMap.ToTileSpace(e.Location);
+            this.control.MapCollection.CurrentMap.DrawPosition = this.control.MapCollection.CurrentMap.ToTileSpace(e.Location);
             this.control.CompleteSingleAction(this);
             this.control.Invalidate();
         }

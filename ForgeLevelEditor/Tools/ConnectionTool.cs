@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using ForgeLevelEditor.Controls;
-using ForgeLevelEditor.map.Component;
 
 namespace ForgeLevelEditor.Tools
 {

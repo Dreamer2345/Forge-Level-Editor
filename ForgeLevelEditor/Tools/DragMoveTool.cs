@@ -57,8 +57,8 @@ namespace ForgeLevelEditor.Tools
                 var startLocation = this.startLocation.Value;
                 var endLocation = e.Location;
 
-                this.control.CurrentMap.drawOffsetX += (endLocation.X - startLocation.X);
-                this.control.CurrentMap.drawOffsetY += (endLocation.Y - startLocation.Y);
+                this.control.CurrentMap.DrawOffsetX += (endLocation.X - startLocation.X);
+                this.control.CurrentMap.DrawOffsetY += (endLocation.Y - startLocation.Y);
 
                 this.startLocation = null;
                 this.control.CompleteSingleAction(this);
@@ -74,8 +74,8 @@ namespace ForgeLevelEditor.Tools
                 var startLocation = this.startLocation.Value;
                 var endLocation = e.Location;
 
-                this.control.CurrentMap.drawOffsetX += (endLocation.X - startLocation.X);
-                this.control.CurrentMap.drawOffsetY += (endLocation.Y - startLocation.Y);
+                this.control.CurrentMap.DrawOffsetX += (endLocation.X - startLocation.X);
+                this.control.CurrentMap.DrawOffsetY += (endLocation.Y - startLocation.Y);
 
                 this.startLocation = e.Location;
 

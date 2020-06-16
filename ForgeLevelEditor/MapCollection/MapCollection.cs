@@ -1,12 +1,11 @@
-﻿using ForgeLevelEditor.map;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
+using ForgeLevelEditor.map;
 
 namespace ForgeLevelEditor.mapCollection
 {
@@ -15,47 +14,48 @@ namespace ForgeLevelEditor.mapCollection
         public string FilePath = "";
         public string FileName = "";
 
-        int ViewWidth = 10;
-        int ViewHeight = 10;
-        int DrawOffsetX = 0;
-        int DrawOffsetY = 0;
-        public int drawOffsetX { get => DrawOffsetX; set { DrawOffsetX = value;  UpdateViewParams(); } }
-        public int drawOffsetY { get => DrawOffsetY; set { DrawOffsetY = value; UpdateViewParams(); } }
-        public int viewWidth { get => ViewWidth; set { ViewWidth = value; UpdateViewParams(); } }
-        public int viewHeight { get => ViewHeight; set { ViewHeight = value; UpdateViewParams(); } }
+        private int viewWidth = 10;
+        private int viewHeight = 10;
+        private int drawOffsetX = 0;
+        private int drawOffsetY = 0;
+
+        public int DrawOffsetX { get => drawOffsetX; set { drawOffsetX = value;  UpdateViewParams(); } }
+        public int DrawOffsetY { get => drawOffsetY; set { drawOffsetY = value; UpdateViewParams(); } }
+        public int ViewWidth { get => viewWidth; set { viewWidth = value; UpdateViewParams(); } }
+        public int ViewHeight { get => viewHeight; set { viewHeight = value; UpdateViewParams(); } }
 
         void UpdateViewParams()
         {
-            foreach(Map map in OpenMaps)
+            foreach(Map map in openMaps)
             {
-                map.drawOffsetX = DrawOffsetX;
-                map.drawOffsetY = DrawOffsetY;
-                map.viewHeight = ViewHeight;
-                map.viewWidth = ViewWidth;
+                map.DrawOffsetX = drawOffsetX;
+                map.DrawOffsetY = drawOffsetY;
+                map.ViewHeight = viewHeight;
+                map.ViewWidth = viewWidth;
             }
         }
 
-        bool DrawBackground = true;
-        bool DrawSprites = true;
-        bool DrawConnections = true;
-        bool DrawPlayer = true;
+        private bool drawBackground = true;
+        private bool drawSprites = true;
+        private bool drawConnections = true;
+        private bool drawPlayer = true;
 
-        List<Map> OpenMaps = new List<Map>();
+        private List<Map> openMaps = new List<Map>();
         public Map CurrentMap = null;
 
         public void MoveCurrentMapUp() {
 
-            int index = OpenMaps.IndexOf(CurrentMap);
-            OpenMaps.Remove(CurrentMap);
-            OpenMaps.Insert(index - 1, CurrentMap);
+            int index = openMaps.IndexOf(CurrentMap);
+            openMaps.Remove(CurrentMap);
+            openMaps.Insert(index - 1, CurrentMap);
 
         }
 
         public void MoveCurrentMapDown() {
 
-            int index = OpenMaps.IndexOf(CurrentMap);
-            OpenMaps.Remove(CurrentMap);
-            OpenMaps.Insert(index + 1, CurrentMap);
+            int index = openMaps.IndexOf(CurrentMap);
+            openMaps.Remove(CurrentMap);
+            openMaps.Insert(index + 1, CurrentMap);
 
         }
 
@@ -63,24 +63,24 @@ namespace ForgeLevelEditor.mapCollection
         {
             get
             {
-                return OpenMaps.Count;
+                return openMaps.Count;
             }
         }
 
-        public bool drawBackground { get => DrawBackground; set => DrawBackground = value; }
-        public bool drawSprites { get => DrawSprites; set => DrawSprites = value; }
-        public bool drawConnections { get => DrawConnections; set => DrawConnections = value; }
-        public bool drawPlayer { get => DrawPlayer; set => DrawPlayer = value; }
+        public bool DrawBackground { get => drawBackground; set => drawBackground = value; }
+        public bool DrawSprites { get => drawSprites; set => drawSprites = value; }
+        public bool DrawConnections { get => drawConnections; set => drawConnections = value; }
+        public bool DrawPlayer { get => drawPlayer; set => drawPlayer = value; }
 
         public void AddMap(Map map)
         {
-            map.drawOffsetX = DrawOffsetX;
-            map.drawOffsetY = DrawOffsetY;
-            map.viewHeight = ViewHeight;
-            map.viewWidth = ViewWidth;
+            map.DrawOffsetX = drawOffsetX;
+            map.DrawOffsetY = drawOffsetY;
+            map.ViewHeight = viewHeight;
+            map.ViewWidth = viewWidth;
             if (CurrentMap == null)
                 CurrentMap = map;
-            OpenMaps.Add(map);
+            openMaps.Add(map);
         }
 
         public void AddMaps(IEnumerable<Map> maps)
@@ -93,12 +93,12 @@ namespace ForgeLevelEditor.mapCollection
 
         public void RemoveMap(Map map)
         {
-            OpenMaps.Remove(map);
+            openMaps.Remove(map);
             if (map == CurrentMap)
             {
                 CurrentMap = null;
-                if(OpenMaps.Count > 0)
-                    CurrentMap = OpenMaps[0];
+                if(openMaps.Count > 0)
+                    CurrentMap = openMaps[0];
             }
         }
 
@@ -106,9 +106,9 @@ namespace ForgeLevelEditor.mapCollection
         {
             if(CurrentMap == null)
             {
-                if (OpenMaps.Count > 0)
+                if (openMaps.Count > 0)
                 {
-                    CurrentMap = OpenMaps[0];
+                    CurrentMap = openMaps[0];
                     return true;
                 }
                 else
@@ -130,52 +130,52 @@ namespace ForgeLevelEditor.mapCollection
             if (this.CurrentMap == null)
                 return;
 
-            if (DrawBackground)
+            if (drawBackground)
                 CurrentMap.DrawBackground(graphics);
 
-            if (DrawSprites)
+            if (drawSprites)
                 CurrentMap.DrawSprites(graphics);
 
-            if (DrawConnections)
+            if (drawConnections)
                 CurrentMap.DrawConnections(graphics);
 
-            if (DrawPlayer)
+            if (drawPlayer)
                 CurrentMap.DrawPlayer(graphics);
         }
 
         private static readonly Regex mapLoadRegex = new Regex(@"const\suint8_t\s*\S+\[\s*\]\s*\=\s*\{.*?\}\;");
         private static readonly HashSet<char> mapLoadCharacters = new HashSet<char>() { ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         
-        public static IEnumerable<Map> LoadMaps(string FilePath)
+        public static IEnumerable<Map> LoadMaps(string filePath)
         {
-            var fileData = string.Join(" ", File.ReadLines(FilePath));
+            var fileData = string.Join(" ", File.ReadLines(filePath));
 
-            for (Match reg = mapLoadRegex.Match(fileData);  reg.Success; reg = reg.NextMatch())
+            for (Match match = mapLoadRegex.Match(fileData);  match.Success; match = match.NextMatch())
             {
-                string[] Vals = reg.Value.Split('{', '}');
-                if (Vals.Length == 3)
+                string[] values = match.Value.Split('{', '}');
+                if (values.Length == 3)
                 {
-                    string NameFind = Vals[0];
-                    int endofName = NameFind.IndexOf('[');
-                    int startofName = NameFind.IndexOf("uint8_t") + 7;
-                    string Name = NameFind.Substring(startofName, endofName - startofName).Trim();
+                    string nameArea = values[0];
+                    int nameEnd = nameArea.IndexOf('[');
+                    int nameStart = nameArea.IndexOf("uint8_t") + 7;
+                    string name = nameArea.Substring(nameStart, nameEnd - nameStart).Trim();
                         
-                    string Data = string.Join("", Vals[1].Where(mapLoadCharacters.Contains));
+                    string arrayData = string.Join("", values[1].Where(mapLoadCharacters.Contains));
 
-                    string[] SplitData = Data.Split(',');
-                    byte[] DataArray = new byte[SplitData.Length];
-                    for (int i = 0; i < SplitData.Length; i++)
+                    string[] splitData = arrayData.Split(',');
+                    byte[] bytes = new byte[splitData.Length];
+                    for (int i = 0; i < splitData.Length; i++)
                     {
-                        if (byte.TryParse(SplitData[i], out DataArray[i]))
+                        if (byte.TryParse(splitData[i], out bytes[i]))
                         {
                                 
                         }
                     }
 
-                    Map newmap = Map.ParseMapArray(DataArray, Name, FilePath);
+                    Map map = Map.ParseMapArray(bytes, name);
 
-                    if (newmap != null)
-                        yield return newmap;
+                    if (map != null)
+                        yield return map;
                 }
             }
         }
@@ -193,18 +193,18 @@ namespace ForgeLevelEditor.mapCollection
                     writer.WriteLine("#include <stdint.h>");
                     writer.WriteLine();
 
-                    foreach (var map in this.OpenMaps)
+                    foreach (var map in this.openMaps)
                     {
                         map.WriteMap(writer);
                         writer.WriteLine();
                     }
 
-                    writer.WriteLine("constexpr const uint8_t numberOfMaps = {0};", OpenMaps.Count);
+                    writer.WriteLine("constexpr const uint8_t numberOfMaps = {0};", openMaps.Count);
                     writer.WriteLine();
 
                     writer.Write("constexpr const uint8_t* maps[numberOfMaps] = ");
                     writer.Write("{ ");
-                    foreach (var map in this.OpenMaps)
+                    foreach (var map in this.openMaps)
                     {
                         writer.Write(map.Name);
                         writer.Write(',');
@@ -220,7 +220,7 @@ namespace ForgeLevelEditor.mapCollection
 
         public List<Map> GetMaps()
         {
-            return OpenMaps;
+            return openMaps;
         }
 
 

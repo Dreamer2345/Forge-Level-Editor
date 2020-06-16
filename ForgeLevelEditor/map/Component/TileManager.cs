@@ -6,14 +6,14 @@ namespace ForgeLevelEditor.map.Component
 {
     public class Tile
     {
-        public Tile(int ID, string Name, string TextureID, bool Exit = false, bool Sender = false, bool Receiver = false)
+        public Tile(int id, string name, string textureID, bool isExit = false, bool isSender = false, bool isReceiver = false)
         {
-            this.ID = ID;
-            this.Name = Name;
-            this.TextureID = TextureID;
-            this.IsExit = Exit;
-            this.IsSender = Sender;
-            this.IsReceiver = Receiver;
+            this.ID = id;
+            this.Name = name;
+            this.TextureID = textureID;
+            this.IsExit = isExit;
+            this.IsSender = isSender;
+            this.IsReceiver = isReceiver;
         }
 
         public int ID { get; private set; }
@@ -50,12 +50,12 @@ namespace ForgeLevelEditor.map.Component
             return tiles.TryGetValue(id, out Tile tile) ? tile : Tile.Null;
         }
 
-        private static void AddTile(int ID, Tile tile)
+        private static void AddTile(int id, Tile tile)
         {
-            if (tiles.ContainsKey(ID))
+            if (tiles.ContainsKey(id))
                 return;
 
-            tiles.Add(ID, tile);
+            tiles.Add(id, tile);
         }
 
         public static void Load(string filePath)
@@ -66,8 +66,8 @@ namespace ForgeLevelEditor.map.Component
 
         private static IEnumerable<Tile> LoadTiles(string filePath)
         {
-            var xmlDoc = XDocument.Load(filePath);
-            var nodes = xmlDoc.Descendants("tiles").Elements().Where(element => element.Name == "tile");
+            var document = XDocument.Load(filePath);
+            var nodes = document.Descendants("tiles").Elements().Where(element => element.Name == "tile");
 
             // TODO: Find a better way to handle missing data
             foreach (XElement xElement in nodes)

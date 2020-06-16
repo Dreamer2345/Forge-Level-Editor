@@ -1,23 +1,23 @@
-using ForgeLevelEditor.map;
-using ForgeLevelEditor.map.Component;
-using ForgeLevelEditor.mapCollection;
-using ForgeLevelEditor.TextureHandler;
-using ForgeLevelEditor.Tools;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static ForgeLevelEditor.TextureHandler.TextureManager;
+
+using ForgeLevelEditor.map;
+using ForgeLevelEditor.map.Component;
+using ForgeLevelEditor.mapCollection;
+using ForgeLevelEditor.TextureHandler;
+using ForgeLevelEditor.Tools;
 
 namespace ForgeLevelEditor.Forms
 {
     public partial class MapEditorForm : Form
     {
         private const string keepOpen = "KeepOpen";
-        private const int mapMenu_MapStart = 7;
+        private const int mapMenuMapStart = 7;
 
         private MapCollection MapCollection
         {
@@ -25,7 +25,7 @@ namespace ForgeLevelEditor.Forms
             set => this.mapEditorControl.MapCollection = value;
         }
 
-        void AddTextures()
+        private void AddTextures()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddTiles()
+        private void AddTiles()
         {
             try
             {
@@ -52,7 +52,7 @@ namespace ForgeLevelEditor.Forms
 
         }
 
-        void AddSprites()
+        private void AddSprites()
         {
             try
             {
@@ -74,7 +74,7 @@ namespace ForgeLevelEditor.Forms
 
             this.mapEditorControl.Tool = new TileTool();
             this.MapCollection.AddMap(new Map(new BaseMapComponent(-1), "Map", 15, 15, 250));
-            showTileTools();
+            ShowTileTools();
 
             mapsMenu.DropDown.ItemClicked += (obj, args) =>
             {
@@ -97,7 +97,7 @@ namespace ForgeLevelEditor.Forms
             HealthNumericUpDown.Visible = false;
         }
 
-        void UpdateCurrentSprites()
+        private void UpdateCurrentSprites()
         {
             this.spritesPlacedListView.Items.Clear();
 
@@ -117,7 +117,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void UpdateCurrentConnectors()
+        private void UpdateCurrentConnectors()
         {
             this.connectionListView.Items.Clear();
 
@@ -134,7 +134,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddTilesToListView()
+        private void AddTilesToListView()
         {
             var imageList = new ImageList
             {
@@ -163,7 +163,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddSpritesToListView()
+        private void AddSpritesToListView()
         {
             var imageList = new ImageList
             {
@@ -190,7 +190,7 @@ namespace ForgeLevelEditor.Forms
             }
         }
 
-        void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
+        private void AddMapToOpenWindows(Map map, Boolean selectMenuItem)
         {
             if (map == null) return;
             map.CentreMap();
@@ -204,8 +204,8 @@ namespace ForgeLevelEditor.Forms
             if (selectMenuItem)
             {
 
-                tickMapMenuItem(map.Name);
-                enableMapMenuOptions(map.Name);
+                TickMapMenuItem(map.Name);
+                EnableMapMenuOptions(map.Name);
 
             }
 
@@ -217,8 +217,8 @@ namespace ForgeLevelEditor.Forms
 
             if (MapCollection.ChangeMap(chosenMap))
             {
-                tickMapMenuItem(chosenMap.Name);
-                enableMapMenuOptions(chosenMap.Name);
+                TickMapMenuItem(chosenMap.Name);
+                EnableMapMenuOptions(chosenMap.Name);
 
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
@@ -228,17 +228,17 @@ namespace ForgeLevelEditor.Forms
 
         private void MapEditorForm_Load(object sender, EventArgs e)
         {
-            MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-            MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
-            MapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
-            MapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
+            MapCollection.DrawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            MapCollection.DrawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            MapCollection.ViewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
+            MapCollection.ViewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
 
             if (MapCollection.OpenCount > 0)
             {
-                for (int i = 0; i < MapCollection.GetMaps().Count(); i++)
+                for (int index = 0; index < MapCollection.GetMaps().Count(); index++)
                 {
-                    Map map = MapCollection.GetMaps()[i];
-                    AddMapToOpenWindows(map, i == 0);
+                    Map map = MapCollection.GetMaps()[index];
+                    AddMapToOpenWindows(map, index == 0);
                 }
 
                 mapsMenu.DropDownItems[MapCollection.CurrentMap.Name].Image = ForgeLevelEditor.Properties.Resources.Tick;
@@ -267,17 +267,17 @@ namespace ForgeLevelEditor.Forms
         {
             this.mapEditorControl.Tool = new TileTool();
 
-            showTileTools();
+            ShowTileTools();
         }
 
         private void connectionToolRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            showConnectionTool();
+            ShowConnectionTool();
         }
 
         private void spriteToolRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            showSpritesTool();
+            ShowSpritesTool();
         }
         //EndTools
 
@@ -305,10 +305,10 @@ namespace ForgeLevelEditor.Forms
                     MapCollection.AddMaps(MapCollection.LoadMaps(openFileDialog.FileName));
                     currentFileLabel.Text = openFileDialog.FileName;
 
-                    MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-                    MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
-                    MapCollection.viewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
-                    MapCollection.viewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
+                    MapCollection.DrawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+                    MapCollection.DrawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+                    MapCollection.ViewWidth = (int)Math.Ceiling(this.mapEditorControl.Width / 16d);
+                    MapCollection.ViewHeight = (int)Math.Ceiling(this.mapEditorControl.Height / 16d);
 
                     if (MapCollection.OpenCount == 0)
                     {
@@ -320,26 +320,26 @@ namespace ForgeLevelEditor.Forms
 
                     // Remove any existing menu items ..
 
-                    while (mapsMenu.DropDownItems.Count > mapMenu_MapStart)
-                        mapsMenu.DropDownItems.RemoveAt(mapMenu_MapStart);
+                    while (mapsMenu.DropDownItems.Count > mapMenuMapStart)
+                        mapsMenu.DropDownItems.RemoveAt(mapMenuMapStart);
 
 
                     // Load new maps into menu ..
 
                     if (MapCollection.OpenCount > 0)
                     {
-                        for (int i = 0; i < MapCollection.GetMaps().Count(); i++)
+                        for (int index = 0; index < MapCollection.GetMaps().Count(); index++)
                         {
-                            Map map = MapCollection.GetMaps()[i];
-                            AddMapToOpenWindows(map, i == 0);
+                            Map map = MapCollection.GetMaps()[index];
+                            AddMapToOpenWindows(map, index == 0);
                         }
                     }
 
                     mapMoveUpMenu.Image = ForgeLevelEditor.Properties.Resources.ArrowUp;
                     mapMoveDownMenu.Image = ForgeLevelEditor.Properties.Resources.ArrowDown;
 
-                    tickMapMenuItem(MapCollection.CurrentMap.Name);
-                    enableMapMenuOptions(MapCollection.CurrentMap.Name);
+                    TickMapMenuItem(MapCollection.CurrentMap.Name);
+                    EnableMapMenuOptions(MapCollection.CurrentMap.Name);
 
                     UpdateCurrentSprites();
                     UpdateCurrentConnectors();
@@ -357,12 +357,12 @@ namespace ForgeLevelEditor.Forms
 
             NewMapForm form = new NewMapForm(MapCollection, null, MapCollection.FilePath);
             form.Owner = this;
-            form.callback += Form_callback;
+            form.Callback += NewMapForm_Callback;
             form.Show();
             this.Enabled = false;
         }
 
-        private void Form_callback(NewMapForm form)
+        private void NewMapForm_Callback(NewMapForm form)
         {
             if (form.Valid)
             {
@@ -375,10 +375,10 @@ namespace ForgeLevelEditor.Forms
 
                     // Existing? Locate existing ticked map and change the name ..
 
-                    for (int x = mapMenu_MapStart; x < mapsMenu.DropDownItems.Count; x++)
+                    for (int index = mapMenuMapStart; index < mapsMenu.DropDownItems.Count; index++)
                     {
 
-                        ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
+                        ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[index];
                         if (menuItem.Image != null)
                         {
                             menuItem.Name = newMap.Name;
@@ -401,8 +401,8 @@ namespace ForgeLevelEditor.Forms
 
                 }
 
-                tickMapMenuItem(newMap.Name);
-                enableMapMenuOptions(newMap.Name);
+                TickMapMenuItem(newMap.Name);
+                EnableMapMenuOptions(newMap.Name);
 
                 MapCollection.CurrentMap = newMap;
                 UpdateCurrentSprites();
@@ -419,10 +419,11 @@ namespace ForgeLevelEditor.Forms
         {
             if (spritesPlacedListView.SelectedItems.Count > 0)
             {
-                int ID = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
-                int X = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
-                int Y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
-                MapCollection?.CurrentMap.RemoveSprite(new Point(X, Y), ID);
+                int id = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[1].Text);
+                int x = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[3].Text);
+                int y = int.Parse(spritesPlacedListView.SelectedItems[0].SubItems[4].Text);
+
+                MapCollection?.CurrentMap.RemoveSprite(new Point(x, y), id);
                 spritesPlacedListView.Items.Remove(spritesPlacedListView.SelectedItems[0]);
                 this.mapEditorControl.Invalidate();
             }
@@ -453,12 +454,12 @@ namespace ForgeLevelEditor.Forms
         {
             if (connectionListView.SelectedItems.Count > 0)
             {
-                int X = int.Parse(connectionListView.SelectedItems[0].SubItems[1].Text);
-                int Y = int.Parse(connectionListView.SelectedItems[0].SubItems[2].Text);
-                int X1 = int.Parse(connectionListView.SelectedItems[0].SubItems[3].Text);
-                int Y1 = int.Parse(connectionListView.SelectedItems[0].SubItems[4].Text);
+                int startX = int.Parse(connectionListView.SelectedItems[0].SubItems[1].Text);
+                int startY = int.Parse(connectionListView.SelectedItems[0].SubItems[2].Text);
+                int endX = int.Parse(connectionListView.SelectedItems[0].SubItems[3].Text);
+                int endY = int.Parse(connectionListView.SelectedItems[0].SubItems[4].Text);
 
-                MapCollection?.CurrentMap.RemoveConnection(new Point(X, Y), new Point(X1, Y1));
+                MapCollection?.CurrentMap.RemoveConnection(new Point(startX, startY), new Point(endX, endY));
                 connectionListView.Items.Remove(connectionListView.SelectedItems[0]);
                 this.mapEditorControl.Invalidate();
             }
@@ -485,7 +486,7 @@ namespace ForgeLevelEditor.Forms
 
             NewMapForm form = new NewMapForm(MapCollection, null, MapCollection.FilePath);
             form.Owner = this;
-            form.callback += Form_callback;
+            form.Callback += NewMapForm_Callback;
             form.Show();
             this.Enabled = false;
 
@@ -510,8 +511,8 @@ namespace ForgeLevelEditor.Forms
             if (MapCollection.OpenCount > 0)
             {
                 ToolStripMenuItem menuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[MapCollection.CurrentMap.Name];
-                tickMapMenuItem(MapCollection.CurrentMap.Name);
-                enableMapMenuOptions(MapCollection.CurrentMap.Name);
+                TickMapMenuItem(MapCollection.CurrentMap.Name);
+                EnableMapMenuOptions(MapCollection.CurrentMap.Name);
 
                 UpdateCurrentSprites();
                 UpdateCurrentConnectors();
@@ -530,7 +531,7 @@ namespace ForgeLevelEditor.Forms
             mapsMenu.DropDownItems.Insert(menuIndex - 1, menu);
             MapCollection.MoveCurrentMapUp();
 
-            enableMapMenuOptions(menu.Name);
+            EnableMapMenuOptions(menu.Name);
 
         }
 
@@ -543,17 +544,17 @@ namespace ForgeLevelEditor.Forms
             mapsMenu.DropDownItems.Insert(menuIndex + 1, menu);
             MapCollection.MoveCurrentMapDown();
 
-            enableMapMenuOptions(menu.Name);
+            EnableMapMenuOptions(menu.Name);
 
         }
 
-        private void tickMapMenuItem(String mapName)
+        private void TickMapMenuItem(String mapName)
         {
 
 
             // Remove other tick marks from menu items ..
 
-            for (int x = mapMenu_MapStart; x < mapsMenu.DropDownItems.Count; x++)
+            for (int x = mapMenuMapStart; x < mapsMenu.DropDownItems.Count; x++)
             {
                 ToolStripMenuItem otherMenuItem = (ToolStripMenuItem)mapsMenu.DropDownItems[x];
                 otherMenuItem.ImageKey = null;
@@ -567,10 +568,10 @@ namespace ForgeLevelEditor.Forms
 
         }
 
-        private void enableMapMenuOptions(String mapName)
+        private void EnableMapMenuOptions(String mapName)
         {
 
-            mapMoveUpMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != mapMenu_MapStart);
+            mapMoveUpMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != mapMenuMapStart);
             mapMoveDownMenu.Enabled = (mapsMenu.DropDownItems.IndexOfKey(mapName) != mapsMenu.DropDownItems.Count - 1);
             currentMapLabel.Text = mapName;
 
@@ -599,7 +600,7 @@ namespace ForgeLevelEditor.Forms
 
             NewMapForm form = new NewMapForm(MapCollection, MapCollection.CurrentMap, MapCollection.FilePath);
             form.Owner = this;
-            form.callback += Form_callback;
+            form.Callback += NewMapForm_Callback;
             form.Show();
             this.Enabled = false;
 
@@ -613,12 +614,12 @@ namespace ForgeLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
-                MapCollection.drawBackground = true;
+                MapCollection.DrawBackground = true;
             }
             else
             {
                 menuItem.Image = null;
-                MapCollection.drawBackground = false;
+                MapCollection.DrawBackground = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -631,12 +632,12 @@ namespace ForgeLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
-                MapCollection.drawSprites = true;
+                MapCollection.DrawSprites = true;
             }
             else
             {
                 menuItem.Image = null;
-                MapCollection.drawSprites = false;
+                MapCollection.DrawSprites = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -649,13 +650,13 @@ namespace ForgeLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
-                MapCollection.drawConnections = true;
+                MapCollection.DrawConnections = true;
 
             }
             else
             {
                 menuItem.Image = null;
-                MapCollection.drawConnections = false;
+                MapCollection.DrawConnections = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -668,12 +669,12 @@ namespace ForgeLevelEditor.Forms
             if (menuItem.Image == null)
             {
                 menuItem.Image = ForgeLevelEditor.Properties.Resources.Tick;
-                MapCollection.drawPlayer = true;
+                MapCollection.DrawPlayer = true;
             }
             else
             {
                 menuItem.Image = null;
-                MapCollection.drawPlayer = false;
+                MapCollection.DrawPlayer = false;
             }
 
             this.mapEditorControl.Invalidate();
@@ -733,12 +734,12 @@ namespace ForgeLevelEditor.Forms
 
         private void overallTableLayout_SizeChanged(object sender, EventArgs e)
         {
-            MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-            MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            MapCollection.DrawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            MapCollection.DrawOffsetY = (this.mapEditorControl.Height / 2) - 8;
             this.mapEditorControl.Invalidate();
         }
 
-        private void showTileTools()
+        private void ShowTileTools()
         {
             this.mapEditorControl.Tool = new TileTool();
 
@@ -761,7 +762,7 @@ namespace ForgeLevelEditor.Forms
 
         }
 
-        private void showSpritesTool()
+        private void ShowSpritesTool()
         {
             this.mapEditorControl.Tool = new SpritePlacementTool(this.spritesPlacedListView);
 
@@ -786,7 +787,7 @@ namespace ForgeLevelEditor.Forms
             centreMenuItem.Enabled = true;
         }
 
-        private void showConnectionTool()
+        private void ShowConnectionTool()
         {
             this.mapEditorControl.Tool = new ConnectionTool(this.connectionListView);
 
@@ -816,15 +817,15 @@ namespace ForgeLevelEditor.Forms
             {
 
                 case 0:
-                    showTileTools();
+                    ShowTileTools();
                     break;
 
                 case 1:
-                    showSpritesTool();
+                    ShowSpritesTool();
                     break;
 
                 case 2:
-                    showConnectionTool();
+                    ShowConnectionTool();
                     break;
 
                 case 3:
@@ -852,17 +853,17 @@ namespace ForgeLevelEditor.Forms
 
         private void tileToolMenu_Click(object sender, EventArgs e)
         {
-            showTileTools();
+            ShowTileTools();
         }
 
         private void spriteToolMenu_Click(object sender, EventArgs e)
         {
-            showSpritesTool();
+            ShowSpritesTool();
         }
 
         private void connectionToolMenu_Click(object sender, EventArgs e)
         {
-            showConnectionTool();
+            ShowConnectionTool();
         }
 
         private void eraseMenu_Click(object sender, EventArgs e)
@@ -902,15 +903,15 @@ namespace ForgeLevelEditor.Forms
         private void centreMenu_Click(object sender, EventArgs e)
         {
             this.MapCollection.CurrentMap.CentreMap();
-            this.MapCollection.drawOffsetX = (this.mapEditorControl.Width / 2) - 8;
-            this.MapCollection.drawOffsetY = (this.mapEditorControl.Height / 2) - 8;
+            this.MapCollection.DrawOffsetX = (this.mapEditorControl.Width / 2) - 8;
+            this.MapCollection.DrawOffsetY = (this.mapEditorControl.Height / 2) - 8;
             this.mapEditorControl.Invalidate();
             this.mapEditorControl.Refresh();
         }
 
         private void rectangleMenu_Click(object sender, EventArgs e)
         {
-            showTileTools();
+            ShowTileTools();
 
             tilesListView.Visible = true;
 
@@ -963,7 +964,7 @@ namespace ForgeLevelEditor.Forms
 
         private void rectangleMenuItem_Click(object sender, EventArgs e)
         {
-            showTileTools();
+            ShowTileTools();
 
             tilesListView.Visible = true;
 
@@ -1045,18 +1046,18 @@ namespace ForgeLevelEditor.Forms
 
         private void spritesPlacedListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
-            int colIndex = e.ColumnIndex;
+            int columnIndex = e.ColumnIndex;
 
-            if (spritesPlacedListView.Columns[colIndex].Width != int.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString()))
-                spritesPlacedListView.Columns[colIndex].Width = int.Parse(spritesPlacedListView.Columns[colIndex].Tag.ToString());
+            if (spritesPlacedListView.Columns[columnIndex].Width != int.Parse(spritesPlacedListView.Columns[columnIndex].Tag.ToString()))
+                spritesPlacedListView.Columns[columnIndex].Width = int.Parse(spritesPlacedListView.Columns[columnIndex].Tag.ToString());
         }
 
         private void spritesListView_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
-            int colIndex = e.ColumnIndex;
+            int columnIndex = e.ColumnIndex;
 
-            if (spritesListView.Columns[colIndex].Width != int.Parse(spritesListView.Columns[colIndex].Tag.ToString()))
-                spritesListView.Columns[colIndex].Width = int.Parse(spritesListView.Columns[colIndex].Tag.ToString());
+            if (spritesListView.Columns[columnIndex].Width != int.Parse(spritesListView.Columns[columnIndex].Tag.ToString()))
+                spritesListView.Columns[columnIndex].Width = int.Parse(spritesListView.Columns[columnIndex].Tag.ToString());
         }
 
         #region Map Context Menu Events
@@ -1143,7 +1144,7 @@ namespace ForgeLevelEditor.Forms
                 var tilePosition = this.mapEditorControl.CurrentMap.ToTileSpace(menuPosition);
                 var tileId = this.mapEditorControl.CurrentMap.GetTile(tilePosition).tileID;
 
-                showTileTools();
+                ShowTileTools();
                 this.SelectTileInListView(tileId);
             }
         }
@@ -1168,7 +1169,7 @@ namespace ForgeLevelEditor.Forms
                 var menuPosition = this.mapEditorControl.PointToClient(this.mapEditorContextMenu.Location);
                 var tilePosition = map.ToTileSpace(menuPosition);
 
-                showSpritesTool();
+                ShowSpritesTool();
                 this.SelectSpriteInListView(tilePosition);
             }
         }
@@ -1554,9 +1555,9 @@ namespace ForgeLevelEditor.Forms
 
             Tile tile = (Tile)e.NewTile;
 
-            for (int i = 3; i < tileToolStripMenuItem.DropDownItems.Count; i++) {
+            for (int index = 3; index < tileToolStripMenuItem.DropDownItems.Count; index++) {
 
-                ToolStripMenuItem menuItem = (ToolStripMenuItem)tileToolStripMenuItem.DropDownItems[i];
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)tileToolStripMenuItem.DropDownItems[index];
 
                 if (menuItem.Text == tile.Name) {
 
@@ -1586,16 +1587,16 @@ namespace ForgeLevelEditor.Forms
 
             if (!(this.mapEditorControl.Tool is TileTool)) {
 
-                showTileTools();
+                ShowTileTools();
 
             }
 
-            for (int i = 0; i < tilesListView.Items.Count; i++) {
+            for (int index = 0; index < tilesListView.Items.Count; index++) {
 
-                if (int.Parse(tilesListView.Items[i].SubItems[1].Text) == (int)item.Tag) {
+                if (int.Parse(tilesListView.Items[index].SubItems[1].Text) == (int)item.Tag) {
 
-                    tilesListView.Items[i].Selected = true;
-                    tilesListView.Items[i].EnsureVisible();
+                    tilesListView.Items[index].Selected = true;
+                    tilesListView.Items[index].EnsureVisible();
                     break;
 
                 }
@@ -1606,9 +1607,9 @@ namespace ForgeLevelEditor.Forms
 
         private void mapEditorControl_onSpriteAdded(object sender, SpriteAddedEventArgs e) {
 
-            for (int i = 3; i < spriteToolStripMenuItem.DropDownItems.Count; i++) {
+            for (int index = 3; index < spriteToolStripMenuItem.DropDownItems.Count; index++) {
 
-                ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteToolStripMenuItem.DropDownItems[i];
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)spriteToolStripMenuItem.DropDownItems[index];
 
                 if (menuItem.Text == e.Sprite.Name) {
 
@@ -1639,7 +1640,7 @@ namespace ForgeLevelEditor.Forms
 
             if (!(this.mapEditorControl.Tool is SpritePlacementTool)) {
 
-                showSpritesTool();
+                ShowSpritesTool();
 
             }
 
@@ -1669,15 +1670,15 @@ namespace ForgeLevelEditor.Forms
             switch (tabPages.SelectedIndex) {
 
                 case 0:
-                    showTileTools();
+                    ShowTileTools();
                     break;
 
                 case 1:
-                    showSpritesTool();
+                    ShowSpritesTool();
                     break;
 
                 case 2:
-                    showConnectionTool();
+                    ShowConnectionTool();
                     break;
 
             }
@@ -1688,7 +1689,7 @@ namespace ForgeLevelEditor.Forms
 
             if ((centreMenu.Enabled == false) && (e.KeyCode == Keys.Escape)) {
 
-                showTileTools();
+                ShowTileTools();
 
             }
 

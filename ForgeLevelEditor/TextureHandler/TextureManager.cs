@@ -10,7 +10,7 @@ namespace ForgeLevelEditor.TextureHandler
     {
         private static readonly Bitmap errorTexture = GenerateErrorTexture(16, 16);
 
-        private static Dictionary<string, Bitmap> textures = new Dictionary<string, Bitmap>()
+        private static readonly Dictionary<string, Bitmap> textures = new Dictionary<string, Bitmap>()
         {
             { "Null", errorTexture }
         };
@@ -57,8 +57,8 @@ namespace ForgeLevelEditor.TextureHandler
 
         private static IEnumerable<Tuple<string, Bitmap, Color>> LoadTextures(string filePath)
         {
-            var xmlDoc = XDocument.Load(filePath);
-            var nodes = xmlDoc.Descendants("textures").Elements().Where(element => element.Name == "texture");
+            var document = XDocument.Load(filePath);
+            var nodes = document.Descendants("textures").Elements().Where(element => element.Name == "texture");
 
             foreach (XElement xElement in nodes)
             {
