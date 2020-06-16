@@ -15,10 +15,10 @@ namespace ForgeLevelEditor.map
 
         public bool Saved { get; private set; }
         public string Filepath = "";
-        private int ViewWidth = 10;
-        private int ViewHeight = 10;
-        private int DrawOffsetX = 0;
-        private int DrawOffsetY = 0;
+        private int viewWidth = 10;
+        private int viewHeight = 10;
+        private int drawOffsetX = 0;
+        private int drawOffsetY = 0;
         public string Name;
         public bool ShowOutOfBounds = false;
         public bool ShowPlayerStart = false;
@@ -26,7 +26,7 @@ namespace ForgeLevelEditor.map
         private int width;
         private int height;
         public Point PlayerStart = new Point(0, 0);
-        public Point DrawPos = new Point(0, 0);
+        public Point DrawPosition = new Point(0, 0);
         public BaseMapComponent OutOfBoundsTile = new BaseMapComponent(-1);
         public BaseMapComponent[,] MapComponents;
         public List<SpriteComponent> Sprites;
@@ -39,14 +39,14 @@ namespace ForgeLevelEditor.map
 
         public Size TileSize { get; set; } = new Size(DefaultTileWidth, DefaultTileHeight);
 
-        private T[,] ResizeArray<T>(T[,] original, int rows, int cols)
+        private T[,] ResizeArray<T>(T[,] original, int rows, int columns)
         {
-            var newArray = new T[rows, cols];
+            var newArray = new T[rows, columns];
             int minRows = Math.Min(rows, original.GetLength(0));
-            int minCols = Math.Min(cols, original.GetLength(1));
-            for (int i = 0; i < minRows; i++)
-                for (int j = 0; j < minCols; j++)
-                    newArray[i, j] = original[i, j];
+            int minColumns = Math.Min(columns, original.GetLength(1));
+            for (int y = 0; y < minRows; y++)
+                for (int x = 0; x < minColumns; x++)
+                    newArray[y, x] = original[y, x];
             return newArray;
         }
 
@@ -97,57 +97,57 @@ namespace ForgeLevelEditor.map
         }
 
 
-        public static Map ParseMapArray(byte[] Array, string name)
+        public static Map ParseMapArray(byte[] array, string name)
         {
-            if (Array.Length < 5)
+            if (array.Length < 5)
             {
                 return null;
             }
 
 
-            int Pointer = 0;
-            byte width = Array[Pointer];
-            byte height = Array[++Pointer];
+            int index = 0;
+            byte width = array[index];
+            byte height = array[++index];
 
-            if (Array.Length < width * height)
+            if (array.Length < width * height)
             {
                 return null;
             }
 
-            Point playerStart = new Point(Array[++Pointer], Array[++Pointer]);
-            byte Timer = Array[++Pointer];
-            BaseMapComponent outOfBoundsTile = new BaseMapComponent(Array[++Pointer]);
-            Pointer++;
-            Map newMap = new Map(outOfBoundsTile, name, width, height, Timer, 0, 0);
+            Point playerStart = new Point(array[++index], array[++index]);
+            byte timer = array[++index];
+            BaseMapComponent outOfBoundsTile = new BaseMapComponent(array[++index]);
+            index++;
+            Map newMap = new Map(outOfBoundsTile, name, width, height, timer, 0, 0);
             newMap.PlayerStart = playerStart;
 
-            for (int i = 0; i < width; i++)
+            for (int x = 0; x < width; x++)
             {
-                for (int j = 0; j < height; j++)
+                for (int y = 0; y < height; y++)
                 {
-                    newMap.SetTile(new Point(i, j), Array[(i + (j * width)) + Pointer]);
+                    newMap.SetTile(new Point(x, y), array[(x + (y * width)) + index]);
                 }
             }
 
-            Pointer += width * height;
-            byte spriteCount = Array[Pointer++];
+            index += width * height;
+            byte spriteCount = array[index++];
             for (int i = 0; i < spriteCount; i++)
             {
-                byte id = Array[Pointer++];
-                byte x = Array[Pointer++];
-                byte y = Array[Pointer++];
-                byte health = Array[Pointer++];
+                byte id = array[index++];
+                byte x = array[index++];
+                byte y = array[index++];
+                byte health = array[index++];
                 newMap.AddSprite(x, y, id, health);
             }
 
-            byte ConnectionCount = Array[Pointer++];
+            byte ConnectionCount = array[index++];
             for (int i = 0; i < ConnectionCount; i++)
             {
-                byte X = Array[Pointer++];
-                byte Y = Array[Pointer++];
-                byte X1 = Array[Pointer++];
-                byte Y1 = Array[Pointer++];
-                newMap.AddConnection(new Point(X, Y), new Point(X1, Y1));
+                byte startX = array[index++];
+                byte startY = array[index++];
+                byte endX = array[index++];
+                byte endY = array[index++];
+                newMap.AddConnection(new Point(startX, startY), new Point(endX, endY));
             }
 
             return newMap;
@@ -170,13 +170,13 @@ namespace ForgeLevelEditor.map
 
             writer.WriteLine("\t{0}, /*Out of Bounds Tile ID*/", this.OutOfBoundsTile.tileID);
 
-            for (int j = 0; j < this.height; j++)
+            for (int y = 0; y < this.height; y++)
             {
                 writer.Write('\t');
-                for (int i = 0; i < this.width; i++)
+                for (int x = 0; x < this.width; x++)
                 {
-                    writer.Write(Math.Max(MapComponents[i, j].tileID, 0));
-                    writer.Write((i < (this.width - 1)) ? ", " : ",");
+                    writer.Write(Math.Max(MapComponents[x, y].tileID, 0));
+                    writer.Write((x < (this.width - 1)) ? ", " : ",");
                 }
                 writer.WriteLine();
             }
@@ -224,10 +224,10 @@ namespace ForgeLevelEditor.map
             writer.WriteLine("};");
         }
 
-        public int drawOffsetX { get => DrawOffsetX; set => DrawOffsetX = value; }
-        public int drawOffsetY { get => DrawOffsetY; set => DrawOffsetY = value; }
-        public int viewWidth { get => ViewWidth; set => ViewWidth = value; }
-        public int viewHeight { get => ViewHeight; set => ViewHeight = value; }
+        public int DrawOffsetX { get => drawOffsetX; set => drawOffsetX = value; }
+        public int DrawOffsetY { get => drawOffsetY; set => drawOffsetY = value; }
+        public int ViewWidth { get => viewWidth; set => viewWidth = value; }
+        public int ViewHeight { get => viewHeight; set => viewHeight = value; }
 
         public Point ToTileSpace(Point point)
         {
@@ -235,11 +235,11 @@ namespace ForgeLevelEditor.map
         }
         public int ToTileSpaceX(int X)
         {
-            return ((int)Math.Floor((X - drawOffsetX) / (double)TileSize.Width)) + DrawPos.X;
+            return ((int)Math.Floor((X - DrawOffsetX) / (double)TileSize.Width)) + DrawPosition.X;
         }
         public int ToTileSpaceY(int Y)
         {
-            return ((int)Math.Floor((Y - drawOffsetY) / (double)TileSize.Height)) + DrawPos.Y;
+            return ((int)Math.Floor((Y - DrawOffsetY) / (double)TileSize.Height)) + DrawPosition.Y;
         }
         public Point ToScreenSpace(Point point)
         {
@@ -247,11 +247,11 @@ namespace ForgeLevelEditor.map
         }
         public int ToScreenSpaceX(int X)
         {
-            return (((X - DrawPos.X) * TileSize.Width) + DrawOffsetX);
+            return (((X - DrawPosition.X) * TileSize.Width) + drawOffsetX);
         }
         public int ToScreenSpaceY(int Y)
         {
-            return (((Y - DrawPos.Y) * TileSize.Height) + DrawOffsetY);
+            return (((Y - DrawPosition.Y) * TileSize.Height) + drawOffsetY);
         }
 
         public bool CheckInRange(int x, int y)
@@ -261,44 +261,44 @@ namespace ForgeLevelEditor.map
 
         void ResetComponents()
         {
-            for (int i = 0; i < this.width; i++)
+            for (int x = 0; x < this.width; x++)
             {
-                for (int j = 0; j < this.height; j++)
+                for (int y = 0; y < this.height; y++)
                 {
-                    MapComponents[i, j] = new BaseMapComponent(-1);
+                    MapComponents[x, y] = new BaseMapComponent(-1);
                 }
             }
         }
 
-        public Map(BaseMapComponent OutOfBounds, string Name = "Map", int xSize = 15, int ySize = 15, int timer = 255, int DrawOffsetX = 0, int DrawOffsetY = 0)
+        public Map(BaseMapComponent outOfBounds, string name = "Map", int width = 15, int height = 15, int timer = 255, int drawOffsetX = 0, int drawOffsetY = 0)
         {
-            this.DrawOffsetX = DrawOffsetX;
-            this.DrawOffsetY = DrawOffsetY;
-            this.OutOfBoundsTile = OutOfBounds;
-            this.Name = Name;
+            this.drawOffsetX = drawOffsetX;
+            this.drawOffsetY = drawOffsetY;
+            this.OutOfBoundsTile = outOfBounds;
+            this.Name = name;
             Timer = timer;
-            this.width = xSize;
-            this.height = ySize;
-            MapComponents = new BaseMapComponent[xSize, ySize];
+            this.width = width;
+            this.height = height;
+            MapComponents = new BaseMapComponent[width, height];
             Sprites = new List<SpriteComponent>();
             Connectors = new List<EnviromentAffectComponent>();
             ResetComponents();
             this.CentreMap();
         }
 
-        public void SetTile(Point pos, int ID)
+        public void SetTile(Point position, int id)
         {
-            if (CheckInRange(pos.X, pos.Y))
+            if (CheckInRange(position.X, position.Y))
             {
-                MapComponents[pos.X, pos.Y] = new BaseMapComponent(ID);
+                MapComponents[position.X, position.Y] = new BaseMapComponent(id);
             }
         }
 
-        public BaseMapComponent GetTile(Point pos)
+        public BaseMapComponent GetTile(Point position)
         {
-            if (CheckInRange(pos.X, pos.Y))
+            if (CheckInRange(position.X, position.Y))
             {
-                return MapComponents[pos.X, pos.Y];
+                return MapComponents[position.X, position.Y];
             }
             return new BaseMapComponent(-1);
         }
@@ -327,12 +327,12 @@ namespace ForgeLevelEditor.map
             }
         }
 
-        public void UpdateSprite(Point p, int ID, int NewHealth)
+        public void UpdateSprite(Point position, int id, int health)
         {
-            int found = Sprites.FindIndex(x => x.SpritePosition == p && x.Type == ID);
+            int found = Sprites.FindIndex(x => x.SpritePosition == position && x.Type == id);
             if (found != -1)
             {
-                Sprites[found].Health = NewHealth;
+                Sprites[found].Health = health;
             }
 
         }
@@ -355,27 +355,27 @@ namespace ForgeLevelEditor.map
 
         public void DrawBackground(Graphics graphics)
         {
-            for (int i = -ViewWidth; i < ViewWidth; i++)
+            for (int x = -viewWidth; x < viewWidth; x++)
             {
-                for (int j = -ViewHeight; j < ViewHeight; j++)
+                for (int y = -viewHeight; y < viewHeight; y++)
                 {
-                    if (CheckInRange(i + DrawPos.X, j + DrawPos.Y))
+                    if (CheckInRange(x + DrawPosition.X, y + DrawPosition.Y))
                     {
                         if (ShowPlayerStart)
                         {
-                            MapComponents[i + DrawPos.X, j + DrawPos.Y].Draw(graphics, ToScreenSpace(new Point(i + DrawPos.X, j + DrawPos.Y)), new Point(TileSize.Width, TileSize.Height));
+                            MapComponents[x + DrawPosition.X, y + DrawPosition.Y].Draw(graphics, ToScreenSpace(new Point(x + DrawPosition.X, y + DrawPosition.Y)), new Point(TileSize.Width, TileSize.Height));
                         }
 
-                        if (MapComponents[i + DrawPos.X, j + DrawPos.Y] != null)
+                        if (MapComponents[x + DrawPosition.X, y + DrawPosition.Y] != null)
                         {
-                            MapComponents[i + DrawPos.X, j + DrawPos.Y].Draw(graphics, ToScreenSpace(new Point(i + DrawPos.X, j + DrawPos.Y)), new Point(TileSize.Width, TileSize.Height));
+                            MapComponents[x + DrawPosition.X, y + DrawPosition.Y].Draw(graphics, ToScreenSpace(new Point(x + DrawPosition.X, y + DrawPosition.Y)), new Point(TileSize.Width, TileSize.Height));
                         }
                     }
                     else
                     {
                         if (ShowOutOfBounds)
                         {
-                            OutOfBoundsTile.Draw(graphics, ToScreenSpace(new Point(i, j)), new Point(TileSize.Width, TileSize.Height));
+                            OutOfBoundsTile.Draw(graphics, ToScreenSpace(new Point(x, y)), new Point(TileSize.Width, TileSize.Height));
                         }
                     }
                 }
@@ -384,17 +384,17 @@ namespace ForgeLevelEditor.map
 
         public void DrawSprites(Graphics graphics)
         {
-            foreach (SpriteComponent i in Sprites)
+            foreach (SpriteComponent sprite in Sprites)
             {
-                i.Draw(graphics, ToScreenSpace(new Point(i.SpritePosition.X, i.SpritePosition.Y)), new Point(TileSize.Width, TileSize.Height));
+                sprite.Draw(graphics, ToScreenSpace(new Point(sprite.SpritePosition.X, sprite.SpritePosition.Y)), new Point(TileSize.Width, TileSize.Height));
             }
         }
 
         public void DrawConnections(Graphics graphics)
         {
-            foreach (EnviromentAffectComponent i in Connectors)
+            foreach (EnviromentAffectComponent connector in Connectors)
             {
-                i.Draw(graphics, ToScreenSpace(new Point(i.Start.X, i.Start.Y)), new Point(TileSize.Width, TileSize.Height));
+                connector.Draw(graphics, ToScreenSpace(new Point(connector.Start.X, connector.Start.Y)), new Point(TileSize.Width, TileSize.Height));
             }
         }
 
@@ -405,6 +405,6 @@ namespace ForgeLevelEditor.map
 
         }
 
-        public void CentreMap() => this.DrawPos = this.Centre;
+        public void CentreMap() => this.DrawPosition = this.Centre;
     }
 }

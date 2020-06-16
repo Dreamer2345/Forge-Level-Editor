@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -57,8 +57,8 @@ namespace ForgeLevelEditor.TextureHandler
 
         private static IEnumerable<Tuple<string, Bitmap, Color>> LoadTextures(string filePath)
         {
-            var xmlDoc = XDocument.Load(filePath);
-            var nodes = xmlDoc.Descendants("textures").Elements().Where(element => element.Name == "texture");
+            var document = XDocument.Load(filePath);
+            var nodes = document.Descendants("textures").Elements().Where(element => element.Name == "texture");
 
             foreach (XElement xElement in nodes)
             {

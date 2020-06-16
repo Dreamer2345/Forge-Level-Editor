@@ -8,19 +8,19 @@ namespace ForgeLevelEditor.map.Component
     {
         public int tileID = -1;
 
-        public BaseMapComponent(int ID)
+        public BaseMapComponent(int id)
         {
-            tileID = ID;
+            tileID = id;
         }
 
-        public void Draw(Graphics graphics, Point Pos, Point Size)
+        public void Draw(Graphics graphics, Point position, Point size)
         {
-            if (Pos == null)
+            if (position == null)
                 return;
 
             Bitmap bitmap = TextureManager.GetTexture(TileManager.GetTile(tileID).TextureID);
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
-            graphics.DrawImage(bitmap, Pos.X, Pos.Y, Size.X, Size.Y);
+            graphics.DrawImage(bitmap, position.X, position.Y, size.X, size.Y);
         }
     }
 }

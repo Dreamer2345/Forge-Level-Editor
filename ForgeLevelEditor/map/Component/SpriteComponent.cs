@@ -10,18 +10,18 @@ namespace ForgeLevelEditor.map.Component
         public Point SpritePosition;
         public int Health;
 
-        public SpriteComponent(Point pos, int type, int health)
+        public SpriteComponent(Point position, int type, int health)
         {
             this.Type = type;
-            this.SpritePosition = pos;
+            this.SpritePosition = position;
             this.Health = health;
         }
 
-        public void Draw(Graphics graphics, Point Pos, Point Size)
+        public void Draw(Graphics graphics, Point position, Point size)
         {
             Bitmap bitmap = TextureManager.GetTexture(SpriteManager.GetSprite(Type).TextureID);
             bitmap.MakeTransparent(Color.FromArgb(255, 119, 168));
-            graphics.DrawImage(bitmap, Pos.X, Pos.Y, Size.X, Size.Y);
+            graphics.DrawImage(bitmap, position.X, position.Y, size.X, size.Y);
         }
     }
 }

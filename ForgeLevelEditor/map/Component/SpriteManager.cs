@@ -43,12 +43,12 @@ namespace ForgeLevelEditor.map.Component
 
         public static IEnumerable<Sprite> Sprites => sprites.Values;
 
-        private static void AddSprite(int id, Sprite Sprite)
+        private static void AddSprite(int id, Sprite sprite)
         {
             if (sprites.ContainsKey(id))
                 return;
 
-            sprites.Add(id, Sprite);
+            sprites.Add(id, sprite);
         }
 
         public static Sprite GetSprite(int id)
@@ -67,10 +67,10 @@ namespace ForgeLevelEditor.map.Component
                 AddSprite(sprite.ID, sprite);
         }
 
-        public static IEnumerable<Sprite> LoadSprites(string Filepath)
+        public static IEnumerable<Sprite> LoadSprites(string filePath)
         {
-            var xmlDoc = XDocument.Load(Filepath);
-            var nodes = xmlDoc.Descendants("sprites").Elements().Where(element => element.Name == "sprite");
+            var document = XDocument.Load(filePath);
+            var nodes = document.Descendants("sprites").Elements().Where(element => element.Name == "sprite");
             
             foreach (XElement xElement in nodes)
             {
